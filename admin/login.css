@@ -1,0 +1,287 @@
+/* Style for the loading screen */
+#loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(215, 255, 255, 0.9); /* Background color */
+  z-index: 9999;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* Stack logo and dots vertically */
+}
+
+/* Style for loading image */
+#loading img {
+  width: 200px; /* Maintain image width */
+  height: 200px; /* Maintain image height */
+  margin-bottom: 20px; /* Increase space between logo and dots */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image covers the entire area */
+  animation: spin 2s linear infinite; /* Spin animation for the logo */
+}
+
+/* Style for loading dots */
+.logo-dots {
+  display: flex;
+  justify-content: center; /* Center dots horizontally */
+  margin-top: 20px; /* Add margin above the dots to lower them */
+}
+
+.dot {
+  width: 15px; /* Increased width for larger dots */
+  height: 15px; /* Increased height for larger dots */
+  margin: 0 8px; /* Increased space between dots */
+  background-color: #185F43; /* Dot color */
+  border-radius: 50%; /* Make dots circular */
+  animation: loadingAnimation 0.6s infinite alternate; /* Animation for dots */
+}
+
+/* Keyframes for dot animation */
+@keyframes loadingAnimation {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-15px); /* Increased bounce height */
+  }
+}
+
+/* Adding delays for alternating bounce effect */
+.dot:nth-child(1) {
+  animation-delay: 0s; /* No delay */
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s; /* Slight delay for second dot */
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s; /* More delay for third dot */
+}
+.dot:nth-child(4) {
+  animation-delay: 0.6s; /* Even more delay for fourth dot */
+}
+
+/* Spin animation for the logo */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+    background-color: #f0f3f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login-container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #d4edda 0%, #185f43 100%); /* Optional: Add vendor prefixes if targeting older browsers */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+ /*Popup style*/
+ .container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}  
+.popup{
+  width: 400px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0%;
+  left:50%;
+  transform: translate(-50%, -50% ) scale(0.1);
+  text-align: center;
+  padding: 0 50px 50px;
+  color: #333;
+  visibility: hidden;
+  transition: transfor 0.4s, top 0.4s;
+  }
+  .open-Popup{
+      visibility: visible;
+      top: 50%;
+      transform: translate(-50%, -50% ) scale(1);
+  }
+  .popup img{
+  width: 100px;
+  margin-top: -30%;
+  margin-bottom: -20%;
+   border-radius: 50%;
+   box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  }
+  .popup h2{
+      font-size: 40px ;
+      font-weight: 500;
+      margin: 30px 0 10px;
+  }
+  .popup button{
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 0;
+    background: #136b07;
+    color: #fff;
+    border:0;   
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor:pointer;
+    box-shadow:0 5px 5px rgba(0, 0, 0, 0.2);
+}
+/*Popup style*/
+.hidden {
+  display: none; /* This class will hide the element */
+}
+
+  .login-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    transition: all 1s ease;
+
+  }
+  
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #185F43;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+    transition: border 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #185F43;
+    box-shadow: 0 0 8px rgba(24, 95, 67, 0.2);
+  }
+  
+  .btn {
+    padding: 10px 40px;
+    background: #0d8947;
+    border: 0;
+    outline: none;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 30px;
+    
+    
+  }
+  .button-container {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;        /* Add some margin if needed for spacing */
+  }
+  
+  .btn.login-btn {
+    padding: 10px 20px;
+    background: #0d8947;
+    border: 0;
+    outline: none;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  
+  
+  .login-btn:hover {
+    background-color: #148F5D;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    margin-top: -10px;
+  }
+  
+  .forgot-password a {
+    color: #185F43;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+    color: #148F5D;
+  }
+  
+  .login-footer {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -15px;
+    font-size: 20;
+    padding: 5px;
+  }
+  
+  .login-footer a {
+    color: #185F43;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+    color: #148F5D;
+  }
+
+  .error-msg {
+    color: red;
+    margin-bottom: 10px;
+    display: none;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-box {
+      padding: 30px;
+      max-width: 90%;
+    }
+  
+    .login-box h2 {
+      font-size: 24px;
+    }
+  
+    .login-btn {
+      padding: 10px;
+      font-size: 16px;
+    }
+  
+    /* Smaller text for Remember Me and Forgot Password on smaller screens */
+    .forgot-password a, 
+    label[for="rememberMe"] {
+      font-size: 14px;
+    }
+  }
+  
+  

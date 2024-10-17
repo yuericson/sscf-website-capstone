@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pageant Scoring</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/tabulation-form.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pageant Scoring</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Production Number')">Production
+                            Number</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Swim Wear')">Swim Wear</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Preliminary Interview')">Preliminary
+                            Interview</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Evening Formal Competition')">Evening
+                            Formal Competition</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Final Q&A')">Final Q&A</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pageant Title -->
+    <div class="container">
+        <h1 class="text-center" id="pageantTitle">Pageant Title</h1>
+        <p class="text-center">Current Category: <span id="currentCategory">Production Number</span></p>
+    </div>
+
+    <!-- Scoring Section for Female Contestants -->
+    <div class="container" id="femaleSection">
+        <h2 class="text-center">Female Contestants</h2>
+        <form id="femaleForm">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark" id="criteriaHeadFemale">
+                    <!-- Headers will be populated here -->
+                </thead>
+                <tbody id="femaleContestantsBody">
+                    <!-- Female Contestants rows will be populated here -->
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Scoring Section for Male Contestants -->
+    <div class="container" id="maleSection">
+        <h2 class="text-center">Male Contestants</h2>
+        <form id="maleForm">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark" id="criteriaHeadMale">
+                    <!-- Headers will be populated here -->
+                </thead>
+                <tbody id="maleContestantsBody">
+                    <!-- Male Contestants rows will be populated here -->
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-success" onclick="proceedToNextCategory()">Proceed</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Changing Category and Calculating Scores -->
+    <script>
+        const maleContestants = [
+            { number: 1, name: "Male Contestant 1" },
+            { number: 2, name: "Male Contestant 2" },
+            { number: 3, name: "Male Contestant 3" },
+            { number: 4, name: "Male Contestant 4" },
+            { number: 5, name: "Male Contestant 5" },
+        ];
+
+        const femaleContestants = [
+            { number: 1, name: "Female Contestant 1" },
+            { number: 2, name: "Female Contestant 2" },
+            { number: 3, name: "Female Contestant 3" },
+            { number: 4, name: "Female Contestant 4" },
+            { number: 5, name: "Female Contestant 5" },
+        ];
+
+        let currentCategory = 'Production Number';
+
+        function populateTable() {
+            const femaleTableBody = document.getElementById('femaleContestantsBody');
+            const maleTableBody = document.getElementById('maleContestantsBody');
+            const femaleHeader = document.getElementById('criteriaHeadFemale');
+            const maleHeader = document.getElementById('criteriaHeadMale');
+
+            femaleTableBody.innerHTML = ''; // Clear existing rows for female contestants
+            maleTableBody.innerHTML = ''; // Clear existing rows for male contestants
+
+            let headersHtml = '';
+            let rowsHtml = '';
+
+            if (currentCategory === 'Production Number') {
+                headersHtml = `
+                    <tr>
+                        <th>Constestant Number</th>
+                        <th>Name</th>
+                        <th>Stage Presence 20%</th>
+                        <th>Choreography 30%</th>
+                        <th>Self-Introduction 25%</th>
+                        <th>Mastery 25%</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                    </tr>
+                `;
+
+                rowsHtml = femaleContestants.map(contestant => `
+                    <tr>
+                        <td>${contestant.number}</td>
+                        <td>${contestant.name}</td>
+                        <td><input type="number" class="form-control" name="criteria1_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria2_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria3_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria4_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                        <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                    </tr>
+                `).join('');
+
+                femaleTableBody.innerHTML = rowsHtml;
+                maleTableBody.innerHTML = rowsHtml.replace(/female/g, 'male');
+
+            } else if (currentCategory === 'Swim Wear') {
+                headersHtml = `
+                    <tr>
+                        <th>Constestant Number</th>
+                        <th>Name</th>
+                        <th>Physical Fitness 40%</th>
+                        <th>Confidence and Poise 30%</th>
+                        <th>Presentation 30%</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                    </tr>
+                `;
+
+                rowsHtml = femaleContestants.map(contestant => `
+                    <tr>
+                        <td>${contestant.number}</td>
+                        <td>${contestant.name}</td>
+                        <td><input type="number" class="form-control" name="criteria1_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria2_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria3_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                        <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                    </tr>
+                `).join('');
+
+                femaleTableBody.innerHTML = rowsHtml;
+                maleTableBody.innerHTML = rowsHtml.replace(/female/g, 'male');
+
+            } else if (currentCategory === 'Preliminary Interview') {
+                headersHtml = `
+                    <tr>
+                        <th>Constestant Number</th>
+                        <th>Name</th>
+                        <th>Confidence 30%</th>
+                        <th>Content of Answer 40%</th>
+                        <th>Delivery 30%</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                    </tr>
+                `;
+
+                rowsHtml = femaleContestants.map(contestant => `
+                    <tr>
+                        <td>${contestant.number}</td>
+                        <td>${contestant.name}</td>
+                        <td><input type="number" class="form-control" name="criteria1_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria2_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria3_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                        <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                    </tr>
+                `).join('');
+
+                femaleTableBody.innerHTML = rowsHtml;
+                maleTableBody.innerHTML = rowsHtml.replace(/female/g, 'male');
+
+            } else if (currentCategory === 'Evening Formal Competition') {
+                headersHtml = `
+                    <tr>
+                        <th>Constestant Number</th>
+                        <th>Name</th>
+                        <th>Physical Appearance 40%</th>
+                        <th>Confidence and Poise 30%</th>
+                        <th>Presentation 30%</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                    </tr>
+                `;
+
+                rowsHtml = femaleContestants.map(contestant => `
+                    <tr>
+                        <td>${contestant.number}</td>
+                        <td>${contestant.name}</td>
+                        <td><input type="number" class="form-control" name="criteria1_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria2_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria3_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                        <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                    </tr>
+                `).join('');
+
+                femaleTableBody.innerHTML = rowsHtml;
+                maleTableBody.innerHTML = rowsHtml.replace(/female/g, 'male');
+
+            } else if (currentCategory === 'Final Q&A') {
+                headersHtml = `
+                    <tr>
+                        <th>Constestant Number</th>
+                        <th>Name</th>
+                        <th>Confidence 40%</th>
+                        <th>Content of Answer 40%</th>
+                        <th>Delivery 20%</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                    </tr>
+                `;
+
+                rowsHtml = femaleContestants.map(contestant => `
+                    <tr>
+                        <td>${contestant.number}</td>
+                        <td>${contestant.name}</td>
+                        <td><input type="number" class="form-control" name="criteria1_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria2_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="number" class="form-control" name="criteria3_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0"></td>
+                        <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                        <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                    </tr>
+                `).join('');
+
+                femaleTableBody.innerHTML = rowsHtml;
+                maleTableBody.innerHTML = rowsHtml.replace(/female/g, 'male');
+            }
+
+            femaleHeader.innerHTML = headersHtml;
+            maleHeader.innerHTML = headersHtml;
+        }
+
+        function changeCategory(category) {
+            currentCategory = category;
+            document.getElementById('currentCategory').innerText = category;
+            populateTable();
+        }
+
+        function calculateTotal(gender, contestantNumber) {
+            const form = document.forms[gender + 'Form'];
+            const criteria1 = parseFloat(form.elements['criteria1_' + gender + '_' + contestantNumber].value) || 0;
+            const criteria2 = parseFloat(form.elements['criteria2_' + gender + '_' + contestantNumber].value) || 0;
+            const criteria3 = parseFloat(form.elements['criteria3_' + gender + '_' + contestantNumber].value) || 0;
+            const criteria4 = parseFloat(form.elements['criteria4_' + gender + '_' + contestantNumber]?.value) || 0;
+
+            const totalScore = criteria1 + criteria2 + criteria3 + criteria4;
+            form.elements['total_' + gender + '_' + contestantNumber].value = totalScore.toFixed(2);
+        }
+
+        function proceedToNextCategory() {
+            alert("Proceeding to the next category!");
+        }
+
+        // Initialize the table for the first time
+        populateTable();
+    </script>
+
+</body>
+
+</html>

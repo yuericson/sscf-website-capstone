@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSCF</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <!-- Bootstrap JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/sports-form.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="navbar-text">
+          <a href="main-page.html" class="navbar-link">S S C F</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <div></div> <!-- Middle line -->
+        </span>
+      </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="main-page.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAbout" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">About us</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
+                <li><a class="dropdown-item" href="history.html">History</a></li>
+                <li><a class="dropdown-item" href="mission-vision.html">Mission & Vision</a></li>
+                <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                <li><a class="dropdown-item" href="committees.html">Committees</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResources" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownResources">
+                <li><a class="dropdown-item" href="student-guide.html">Student Guide</a></li>
+                <li><a class="dropdown-item" href="academic-resources.html">Academic Resources</a></li>
+                <li><a class="dropdown-item" href="career-support.html">Career Support</a></li>
+                <li><a class="dropdown-item" href="well-being-support.html">Well-being Support</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMedia" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">News & Media</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMedia">
+                <li><a class="dropdown-item" href="latest-news.html">Latest News</a></li>
+                <li><a class="dropdown-item" href="newsletter.html">Newsletter</a></li>
+                <li><a class="dropdown-item" href="media-gallery.html">Media Gallery</a></li>
+                <li><a class="dropdown-item" href="press-releases.html">Press Releases</a></li>
+                <li><a class="dropdown-item" href="sscf-president-corner.html">SSCF President's Corner</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInvolved" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Get Involved</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownInvolved">
+                <li><a class="dropdown-item" href="join-organization.html">Join an Organization</a></li>
+                <li><a class="dropdown-item" href="volunteer-opportunities.html">Volunteer Opportunities</a></li>
+                <li><a class="dropdown-item" href="forum.html">Forum</a></li>
+                <li><a class="dropdown-item" href="feedback.html">Feedback</a></li>
+                <li><a class="dropdown-item" href="sports-registration.html">Sports Registration</a></li>
+                <li><a class="dropdown-item" href="voting.html">Local Election</a></li>
+                <li><a class="dropdown-item" href="tabulation.html">Tabulation</a></li>
+                <li><a class="dropdown-item" href="calendar-activities.html">Calendar Activities</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact us</a></li>
+            <li class="nav-item">
+              <a class="btn navbar-login-btn" href="user-login.html" target="_blank" id="login-btn">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+  
+  
+  
+  
+  
+    <!-- JS FOR DROPDOWN ACTIVE LINK -->
+    <script>
+      // Get current URL
+      const currentUrl = window.location.href;
+  
+      // Get all nav links and dropdown items
+      const navLinks = document.querySelectorAll('.nav-link');
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+  
+      // Function to add 'active' class to link and parent dropdown
+      function setActiveLink(link) {
+        link.classList.add('active');
+  
+        // If it's part of a dropdown, highlight the parent dropdown too
+        const parentDropdown = link.closest('.dropdown-menu');
+        if (parentDropdown) {
+          const dropdownToggle = parentDropdown.closest('.dropdown').querySelector('.nav-link.dropdown-toggle');
+          dropdownToggle.classList.add('active');
+        }
+      }
+  
+      // Loop through each nav link
+      navLinks.forEach(link => {
+        if (link.href === currentUrl) {
+          setActiveLink(link);
+        }
+      });
+  
+      // Loop through each dropdown item
+      dropdownItems.forEach(item => {
+        if (item.href === currentUrl) {
+          setActiveLink(item);
+        }
+      });
+    </script>
+  
+  
+  
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('profileModal')">&times;</span>
+      <h2>Update Profile</h2>
+      <!-- Display User Profile Image and Full Name -->
+      <div id="profileDisplay">
+        <img id="profileDisplayImage" src="" alt="Profile Image" class="profile-modal-image">
+        <p id="profileDisplayName">User Full Name</p>
+      </div>
+      <form id="profileForm">
+        <label for="displayName">Display Name:</label>
+        <input type="text" id="displayName" name="displayName" required>
+  
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture">
+  
+        <button type="button" onclick="saveProfile()">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('settingsModal')">&times;</span>
+      <h2>Account Settings</h2>
+      <!-- Display User Email -->
+      <p id="settingsEmail">Email: user@example.com</p>
+      <form id="settingsForm">
+        <label for="changePassword">New Password:</label>
+        <input type="password" id="changePassword" name="changePassword" required>
+  
+        <label for="notifications">Notifications:</label>
+        <select id="notifications" name="notifications">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+  
+        <button type="button" onclick="saveSettings()">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
+  
+  <!-- LOGIN FUNCTION -->
+  <script>
+    // Assuming you have a variable that stores the user's email after login
+    const userEmail = "user@example.com"; // Replace with actual email retrieval logic
+    
+  
+    // Function to open modals and set user profile info
+    function openModal(modalId) {
+      // Set user's profile image and full name in the modal
+      const userImage = localStorage.getItem('profileImage');
+      const userName = localStorage.getItem('username'); // Assuming full name is stored in username
+  
+      document.getElementById("profileDisplayImage").src = userImage || 'default-image.jpg'; // Use a default image if none is available
+      document.getElementById("profileDisplayName").textContent = userName || 'User Full Name';
+  
+      // Display the modal
+      document.getElementById(modalId).style.display = 'block';
+    }
+  
+    // Function to close modals
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+  
+    // Function to save profile changes
+    function saveProfile() {
+      const displayName = document.getElementById("displayName").value;
+      const profilePicture = document.getElementById("profilePicture").files[0];
+  
+      alert(`Profile updated: ${displayName}`);
+      closeModal('profileModal');
+    }
+  
+    // Function to save settings changes
+    function saveSettings() {
+      const password = document.getElementById("changePassword").value;
+      const notifications = document.getElementById("notifications").value;
+  
+      alert(`Settings updated: Notifications are ${notifications}`);
+      closeModal('settingsModal');
+    }
+  
+    // Function to show the loading spinner
+    function showLoading() {
+      document.getElementById('loading').style.display = 'flex'; // Make sure to have an element with ID 'loading'
+    }
+  
+    // Update the profile display function to accept parameters
+    function updateProfile(username, profileImage) {
+      const loginBtn = document.querySelector(".navbar-login-btn");
+  
+      if (username) {
+        const profileContainer = document.createElement('div'); // Create a container for the profile
+        profileContainer.classList.add('navbar-profile-container'); // Add a class for styling
+  
+        // Create image element
+        const userImage = document.createElement('img');
+        userImage.src = profileImage;
+        userImage.alt = 'Profile Image';
+        userImage.classList.add('profile-image');
+        profileContainer.appendChild(userImage);
+  
+        // Create greeting text
+        const greetingText = document.createElement('span');
+        greetingText.innerText = `Hi, ${username.substring(0, 5)}!`; // Display first 5 characters of the username
+        greetingText.classList.add('greeting-text');
+        profileContainer.appendChild(greetingText);
+  
+        // Replace login button with profile container
+        loginBtn.parentNode.replaceChild(profileContainer, loginBtn);
+  
+        // Create dropdown menu
+        const profileMenu = document.createElement('div');
+        profileMenu.classList.add('profile-dropdown-menu');
+        profileMenu.style.display = 'none';
+  
+        // Profile Option
+        const profileOption = document.createElement('a');
+        profileOption.classList.add('profile-dropdown-item', 'profile-icon'); // Added profile-icon class
+        profileOption.href = '#';
+        profileOption.innerHTML = `<i class="fas fa-user-circle"></i> Profile`;
+        profileOption.addEventListener('click', function (event) {
+          event.preventDefault();
+          openModal('profileModal');
+        });
+  
+        // Settings Option
+        const settingsOption = document.createElement('a');
+        settingsOption.classList.add('profile-dropdown-item', 'settings-icon'); // Added settings-icon class
+        settingsOption.href = '#';
+        settingsOption.innerHTML = `<i class="fas fa-cog"></i> Settings`;
+        settingsOption.addEventListener('click', function (event) {
+          event.preventDefault();
+          openModal('settingsModal');
+        });
+  
+        // Logout Option
+        const logoutButton = document.createElement('a');
+        logoutButton.id = 'logout-btn';
+        logoutButton.classList.add('profile-dropdown-item');
+        logoutButton.href = '#';
+        logoutButton.innerHTML = `<i class="fas fa-sign-out-alt"></i> Logout`;
+        logoutButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          localStorage.removeItem('username');
+          localStorage.removeItem('profileImage');
+  
+          showLoading(); // Show the loading spinner
+  
+          setTimeout(() => {
+            location.reload(); // Reload the page to show login button again
+          }, 1500); // Delay to display the loading spinner for 1.5 seconds
+        });
+  
+        // Append options to the dropdown
+        profileMenu.appendChild(profileOption);
+        profileMenu.appendChild(settingsOption);
+        profileMenu.appendChild(logoutButton);
+        profileContainer.appendChild(profileMenu);
+  
+        profileContainer.addEventListener('click', function (event) {
+          event.stopPropagation();
+          const isDisplayed = profileMenu.style.display === 'block';
+          profileMenu.style.display = isDisplayed ? 'none' : 'block';
+        });
+  
+        document.addEventListener('click', function () {
+          profileMenu.style.display = 'none';
+        });
+      } else {
+        // If not logged in, keep the login button active
+        loginBtn.style.pointerEvents = 'auto'; // Ensure the login button is clickable
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const email = localStorage.getItem('username');
+      const profileImage = localStorage.getItem('profileImage');
+      updateProfile(email, profileImage); // Call to update profile on page load
+    });
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <!-- Loading screen -->
+    <div id="loading">
+      <img src="../images/Logo.png" alt="Loading...">
+      <div class="logo-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  
+  
+  <!-- LOADER -->
+    <script>
+      // Function to display the loading spinner
+      function showLoading() {
+        document.getElementById('loading').style.display = 'flex';
+      }
+  
+      // Attach showLoading to all navigation links except the login button
+      document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+        link.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+  
+          if (href && href !== '#') {
+            showLoading();
+  
+            setTimeout(() => {
+              window.location.href = href;
+            }, 1000); // Increased delay to 1500 milliseconds for visibility
+  
+            e.preventDefault();
+          }
+        });
+      });
+  
+      // Open the login in a new tab and display the loading spinner
+      document.getElementById('login-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        showLoading();
+  
+        setTimeout(() => { // Delay before opening new tab to display loading spinner longer
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            const loginWindow = window.open(href, '_blank');
+  
+            // Polling to detect if the login tab is closed
+            const pollTimer = setInterval(() => {
+              if (loginWindow.closed) {
+                clearInterval(pollTimer);
+                showLoading(); // Show spinner again before reloading
+                setTimeout(() => {
+                  location.reload();
+                }, 1000); // Delay to show loading spinner
+              }
+            }, 500);
+          }
+        }, 1000); // 1-second delay before opening new tab to display the loading spinner longer
+      });
+  
+      // Hide loading spinner after page load
+      window.addEventListener('load', function () {
+        document.getElementById('loading').style.display = 'none';
+      });
+    </script>
+
+
+
+
+
+  <!-- Form for ICCAC -->
+<section class="sports-container my-5" id="iccac-form">
+  <!-- Box for ICCAC-CAF Pre Registration Form -->
+  <div class="form-title-box p-4 mb-4">
+      <h3 class="form-title">ICCAC-CAF PRE REGISTRATION FORM</h3>
+  </div>
+
+  <form>
+      <div class="form-box">
+          <div class="form-row">
+              <div class="form-group full-name-group">
+                  <label for="full-name" class="form-label">Full Name (Surname, First Name M.I)</label>
+                  <input type="text" class="form-control" id="full-name" required>
+              </div>
+              <div class="form-group email-group">
+                  <label for="email" class="form-label">SLSU Email/Personal Email</label>
+                  <input type="email" class="form-control" id="email" required>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group age-group">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="text" class="form-control" id="age" required pattern="\d{1,2}" maxlength="2" title="Please enter a number between 0 and 99" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2)">
+              </div>
+              <div class="form-group gender-group">
+                  <label for="gender" class="form-label">Gender</label>
+                  <select class="form-select" id="gender" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="GAY">GAY</option>
+                      <option value="Trans">Trans</option>
+                      <option value="Transwoman">Transwoman</option>
+                      <option value="Non-Binary">Non-Binary</option>
+                  </select>
+              </div>
+              <div class="form-group year-level-group">
+                  <label for="year-level" class="form-label">Year Level</label>
+                  <select class="form-select" id="year-level" required>
+                      <option value="First Year">First Year</option>
+                      <option value="Second Year">Second Year</option>
+                      <option value="Third Year">Third Year</option>
+                      <option value="Fourth Year">Fourth Year</option>
+                  </select>
+              </div>
+          </div>
+
+          <div class="form-row">
+              <div class="form-group course-group">
+                  <label for="course" class="form-label">Course</label>
+                  <select class="form-select" id="course" required>
+                      <option value="">Select Course</option>
+                      <option value="Bachelor of Science in Nursing">Bachelor of Science in Nursing</option>
+                            <option value="Bachelor of Elementary Education">Bachelor of Elementary Education</option>
+                            <option value="Bachelor of Science in Agriculture">Bachelor of Science in Agriculture
+                            </option>
+                            <option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in
+                                Mechanical Engineering</option>
+                            <option value="Bachelor of Public Administration">Bachelor of Public Administration</option>
+                            <option value="Bachelor of Science in Radiologic Technology">Bachelor of Science in
+                                Radiologic Technology</option>
+                            <option value="Bachelor of Science in Electrical Engineering">Bachelor of Science in
+                                Electrical Engineering</option>
+                            <option value="Bachelor of Science in Industrial Technology - Major in Computer Technology">
+                                Bachelor of Science in Industrial Technology - Major in Computer Technology</option>
+                            <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in
+                                Hospitality Management</option>
+                            <option value="Bachelor of Science in Industrial Engineering">Bachelor of Science in
+                                Industrial Engineering</option>
+                            <option value="Bachelor of Science in Mathematics">Bachelor of Science in Mathematics
+                            </option>
+                            <option value="Bachelor of Arts in Psychology">Bachelor of Arts in Psychology</option>
+                            <option value="Bachelor of Secondary Education - Major in Mathematics">Bachelor of Secondary
+                                Education - Major in Mathematics</option>
+                            <option value="Bachelor of Science in Information Technology">Bachelor of Science in
+                                Information Technology</option>
+                            <option value="Bachelor of Arts in Communication">Bachelor of Arts in Communication</option>
+                            <option value="Bachelor of Science in Biology">Bachelor of Science in Biology</option>
+                            <option value="Bachelor of Science in Forestry">Bachelor of Science in Forestry</option>
+                            <option value="Bachelor of Science in Computer Engineering">Bachelor of Science in Computer
+                                Engineering</option>
+                            <option value="Bachelor of Culture and Arts Education">Bachelor of Culture and Arts
+                                Education</option>
+                            <option value="Bachelor of Science in Electronics Engineering">Bachelor of Science in
+                                Electronics Engineering</option>
+                            <option value="Bachelor of Secondary Education Major in Mathematics">Bachelor of Secondary
+                                Education Major in Mathematics</option>
+                            <option value="Bachelor of Science in Environmental Science">Bachelor of Science in
+                                Environmental Science</option>
+                            <option value="BSESS">BSESS</option>
+                            <option value="Bachelor of Secondary Education - Major in Science">Bachelor of Secondary
+                                Education - Major in Science</option>
+                            <option value="Bachelor of Secondary Education - Major in Social Studies">Bachelor of
+                                Secondary Education - Major in Social Studies</option>
+                            <option value="Bachelor of Secondary Education - Major in Mathematics">Bachelor of Secondary
+                                Education - Major in Mathematics</option>
+                            <option value="Bachelor of Science in Industrial Technology - Major in Computer Technology">
+                                Bachelor of Science in Industrial Technology - Major in Computer Technology</option>
+                            <option value="Bachelor of Elementary Education">Bachelor of Elementary Education</option>
+                            <option value="Bachelor of Elementary Education - Major in General Education">Bachelor of
+                                Elementary Education - Major in General Education</option>
+                            <option
+                                value="Bachelor of Science in Industrial Technology - Major in Mechanical Technology">
+                                Bachelor of Science in Industrial Technology - Major in Mechanical Technology</option>
+                            <option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil
+                                Engineering</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Crop Science">Bachelor of
+                                Science in Agriculture - Major in Crop Science</option>
+                            <option value="Bachelor of Science in Industrial Technology">Bachelor of Science in
+                                Industrial Technology</option>
+                            <option
+                                value="Bachelor of Science in Business Administration - Major in Human Resource Management">
+                                Bachelor of Science in Business Administration - Major in Human Resource Management
+                            </option>
+                            <option value="Bachelor in Public Administration">Bachelor in Public Administration</option>
+                            <option value="Bachelor of Science in Industrial Technology">Bachelor of Science in
+                                Industrial Technology</option>
+                            <option value="Bachelor of Science in Exercise and Sports Science">Bachelor of Science in
+                                Exercise and Sports Science</option>
+                            <option value="Bachelor of Science in Civil Engineering - Major in Structural Engineering">
+                                Bachelor of Science in Civil Engineering - Major in Structural Engineering</option>
+                            <option value="Bachelor of Arts in History">Bachelor of Arts in History</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Animal Science">Bachelor of
+                                Science in Agriculture - Major in Animal Science</option>
+                            <option value="Bachelor of Science in Industrial Technology Major in Computer Technology">
+                                Bachelor of Science in Industrial Technology Major in Computer Technology</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agronomy">Bachelor of Science
+                                in Agriculture - Major in Agronomy</option>
+                            <option value="Bachelor of Science in Forestry - Major in Forest Ecosystem">Bachelor of
+                                Science in Forestry - Major in Forest Ecosystem</option>
+                            <option
+                                value="Bachelor of Science in Industrial Technology - Major in Electrical Technology">
+                                Bachelor of Science in Industrial Technology - Major in Electrical Technology</option>
+                            <option value="Bachelor of Science in Fisheries">Bachelor of Science in Fisheries</option>
+                            <option value="Bachelor of Arts in Political Science">Bachelor of Arts in Political Science
+                            </option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Extension">
+                                Bachelor of Science in Agriculture - Major in Agricultural Extension</option>
+                            <option value="Bachelor of Science in Information System">Bachelor of Science in Information
+                                System</option>
+                            <option value="Bachelor of Science in Office Administration">Bachelor of Science in Office
+                                Administration</option>
+                            <option value="Bachelor of Science in Criminology">Bachelor of Science in Criminology
+                            </option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Economics">
+                                Bachelor of Science in Agriculture - Major in Agricultural Economics</option>
+                            <option value="Bachelor of Science in Tourism Management">Bachelor of Science in Tourism
+                                Management</option>
+                            <option
+                                value="Bachelor of Science in Business Administration - Major in Marketing Management">
+                                Bachelor of Science in Business Administration - Major in Marketing Management</option>
+                            <option
+                                value="Bachelor of Science in Information Technology - Major in Network and Security">
+                                Bachelor of Science in Information Technology - Major in Network and Security</option>
+                            <option
+                                value="Bachelor of Science in Information Technology - Major in Software Development">
+                                Bachelor of Science in Information Technology - Major in Software Development</option>
+                            <option
+                                value="Bachelor of Science in Information Technology - Major in Database Management">
+                                Bachelor of Science in Information Technology - Major in Database Management</option>
+                            <option value="Bachelor of Science in Information Technology - Major in Web Development">
+                                Bachelor of Science in Information Technology - Major in Web Development</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Horticulture">Bachelor of
+                                Science in Agriculture - Major in Horticulture</option>
+                            <option value="Bachelor of Arts in English">Bachelor of Arts in English</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Technology">
+                                Bachelor of Science in Agriculture - Major in Agricultural Technology</option>
+                            <option value="Bachelor of Science in Mechanical Engineering - Major in Machine Design">
+                                Bachelor of Science in Mechanical Engineering - Major in Machine Design</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Soil Science">Bachelor of
+                                Science in Agriculture - Major in Soil Science</option>
+                            <option value="Bachelor of Science in Fisheries - Major in Fish Processing Technology">
+                                Bachelor of Science in Fisheries - Major in Fish Processing Technology</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Plant Pathology">Bachelor of
+                                Science in Agriculture - Major in Plant Pathology</option>
+                            <option
+                                value="Bachelor of Science in Industrial Technology - Major in Automotive Technology">
+                                Bachelor of Science in Industrial Technology - Major in Automotive Technology</option>
+                            <option value="Bachelor of Arts in Sociology">Bachelor of Arts in Sociology</option>
+                            <option value="Bachelor of Science in Environmental Science - Major in Ecology">Bachelor of
+                                Science in Environmental Science - Major in Ecology</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Animal Husbandry">Bachelor of
+                                Science in Agriculture - Major in Animal Husbandry</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Entomology">Bachelor of Science
+                                in Agriculture - Major in Entomology</option>
+                            <option value="Bachelor of Science in Agricultural Engineering">Bachelor of Science in
+                                Agricultural Engineering</option>
+                            <option value="Bachelor of Science in Office Administration - Major in Office Management">
+                                Bachelor of Science in Office Administration - Major in Office Management</option>
+                            <option
+                                value="Bachelor of Science in Civil Engineering - Major in Transportation Engineering">
+                                Bachelor of Science in Civil Engineering - Major in Transportation Engineering</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Education">
+                                Bachelor of Science in Agriculture - Major in Agricultural Education</option>
+                            <option
+                                value="Bachelor of Science in Information Technology - Major in Business Process Outsourcing">
+                                Bachelor of Science in Information Technology - Major in Business Process Outsourcing
+                            </option>
+                            <option value="Bachelor of Science in Hotel and Restaurant Management">Bachelor of Science
+                                in Hotel and Restaurant Management</option>
+                            <option value="Bachelor of Science in Industrial Technology - Major in Welding Technology">
+                                Bachelor of Science in Industrial Technology - Major in Welding Technology</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Chemistry">
+                                Bachelor of Science in Agriculture - Major in Agricultural Chemistry</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Farming Systems">Bachelor of
+                                Science in Agriculture - Major in Farming Systems</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Extension Education">Bachelor
+                                of Science in Agriculture - Major in Extension Education</option>
+                            <option value="Bachelor of Science in Industrial Technology - Major in Food Technology">
+                                Bachelor of Science in Industrial Technology - Major in Food Technology</option>
+                            <option value="Bachelor of Science in Food Technology">Bachelor of Science in Food
+                                Technology</option>
+                            <option
+                                value="Bachelor of Science in Agriculture - Major in Agricultural and Biosystems Engineering">
+                                Bachelor of Science in Agriculture - Major in Agricultural and Biosystems Engineering
+                            </option>
+                            <option value="Bachelor of Science in Fisheries - Major in Inland Fisheries">Bachelor of
+                                Science in Fisheries - Major in Inland Fisheries</option>
+                            <option
+                                value="Bachelor of Science in Mechanical Engineering - Major in Refrigeration and Air-Conditioning">
+                                Bachelor of Science in Mechanical Engineering - Major in Refrigeration and
+                                Air-Conditioning</option>
+                            <option value="Bachelor of Science in Agriculture - Major in Agricultural Economics">
+                                Bachelor of Science in Agriculture - Major in Agricultural Economics</option>
+                            <option
+                                value="Bachelor of Science in Industrial Technology - Major in Electrical Technology">
+                                Bachelor of Science in Industrial Technology - Major in Electrical Technology</option>
+                        </select>
+
+              </div>
+              <div class="form-group college-campus-group">
+                  <label for="college-campus" class="form-label">College/Campus</label>
+                  <select class="form-select college-campus-field" id="college-campus" required>
+                    <option value="">Select College/Campus</option>
+                    <option value="College of Allied and Medicine">College of Allied and Medicine</option>
+                    <option value="College of Administration, Business, and Accountancy">College of
+                        Administration, Business, and Accountancy</option>
+                    <option value="College of Teacher Education">College of Teacher Education</option>
+                    <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+                    <option value="College of Engineering (CEn)">College of Engineering (CEn)</option>
+                    <option value="College of Industrial Technology">College of Industrial Technology</option>
+                    <option value="College of Agriculture (CAg)">College of Agriculture (CAg)</option>
+                    <option value="SLSU Lucena Campus">SLSU Lucena Campus</option>
+                    <option value="SLSU Alabat Campus">SLSU Alabat Campus</option>
+                    <option value="SLSU Tayabas Campus">SLSU Tayabas Campus</option>
+                    <option value="SLSU Gumaca Campus">SLSU Gumaca Campus</option>
+                    <option value="SLSU Catanauan Campus">SLSU Catanauan Campus</option>
+                    <option value="SLSU Tagkawayan Campus">SLSU Tagkawayan Campus</option>
+                    <option value="SLSU Polillo Campus">SLSU Polillo Campus</option>
+                    <option value="SLSU Infanta Campus">SLSU Infanta Campus</option>
+                    <option value="SLSU Tiaong Campus">SLSU Tiaong Campus</option>
+
+                </select>
+
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group sports-event-group">
+                  <label for="sports-event" class="form-label">Sports Event</label>
+                  <select class="form-select sports-event-field" id="sports-event" required>
+                    <option value="">Select Sports Event</option>
+                    <option value="Athletics">Athletics</option>
+                    <option value="Arnis">Arnis</option>
+                    <option value="Archery">Archery</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Badminton">Badminton</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Billiards">Billiards</option>
+                    <option value="Beach Volleyball">Beach Volleyball</option>
+                    <option value="Chess">Chess</option>
+                    <option value="Dancesport (Standard)">Dancesport (Standard)</option>
+                    <option value="E-Games ML">E-Games ML</option>
+                    <option value="Table Tennis">Table Tennis</option>
+                    <option value="Lawn Tennis">Lawn Tennis</option>
+                    <option value="Sepak Takraw">Sepak Takraw</option>
+                    <option value="Football">Football</option>
+                    <option value="Futsal">Futsal</option>
+                    <option value="Karatedo">Karatedo</option>
+                    <option value="Taekwondo">Taekwondo</option>
+                    <option value="Swimming">Swimming</option>
+
+                </select>
+
+              </div>
+              <div class="form-group id-number-group">
+                  <label for="id-number" class="form-label">ID Number (Ex: 20L-001234)</label>
+                  <input type="text" class="form-control" id="id-number" required>
+              </div>
+          </div>
+          <div class="form-group browse-image-group">
+              <label for="browse-image" class="form-label">Browse Image</label>
+              <div class="file-upload-container">
+                <div class="file-upload-content">
+                    <div class="file-upload-icon">
+                        <i class="bi bi-file-earmark-plus"></i>
+                    </div>
+                    <span class="file-upload-text">Browse Image</span>
+                    <input type="file" id="browse-image" class="file-upload-input" accept="image/*">
+                </div>
+                <div id="image-preview" class="image-preview">
+                    <img id="preview-img" src="" alt="Image Preview">
+                    <div id="close-icon" class="close-icon">&times;</div>
+                </div>
+                <div id="file-name" class="file-name-text">No file chosen</div>
+            </div>
+            
+
+          <div class="iccac-btn-container">
+              <a href="#" class="iccac-btn iccac-back-button">BACK</a>
+              <button type="submit" class="iccac-btn iccac-submit-button">SUBMIT</button>
+          </div>
+      </div>
+  </form>
+</section>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                <div class="col-md-4 text-center">
+                    <img src="images/SSCF-Footer-Logo.png" alt="Logo" class="img-fluid mb-3">
+                    <div class="logo-description-section">
+                        <p class="mb-0">This is the highest governing and policy-making body of Southern Luzon State
+                            University (SLSU)
+                            student body.</p>
+                    </div>
+                </div>
+                <!-- Contact Us -->
+                <div class="col-md-4">
+                    <div class="contact-us-section">
+                        <h5>Contact Us</h5>
+                        <p>Email: <a href="mailto:slsusscf@slsu.edu.ph" class="text-white">slsusscf@slsu.edu.ph</a></p>
+                        <p>Phone: 09123456789</p>
+                    </div>
+                    <div class="visit-us-section">
+                        <h5>Visit Us</h5>
+                        <p>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+                <!-- About Us -->
+                <div class="col-md-4">
+                    <div class="about-us-section">
+                        <h5>About Us</h5>
+                        <p>Supreme Student Council Federation of Southern Luzon State University, dedicated to
+                            empowering students by
+                            promoting academic and social well-being, fostering community, and providing a platform for
+                            student voices
+                            to be heard.</p>
+                    </div>
+                    <div class="get-in-touch-section">
+                        <h5>Get in Touch</h5>
+                        <p>
+                            <a href="mailto:slsusscf@slsu.edu.ph" class="text-white"><i class="fas fa-envelope"></i>
+                                Gmail</a> |
+                            <a href="https://facebook.com" class="text-white"><i class="fab fa-facebook-f"></i>
+                                Facebook</a> |
+                            <a href="https://twitter.com" class="text-white"><i class="fab fa-twitter"></i> Twitter</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr-divider">
+            <div class="row mt-3">
+                <div class="col-md-12 text-center">
+                    <p class="footer-center-text">© 2024 SLSU Supreme Student Council Federation. All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById('browse-image').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const fileName = document.getElementById('file-name');
+            const imagePreview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            const fileUploadContent = document.querySelector('.file-upload-content');
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    imagePreview.style.display = 'block'; // Show image preview container
+                    fileUploadContent.style.display = 'none'; // Hide upload icon and text
+                    document.querySelector('.file-upload-container').classList.add('expanded'); // Expand container
+                    fileName.textContent = file.name;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                resetUpload();
+            }
+        });
+
+        document.getElementById('close-icon').addEventListener('click', function () {
+            resetUpload();
+        });
+
+        function resetUpload() {
+            const fileInput = document.getElementById('browse-image');
+            const imagePreview = document.getElementById('image-preview');
+            const fileName = document.getElementById('file-name');
+            const fileUploadContent = document.querySelector('.file-upload-content');
+
+            fileInput.value = ''; // Clear the file input
+            imagePreview.style.display = 'none'; // Hide image preview container
+            fileUploadContent.style.display = 'flex'; // Show upload icon and text
+            document.querySelector('.file-upload-container').classList.remove('expanded'); // Collapse container
+            fileName.textContent = 'No file chosen';
+        }
+
+    </script>
+
+
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

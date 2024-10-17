@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+  margin: 0;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+/* Superadmin Header */
+.superadmin-header {
+  background-color: #185F43; /* Header background color */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+.superadmin-logo {
+  display: flex;
+  align-items: center;
+}
+
+.superadmin-logo .text-container {
+  margin-left: 10px;
+}
+
+h5, p {
+  margin: 0;
+}
+
+/* Adjust notification and user account positioning */
+.d-flex.align-items-center.ms-auto {
+  margin-left: auto; /* Move elements towards left */
+  margin-right: 20px; /* Add margin to the right for spacing */
+}
+
+/* Superadmin Sidebar */
+.superadmin-sidebar {
+  width: 280px;
+  background-color: #185F43;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Sidebar Navigation */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.nav-item {
+  margin-bottom: -1px;
+}
+
+.nav-link {
+  color: #fff; /* Original text color */
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #05ec71; /* Change this color to your desired hover color */
+  color: #fff; /* Keep text color white on hover */
+}
+
+/* Active link styling */
+.nav-link.active {
+  background-color: #05ec71; /* Change this color to your desired active color */
+  color: #fff; /* Keep text color white for active link */
+}
+
+/* Prevent blue color on click */
+.nav-link:focus, .nav-link:active {
+  color: #fff; /* Ensure text color remains white */
+  background-color: #000000; /* Ensure background color remains the same */
+}
+#sidebar {
+  min-width: 280px;
+  max-width: 280px;
+  background-color: #15283c;
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 11;
+  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.4);
+  float: left;
+  width: 100%;
+  background-image: url('images/layout_img/pattern_h.png');
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  min-width: 150px;
+  padding: 0; /* Remove padding to eliminate spacing */
+  margin: 0; /* Remove margin */
+}
+
+/* Full background color on hover for all dropdown items */
+.dropdown-item {
+  transition: background-color 0.3s;
+  padding: 6px 15px; /* Adjust padding as needed */
+  display: block; /* Ensure the item takes full width */
+  margin: 0; /* Remove margin to avoid white space */
+}
+
+.dropdown-item:hover {
+  background-color: #05ec71; /* Full background color on hover */
+  color: #fff; /* Keep text color white on hover */
+}
+
+/* Adjust dropdown button height */
+.dropdown-toggle {
+  padding: 8px 12px; /* Adjust as needed */
+}
+
+  
+/* Superadmin Main Content */
+.superadmin-main-content {
+  margin-left: 320px;
+  padding: 20px;
+  overflow: auto;
+}

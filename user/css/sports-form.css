@@ -1,0 +1,998 @@
+/* Style for the loading screen */
+#loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(215, 255, 255, 0.9); /* Background color */
+  z-index: 9999;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* Stack logo and dots vertically */
+}
+
+/* Style for loading image */
+#loading img {
+  width: 200px; /* Maintain image width */
+  height: 200px; /* Maintain image height */
+  margin-bottom: 20px; /* Increase space between logo and dots */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image covers the entire area */
+
+}
+
+/* Style for loading dots */
+.logo-dots {
+  display: flex;
+  justify-content: center; /* Center dots horizontally */
+  margin-top: 20px; /* Add margin above the dots to lower them */
+}
+
+.dot {
+  width: 15px; /* Increased width for larger dots */
+  height: 15px; /* Increased height for larger dots */
+  margin: 0 8px; /* Increased space between dots */
+  background-color: #185F43; /* Dot color */
+  border-radius: 50%; /* Make dots circular */
+  animation: loadingAnimation 0.6s infinite alternate; /* Animation for dots */
+}
+
+/* Keyframes for dot animation */
+@keyframes loadingAnimation {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-15px); /* Increased bounce height */
+  }
+}
+
+/* Adding delays for alternating bounce effect */
+.dot:nth-child(1) {
+  animation-delay: 0s; /* No delay */
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s; /* Slight delay for second dot */
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s; /* More delay for third dot */
+}
+.dot:nth-child(4) {
+  animation-delay: 0.6s; /* Even more delay for fourth dot */
+}
+
+/* Spin animation for the logo */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* Style for active nav-link and dropdown-item */
+.nav-link.active, 
+.dropdown-item.active {
+color: #185F43 !important; /* Green color when active */
+text-decoration: underline; /* Add underline for active state */
+}
+
+/* Reset background and border when active */
+.nav-link.active, 
+.dropdown-item.active {
+background-color: transparent !important; /* Ensure background doesn't change */
+border: none !important; /* No border changes */
+}
+
+
+
+
+/* Profile container styles */
+.navbar-profile-container {
+position: relative;
+display: inline-flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+margin-left: auto;
+flex-shrink: 0;
+margin-right: -50px;
+width: 150px;
+height: 50px;
+border-radius: 5px;
+padding: 10px;
+}
+
+/* Profile image styles */
+.profile-image {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+margin-right: 10px;
+}
+
+/* Greeting text styles */
+.greeting-text {
+font-size: 18px;
+font-weight: bold;
+color: rgb(0, 134, 83);
+}
+
+/* Dropdown menu styles */
+.profile-dropdown-menu {
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Increased shadow spread for a more prominent effect */
+  border-radius: 4px;
+  z-index: 1000;
+  display: none;
+  right: 0;
+  margin-top: 230px;
+  padding: 0;
+  width: 230px;
+}
+
+
+/* Dropdown item styles */
+.profile-dropdown-item,
+.profile-email {
+padding: 12px 18px; /* Consistent padding for all items */
+display: flex;
+align-items: center;
+text-decoration: none;
+color: #333;
+transition: background-color 0.3s;
+text-align: left;
+width: 100%;
+font-size: 18px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+/* Icon styles for all dropdown items */
+.profile-dropdown-item i,
+.profile-email i,
+#logout-btn i {
+margin-right: 12px; /* Consistent icon spacing */
+font-size: 20px; /* Uniform icon size for Profile and Settings */
+}
+
+/* Specific icon sizes */
+.profile-dropdown-item.profile-icon i,
+.profile-dropdown-item.settings-icon i,
+#logout-btn i {
+font-size: 22px; /* Slightly larger icon size for consistency */
+}
+
+/* Adjust Logout button icon size */
+#logout-btn i {
+font-size: 24px; /* Unique icon size for Logout */
+}
+
+/* Individual item icon colors */
+.profile-dropdown-item.profile-icon i {
+color: rgb(96, 96, 96); /* Updated color for Profile icon (blue) */
+}
+
+.profile-dropdown-item.settings-icon i {
+color: rgb(96, 96, 96); /* Updated color for Settings icon (orange) */
+}
+
+#logout-btn i {
+color: rgb(96, 96, 96); /* Logout icon color */
+}
+
+/* Logout button styles */
+#logout-btn {
+padding: 12px 18px;
+display: flex;
+align-items: center;
+text-decoration: none;
+color: #333;
+width: 100%;
+font-size: 18px;
+}
+
+/* Dropdown item hover effect */
+.profile-dropdown-item:hover,
+.profile-email:hover {
+background-color: rgb(212, 212, 212);
+}
+
+/* MODAL OF PROFILE IN LOGIN */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal content styles */
+.modal-content {
+  background-color: #fefefe; /* Background color */
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px; /* Padding inside modal */
+  border: 1px solid #888; /* Modal border */
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Max width for larger screens */
+  position: relative; /* To position the close button absolutely */
+}
+
+/* Close button styles */
+.close {
+  color: #aaa; /* Close button color */
+  position: absolute; /* Position it inside the modal content */
+  right: 20px; /* Distance from the right edge */
+  top: 20px; /* Distance from the top edge */
+  font-size: 28px; /* Close button size */
+  font-weight: bold; /* Close button weight */
+}
+
+/* Close button hover effect */
+.close:hover,
+.close:focus {
+  color: black; /* Change color on hover */
+  text-decoration: none; /* No underline on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+
+
+/* MODAL OF SETTINGS IN LOGIN */
+.modal {
+display: none;
+position: fixed;
+z-index: 2000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+padding-top: 100px;
+}
+
+.modal-content {
+margin: auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
+max-width: 500px;
+background-color: #fff;
+border-radius: 5px;
+}
+
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
+
+.modal h2 {
+font-size: 24px;
+margin-bottom: 20px;
+}
+
+.modal label {
+display: block;
+margin-bottom: 8px;
+}
+
+.modal input,
+.modal select {
+width: 100%;
+padding: 8px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.modal button {
+width: 100%;
+padding: 10px;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.modal button:hover {
+background-color: #45a049;
+}
+
+
+
+ /* Profile Display Flex Container */
+ #profileDisplay {
+  display: flex;
+  align-items: center; /* Center align vertically */
+  gap: 10px; /* Space between image and name */
+  margin-bottom: 20px; /* Space below the profile display */
+
+}
+
+/* Profile Image */
+.profile-modal-image {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%;
+}
+
+/* Profile Name */
+#profileDisplayName {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+
+
+
+
+
+/* Navbar text style */
+.navbar-text {
+  margin-top: 10px;
+}
+
+.navbar-text a {
+  font-family: 'Yeseva One', cursive;
+  font-size: 40px;
+  color: #185F43;
+  margin-right: 10px;
+  margin-left: -50px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  text-decoration: none; /* Ensure no underline */
+}
+
+/* Hover effect for SSCF text */
+.navbar-text a:hover {
+  color: #144d34; /* Change to desired hover color */
+}
+
+.navbar-link {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 90px;
+  min-height: 50px;
+}
+
+.navbar-nav {
+  display: flex;
+  margin-right: 0;
+  align-items: center;
+}
+
+/* Navbar nav items margin */
+.navbar-nav .nav-item {
+  margin-top: 10px;
+}
+
+/* Nav link styles */
+.nav-link {
+  color: rgb(73, 73, 73);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  margin-right: 20px; /* Add spacing between nav items */
+}
+
+.nav-link:hover {
+  color: rgb(32, 255, 136);
+}
+
+/* Customize the dropdown background and text color */
+.dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 0;
+}
+
+/* Dropdown item styles */
+.dropdown-item {
+  color: rgb(73, 73, 73);
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+/* Hover styles for dropdown links */
+.dropdown-item:hover {
+  background-color: #185F43;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+/* Adjust dropdown toggle on hover */
+.nav-item.dropdown:hover .nav-link {
+  color: rgb(88, 88, 88);
+}
+
+/* Active link styles */
+.navbar-nav .active > .nav-link,
+.nav-link:focus,
+.nav-link:active {
+  color: rgb(32, 255, 136) !important;
+}
+
+/* Login Button Styles */
+.navbar-login-btn {
+  background-color: #ffffff; /* Green background */
+  color: #185F43; /* Text color */
+  font-size: 18px; /* Font size */
+  font-weight: bold; /* Font weight */
+  padding: 8px 25px; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 20px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  border: 2px solid #2b7d62; /* Keep the border color the same */
+}
+
+/* Add border color */
+.navbar-login-btn:focus {
+  outline: none; /* Remove default focus outline */
+  border: 2px solid #2b7d62; /* Add border color */
+}
+
+/* Change styles on hover */
+.navbar-login-btn:hover {
+  background-color: #2b7d62; /* Darker green on hover */
+  color: #ffffff; /* Maintain text color on hover */
+}
+
+/* Change styles on active (clicked) */
+.navbar-login-btn:active {
+  background-color: #2b7d62; /* Keep the darker green on click */
+  color: #ffffff; /* Keep the text color white */
+  border: 2px solid #2b7d62; /* Keep the border color the same */
+}
+
+
+
+
+
+/* Customize the navbar-toggler */
+.navbar-toggler {
+  border: none; 
+  background-color: transparent; 
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 0 1px white;
+}
+
+/* Customize the navbar-toggler icon lines */
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 30px; 
+  height: 24px;
+  position: relative;
+  background: transparent;
+}
+
+/* Create white lines */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon div {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30px; 
+  height: 3px; 
+  background-color: #185F43;
+  border-radius: 2px; 
+  transition: all 0.3s ease; 
+}
+
+/* Position the top line */
+.navbar-toggler-icon::before {
+  top: 0; 
+}
+
+/* Position the bottom line */
+.navbar-toggler-icon::after {
+  bottom: 0; 
+}
+
+/* Position the middle line */
+.navbar-toggler-icon div {
+  top: 10px; 
+}
+
+/* Adjust background color and border when toggler is active */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  box-shadow: 0 0 0 2px white; 
+  background-color: transparent; 
+}
+
+/* Toggler behavior */
+.navbar-collapse {
+  display: none; /* Hide the navbar by default on smaller screens */
+}
+
+.navbar-collapse.show {
+  display: flex; /* Show navbar when toggled */
+}
+
+
+
+
+
+/* Responsive Styles */
+@media (max-width: 1220px) {
+.navbar-nav {
+    display: none; /* Hide nav items by default */
+}
+
+
+.navbar-brand,
+.navbar-toggler {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .container-fluid {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-text {
+    margin-left: -30px;
+}
+
+.navbar-link {
+    font-size: 35px !important;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+    margin-right: -70px;
+    padding-right: 20px;
+    width: 30px;
+    height: 30px;
+    z-index: 100;
+    display: block; /* Ensure the menu icon is visible */
+    
+}
+
+/* Show navbar items when toggled */
+.navbar-collapse.show .navbar-nav {
+    display: flex; /* Show nav items on toggle */
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center;
+    width: 100%; /* Full width */
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.navbar-nav::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+}
+
+  
+
+
+
+
+
+/* Container for the form */
+.sports-container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #185F43;
+}
+
+/* Form title */
+.form-title-box {
+  text-align: center;
+  background-color: #185F43;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Form styling */
+.form-box {
+  padding: 20px;
+}
+
+/* Form row styling */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Individual form group */
+.form-group {
+  flex: 1;
+  min-width: 200px; /* Minimum width for form groups */
+  margin-right: 15px;
+}
+
+/* Remove margin for the last child to avoid overflow */
+.form-group:last-child {
+  margin-right: 0; /* Remove right margin for the last child */
+}
+
+/* Input and select styling */
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #185F43;
+  outline: none;
+}
+
+/* Button styling */
+.iccac-btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.iccac-btn {
+  background-color: #185F43;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.iccac-btn:hover {
+  background-color: #145a34; /* Darker shade on hover */
+}
+
+/* Browse Image group styling */
+.browse-image-group {
+  text-align: left; /* Ensure the group is aligned to the left */
+  flex: 1; /* Allow it to grow in the flex container */
+}
+
+/* Browse Image label styling */
+.browse-image-label {
+  display: block; /* Ensures the label takes up the full width */
+  margin-bottom: 5px; /* Adds spacing between label and input */
+  font-weight: bold;
+}
+
+/* File upload container */
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  width: 100%; /* Ensure it takes full width */
+  max-width: 150px; /* Limit the max width */
+  height: 100px;
+  overflow: hidden;
+  transition: height 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+  margin: 0; /* Remove all margins to prevent extra space */
+  position: relative; /* Necessary for absolute positioning of the input */
+  
+}
+
+/* Hidden file input */
+.file-upload-input {
+  display: block; /* Ensures it takes up space */
+  position: absolute; /* Position it absolutely */
+  width: 100%; /* Cover the entire width of the parent */
+  height: 100%; /* Cover the entire height of the parent */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  opacity: 0; /* Make it invisible */
+  z-index: 2; /* Ensure it’s on top of other elements */
+  cursor: pointer; /* Change the cursor to pointer when hovering */
+}
+
+
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-icon {
+  font-size: 24px;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+.file-upload-text {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.file-name-text {
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.file-upload-container:hover {
+  border-color: #007bff;
+}
+
+.file-upload-container:hover .file-upload-icon {
+  color: #007bff;
+}
+
+/* Image preview */
+.image-preview {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  display: none;
+}
+
+.image-preview:hover .close-icon {
+  display: flex;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column; /* Stack inputs on smaller screens */
+  }
+
+  .form-group {
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 15px; /* Add bottom margin for spacing */
+  }
+
+  .iccac-btn-container {
+    flex-direction: column; /* Stack buttons on smaller screens */
+    align-items: center;
+  }
+
+  .iccac-btn {
+    width: 100%; /* Full width for buttons */
+    margin-bottom: 10px; /* Space between buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .form-title {
+    font-size: 1.5em; /* Adjust title size for small screens */
+  }
+}
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+   /* FOOTER STYLES */
+  /* General footer styles */
+  .footer {
+    background: linear-gradient(to bottom, #64C48C, #185F43); 
+    color: #fff; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    overflow-x: hidden;
+    bottom: 0; 
+    width: 100%; 
+    margin-top: 100px; 
+  }
+  
+  /* Link styles within footer */
+  .footer a {
+    color: #fff; 
+    text-decoration: none; 
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Heading styles within footer */
+  .footer h5 {
+    margin-top: 10px; 
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Paragraph styles within footer */
+  .footer p {
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Logo styles within footer */
+  .footer img {
+    max-width: 150px;
+    margin-right: 10px; 
+    margin-top: 13px; 
+  }
+  
+  /* Horizontal divider style */
+  .hr-divider {
+    border-top: 3px solid #fff; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    margin-left: calc(-50vw + 50%); 
+    margin-right: calc(-50vw + 50%); 
+  }
+  
+  /* Custom styles for footer center text */
+  .footer-center-text {
+    text-align: center; 
+    margin-top: -5px; 
+    margin-bottom: -5px;
+  }
+  
+  /* Individual section styles */
+  /* Logo description section styles */
+  .logo-description-section p {
+    margin-right: 28px; 
+    margin-left: 10px; 
+    text-align: center;
+  }
+  
+  /* Contact Us, Visit Us, About Us, and Get in Touch section margins */
+  .contact-us-section,
+  .visit-us-section,
+  .about-us-section,
+  .get-in-touch-section {
+    margin-bottom: 20px; 
+  }
+  
+  /* Specific heading margins for Contact Us and Visit Us sections */
+  .contact-us-section h5,
+  .visit-us-section h5 {
+    margin-top: 30px; 
+  }
+  
+  
+  .visit-us-section h5 {
+    margin-top: 15px; 
+  }
+  
+  /* Specific paragraph margins for Contact Us and Visit Us sections */
+  .contact-us-section p,
+  .visit-us-section p {
+    margin-top: 5px; 
+  }
+  
+  /* Specific heading margins for About Us and Get in Touch sections */
+  .about-us-section h5,
+  .get-in-touch-section h5 {
+    margin-top: 20px;
+  }
+  
+  /* Specific paragraph margins for About Us and Get in Touch sections */
+  .about-us-section p,
+  .get-in-touch-section p {
+    margin-top: 5px;
+  }
+  
+  
+  /* Font Awesome icon styles within footer */
+  .footer .fas, .footer .fab {
+    margin-right: 2px; 
+  }
+  
+  

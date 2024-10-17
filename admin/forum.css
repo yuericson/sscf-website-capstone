@@ -1,0 +1,336 @@
+    /* General Styles */
+    body {
+      margin: 0;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+    }
+    
+    /* Superadmin Header */
+    .superadmin-header {
+      background-color: #185F43; /* Header background color */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .logo {
+      height: 50px;
+    }
+    
+    .superadmin-logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .superadmin-logo .text-container {
+      margin-left: 10px;
+    }
+    
+    h5, p {
+      margin: 0;
+    }
+    
+    /* Adjust notification and user account positioning */
+    .d-flex.align-items-center.ms-auto {
+      margin-left: auto; /* Move elements towards left */
+      margin-right: 20px; /* Add margin to the right for spacing */
+    }
+    
+    /* Superadmin Sidebar */
+    .superadmin-sidebar {
+      width: 280px;
+      background-color: #185F43;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    
+  /* Sidebar Navigation */
+  .nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-grow: 1;
+  }
+  
+  .nav-item {
+    margin-bottom: -1px;
+  }
+  
+  .nav-link {
+    color: #fff; /* Original text color */
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #05ec71; /* Change this color to your desired hover color */
+    color: #fff; /* Keep text color white on hover */
+  }
+  
+  /* Active link styling */
+  .nav-link.active {
+    background-color: #05ec71; /* Change this color to your desired active color */
+    color: #fff; /* Keep text color white for active link */
+  }
+  
+  /* Prevent blue color on click */
+  .nav-link:focus, .nav-link:active {
+    color: #fff; /* Ensure text color remains white */
+    background-color: #000000; /* Ensure background color remains the same */
+  }
+    
+    /* Dropdown Menu */
+    .dropdown-menu {
+      min-width: 150px;
+      padding: 0; /* Remove padding to eliminate spacing */
+      margin: 0; /* Remove margin */
+    }
+    
+    /* Full background color on hover for all dropdown items */
+    .dropdown-item {
+      transition: background-color 0.3s;
+      padding: 6px 15px; /* Adjust padding as needed */
+      display: block; /* Ensure the item takes full width */
+      margin: 0; /* Remove margin to avoid white space */
+    }
+    
+    .dropdown-item:hover {
+      background-color: #05ec71; /* Full background color on hover */
+      color: #fff; /* Keep text color white on hover */
+    }
+    
+    /* Adjust dropdown button height */
+    .dropdown-toggle {
+      padding: 8px 12px; /* Adjust as needed */
+    }
+    
+      
+    /* Superadmin Main Content */
+    .forum-main-content {
+      margin-left: 320px;
+      padding: 20px;
+      overflow: auto;
+    }
+  
+  
+  
+  
+  
+  /* Post Counts Styles */
+  #postCounts {
+    display: flex;
+    justify-content: left; /* Center align boxes */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Space below */
+    background: linear-gradient(135deg, #e9f7ef, #f1f1f1); /* Subtle gradient background */
+    padding: 20px; /* Add padding around the section */
+    border-radius: 8px; /* Rounded corners for the section */
+  }
+  
+  /* Post Count Box */
+  .post-count-box {
+    background-color: #185F43; /* Green background */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 15px; /* Reduced padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    text-align: center; /* Center text */
+    flex: 1; /* Allow boxes to grow equally */
+    margin: 0 15px; /* Smaller space between boxes */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+    max-width: 300px; /* Reduced width for narrower boxes */
+  }
+  
+  /* Icons */
+  .icon {
+    font-size: 36px; /* Larger size for icons */
+    color: #ffffff; /* White icon color */
+    margin-bottom: 10px; /* Space below the icon */
+  }
+  
+  /* Count and Label Styles */
+  strong {
+    font-size: 20px; /* Increase font size for labels */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* White text color */
+    display: block; /* Ensure strong is on a new line */
+    margin-top: 5px; /* Space between icon and label */
+  }
+  
+  /* Span styles for counts */
+  span {
+    font-size: 22px; /* Larger size for counts */
+    font-weight: bold; /* Bold for emphasis */
+    color: #ffffff; /* White count color */
+    display: block; /* Ensure span is on a new line */
+    margin-top: 5px; /* Space between label and count */
+  }
+  
+  
+  
+  /* Adjust responsive behavior */
+  @media (max-width: 768px) {
+    #postCounts {
+      flex-direction: column; /* Stack boxes vertically on small screens */
+    }
+    .post-count-box {
+      margin-bottom: 15px; /* Space below each box */
+      margin-right: 0; /* Reset margin on small screens */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  /* Adjust the position of the search bar */
+  .input-group {
+    max-width: 400px; /* Limit the width of the search bar */
+    margin-left: auto; /* Align the search bar to the right */
+    margin-bottom: 20px; /* Add margin for spacing below */
+    margin-top: 50px;
+    margin-right: 10px;
+  }
+  
+  .input-group .form-control {
+    width: 70%; /* Set the width of the input field */
+    border: 1px solid #185F43; 
+  }
+  
+  .input-group .btn-primary {
+    width: 30%; /* Set the width of the button */
+  }
+  
+  
+  
+  .table {
+    width: 100%; /* Ensures the table can grow to full width */
+    max-width: 1000px; /* Set a fixed maximum width for the table */
+    min-width: 1100px; /* Set a minimum width to keep it wide enough */
+    margin: 20px auto; /* Center the table */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  
+  
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    text-align: center; /* Center align text */
+    padding: 15px;
+  }
+  
+  .table th {
+    background-color: #185F43; /* Header background color */
+    color: white; /* Header text color */
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #abacad; /* Light gray for odd rows */
+  }
+  
+  .table tbody {
+    height: 100px; /* Minimum height for the table body */
+  }
+  .table th:nth-child(5), .table td:nth-child(5) {
+    width: 220px; /* Set width for Actions column */
+  }
+  
+  .highlight {
+    background-color: yellow; /* Highlight background */
+    color: inherit; /* Use the same text color as the surrounding text */
+    font-size: inherit; /* Use the same font size as the surrounding text */
+  }
+  
+  
+  
+  
+  
+  .modal-content {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    max-width: 600px; /* Set a maximum width */
+    width: 100%; /* Allow the modal to take full width up to max-width */
+    margin: auto; /* Center the modal */
+    font-family: Arial, sans-serif; /* Set a consistent font family */
+    font-size: 16px; /* Set a consistent font size */
+    color: #000; /* Set a consistent text color */
+  }
+  
+  .modal-header {
+    background-color: #185F43; /* Header background color */
+    color: white; /* Header text color */
+  }
+  
+  .modal-title {
+    font-weight: bold; /* Bold title */
+  }
+  
+  .modal-body {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    gap: 15px; /* Add space between the info rows */
+    padding: 20px; /* Extra padding for breathing room */
+  }
+  
+  .modal-body .info-row {
+    display: flex; /* Use flexbox for alignment */
+    align-items: flex-start; /* Align content to the start */
+  }
+  
+  .modal-body .info-row strong {
+    margin-right: 5px; /* Add space between label and value */
+    flex-shrink: 0; /* Prevent the label from shrinking */
+    color: #000; /* Label color */
+  }
+  
+  .modal-body .post-content {
+    display: block; /* Block display to allow indentation */
+    color: #185F43; /* Post text color */
+    line-height: 1.5; /* Adjust line height for readability */
+  }
+  
+  .modal-footer {
+    border-top: 1px solid #dee2e6; /* Subtle border above footer */
+    padding: 10px; /* Add padding to the footer */
+    border-bottom-left-radius: 10px; /* Match modal content rounding */
+    border-bottom-right-radius: 10px;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Custom secondary button color */
+    border: none; /* No border */
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268; /* Darker on hover */
+  }
+  
+  
+  
+  
+  
+  

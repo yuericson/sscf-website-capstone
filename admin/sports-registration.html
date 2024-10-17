@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSCF Superadmin Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="sport-registration.css">
+
+</head>
+
+<body>
+  <header class="superadmin-header">
+    <div class="superadmin-logo d-flex align-items-center">
+      <img src="../images/Logo.png" alt="Logo" class="logo">
+      <div class="text-container">
+        <h5 class="mb-0">Southern Luzon State University</h5>
+        <p class="mb-0">Supreme Student Council Federation</p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center ms-auto">
+      <i class="bi bi-bell text-light me-3"></i>
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" aria-expanded="false" onclick="toggleDropdown()">
+          <i class="bi bi-person-circle"></i> Ericson Yu
+        </button>
+        <ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="userDropdown">
+          <li><button class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="d-flex">
+    <!-- Sidebar Navigation -->
+    <nav class="superadmin-sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="admin-dashboard.html" class="nav-link"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+        <li class="nav-item"><a href="academic-resources.html" class="nav-link"><i class="bi bi-book me-2"></i> Academic Resources</a></li>
+        <li class="nav-item"><a href="latest-news.html" class="nav-link"><i class="bi bi-newspaper me-2"></i> Latest News</a></li>
+        <li class="nav-item"><a href="media-gallery.html" class="nav-link"><i class="bi bi-images me-2"></i> Media Gallery</a></li>
+        <li class="nav-item"><a href="press-releases.html" class="nav-link"><i class="bi bi-megaphone me-2"></i> Press Releases</a></li>
+        <li class="nav-item"><a href="presidents-corner.html" class="nav-link"><i class="bi bi-person-circle me-2"></i> SSCF Presidents Corner</a></li>
+        <li class="nav-item"><a href="join-an-organization.html" class="nav-link"><i class="bi bi-people me-2"></i> Join an Organization</a></li>
+        <li class="nav-item"><a href="volunteer-oppotunities.html" class="nav-link"><i class="bi bi-hand-thumbs-up me-2"></i> Volunteer Opportunities</a></li>
+        <li class="nav-item"><a href="forum.html" class="nav-link"><i class="bi bi-chat-left-dots me-2"></i> Forum</a></li>
+        <li class="nav-item"><a href="feedback.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-2"></i> Feedback</a></li>
+        <li class="nav-item"><a href="sports-registration.html" class="nav-link"><i class="bi bi-trophy me-2"></i> Sports Registration</a></li>
+        <li class="nav-item"><a href="local-election.html" class="nav-link"><i class="bi bi-person-check me-2"></i> Local Election</a></li>
+        <li class="nav-item"><a href="tabulation.html" class="nav-link"><i class="bi bi-table me-2"></i> Tabulation</a></li>
+      </ul>
+    </nav>
+  </div>
+
+    <div class="sports-registration-content">
+      <div class="container mt-5">
+        <h2 class="mb-4">Sports Registration Dashboard</h2>
+
+        <div id="postCounts">
+          <div class="post-count-box">
+            <i class="bi bi-people icon"></i>
+            <strong>Total Response</strong>
+            <span id="totalResponseCount">0</span> <!-- Initial static count set to 0 -->
+          </div>
+        </div>
+        
+
+        <div class="data-visualization">
+          <h3>Data Visualizations</h3>
+          <div class="chart-container">
+              <div class="chart-item">
+                  <h4>Age</h4>
+                  <canvas id="ageChart" width="50" height="50"></canvas>
+              </div>
+              <div class="chart-item">
+                  <h4>Gender</h4>
+                  <canvas id="genderChart" width="50" height="50"></canvas>
+              </div>
+              <div class="chart-item">
+                  <h4>Year Level</h4>
+                  <canvas id="yearLevelChart" width="50" height="50"></canvas>
+              </div>
+              <div class="chart-item">
+                  <h4>Sports Event</h4>
+                  <canvas id="sportsEventChart" width="50" height="50"></canvas>
+              </div>
+              <div class="chart-item">
+                  <h4>Course</h4>
+                  <canvas id="courseChart" width="50" height="50"></canvas>
+              </div>
+              <div class="chart-item">
+                  <h4>College/Campus</h4>
+                  <canvas id="collegeCampusChart" width="50" height="50"></canvas>
+              </div>
+          </div>
+      </div>
+      
+      
+
+        
+
+        <div class="d-flex align-items-center mb-4">
+          <label for="sortBySelect" class="me-2">Sort by:</label>
+          <select class="form-select me-3" id="sortBySelect" onchange="sortTable()">
+            <option value="" disabled selected>Select</option>
+            <option value="name">Full Name</option>
+            <option value="age">Age</option>
+            <option value="gender">Gender</option>
+            <option value="year">Year Level</option>
+            <option value="course">Course</option>
+          </select>
+
+          <div class="input-group" style="flex: 1;">
+            <input type="text" class="form-control" id="searchInput" onkeyup="searchTable()" placeholder="Search for names, IDs, or other information...">
+            <button class="btn btn-primary" type="button" onclick="searchTable()">Search</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="printButton">Print</button>
+
+
+        <div class="table-container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Year Level</th>
+              <th>Course</th>
+              <th>College/Campus</th>
+              <th>Sports Event</th>
+              <th>ID Number</th>
+              <th>Image</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="registrationTableBody">
+            <tr>
+              <td>Diaz, Anne Nicole</td>
+              <td>diazanne@slsu.edu.ph</td>
+              <td>22</td>
+              <td>Male</td>
+              <td>4th Year</td>
+              <td>BS Information Technology</td>
+              <td>College of Indutrial Technology </td>
+              <td>Volleyball</td>
+              <td>20L-001234</td>
+              <td><img src="../images/formi.png" alt="" class="registration-image"></td>
+              <td><button class="btn btn-primary" onclick="viewDetails('Diaz, Anne Nicole', 'diazanne@slsu.edu.ph', '22', 'Male', '4th Year', 'BS Information Technology', 'College of Engineering', 'Volleyball', '20L-001234', '../images/user1.jpg')">View</button></td>
+            </tr>
+            <tr>
+              <td>Tipo, Cristal</td>
+              <td>tipocristal@slsu.edu.ph</td>
+              <td>21</td>
+              <td>Female</td>
+              <td>4th Year</td>
+              <td>BS Information Technology</td>
+              <td>College of Indutrial Technology</td>
+              <td>Volleyball</td>
+              <td>20L-001235</td>
+              <td><img src="../images/formi.png" alt="" class="registration-image"></td>
+              <td><button class="btn btn-primary" onclick="viewDetails('Tipo, Cristal', 'tipocristal@slsu.edu.ph', '21', 'Female', '4th Year', 'BS Information Technology', 'College of Indutrial Technology', 'Volleyball', '20L-001235', '../images/user2.jpg')">View</button></td>
+            </tr>
+            <tr>
+              <td>Yu, Ericson</td>
+              <td>yuericson@slsu.edu.ph</td>
+              <td>21</td>
+              <td>Male</td>
+              <td>4th Year</td>
+              <td>BS Information Technology</td>
+              <td>College of Indutrial Technology</td>
+              <td>Billiards</td>
+              <td>20L-001236</td>
+              <td><img src="../images/formi.png" alt="" class="registration-image"></td>
+              <td><button class="btn btn-primary" onclick="viewDetails('Yu, Ericson', 'yuericson@slsu.edu.ph', '21', 'Male', '4th Year', 'BS Information Technology', 'College of Allied Medicine', 'Billiards', '20L-001236', '../images/user3.jpg')">View</button></td>
+            </tr>
+            
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="noResultsMessage" class="no-results">
+    No search results found.
+</div>
+
+
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="detailsModalLabel">Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="info-row">
+                  <strong>Full Name:</strong> <span id="modalFullName"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Email:</strong> <span id="modalEmail"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Age:</strong> <span id="modalAge"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Gender:</strong> <span id="modalGender"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Year Level:</strong> <span id="modalYearLevel"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Course:</strong> <span id="modalCourse"></span>
+              </div>
+              <div class="info-row">
+                  <strong>College/Campus:</strong> <span id="modalCollege"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Sports Event:</strong> <span id="modalSportsEvent"></span>
+              </div>
+              <div class="info-row">
+                  <strong>ID Number:</strong> <span id="modalIDNumber"></span>
+              </div>
+              <div class="info-row">
+                  <strong>Image:</strong> <span id="modalImage"></span> <!-- Display the filename -->
+              </div>
+              <a href="../images/formi.png" target="_blank" class="image-link">
+                  <img src="../images/formi.png" alt="User Image" id="modalImage" class="registration-image highlight-image">
+              </a>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  
+  
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Sample registration data based on your table
+    const registrationData = [
+        { name: 'Diaz, Anne Nicole', email: 'diazanne@slsu.edu.ph', age: 22, gender: 'Female', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Engineering', sportsEvent: 'Volleyball', id: '20L-001234' },
+        { name: 'Tipo, Cristal', email: 'tipocristal@slsu.edu.ph', age: 21, gender: 'Female', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Industrial Technology', sportsEvent: 'Volleyball', id: '20L-001235' },
+        { name: 'Yu, Ericson', email: 'yuericson@slsu.edu.ph', age: 21, gender: 'Male', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Allied Medicine', sportsEvent: 'Billiards', id: '20L-001236' },
+        // Add more sample data as needed
+    ];
+
+    // Age Distribution Data
+    const ageCounts = {};
+    registrationData.forEach(entry => {
+        ageCounts[entry.age] = (ageCounts[entry.age] || 0) + 1;
+    });
+
+    const ageLabels = Object.keys(ageCounts);
+    const ageData = Object.values(ageCounts);
+
+    // Gender Distribution Data
+    const genderCounts = registrationData.reduce((acc, curr) => {
+        acc[curr.gender] = (acc[curr.gender] || 0) + 1;
+        return acc;
+    }, {});
+
+    const genderLabels = Object.keys(genderCounts);
+    const genderData = Object.values(genderCounts);
+
+    // Year Level Distribution Data
+    const yearLevelCounts = {};
+    registrationData.forEach(entry => {
+        yearLevelCounts[entry.yearLevel] = (yearLevelCounts[entry.yearLevel] || 0) + 1;
+    });
+
+    const yearLevelLabels = Object.keys(yearLevelCounts);
+    const yearLevelData = Object.values(yearLevelCounts);
+
+    // Sports Event Participation Data
+    const sportsEventCounts = {};
+    registrationData.forEach(entry => {
+        sportsEventCounts[entry.sportsEvent] = (sportsEventCounts[entry.sportsEvent] || 0) + 1;
+    });
+
+    const sportsEventLabels = Object.keys(sportsEventCounts);
+    const sportsEventData = Object.values(sportsEventCounts);
+
+    // Course Distribution Data
+    const courseCounts = {};
+    registrationData.forEach(entry => {
+        courseCounts[entry.course] = (courseCounts[entry.course] || 0) + 1;
+    });
+
+    const courseLabels = Object.keys(courseCounts);
+    const courseData = Object.values(courseCounts);
+
+    // College/Campus Distribution Data
+    const collegeCounts = {};
+    registrationData.forEach(entry => {
+        collegeCounts[entry.college] = (collegeCounts[entry.college] || 0) + 1;
+    });
+
+    const collegeLabels = Object.keys(collegeCounts);
+    const collegeData = Object.values(collegeCounts);
+
+    // Create Age Distribution Chart
+    const ageChartCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ageLabels,
+            datasets: [{
+                label: 'Number of Participants',
+                data: ageData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Create Gender Distribution Chart
+    const genderChartCtx = document.getElementById('genderChart').getContext('2d');
+    new Chart(genderChartCtx, {
+        type: 'pie',
+        data: {
+            labels: genderLabels,
+            datasets: [{
+                label: 'Gender Distribution',
+                data: genderData,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    // Create Year Level Distribution Chart
+    const yearLevelChartCtx = document.getElementById('yearLevelChart').getContext('2d');
+    new Chart(yearLevelChartCtx, {
+        type: 'bar',
+        data: {
+            labels: yearLevelLabels,
+            datasets: [{
+                label: 'Number of Participants',
+                data: yearLevelData,
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Create Sports Event Participation Chart
+    const sportsEventChartCtx = document.getElementById('sportsEventChart').getContext('2d');
+    new Chart(sportsEventChartCtx, {
+        type: 'bar',
+        data: {
+            labels: sportsEventLabels,
+            datasets: [{
+                label: 'Number of Participants',
+                data: sportsEventData,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Create Course Distribution Chart
+    const courseChartCtx = document.getElementById('courseChart').getContext('2d');
+    new Chart(courseChartCtx, {
+        type: 'bar',
+        data: {
+            labels: courseLabels,
+            datasets: [{
+                label: 'Number of Participants',
+                data: courseData,
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Create College/Campus Distribution Chart
+    const collegeCampusChartCtx = document.getElementById('collegeCampusChart').getContext('2d');
+    new Chart(collegeCampusChartCtx, {
+        type: 'bar',
+        data: {
+            labels: collegeLabels,
+            datasets: [{
+                label: 'Number of Participants',
+                data: collegeData,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
+
+
+  
+  <script>
+
+    // Function to update the total response count
+function updateTotalResponseCount() {
+    const tableBody = document.getElementById('registrationTableBody');
+    const rowCount = tableBody.getElementsByTagName('tr').length; // Count the number of <tr> elements in the table body
+    document.getElementById('totalResponseCount').textContent = rowCount; // Update the span with the row count
+}
+
+// Call the function on page load
+window.onload = updateTotalResponseCount;
+
+
+// Example JavaScript to set the filename dynamically
+const imageUrl = "../images/formi.png"; // Your image URL
+const fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+document.getElementById('modalImageFileName').innerText = fileName;
+
+
+
+
+     function toggleDropdown() {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      dropdownMenu.classList.toggle('show');
+    }
+
+    function logout() {
+      // Show logout message
+      alert('You have successfully logged out. Redirecting to the login page...');
+      // Redirect to login page after 3 seconds
+      setTimeout(function() {
+        window.location.href = '../login.html'; // Assuming login.html is in the parent folder
+      }, 2000); // 3000ms = 3 seconds delay
+    }
+  
+    function viewDetails(name, email, age, gender, year, course, college, sport, id, imgSrc) {
+  document.getElementById('modalFullName').textContent = name;
+  document.getElementById('modalEmail').textContent = email;
+  document.getElementById('modalAge').textContent = age;
+  document.getElementById('modalGender').textContent = gender;
+  document.getElementById('modalYearLevel').textContent = year;
+  document.getElementById('modalCourse').textContent = course;
+  document.getElementById('modalCollege').textContent = college;
+  document.getElementById('modalSportsEvent').textContent = sport;
+  document.getElementById('modalIDNumber').textContent = id;
+  document.getElementById('modalImage').src = imgSrc; // Set the user image source
+  // Show the modal
+  const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+  detailsModal.show();
+}
+
+  
+    function sortTable() {
+      const table = document.getElementById('registrationTableBody');
+      const rows = Array.from(table.getElementsByTagName('tr'));
+      const sortBy = document.getElementById('sortBySelect').value;
+  
+      rows.sort((a, b) => {
+        const aText = a.children[sortByIndex(sortBy)].textContent.trim();
+        const bText = b.children[sortByIndex(sortBy)].textContent.trim();
+  
+        return aText.localeCompare(bText);
+      });
+  
+      rows.forEach(row => table.appendChild(row));
+    }
+  
+    function sortByIndex(sortBy) {
+      switch (sortBy) {
+        case 'name':
+          return 0;
+        case 'age':
+          return 2;
+        case 'gender':
+          return 3;
+        case 'year':
+          return 4;
+        case 'course':
+          return 5;
+        default:
+          return 0;
+      }
+    }
+  
+  
+    function searchTable() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("registrationTableBody");
+    tr = table.getElementsByTagName("tr");
+
+    let hasResults = false; // Variable to track if any results are found
+
+    for (i = 0; i < tr.length; i++) {
+        tr[i].style.display = "none"; // Initially hide each row
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                // Check if the search term matches any cell in the row
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // Show the row if there is a match
+                    hasResults = true; // Set hasResults to true if a match is found
+                    break; // Exit inner loop when a match is found
+                }
+            }
+        }
+    }
+
+    // Show or hide the no results message based on the results
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    if (hasResults) {
+        noResultsMessage.style.display = "none"; // Hide message if results found
+    } else {
+        noResultsMessage.style.display = "block"; // Show message if no results found
+    }
+}
+
+
+
+        // Get all navigation links
+const navLinks = document.querySelectorAll('.nav-link');
+
+// Get current URL
+const currentUrl = window.location.pathname;
+
+// Loop through links and set active class
+navLinks.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
+  </script>
+  
+</body>
+
+</html>

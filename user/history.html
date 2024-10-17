@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSCF</title>
+  <link rel="icon" type="image/x-icon" href="images/Logo.png">
+   <!-- Bootstrap JS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="css/history.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="navbar-text">
+        <a href="main-page.html" class="navbar-link">S S C F</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <div></div> <!-- Middle line -->
+      </span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="main-page.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAbout" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">About us</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
+              <li><a class="dropdown-item" href="history.html">History</a></li>
+              <li><a class="dropdown-item" href="mission-vision.html">Mission & Vision</a></li>
+              <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+              <li><a class="dropdown-item" href="committees.html">Committees</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownResources" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownResources">
+              <li><a class="dropdown-item" href="student-guide.html">Student Guide</a></li>
+              <li><a class="dropdown-item" href="academic-resources.html">Academic Resources</a></li>
+              <li><a class="dropdown-item" href="career-support.html">Career Support</a></li>
+              <li><a class="dropdown-item" href="well-being-support.html">Well-being Support</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMedia" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">News & Media</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMedia">
+              <li><a class="dropdown-item" href="latest-news.html">Latest News</a></li>
+              <li><a class="dropdown-item" href="newsletter.html">Newsletter</a></li>
+              <li><a class="dropdown-item" href="media-gallery.html">Media Gallery</a></li>
+              <li><a class="dropdown-item" href="press-releases.html">Press Releases</a></li>
+              <li><a class="dropdown-item" href="sscf-president-corner.html">SSCF President's Corner</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInvolved" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Get Involved</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownInvolved">
+              <li><a class="dropdown-item" href="join-organization.html">Join an Organization</a></li>
+              <li><a class="dropdown-item" href="volunteer-opportunities.html">Volunteer Opportunities</a></li>
+              <li><a class="dropdown-item" href="forum.html">Forum</a></li>
+              <li><a class="dropdown-item" href="feedback.html">Feedback</a></li>
+              <li><a class="dropdown-item" href="sports-registration.html">Sports Registration</a></li>
+              <li><a class="dropdown-item" href="voting.html">Local Election</a></li>
+              <li><a class="dropdown-item" href="tabulation.html">Tabulation</a></li>
+              <li><a class="dropdown-item" href="calendar-activities.html">Calendar Activities</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact us</a></li>
+          <li class="nav-item">
+            <a class="btn navbar-login-btn" href="user-login.html" target="_blank" id="login-btn">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+
+
+  <!-- JS FOR DROPDOWN ACTIVE LINK -->
+  <script>
+    // Get current URL
+    const currentUrl = window.location.href;
+
+    // Get all nav links and dropdown items
+    const navLinks = document.querySelectorAll('.nav-link');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+    // Function to add 'active' class to link and parent dropdown
+    function setActiveLink(link) {
+      link.classList.add('active');
+
+      // If it's part of a dropdown, highlight the parent dropdown too
+      const parentDropdown = link.closest('.dropdown-menu');
+      if (parentDropdown) {
+        const dropdownToggle = parentDropdown.closest('.dropdown').querySelector('.nav-link.dropdown-toggle');
+        dropdownToggle.classList.add('active');
+      }
+    }
+
+    // Loop through each nav link
+    navLinks.forEach(link => {
+      if (link.href === currentUrl) {
+        setActiveLink(link);
+      }
+    });
+
+    // Loop through each dropdown item
+    dropdownItems.forEach(item => {
+      if (item.href === currentUrl) {
+        setActiveLink(item);
+      }
+    });
+  </script>
+
+
+
+<!-- Profile Modal -->
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('profileModal')">&times;</span>
+    <h2>Update Profile</h2>
+    <!-- Display User Profile Image and Full Name -->
+    <div id="profileDisplay">
+      <img id="profileDisplayImage" src="" alt="Profile Image" class="profile-modal-image">
+      <p id="profileDisplayName">User Full Name</p>
+    </div>
+    <form id="profileForm">
+      <label for="displayName">Display Name:</label>
+      <input type="text" id="displayName" name="displayName" required>
+
+      <label for="profilePicture">Profile Picture:</label>
+      <input type="file" id="profilePicture" name="profilePicture">
+
+      <button type="button" onclick="saveProfile()">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div id="settingsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('settingsModal')">&times;</span>
+    <h2>Account Settings</h2>
+    <!-- Display User Email -->
+    <p id="settingsEmail">Email: user@example.com</p>
+    <form id="settingsForm">
+      <label for="changePassword">New Password:</label>
+      <input type="password" id="changePassword" name="changePassword" required>
+
+      <label for="notifications">Notifications:</label>
+      <select id="notifications" name="notifications">
+        <option value="on">On</option>
+        <option value="off">Off</option>
+      </select>
+
+      <button type="button" onclick="saveSettings()">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- LOGIN FUNCTION -->
+<script>
+  // Assuming you have a variable that stores the user's email after login
+  const userEmail = "user@example.com"; // Replace with actual email retrieval logic
+  
+
+  // Function to open modals and set user profile info
+  function openModal(modalId) {
+    // Set user's profile image and full name in the modal
+    const userImage = localStorage.getItem('profileImage');
+    const userName = localStorage.getItem('username'); // Assuming full name is stored in username
+
+    document.getElementById("profileDisplayImage").src = userImage || 'default-image.jpg'; // Use a default image if none is available
+    document.getElementById("profileDisplayName").textContent = userName || 'User Full Name';
+
+    // Display the modal
+    document.getElementById(modalId).style.display = 'block';
+  }
+
+  // Function to close modals
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // Function to save profile changes
+  function saveProfile() {
+    const displayName = document.getElementById("displayName").value;
+    const profilePicture = document.getElementById("profilePicture").files[0];
+
+    alert(`Profile updated: ${displayName}`);
+    closeModal('profileModal');
+  }
+
+  // Function to save settings changes
+  function saveSettings() {
+    const password = document.getElementById("changePassword").value;
+    const notifications = document.getElementById("notifications").value;
+
+    alert(`Settings updated: Notifications are ${notifications}`);
+    closeModal('settingsModal');
+  }
+
+  // Function to show the loading spinner
+  function showLoading() {
+    document.getElementById('loading').style.display = 'flex'; // Make sure to have an element with ID 'loading'
+  }
+
+  // Update the profile display function to accept parameters
+  function updateProfile(username, profileImage) {
+    const loginBtn = document.querySelector(".navbar-login-btn");
+
+    if (username) {
+      const profileContainer = document.createElement('div'); // Create a container for the profile
+      profileContainer.classList.add('navbar-profile-container'); // Add a class for styling
+
+      // Create image element
+      const userImage = document.createElement('img');
+      userImage.src = profileImage;
+      userImage.alt = 'Profile Image';
+      userImage.classList.add('profile-image');
+      profileContainer.appendChild(userImage);
+
+      // Create greeting text
+      const greetingText = document.createElement('span');
+      greetingText.innerText = `Hi, ${username.substring(0, 5)}!`; // Display first 5 characters of the username
+      greetingText.classList.add('greeting-text');
+      profileContainer.appendChild(greetingText);
+
+      // Replace login button with profile container
+      loginBtn.parentNode.replaceChild(profileContainer, loginBtn);
+
+      // Create dropdown menu
+      const profileMenu = document.createElement('div');
+      profileMenu.classList.add('profile-dropdown-menu');
+      profileMenu.style.display = 'none';
+
+      // Profile Option
+      const profileOption = document.createElement('a');
+      profileOption.classList.add('profile-dropdown-item', 'profile-icon'); // Added profile-icon class
+      profileOption.href = '#';
+      profileOption.innerHTML = `<i class="fas fa-user-circle"></i> Profile`;
+      profileOption.addEventListener('click', function (event) {
+        event.preventDefault();
+        openModal('profileModal');
+      });
+
+      // Settings Option
+      const settingsOption = document.createElement('a');
+      settingsOption.classList.add('profile-dropdown-item', 'settings-icon'); // Added settings-icon class
+      settingsOption.href = '#';
+      settingsOption.innerHTML = `<i class="fas fa-cog"></i> Settings`;
+      settingsOption.addEventListener('click', function (event) {
+        event.preventDefault();
+        openModal('settingsModal');
+      });
+
+      // Logout Option
+      const logoutButton = document.createElement('a');
+      logoutButton.id = 'logout-btn';
+      logoutButton.classList.add('profile-dropdown-item');
+      logoutButton.href = '#';
+      logoutButton.innerHTML = `<i class="fas fa-sign-out-alt"></i> Logout`;
+      logoutButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        localStorage.removeItem('username');
+        localStorage.removeItem('profileImage');
+
+        showLoading(); // Show the loading spinner
+
+        setTimeout(() => {
+          location.reload(); // Reload the page to show login button again
+        }, 1500); // Delay to display the loading spinner for 1.5 seconds
+      });
+
+      // Append options to the dropdown
+      profileMenu.appendChild(profileOption);
+      profileMenu.appendChild(settingsOption);
+      profileMenu.appendChild(logoutButton);
+      profileContainer.appendChild(profileMenu);
+
+      profileContainer.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const isDisplayed = profileMenu.style.display === 'block';
+        profileMenu.style.display = isDisplayed ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', function () {
+        profileMenu.style.display = 'none';
+      });
+    } else {
+      // If not logged in, keep the login button active
+      loginBtn.style.pointerEvents = 'auto'; // Ensure the login button is clickable
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const email = localStorage.getItem('username');
+    const profileImage = localStorage.getItem('profileImage');
+    updateProfile(email, profileImage); // Call to update profile on page load
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <img src="../images/Logo.png" alt="Loading...">
+    <div class="logo-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+
+<!-- LOADER -->
+  <script>
+    // Function to display the loading spinner
+    function showLoading() {
+      document.getElementById('loading').style.display = 'flex';
+    }
+
+    // Attach showLoading to all navigation links except the login button
+    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+
+        if (href && href !== '#') {
+          showLoading();
+
+          setTimeout(() => {
+            window.location.href = href;
+          }, 1000); // Increased delay to 1500 milliseconds for visibility
+
+          e.preventDefault();
+        }
+      });
+    });
+
+    // Open the login in a new tab and display the loading spinner
+    document.getElementById('login-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      showLoading();
+
+      setTimeout(() => { // Delay before opening new tab to display loading spinner longer
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          const loginWindow = window.open(href, '_blank');
+
+          // Polling to detect if the login tab is closed
+          const pollTimer = setInterval(() => {
+            if (loginWindow.closed) {
+              clearInterval(pollTimer);
+              showLoading(); // Show spinner again before reloading
+              setTimeout(() => {
+                location.reload();
+              }, 1000); // Delay to show loading spinner
+            }
+          }, 500);
+        }
+      }, 1000); // 1-second delay before opening new tab to display the loading spinner longer
+    });
+
+    // Hide loading spinner after page load
+    window.addEventListener('load', function () {
+      document.getElementById('loading').style.display = 'none';
+    });
+  </script>
+
+
+
+ <!-- Background and Milestones Section -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="history-header-title">Background and Milestones</h2>
+      <p class="history-subtitle">Tracing the history and achievements of the Supreme Student Council Federation.</p>
+      <p class="history-intro">
+        The Supreme Student Council Federation (SSCF) of Southern Luzon State University (SLSU) has a rich history of student leadership and activism. 
+        Established to represent the voice of the student body, SSCF has continually promoted student welfare and pioneered initiatives that have made a lasting impact.
+      </p>
+      
+      <!-- Responsive Timeline Section -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">&#9733;</div>
+          <div class="timeline-content">
+            <h3>2000 - Formation of SSCF</h3>
+            <p>The SSCF was officially established, marking the beginning of unified student representation at SLSU.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">&#9733;</div>
+          <div class="timeline-content">
+            <h3>2005 - First Major Campaign</h3>
+            <p>SSCF launched its first major campaign, focusing on improving campus facilities and resources for students.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">&#9733;</div>
+          <div class="timeline-content">
+            <h3>2012 - Expansion of Activities</h3>
+            <p>Broadened its activities to include community outreach and environmental sustainability programs.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">&#9733;</div>
+          <div class="timeline-content">
+            <h3>2020 - Online Engagement</h3>
+            <p>Adapted to virtual platforms to continue student representation and support during the pandemic.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">&#9733;</div>
+          <div class="timeline-content">
+            <h3>2023 - Launch of New Initiatives</h3>
+            <p>Introduced programs focusing on mental health awareness and digital literacy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <!-- Logo -->
+      <div class="col-md-4 text-center">
+        <img src="../images/SSCF-Footer-Logo.png" alt="Logo" class="img-fluid mb-3">
+        <div class="logo-description-section">
+          <p class="mb-0">This is the highest governing and policy-making body of Southern Luzon State University (SLSU)
+            student body.</p>
+        </div>
+      </div>
+      <!-- Contact Us -->
+      <div class="col-md-4">
+        <div class="contact-us-section">
+          <h5>Contact Us</h5>
+          <p>Email: <a href="mailto:slsusscf@slsu.edu.ph" class="text-white">slsusscf@slsu.edu.ph</a></p>
+          <p>Phone: 09123456789</p>
+        </div>
+        <div class="visit-us-section">
+          <h5>Visit Us</h5>
+          <p>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+      <!-- About Us -->
+      <div class="col-md-4">
+        <div class="about-us-section">
+          <h5>About Us</h5>
+          <p>Supreme Student Council Federation of Southern Luzon State University, dedicated to empowering students by
+            promoting academic and social well-being, fostering community, and providing a platform for student voices
+            to be heard.</p>
+        </div>
+        <div class="get-in-touch-section">
+          <h5>Get in Touch</h5>
+          <p>
+            <a href="mailto:slsusscf@slsu.edu.ph" class="text-white"><i class="fas fa-envelope"></i> Gmail</a> |
+            <a href="https://facebook.com" class="text-white"><i class="fab fa-facebook-f"></i> Facebook</a> |
+            <a href="https://twitter.com" class="text-white"><i class="fab fa-twitter"></i> Twitter</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr class="hr-divider">
+    <div class="row mt-3">
+      <div class="col-md-12 text-center">
+        <p class="footer-center-text">© 2024 SLSU Supreme Student Council Federation. All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
