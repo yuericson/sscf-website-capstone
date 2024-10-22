@@ -403,47 +403,54 @@
 <div class="container">
   <h2>SSCF CALENDAR ACTIVITIES</h2>
   <div class="calendar">
-      <div class="months">
-          <div class="month" onclick="showDaysAndEvents('January')">January</div>
-          <div class="month" onclick="showDaysAndEvents('February')">February</div>
-          <div class="month" onclick="showDaysAndEvents('March')">March</div>
-          <div class="month" onclick="showDaysAndEvents('April')">April</div>
-          <div class="month" onclick="showDaysAndEvents('May')">May</div>
-          <div class="month" onclick="showDaysAndEvents('June')">June</div>
-          <div class="month" onclick="showDaysAndEvents('July')">July</div>
-          <div class="month" onclick="showDaysAndEvents('August')">August</div>
-          <div class="month" onclick="showDaysAndEvents('September')">September</div>
-          <div class="month" onclick="showDaysAndEvents('October')">October</div>
-          <div class="month" onclick="showDaysAndEvents('November')">November</div>
-          <div class="month" onclick="showDaysAndEvents('December')">December</div>
-      </div>
+    <button class="toggle-months" onclick="toggleMonths()">Hide Months</button>
+    <div class="months" id="months-container">
+      <select id="year-selector" onchange="updateYear()">
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <!-- Add more years as needed -->
+      </select>
+      <div class="month" onclick="showDaysAndEvents('January')">January</div>
+      <div class="month" onclick="showDaysAndEvents('February')">February</div>
+      <div class="month" onclick="showDaysAndEvents('March')">March</div>
+      <div class="month" onclick="showDaysAndEvents('April')">April</div>
+      <div class="month" onclick="showDaysAndEvents('May')">May</div>
+      <div class="month" onclick="showDaysAndEvents('June')">June</div>
+      <div class="month" onclick="showDaysAndEvents('July')">July</div>
+      <div class="month" onclick="showDaysAndEvents('August')">August</div>
+      <div class="month" onclick="showDaysAndEvents('September')">September</div>
+      <div class="month" onclick="showDaysAndEvents('October')">October</div>
+      <div class="month" onclick="showDaysAndEvents('November')">November</div>
+      <div class="month" onclick="showDaysAndEvents('December')">December</div>
+    </div>
 
-      <div class="content">
-          <h4 id="calendar-title" class="calendar-title">2024</h4>
-          <div class="days">
-              <div class="day">Sun</div>
-              <div class="day">Mon</div>
-              <div class="day">Tue</div>
-              <div class="day">Wed</div>
-              <div class="day">Thu</div>
-              <div class="day">Fri</div>
-              <div class="day">Sat</div>
-              <!-- Days will be filled dynamically -->
-          </div>
-          <div class="days" id="dates-container"></div>
+    <div class="content">
+      <h4 id="calendar-title" class="calendar-title">2024</h4>
+      <div class="days">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
       </div>
+      <div class="days" id="dates-container"></div>
+    </div>
 
-      <div class="events-container">
-          <h5>Events & Holidays</h5>
-          <div class="events" id="event-list" style="display: none;">
-              <div id="events-container"></div>
-          </div>
+    <div class="events-container">
+      <h5>Events & Holidays</h5>
+      <div class="events" id="event-list" style="display: none;">
+        <div id="events-container"></div>
       </div>
+    </div>
   </div>
 </div>
 
 <script>
-  const currentDate = new Date(); // Initialize currentDate here
   const events = {
     January: ["New Year Celebration - Monday, January 1", "Martin Luther King Jr. Day - Monday, January 15"],
     February: ["Valentine's Day - Wednesday, February 14"],
@@ -458,81 +465,132 @@
     November: ["Thanksgiving - Thursday, November 28"],
     December: ["Christmas - Wednesday, December 25"]
   };
-  
-  // Get the current month name
+
   const monthNames = [
     "January", "February", "March", "April", "May", "June", 
     "July", "August", "September", "October", "November", "December"
   ];
-  const currentMonthName = monthNames[currentDate.getMonth()];
-  
+
+  let selectedYear = 2024; // Set the initial selected year
+
+  function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+  }
+
+  function getDaysInMonth(year, month) {
+    switch(month) {
+      case 'January':
+      case 'March':
+      case 'May':
+      case 'July':
+      case 'August':
+      case 'October':
+      case 'December':
+        return 31;
+      case 'April':
+      case 'June':
+      case 'September':
+      case 'November':
+        return 30;
+      case 'February':
+        return isLeapYear(year) ? 29 : 28;
+      default:
+        return 0;
+    }
+  }
+
   function showDaysAndEvents(month) {
-    // Clear previous selection
     const monthElements = document.querySelectorAll('.month');
     monthElements.forEach(element => {
-        element.classList.remove('selected-month'); // Remove selected-month class from all months
+      element.classList.remove('selected-month');
     });
-  
-    // Highlight the clicked month
+
     const clickedMonthElement = Array.from(monthElements).find(element => element.innerText === month);
     if (clickedMonthElement) {
-        clickedMonthElement.classList.add('selected-month'); // Add selected-month class to clicked month
+      clickedMonthElement.classList.add('selected-month');
     }
-  
-    document.getElementById('calendar-title').innerText = `${month} 2024`; // Updated title
+
+    document.getElementById('calendar-title').innerText = `${month} ${selectedYear}`;
     const datesContainer = document.getElementById('dates-container');
-    datesContainer.innerHTML = ''; // Clear previous dates
-  
-    // Get the number of days in the selected month
-    const daysInMonth = new Date(2024, new Date(Date.parse(month + " 1")).getMonth() + 1, 0).getDate();
-    
-    // Get the first day of the month
-    const firstDayOfMonth = new Date(2024, new Date(Date.parse(month + " 1")).getMonth(), 1);
-    const firstDayOfWeek = firstDayOfMonth.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-  
-    // Fill the preceding days (empty divs for days before the 1st)
+    datesContainer.innerHTML = '';
+
+    const daysInMonth = getDaysInMonth(selectedYear, month);
+    const firstDayOfMonth = new Date(selectedYear, new Date(Date.parse(month + " 1")).getMonth(), 1);
+    const firstDayOfWeek = firstDayOfMonth.getDay();
+
     for (let i = 0; i < firstDayOfWeek; i++) {
-        const emptyDiv = document.createElement('div');
-        emptyDiv.className = 'date'; // Can add a class for styling if needed
-        datesContainer.appendChild(emptyDiv);
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'date';
+      datesContainer.appendChild(emptyDiv);
     }
-  
-    // Fill the dates dynamically
+
     for (let i = 1; i <= daysInMonth; i++) {
-        const div = document.createElement('div');
-        const dateToCheck = new Date(2024, new Date(Date.parse(month + " 1")).getMonth(), i); // Correctly create date object
-  
-        // Highlight the current date and Sunday
-        const isCurrentDate = (i === currentDate.getDate() && currentDate.getMonth() === new Date(Date.parse(month + " 1")).getMonth());
-        const isSunday = (dateToCheck.getDay() === 0); // 0 is Sunday
-        div.className = 'date' + (isCurrentDate ? ' highlight' : '') + (isSunday ? ' sunday' : ''); // Add 'sunday' class for Sundays
-        div.innerText = i;
-        datesContainer.appendChild(div);
+      const div = document.createElement('div');
+      const dateToCheck = new Date(selectedYear, new Date(Date.parse(month + " 1")).getMonth(), i);
+      const isCurrentDate = (i === new Date().getDate() && selectedYear === new Date().getFullYear() && month === monthNames[new Date().getMonth()]);
+      const isSunday = (dateToCheck.getDay() === 0);
+      div.className = 'date' + (isCurrentDate ? ' highlight' : '') + (isSunday ? ' sunday' : '');
+      div.innerText = i;
+      datesContainer.appendChild(div);
     }
-  
+
     const eventContainer = document.getElementById('events-container');
-    eventContainer.innerHTML = ''; // Clear previous events
-  
-    // Populate events for the selected month
+    eventContainer.innerHTML = '';
+
     events[month].forEach(event => {
-        const div = document.createElement('div');
-        div.className = 'event';
-        div.innerText = event;
-        eventContainer.appendChild(div);
+      const div = document.createElement('div');
+      div.className = 'event';
+      div.innerText = event;
+      eventContainer.appendChild(div);
     });
-  
+
     const eventList = document.getElementById('event-list');
     eventList.style.display = events[month].length > 0 ? 'block' : 'none';
     eventList.innerHTML = eventList.style.display === 'block' ? eventList.innerHTML : '<h5>No events for this month.</h5>';
   }
-  
+
+  function updateYear() {
+    const yearSelector = document.getElementById('year-selector');
+    selectedYear = parseInt(yearSelector.value);
+    showDaysAndEvents(monthNames[new Date().getMonth()]); // Show days for the currently selected month
+  }
+
+  // Function to toggle the visibility of the months
+  function toggleMonths() {
+    const monthsContainer = document.getElementById('months-container');
+    if (monthsContainer.style.display === 'none') {
+      monthsContainer.style.display = 'block';
+      document.querySelector('.toggle-months').innerText = 'Hide Months';
+    } else {
+      monthsContainer.style.display = 'none';
+      document.querySelector('.toggle-months').innerText = 'Show Months';
+    }
+  }
+
   // Automatically show the current month on page load
   document.addEventListener('DOMContentLoaded', () => {
-    showDaysAndEvents(currentMonthName);
-  });
-  </script>
-  
+    showDaysAndEvents(monthNames[new Date().getMonth()]);
 
+    // Show months by default on larger screens
+    if (window.innerWidth > 768) {
+      document.getElementById('months-container').style.display = 'block'; // Always show months
+      document.querySelector('.toggle-months').style.display = 'none'; // Hide toggle button on larger screens
+    } else {
+      document.getElementById('months-container').style.display = 'none'; // Hide months on smaller screens
+      document.querySelector('.toggle-months').style.display = 'block'; // Show toggle button on smaller screens
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      document.getElementById('months-container').style.display = 'block'; // Always show months
+      document.querySelector('.toggle-months').style.display = 'none'; // Hide toggle button on larger screens
+    } else {
+      document.getElementById('months-container').style.display = 'none'; // Hide months on smaller screens
+      document.querySelector('.toggle-months').style.display = 'block'; // Show toggle button on smaller screens
+    }
+  });
+</script>
 
 
 

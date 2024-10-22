@@ -615,102 +615,8 @@ background-color: #45a049;
 }
 
 
-
-/* CALENDAR ACTIVITIES */
-#calendar-activities {
-    padding: 20px;
-  }
-
-  .selected-month {
-    background-color: #4CAF50; /* Change to your desired highlight color */
-    color: white; /* Adjust text color if necessary */
-}
-
   
   
-  .calendar-title {
-    font-size: 2.3em;
-    font-weight: bold;
-    color: #185F43;
-    margin-top: -2em;
-    text-align: center; 
-  }
-  
-  .calendar-title-underline {
-    width: 20em;
-    height: 4px;
-    background-color: #185F43; 
-    margin: 0.1em 0; 
-    text-align: center; 
-    margin: 0 auto;
-  } 
-  
-  .calendar-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-  }
-
-  
-  
-  .month-header {
-    background: linear-gradient(135deg, #185F43, #4CAF50);
-    color: white;
-    font-size: 1.8rem;
-    padding: 5px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 1px;
-    
-  }
-  
-  .holiday-list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 15px;
-    text-align: left;
-  }
-  
-  .holiday-list li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #000000;
-  }
-  
-  .holiday-list strong {
-    color: #185F43;
-  }
-  
-  @media (max-width: 768px) {
-    .calendar-card {
-      margin-bottom: 20px;
-    }
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-
-
-
-
 
 
 
@@ -825,153 +731,254 @@ background-color: #45a049;
 }
 
 
-  
-  .container h2 {
-    margin-bottom: 30px;
-    font-weight: bold;
-    font-size: 1.7rem;
-    color: #004d00;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
-    padding: 15px 25px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    font-family: 'Roboto', sans-serif;
-    text-align: center; /* Center text within the h2 */
-    letter-spacing: 1px;
-    display: inline-block; /* Keep as inline-block to maintain centering */
-    margin-top: 50px;
-    margin-bottom: -1px;
-  }
-  
 
-  .calendar {
-    margin-top: 30px; /* Increased margin */
-    padding: 30px; /* Increased padding */
-    border: 2px solid #1bd88c; /* Thicker border */
-    border-radius: 10px;
-    background-color: rgb(238, 238, 238);
-    display: flex;
+
+
+
+
+
+.toggle-months {
+  display: none; /* Hide by default */
+  margin-bottom: 10px; /* Space below the button */
+  padding: 8px 15px; /* Padding for the button */
+  font-size: 1rem; /* Font size */
+  border: 1px solid #185F43; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #77efff; /* Background color */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.toggle-months:hover {
+  background-color: #185F43; /* Darker background on hover */
+  color: white; /* White text on hover */
+}
+
+/* General Styles */
+.sunday {
+  color: red; /* Kulay para sa Linggo */
+}
+  
+.container h2 {
+  margin-bottom: 20px; /* Bawasan ang margin */
+  font-weight: bold;
+  font-size: 1.5rem; /* Bawasan ang font size */
+  color: #004d00;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
+  padding: 10px 20px; /* Bawasan ang padding */
+  border-radius: 8px; /* Bawasan ang border radius */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.calendar {
+  margin-top: 30px; /* Increased margin */
+  padding: 15px; /* Reduced padding to decrease height */
+  border: 2px solid #1bd88c; /* Thicker border */
+  border-radius: 10px;
+  background-color: rgb(238, 238, 238);
+  display: flex;
+  max-width: 1000px; /* Decreased maximum width for the calendar container */
+  margin-left: auto; /* Center the calendar container */
+  margin-right: auto; /* Center the calendar container */
+  max-height: 600px; /* Set a maximum height for the calendar container */
+  overflow: auto; /* Add overflow to allow scrolling if content exceeds max height */
 }
 
 .months {
-    width: 200px; /* Increased width for month list */
-    margin-right: 30px; /* Increased margin */
-    text-align: center; /* Center the text */
-    font-weight: bold; /* Make the text bold */
-    background-color: #77efff; /* Light blue background for months */
-    padding: 15px; /* Added padding */
-    border-radius: 10px; /* Rounded corners */
+  width: 130px; /* Bawasan ang width */
+  margin-right: 20px; /* Bawasan ang margin */
+  text-align: center;
+  font-weight: bold;
+  background-color: #77efff;
+  padding: 10px; /* Bawasan ang padding */
+  border-radius: 8px;
 }
 
 .month {
-    cursor: pointer;
-    padding: 10px; /* Reduced padding */
-    border: 1px solid #185F43; /* Keep the border but reduce thickness */
-    border-radius: 5px;
-    margin: 8px 0; /* Slightly reduced margin */
-    text-align: left;
-    background-color: white;
-    transition: background-color 0.3s;
-    font-size: 1rem; /* Reduced font size */
+  cursor: pointer;
+  padding: 5px; /* Bawasan ang padding */
+  border: 1px solid #185F43;
+  border-radius: 4px;
+  margin: 5px 0; /* Bawasan ang margin */
+  text-align: left;
+  background-color: white;
+  transition: background-color 0.3s;
+  font-size: 0.9rem; /* Bawasan ang font size */
 }
 
 .month:hover {
-    background-color: #185F43;
-    color: white;
+  background-color: #185F43;
+  color: white;
 }
 
-
-
 .content {
-    
-    background-color: #cdeca9; /* Light green background for content */
-    padding: 15px; /* Added padding */
-    border-radius: 10px; /* Rounded corners */
-    flex: 1; /* Take remaining space */
+  background-color: #cdeca9;
+  padding: 10px; /* Bawasan ang padding */
+  border-radius: 8px;
+  flex: 1;
 }
 
 .days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    margin-top: 15px; /* Increased margin */
-    border: 1px solid #ddd; /* Add a border around the days grid */
-    border-radius: 5px; /* Rounded corners */
-    overflow: hidden; /* Prevent overflow */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 10px; /* Bawasan ang margin */
 }
 
 .day, .date {
-    text-align: center;
-    padding: 20px; /* Increased padding */
-    font-size: 1.5rem; /* Increased font size */
-    border-bottom: 1px solid #ddd; /* Add bottom border for rows */
+  text-align: center;
+  padding: 15px; /* Bawasan ang padding */
+  font-size: 1.2rem; /* Bawasan ang font size */
+  border-bottom: 1px solid #ddd;
 }
 
 .day {
-    font-weight: bold; /* Make day headers bold */
-    background-color: #f0f0f0; /* Light background for day headers */
+  font-weight: bold;
+  background-color: #f0f0f0;
 }
 
 .date {
-    background-color: #fff; /* White background for dates */
+  background-color: #fff;
 }
-
-.date.highlight {
-    background-color: #39ffb0; /* Background color for the highlighted date */
-    color: white; /* Text color for the highlighted date */
-    border-radius: 5px; /* Optional: Add border radius */
-}
-
-.date.sunday {
-  color: red; /* Change the text color to red for Sundays */
-}
-
-.day:nth-child(1) { /* Target the first day, which is Sunday */
-  color: red; /* Change the text color to red for Sunday */
-}
-
 
 .event {
-    margin: 10px 0; /* Increased margin */
-    padding: 10px; /* Increased padding */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #e9ecef;
+  margin: 5px 0; /* Bawasan ang margin */
+  padding: 5px; /* Bawasan ang padding */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #e9ecef;
 }
 
 .events-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px; /* Margin between days and events */
-    flex: 1; /* Take remaining space */
-    background-color: #ffe0b2; /* Light orange background for events */
-    padding: 15px; /* Added padding */
-    border-radius: 10px; /* Rounded corners */
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px; /* Bawasan ang margin */
+  flex: 1;
+  width: 200px; /* Bawasan ang width ng events container */
+  background-color: #ffe0b2;
+  padding: 10px; /* Bawasan ang padding */
+  border-radius: 8px;
 }
 
 .events-container h5 {
-    margin-bottom: 10px; /* Spacing below the header */
-    background-color: #ffcc80; /* Light orange background for event title */
-    padding: 10px; /* Added padding for event title */
-    border-radius: 5px; /* Rounded corners for event title */
-    text-align: center; /* Center the title text */
-    font-weight: bold; /* Make the title bold */
+  margin-bottom: 5px; /* Bawasan ang margin */
+  background-color: #ffcc80;
+  padding: 5px; /* Bawasan ang padding */
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .calendar-title {
-    text-align: center; /* Center the calendar title */
-    font-size: 2rem; /* Increase font size */
-    font-weight: bold; /* Make the title bold */
-    color: white; /* White text color */
-    background-color: #0cbea9; /* Dark teal background for the title */
-    padding: 15px; /* Add padding */
-    border-radius: 10px; /* Rounded corners */
-    margin: 0 0 20px 0; /* Margin at the bottom */
+  text-align: center;
+  font-size: 1.5rem; /* Bawasan ang font size */
+  font-weight: bold;
+  color: white;
+  background-color: #0cbea9;
+  padding: 10px; /* Bawasan ang padding */
+  border-radius: 8px;
+  margin: 0 0 15px 0; /* Bawasan ang margin */
 }
 
-
-
 .selected-month {
-  background-color: #185F43; /* Active month background color */
-  color: white; /* Change text color for better visibility */
+  background-color: #185F43;
+  color: white;
+}
+
+.highlight {
+  background-color: #04ff71; /* O anumang kulay na nais mo para sa highlight */
+  color: black; /* Maaari mo ring i-adjust ang kulay ng text kung kinakailangan */
+}
+
+#year-selector {
+  padding: 5px;
+  border: 1px solid #185F43;
+  border-radius: 4px;
+  font-size: 1rem; /* Maari mo ring i-adjust ang font size */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .toggle-months {
+    display: block; /* Show on tablet/mobile */
+  }
+
+  .calendar {
+    flex-direction: column; /* Stack months and content */
+    max-width: 100%; /* Full width */
+    height: auto; /* Adjust height */
+  }
+
+  .months {
+    width: 100%; /* Full width for months */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  .events-container {
+    width: 100%; /* Full width for events container */
+    margin-left: 0; /* Remove left margin */
+  }
+
+  .month {
+    font-size: 1rem; /* Slightly larger font size */
+    padding: 10px; /* Increase padding */
+  }
+
+  .day, .date {
+    padding: 10px; /* Adjust padding */
+    font-size: 1rem; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-title {
+    font-size: 1.2rem; /* Bawasan ang font size */
+    padding: 8px; /* Bawasan ang padding */
+  }
+
+  .day, .date {
+    padding: 8px; /* Bawasan ang padding */
+    font-size: 0.9rem; /* Bawasan ang font size */
+  }
+
+  .event {
+    padding: 8px; /* Bawasan ang padding */
+    font-size: 0.9rem; /* Bawasan ang font size */
+  }
+
+  .month {
+    font-size: 0.8rem; /* Bawasan ang font size */
+    padding: 8px; /* Bawasan ang padding */
+  }
+
+  .events-container {
+    padding: 5px; /* Bawasan ang padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .container h2 {
+    font-size: 1.2rem; /* Bawasan ang font size */
+    padding: 5px; /* Bawasan ang padding */
+  }
+
+  .calendar-title {
+    font-size: 1rem; /* Bawasan ang font size */
+    padding: 5px; /* Bawasan ang padding */
+  }
+
+  .month {
+    font-size: 0.75rem; /* Bawasan ang font size */
+    padding: 5px; /* Bawasan ang padding */
+  }
+
+  .day, .date {
+    padding: 5px; /* Bawasan ang padding */
+    font-size: 0.8rem; /* Bawasan ang font size */
+  }
+
+  .events-container {
+    font-size: 0.8rem; /* Bawasan ang font size */
+    padding: 5px; /* Bawasan ang padding */
+  }
 }
