@@ -621,64 +621,169 @@ background-color: #45a049;
 /* VOLUNTEER OPPORTUNITIES */
 
 .volunteer-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000000;
-    text-align: center;
+  font-size: 2.5rem; /* Increased font size for more prominence */
+  font-weight: bold;
+  color: #185F43; /* Changed to match the theme color */
+  text-align: center;
+  margin-bottom: 10px; /* Added spacing below title */
+}
+
+.volunteer-underline {
+  width: 10em;
+  height: 3px; /* Thicker underline for emphasis */
+  background-color: #185F43;
+  margin: 0 auto; /* Centered underline */
+}
+
+.volunteer-opportunity {
+  background-color: #f9f9f9; /* Lighter background for contrast */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden; /* Prevents overflow */
+}
+
+.volunteer-opportunity:hover {
+  transform: translateY(-5px);
+}
+
+.volunteer-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #185F43; /* Added border for a defined look */
+}
+
+.opportunity-title {
+  font-size: 1.5rem; /* Font size for titles */
+  font-weight: bold;
+  color: #185F43; /* Match theme color */
+  margin-top: 10px; /* Space above title */
+  margin-bottom: 10px; /* Space below title */
+}
+
+.volunteer-description {
+  font-size: 1.1rem; /* Adjusted font size for readability */
+  color: #333;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.volunteer-btn {
+  background-color: #185F43;
+  border: none;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 1.1rem; /* Slightly larger font for buttons */
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 50%; /* Maintained the width */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.volunteer-btn:hover,
+.volunteer-btn:focus,
+.volunteer-btn:active {
+  background-color: #143d2c; /* Darker shade on hover */
+  outline: none;
+}
+
+.volunteer-call-to-action {
+  font-size: 1.2rem; /* Increased font size for emphasis */
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold; /* Made the call to action stand out */
+}
+
+  
+  
+  
+  
+ /* General styles for the section */
+ .volunteer-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.volunteer-underline {
+  width: 100px;
+  height: 4px;
+  background-color: #185F43;
+}
+
+.volunteer-opportunity {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.volunteer-btn {
+  background-color: #185F43;
+  border: none;
+}
+
+.volunteer-btn:hover {
+  background-color: #0d3c2d;
+}
+
+
+
+
+/* Modal styling */
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Animation for fading */
+}
+
+.custom-modal.fade-in {
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  animation: slide-down 0.3s ease; /* Slide-in animation for modal content */
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px);
   }
-  
-  .volunteer-underline {
-    width: 10em;
-    height: 2px;
-    background-color: #185F43;
-    margin-top: 10px;
+  to {
+    transform: translateY(0);
   }
-  
-  .volunteer-opportunity {
-    background-color: #b3ebac;
-    border-radius: 15px;
-    padding: 15px 20px;
-    max-height: 530px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    overflow: hidden;
-  }
-  
-  .volunteer-opportunity:hover {
-    transform: translateY(-5px);
-  }
-  
-  .volunteer-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  .volunteer-description {
-    font-size: 1.2rem;
-    color: #333;
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .volunteer-btn {
-    background-color: #185F43;
-    border: none;
-    padding: 10px 20px;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 50%;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .volunteer-btn:hover,
-  .volunteer-btn:focus,
-  .volunteer-btn:active {
-    background-color: #143d2c;
-    outline: none;
-  }
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
   
   
   
@@ -686,33 +791,6 @@ background-color: #45a049;
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  .sscf-container {
-    color: #185F43;
-  }
-  .sscf-container h1, .sscf-container h2 {
-    font-family: 'Yeseva One', cursive;
-    color: #185F43;
-  }
-  .sscf-container p {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  .sscf-container ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    font-size: 1.2rem;
-    text-align: left;
-  }
-  .sscf-container ul li {
-    margin-bottom: 0.5rem;
-  }
   
 
 

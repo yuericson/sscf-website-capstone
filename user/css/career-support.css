@@ -618,21 +618,20 @@ background-color: #45a049;
 
 
 body {
-    background-color: #f5f4f4;
+    background-color: #f2f2f2;
 }
 
 
 /* Styles for Career Support Section */
 .career-support-container {
  
-    padding: 50px 0;
+    padding: 10px 0;
 }
 
 .career-support-title {
-    font-family: 'Yeseva One', sans-serif;
     color: #185F43;
-    margin-bottom: 30px;
     text-transform: uppercase;
+    font-size: 2.5rem;
 }
 
 .career-support-card {
@@ -644,6 +643,7 @@ body {
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .card-icon {
@@ -669,7 +669,8 @@ body {
 /* Adjust the responsiveness */
 @media (max-width: 767px) {
     .career-support-card {
-        margin: 10px 0;
+        margin: 1px 15px; /* Add left and right spacing */
+        
     }
 }
 

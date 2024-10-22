@@ -394,7 +394,6 @@
 
 
 
-
 <!-- Volunteer Opportunities Section -->
 <div class="container text-center my-5">
   <div class="volunteer-title">Volunteer Opportunities</div>
@@ -403,27 +402,101 @@
   <div class="row mt-5 justify-content-center">
     <div class="col-md-4 mb-4">
       <div class="volunteer-opportunity">
-        <img src="images/Volunteer.png" alt="Volunteer Image 1" class="img-fluid volunteer-image">
-        <p class="volunteer-description mt-3">Description of Volunteer Opportunity 1</p>
-        <button class="btn btn-primary volunteer-btn">Join Now</button>
+        <img src="images/Volunteer.png" alt="Community Service" class="img-fluid volunteer-image">
+        <h3 class="opportunity-title">Community Service Initiative</h3>
+        <p class="volunteer-description mt-3 short-description">Join our initiative to help improve local neighborhoods...</p>
+        <button class="btn btn-primary volunteer-btn read-more-btn" data-modal="modal1">Read More</button>
       </div>
     </div>
     <div class="col-md-4 mb-4">
       <div class="volunteer-opportunity">
-        <img src="images/Volunteer.png" alt="Volunteer Image 2" class="img-fluid volunteer-image">
-        <p class="volunteer-description mt-3">Description of Volunteer Opportunity 2</p>
-        <button class="btn btn-primary volunteer-btn">Join Now</button>
+        <img src="images/Volunteer.png" alt="Environmental Clean-Up" class="img-fluid volunteer-image">
+        <h3 class="opportunity-title">Environmental Clean-Up Drive</h3>
+        <p class="volunteer-description mt-3 short-description">Participate in our drive to promote sustainability...</p>
+        <button class="btn btn-primary volunteer-btn read-more-btn" data-modal="modal2">Read More</button>
       </div>
     </div>
     <div class="col-md-4 mb-4">
       <div class="volunteer-opportunity">
-        <img src="images/Volunteer.png" alt="Volunteer Image 3" class="img-fluid volunteer-image">
-        <p class="volunteer-description mt-3">Description of Volunteer Opportunity 3</p>
-        <button class="btn btn-primary volunteer-btn">Join Now</button>
+        <img src="images/Volunteer.png" alt="Educational Outreach" class="img-fluid volunteer-image">
+        <h3 class="opportunity-title">Educational Outreach Program</h3>
+        <p class="volunteer-description mt-3 short-description">Get involved to assist younger students in academics...</p>
+        <button class="btn btn-primary volunteer-btn read-more-btn" data-modal="modal3">Read More</button>
       </div>
     </div>
   </div>
+
+  <div class="mt-5">
+    <p class="volunteer-call-to-action">
+      <strong>Join us in our mission to enhance the campus experience through active participation and community service!</strong> For more information about our volunteer opportunities, feel free to reach out to the Supreme Student Council.
+    </p>
+  </div>
 </div>
+
+<!-- Modals with Full Descriptions -->
+<div class="custom-modal" id="modal1">
+  <div class="modal-content">
+    <span class="close-button" data-modal="modal1">&times;</span>
+    <h3 class="opportunity-title">Community Service Initiative</h3>
+    <p>Engage with fellow students while giving back! This initiative focuses on improving local neighborhoods through various activities such as park clean-ups, painting community centers, and organizing events that bring residents together. You'll have the opportunity to develop leadership skills, meet new people, and gain hands-on experience in community organizing. Together, we can make a significant impact!</p>
+  </div>
+</div>
+
+<div class="custom-modal" id="modal2">
+  <div class="modal-content">
+    <span class="close-button" data-modal="modal2">&times;</span>
+    <h3 class="opportunity-title">Environmental Clean-Up Drive</h3>
+    <p>Participate in our drive to keep our campus and surrounding areas clean and green! Volunteers will work together to collect litter, plant trees, and educate the community about sustainable practices. This is a great opportunity to connect with nature, learn more about environmental issues, and contribute to the preservation of our beautiful surroundings. Every little effort counts!</p>
+  </div>
+</div>
+
+<div class="custom-modal" id="modal3">
+  <div class="modal-content">
+    <span class="close-button" data-modal="modal3">&times;</span>
+    <h3 class="opportunity-title">Educational Outreach Program</h3>
+    <p>Get involved in our program to assist younger students in their academic journeys! Volunteers will tutor students in various subjects, organize workshops, and create engaging learning materials. This is a fulfilling way to share your knowledge, inspire the next generation, and gain valuable teaching experience. By participating, you'll help foster a love for learning and provide support to students who need it the most.</p>
+  </div>
+</div>
+
+<script>
+  // Open modal
+  document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const modalId = button.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      modal.style.display = 'block';
+      setTimeout(() => {
+        modal.classList.add('fade-in');
+      }, 10); // Delay to ensure the display style is applied first
+    });
+  });
+
+  // Close modal
+  document.querySelectorAll('.close-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const modalId = button.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('fade-in');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300); // Delay to match the fade-out animation duration
+    });
+  });
+
+  // Close modal when clicking outside of modal content
+  window.addEventListener('click', (event) => {
+    document.querySelectorAll('.custom-modal').forEach(modal => {
+      if (event.target === modal) {
+        modal.classList.remove('fade-in');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 300); // Delay to match the fade-out animation duration
+      }
+    });
+  });
+</script>
+
+
 
 
 

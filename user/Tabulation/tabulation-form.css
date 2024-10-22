@@ -73,3 +73,8 @@ h1, h2 {
 .btn-success:hover {
     background-color: #218838;
 }
+
+.score-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}

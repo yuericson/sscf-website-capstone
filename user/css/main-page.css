@@ -882,98 +882,128 @@ display: block; /* Ensure the image is treated as a block element */
 
 
 /* RECENT TITLE */
-
 .recent-news-background {
-background-color: #4ff9a4; /* Change this to your desired background color */
-padding: 1px 0; /* Reduced top padding and added bottom padding */
-
+  background-color: #4ff9a4; /* Change this to your desired background color */
+  padding: 1px 0; /* Reduced top padding and added bottom padding */
 }
 
 /* RECENT TITLE */
 .recent-news-title {
-margin-bottom: 30px;
-font-weight: bold;
-font-size: 1.7rem;
-color: #004d00;
-text-transform: uppercase;
-background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
-padding: 15px 25px;
-border-radius: 10px;
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-font-family: 'Roboto', sans-serif;
-text-align: center;
-letter-spacing: 1px;
-display: inline-block;
-
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #004d00;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+  display: inline-block;
 }
 
-
-
 .news-box {
-border: 2px solid #185F43;
-padding: 20px;
-margin: 10px;
-text-align: center;
-background-color: #f9f9f9;
+  border: 2px solid #185F43;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
 }
 
 .news-box img {
-width: 100%;
-height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .news-box .news-title {
-font-size: 1.5em;
-margin-top: 10px;
-color: #185F43;
+  font-size: 1.5em;
+  margin-top: 10px;
+  color: #185F43;
 }
 
 .news-box .news-date {
-font-size: 0.9em;
-color: #555;
+  font-size: 0.9em;
+  color: #555;
 }
 
 .news-read-more-box {
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 .news-read-more {
-margin-top: 10px;
-display: inline-block;
-text-decoration: none;
-color: #ffffff;
-background-color: #185F43;
-border: 1px solid #185F43;
-padding: 5px 10px;
-border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #185F43;
+  border: 1px solid #185F43;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .pagination {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .pagination a {
-color: #185F43;
-text-decoration: none;
-font-weight: bold;
+  color: #185F43;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .pagination .page-number {
-padding: 5px 10px;
-border: 1px solid #185F43;
-border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #185F43;
+  border-radius: 5px;
+}
+
+/* Active Page Number Background */
+.pagination .page-number.active {
+  background-color: #185F43; /* Change this to your desired active color */
+  color: #ffffff; /* Change text color to white for better contrast */
+  border: 1px solid #185F43; /* Match border with background */
 }
 
 .pagination .prev,
 .pagination .next {
-font-weight: bold;
+  font-weight: bold;
 }
 
 .hidden {
-display: none;
+  display: none;
+}
+
+/* Fade-In Effect */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Fade-Out Effect */
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out forwards; /* Use forwards to keep the opacity */
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
 }
 
 
@@ -981,106 +1011,80 @@ display: none;
 
 
 
-
-
-/* UPCOMING EVENTS */
-
-
-.upcoming-events-title {
-  font-size: 2em;
-  font-weight: bold;
+.upcoming-events {
+  background-color: red; /* Red background for the entire section */
+  padding: 50px; /* Reduced padding */
   text-align: center;
-  margin-top: 2em;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 600px; /* Increased height for the section */
 }
 
-.events-title-underline {
-  width: 10em;
-  height: 2px;
-  background-color: #185F43;
-  margin: 0.5em auto;
+h2 {
+  color: #fff; /* White text color for contrast */
+  margin-bottom: 35px; /* Reduced margin */
 }
 
-.upcoming-events-gallery {
+.slider-container {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 90%; /* Responsive width */
+  margin: auto;
   overflow: hidden;
-  padding: 0 20px; /* Space on the left and right */
+  border-radius: 10px;
+  background-color: transparent; /* Keeping this transparent if you want the section background visible */
 }
 
-.upcoming-events-container {
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  display: flex; /* Allow images to be displayed in a row */
+  min-width: 100%;
+  box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  width: 100%; /* Full width */
-  max-width: 1100px; /* Max width for the container */
-  margin: 0 auto; /* Center the container */
 }
 
-.upcoming-events-inner {
-  display: flex;
-  transition: transform 0.5s ease;
+.slide img {
+  width: calc(33.33% - 10px); /* Adjusted for spacing */
+  height: auto;
+  border-radius: 10px;
+  display: block; /* Ensures no space below images */
+  margin-right: 10px; /* Right margin for spacing */
 }
 
-.upcoming-events-item {
-  flex: 0 0 calc(33.333% - 20px); /* Show 3 items per view with margin */
-  margin: 0 10px; /* Space between images */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+.slide img:last-child {
+  margin-right: 0; /* Remove right margin for the last image */
 }
 
-.upcoming-events-item img {
-  width: 100%; /* Full width of the container */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure the image covers the container without distortion */
-  display: block; /* Ensure image fills the container */
-}
-
-/* Navigation Arrows */
-.upcoming-events-control-prev,
-.upcoming-events-control-next {
+.slider-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(206, 206, 206, 0.8); /* Slight background color for visibility */
+  background-color: rgba(0, 0, 0, 0.5); /* Button background */
+  color: white;
   border: none;
-  width: 40px; /* Width of the button */
-  height: 40px; /* Height of the button */
-  border-radius: 50%; /* Make the button circular */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 5px; /* Reduced padding */
   cursor: pointer;
-  font-size: 20px; /* Font size for the arrow */
-  z-index: 10; /* Ensure the buttons are always on top */
+  border-radius: 5px;
+  z-index: 1;
+  font-size: 16px; /* Reduced font size */
 }
 
-.upcoming-events-control-prev {
-  left: 10px; /* Space from the left edge */
+/* Add specific styles for prev and next buttons if needed */
+.slider-button.prev {
+  left: 10px; /* Adjust position as needed */
 }
 
-.upcoming-events-control-next {
-  right: 10px; /* Space from the right edge */
+.slider-button.next {
+  right: 10px; /* Adjust position as needed */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .upcoming-events-item {
-    flex: 0 0 calc(50% - 20px); /* Show 2 items per view on tablet screens */
-  }
-}
 
-@media (max-width: 480px) {
-  .upcoming-events-item {
-    flex: 0 0 calc(100% - 20px); /* Show 1 item per view on mobile screens */
-  }
 
-  .upcoming-events-control-prev,
-  .upcoming-events-control-next {
-    width: 30px; /* Smaller button size for smaller screens */
-    height: 30px; /* Smaller button size for smaller screens */
-    font-size: 16px; /* Smaller font size for arrows */
-  }
-}
+
+
 /* Responsive Adjustments */
 
 
@@ -1110,7 +1114,6 @@ display: none;
   overflow-x: hidden;
   bottom: 0; 
   width: 100%; 
-  margin-top: 100px; 
 }
 
 /* Link styles within footer */

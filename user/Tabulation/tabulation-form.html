@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pageant Scoring</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/tabulation-form.css">
+
+</head>
+
+<body>
+
+  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pageant Scoring</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Production Number')">Production Number</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Swim Wear')">Swim Wear</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Preliminary Interview')">Preliminary Interview</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Evening Formal Competition')">Evening Formal Competition</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary m-2" onclick="changeCategory('Final Q&A')">Final Q&A</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pageant Title -->
+    <div class="container">
+        <h1 class="text-center" id="pageantTitle">Pageant Title</h1>
+        <p class="text-center score-title">Current Category: <span id="currentCategory">Production Number</span></p>
+    </div>
+
+    <!-- Scoring Section for Female Contestants -->
+    <div class="container" id="femaleSection">
+        <h2 class="text-center">Female Contestants</h2>
+        <form id="femaleForm">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark" id="criteriaHeadFemale"></thead>
+                <tbody id="femaleContestantsBody"></tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Scoring Section for Male Contestants -->
+    <div class="container" id="maleSection">
+        <h2 class="text-center">Male Contestants</h2>
+        <form id="maleForm">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-dark" id="criteriaHeadMale"></thead>
+                <tbody id="maleContestantsBody"></tbody>
+            </table>
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-success" onclick="proceedToNextCategory()">Proceed</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Changing Category and Calculating Scores -->
+    <script>
+        const maleContestants = [
+            { number: 1, name: "Male Contestant 1" },
+            { number: 2, name: "Male Contestant 2" },
+            { number: 3, name: "Male Contestant 3" },
+            { number: 4, name: "Male Contestant 4" },
+            { number: 5, name: "Male Contestant 5" },
+        ];
+
+        const femaleContestants = [
+            { number: 1, name: "Female Contestant 1" },
+            { number: 2, name: "Female Contestant 2" },
+            { number: 3, name: "Female Contestant 3" },
+            { number: 4, name: "Female Contestant 4" },
+            { number: 5, name: "Female Contestant 5" },
+        ];
+
+        let currentCategory = 'Production Number';
+
+        function populateTable() {
+            const femaleTableBody = document.getElementById('femaleContestantsBody');
+            const maleTableBody = document.getElementById('maleContestantsBody');
+            const femaleHeader = document.getElementById('criteriaHeadFemale');
+            const maleHeader = document.getElementById('criteriaHeadMale');
+
+            femaleTableBody.innerHTML = ''; // Clear existing rows for female contestants
+            maleTableBody.innerHTML = ''; // Clear existing rows for male contestants
+
+            let headersHtml = '';
+            let rowsHtml = '';
+
+            const criteriaMapping = {
+                'Production Number': {
+                    headers: ['Contestant Number', 'Name', 'Stage Presence 20%', 'Choreography 30%', 'Self-Introduction 25%', 'Mastery 25%', 'Score', 'Rank'],
+                    criteriaCount: 4,
+                },
+                'Swim Wear': {
+                    headers: ['Contestant Number', 'Name', 'Physical Fitness 40%', 'Confidence and Poise 30%', 'Presentation 30%', 'Score', 'Rank'],
+                    criteriaCount: 3,
+                },
+                'Preliminary Interview': {
+                    headers: ['Contestant Number', 'Name', 'Confidence 30%', 'Content of Answer 40%', 'Delivery 30%', 'Score', 'Rank'],
+                    criteriaCount: 3,
+                },
+                'Evening Formal Competition': {
+                    headers: ['Contestant Number', 'Name', 'Physical Appearance 40%', 'Confidence and Poise 30%', 'Presentation 30%', 'Score', 'Rank'],
+                    criteriaCount: 3,
+                },
+                'Final Q&A': {
+                    headers: ['Contestant Number', 'Name', 'Confidence 40%', 'Content of Answer 40%', 'Delivery 20%', 'Score', 'Rank'],
+                    criteriaCount: 3,
+                },
+            };
+
+            const currentCriteria = criteriaMapping[currentCategory];
+
+            // Generate table headers
+            headersHtml = `<tr>${currentCriteria.headers.map(header => `<th>${header}</th>`).join('')}</tr>`;
+            femaleHeader.innerHTML = headersHtml;
+            maleHeader.innerHTML = headersHtml;
+
+            // Generate table rows for female contestants
+            rowsHtml = femaleContestants.map(contestant => `
+                <tr>
+                    <td>${contestant.number}</td>
+                    <td>${contestant.name}</td>
+                    ${Array.from({ length: currentCriteria.criteriaCount }, (_, i) => `
+                        <td>
+                            <input type="number" class="form-control" name="criteria${i + 1}_female_${contestant.number}" oninput="calculateTotal('female', ${contestant.number})" max="100" min="0">
+                        </td>
+                    `).join('')}
+                    <td><input type="text" class="form-control" name="total_female_${contestant.number}" readonly></td>
+                    <td><input type="text" class="form-control" name="rank_female_${contestant.number}" readonly></td>
+                </tr>
+            `).join('');
+            femaleTableBody.innerHTML = rowsHtml;
+
+            // Generate table rows for male contestants
+            rowsHtml = maleContestants.map(contestant => `
+                <tr>
+                    <td>${contestant.number}</td>
+                    <td>${contestant.name}</td>
+                    ${Array.from({ length: currentCriteria.criteriaCount }, (_, i) => `
+                        <td>
+                            <input type="number" class="form-control" name="criteria${i + 1}_male_${contestant.number}" oninput="calculateTotal('male', ${contestant.number})" max="100" min="0">
+                        </td>
+                    `).join('')}
+                    <td><input type="text" class="form-control" name="total_male_${contestant.number}" readonly></td>
+                    <td><input type="text" class="form-control" name="rank_male_${contestant.number}" readonly></td>
+                </tr>
+            `).join('');
+            maleTableBody.innerHTML = rowsHtml;
+        }
+
+        function calculateTotal(gender, contestantNumber) {
+            const criteriaCount = {
+                female: 4,
+                male: 4,
+            };
+            let total = 0;
+
+            for (let i = 1; i <= criteriaCount[gender]; i++) {
+                const input = document.querySelector(`input[name="criteria${i}_${gender}_${contestantNumber}"]`);
+                if (input) {
+                    const value = parseFloat(input.value) || 0;
+                    total += value;
+                }
+            }
+
+            const totalInput = document.querySelector(`input[name="total_${gender}_${contestantNumber}"]`);
+            totalInput.value = total.toFixed(2);
+        }
+
+        function changeCategory(newCategory) {
+            currentCategory = newCategory;
+            document.getElementById('currentCategory').textContent = currentCategory;
+            populateTable();
+        }
+
+        function proceedToNextCategory() {
+            // Add functionality to process the scores and proceed to the next category
+            alert("Proceeding to next category...");
+            // You can also add logic to save scores or move to a results page.
+        }
+
+        // Initial population of tables
+        populateTable();
+    </script>
+</body>
+
+</html>

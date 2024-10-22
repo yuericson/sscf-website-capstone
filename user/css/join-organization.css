@@ -617,177 +617,126 @@
 
 
 
-/* General Container */
+/* General styles for the org content container */
 .org-content-container {
-  font-family: Arial, sans-serif;
-  color: #333;
-  padding: 0 150px;
+  max-width: 1200px; /* Limit the width for better readability */
+  margin: 0 auto; /* Center the content */
+  padding: 20px; /* Add padding for space around the content */
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 12px; /* Slightly rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
 
-@media (max-width: 992px) {
-  .org-content-container {
-    padding: 0 50px;
-  }
+/* Title styles */
+.org-title {
+  font-size: 2.5rem; /* Larger title */
+  color: #185F43; /* Primary color */
+  margin-bottom: 20px; /* Space below the title */
+  text-align: center; /* Center title */
 }
 
-@media (max-width: 576px) {
-  .org-content-container {
-    padding: 0 20px;
-  }
+/* Description styles */
+.org-description {
+  font-size: 1.2rem; /* Bigger font size for readability */
+  margin-bottom: 40px; /* Space below the description */
+  text-align: center; /* Center text */
 }
 
-/* Page Title */
-h1 {
-  font-weight: 600;
-  color: #185F43;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+/* Department and Campus button styles */
+.org-department-buttons,
+.org-campus-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap to next line */
 }
 
-@media (max-width: 576px) {
-  h1 {
-    font-size: 2rem;
-  }
+/* Campus button styles */
+.org-campus-btn {
+  background-color: #185F43; /* Primary color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  padding: 15px 30px; /* Padding for buttons */
+  margin: 10px; /* Margin around buttons */
+  font-size: 1rem; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition effect */
 }
 
-/* Benefits Section */
-section h2 {
-  color: #185F43;
-  margin-top: 30px;
-  font-size: 2rem;
+/* Campus button hover effect */
+.org-campus-btn:hover {
+  background-color: #156737; /* Darker shade on hover */
 }
 
-@media (max-width: 576px) {
-  section h2 {
-    font-size: 1.75rem;
-  }
+/* Organization card styles */
+.org-card {
+  border-radius: 10px; /* Rounded corners for cards */
+  overflow: hidden; /* Hide overflow */
+  /* Remove hover effect on the card */
 }
 
-ul {
-  list-style-type: disc;
-  padding-left: 20px;
+/* Card image styles */
+.org-card-img {
+  width: 100%; /* Full width */
+  height: auto; /* Auto height */
 }
 
-ul li {
-  margin-bottom: 10px;
-  color: #185F43;
+/* Card title styles */
+.org-card-title {
+  font-size: 1.5rem; /* Card title size */
+  color: #185F43; /* Primary color */
 }
 
-/* Organization Cards */
-.card {
-  border: none;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* President name styles */
+.org-president-name,
+.org-contact-details {
+  font-size: 1.1rem; /* Same font size for both */
+  font-weight: normal; /* Normal weight for consistency */
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* Styles for contact info section */
+.org-contact-info {
+  margin: 40px 0; /* Space above and below */
 }
 
-/* Full-Width Image on Mobile */
-.card-img-top {
-  width: 100%; /* Ensures the image takes full width of the card */
-  height: auto; /* Maintains aspect ratio */
-  object-fit: cover;
+/* Styles for contact title */
+.org-contact-title {
+  font-size: 2rem; /* Title size */
+  color: #185F43; /* Primary color */
+  text-align: left;
 }
 
-@media (max-width: 576px) {
-  .card-img-top {
-    max-height: 1500px; /* Optional height limit on mobile */
-  }
+/* Styles for contact description */
+.org-contact-description {
+  font-size: 1.1rem; /* Description size */
+  margin-top: 10px; /* Space above description */
+  text-align: left;
 }
 
-.card-title {
-  font-size: 1.5rem;
-  color: #185F43;
+/* Styles for available organizations section */
+.org-available-title {
+  font-size: 2rem; /* Title size */
+  color: #185F43; /* Primary color */
+  margin-top: 20px; /* Space above title */
 }
 
-.card-text {
-  color: #555;
-}
-
-/* Button Styles */
-.btn-primary {
-  background-color: #185F43;
-  border-color: #185F43;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #13773c;
-  border-color: #13773c;
-}
-
-.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
-  color: white;
-  font-size: 1.25rem;
-  padding: 10px 20px;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
-  .btn-success,
-  .btn-primary {
-    width: 100%;
-  }
-}
-
-/* Responsive Design Adjustments */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  .org-campus-btn {
+    flex: 1 1 calc(100% - 20px); /* Full width buttons on small screens */
   }
 
-  section h2 {
-    font-size: 1.75rem;
-  }
-
-  .row {
-    flex-direction: column;
+  .org-card {
+    margin-bottom: 20px; /* Space between cards */
   }
 }
 
 
-.custom-modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
-.custom-modal-content {
-  background-color: white;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-}
 
-.close-btn {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
 
-.close-btn:hover,
-.close-btn:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+
+
 
 
 

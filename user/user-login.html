@@ -12,6 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/user-login.css">
+  
 
 </head>
 
@@ -393,131 +394,321 @@
   </script>
 
 
-<div class="login-container">
-  <div class="login-box">
+<div class="form-wrapper">
+  <!-- Login Form -->
+  <div class="login-form-container" id="loginContainer">
+    <div class="login-form-box">
       <h2>Login</h2>
       <form id="loginForm">
-          <div class="error-msg" id="error-msg" style="display:none;">Invalid username or password.</div>
-          <div class="mb-3">
-              <label for="username" class="form-label email-label">Email</label> <!-- Added email-label class -->
-              <input type="text" class="form-control" id="username" placeholder="Enter your email" required>
+        <div class="error-msg" id="error-msg" style="display:none;">Invalid username or password.</div>
+        <div class="mb-3">
+          <label for="username" class="form-label email-label">Email</label>
+          <input type="email" class="form-control" id="username" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label password-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-2 d-flex justify-content-between align-items-center">
+          <div>
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe" class="form-label">Remember Me</label>
           </div>
-          <div class="mb-3">
-              <label for="password" class="form-label password-label">Password</label> <!-- Added password-label class -->
-              <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+          <div class="forgot-password">
+            <a href="https://accounts.google.com/signin/recovery" id="forgotPasswordLink" target="_blank">Forgot password?</a>
           </div>
-          <div class="mb-2 d-flex justify-content-between align-items-center">
-              <div>
-                  <input type="checkbox" id="rememberMe">
-                  <label for="rememberMe" class="form-label">Remember Me</label>
-              </div>
-              <div class="forgot-password">
-                  <a href="#" id="forgotPasswordLink">Forgot password?</a>
-              </div>
-          </div>
-          <button type="submit" class="btn login-btn">Login</button>
+        </div>
+        <button type="submit" class="form-btn login-btn">Login</button>
+
+        <!-- Separator -->
+        <div class="separator">
+          <span></span> Or <span></span>
+        </div>
+
+        <button type="button" class="button google-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
+            <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path>
+            <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path>
+            <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"></path>
+            <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
+          </svg>
+          Continue with Google
+        </button>
       </form>
-      <div class="login-footer mt-3">
-          <p>Not an admin? <a href="#" id="returnToMainSite">Return to main site</a></p>
+
+      <!-- Add Sign Up option here -->
+      <div class="signup-footer mt-3">
+        <p>Don't have an account? <a href="#" id="signUpLink">Sign up here</a></p>
       </div>
+    </div>
+  </div>
+
+  <!-- Register Form -->
+  <div class="register-container" id="registerContainer" style="display: none;">
+    <div class="register-box">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirm-password" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="form-btn register-btn">Register</button>
+
+        <div class="signup-footer">
+          <p>Already have an account? <a href="#" id="loginLink">Login here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// Function to switch between login and registration forms
+document.getElementById('signUpLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('loginContainer').style.display = 'none';
+  document.getElementById('registerContainer').style.display = 'flex'; // Changed to flex
+  centerForms();
+});
+
+document.getElementById('loginLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('registerContainer').style.display = 'none';
+  document.getElementById('loginContainer').style.display = 'flex'; // Changed to flex
+  centerForms();
+});
+
+// Center forms function
+function centerForms() {
+  const loginContainer = document.getElementById('loginContainer');
+  const registerContainer = document.getElementById('registerContainer');
+
+  // Ensure wrapper is centered
+  if (loginContainer.style.display === 'flex' || registerContainer.style.display === 'flex') {
+    document.querySelector('.form-wrapper').style.justifyContent = 'center';
+    document.querySelector('.form-wrapper').style.alignItems = 'center';
+  }
+}
+
+// Initial call to center forms
+centerForms();
+
+</script>
+
+
+
+
+
+<!-- Modal Overlay For Login Successful-->
+<div id="modalOverlay" style="display: none;"></div>
+
+<!-- Message Box For Login -->
+<div class="card" id="messageBox" style="display: none;">
+  <button class="dismiss" type="button" onclick="closeMessage()">×</button>
+  <div class="header">
+    <div class="image">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="content">
+      <span class="title">Login successful!</span>
+      <p class="message">You have successfully logged in! Welcome back!</p>
+    </div>
+    <div class="actions">
+      <button id="messageOkayButton" class="okay" type="button">Okay</button>
+    </div>
   </div>
 </div>
 
 
 
+
+<!-- Modal Overlay For Register Successful -->
+<div id="registerModalOverlay" style="display: none;"></div>
+
+<!-- Message Box For Register -->
+<div class="card" id="registerMessageBox" style="display: none;">
+  <button class="dismiss" type="button" onclick="closeRegisterMessage()">×</button>
+  <div class="header">
+    <div class="image">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="content">
+      <span class="title">Registration successful!</span>
+      <p class="message">Your account has been created! Thank you for joining us!</p>
+    </div>
+    <div class="actions">
+      <button class="okay" type="button" id="RegisterOkayButton">Okay</button>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <script>
-// Predefined credentials
-const adminUsername = "eric";
-const adminPassword = "eric";
+  document.addEventListener('DOMContentLoaded', function () {
+      // Center forms function
+      function centerForms() {
+          const loginContainer = document.getElementById('loginContainer');
+          const registerContainer = document.getElementById('registerContainer');
 
-// Check local storage for saved email
-const savedEmail = localStorage.getItem('savedEmail');
-if (savedEmail) {
-    document.getElementById('username').value = savedEmail; // Populate username field with saved email
-    document.getElementById('rememberMe').checked = true; // Check the Remember Me checkbox
-}
+          // Ensure wrapper is centered
+          if (loginContainer.style.display === 'flex' || registerContainer.style.display === 'flex') {
+              document.querySelector('.form-wrapper').style.justifyContent = 'center';
+              document.querySelector('.form-wrapper').style.alignItems = 'center';
+          }
+      }
 
-document.getElementById('loginForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the form from submitting
+      // Function to show the success message box after registration
+      document.getElementById('registerForm').addEventListener('submit', function (event) {
+          event.preventDefault(); // Prevent form submission
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMsg = document.getElementById('error-msg');
-    let usernameError = false;
-    let passwordError = false;
+          // Show the success message
+          document.getElementById('registerMessageBox').style.display = 'block'; // Show the success message box
+          document.getElementById('registerModalOverlay').style.display = 'block'; // Show the modal overlay
 
-    // Reset error message and styles
-    errorMsg.style.display = 'none';
-    document.getElementById('username').classList.remove('is-invalid');
-    document.getElementById('password').classList.remove('is-invalid');
+          // Optionally, clear the form fields after registration
+          document.getElementById('registerForm').reset();
+      });
 
-    // Check credentials
-    if (username !== adminUsername) {
-        usernameError = true;
-        document.getElementById('username').classList.add('is-invalid');
-    }
+      // Assign the onclick event for the "Okay" button
+      document.getElementById('RegisterOkayButton').addEventListener('click', function () {
+          // Hide the message box and overlay
+          document.getElementById('registerMessageBox').style.display = 'none';
+          document.getElementById('registerModalOverlay').style.display = 'none';
 
-    if (password !== adminPassword) {
-        passwordError = true;
-        document.getElementById('password').classList.add('is-invalid');
-    }
+          // Show the login container
+          document.getElementById('loginContainer').style.display = 'flex'; // Show the login form as a flexbox
+          document.getElementById('registerContainer').style.display = 'none'; // Ensure the registration form is hidden
 
-    if (usernameError || passwordError) {
-        errorMsg.style.display = 'block';
-        if (usernameError && !passwordError) {
-            document.getElementById('username').focus(); // Focus on username if only username is incorrect
-        } else if (!usernameError && passwordError) {
-            document.getElementById('password').focus(); // Focus on password if only password is incorrect
-        }
-        return; // Stop the function here if either username or password is incorrect
-    }
+          // Center the forms
+          centerForms(); // Call the function to center the forms
+      });
 
-    // Show loading screen before redirecting
-    showLoading();
-
-    // Show success message
-    alert("Login successful! Redirecting to the website...");
-    const profileImage = "path/to/profile/image.jpg"; // Set the profile image path
-    localStorage.setItem('username', username); // Store the username
-    localStorage.setItem('profileImage', profileImage); // Store the profile image path
-
-    // Remember Me functionality
-    if (document.getElementById('rememberMe').checked) {
-        localStorage.setItem('savedEmail', username); // Save the email in localStorage
-    } else {
-        localStorage.removeItem('savedEmail'); // Remove saved email if checkbox is unchecked
-    }
-
-    // Directly update the profile in the main page
-    if (window.opener) {
-        window.opener.updateProfile(); // Call updateProfile to refresh the profile display
-        window.opener.location.reload(); // Reload the main page to ensure all changes are reflected
-    }
-
-    // Delay before closing the current tab to show loading screen
-    setTimeout(() => {
-        window.close(); // Close the current login tab
-    }, 1500); // Delay of 1500 milliseconds (1.5 seconds)
-});
-
-// Function to display the loading spinner
-function showLoading() {
-    document.getElementById('loading').style.display = 'flex'; // Show loading screen
-}
-
-// Add event listener for returning to the main site
-document.getElementById('returnToMainSite').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    window.location.href = 'main-page.html'; // Redirect to main-page.html
-});
-
-// Add event listener for forgot password
-document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    // Redirect to Gmail's password recovery page
-    window.open('https://accounts.google.com/signin/recovery', '_blank'); 
-});
+      // Initial call to center forms if needed
+      centerForms();
+  });
 </script>
+
+
+
+
+
+
+<script>
+  // Predefined credentials
+  const adminUsername = "eric@gmail.com"; // Admin username
+  const adminPassword = "eric"; // Admin password
+
+  // Check local storage for saved email
+  const savedEmail = localStorage.getItem('savedEmail');
+  if (savedEmail) {
+      document.getElementById('username').value = savedEmail; // Populate username field
+      document.getElementById('rememberMe').checked = true; // Check the Remember Me checkbox
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-msg');
+      let usernameError = false;
+      let passwordError = false;
+
+      // Reset error message and styles
+      errorMsg.style.display = 'none';
+      document.getElementById('username').classList.remove('is-invalid');
+      document.getElementById('password').classList.remove('is-invalid');
+
+      // Check credentials
+      if (username !== adminUsername) {
+          usernameError = true;
+          document.getElementById('username').classList.add('is-invalid');
+      }
+
+      if (password !== adminPassword) {
+          passwordError = true;
+          document.getElementById('password').classList.add('is-invalid');
+      }
+
+      if (usernameError || passwordError) {
+          errorMsg.style.display = 'block';
+          if (usernameError && !passwordError) {
+              document.getElementById('username').focus();
+          } else if (!usernameError && passwordError) {
+              document.getElementById('password').focus();
+          }
+          return; // Stop the function here if either username or password is incorrect
+      }
+
+      // Store user info in local storage
+      localStorage.setItem('savedEmail', document.getElementById('rememberMe').checked ? username : '');
+      localStorage.setItem('username', username);
+      localStorage.setItem('profileImage', 'user-profile-image.jpg'); // Placeholder for user's profile image
+
+      // Show modal with success message
+      showModal(); // Show modal
+
+      // Update the profile directly in the main page
+      if (window.opener) {
+          window.opener.updateProfileDisplay(); // Call updateProfileDisplay to refresh profile display
+      }
+  });
+
+    // Function to show modal message
+    function showModal() {
+        document.getElementById('messageBox').style.display = 'block'; // Show message box
+        document.getElementById('modalOverlay').style.display = 'block'; // Show overlay
+
+        // Assign the onclick event for the "Okay" button
+        document.getElementById('messageOkayButton').addEventListener('click', function () {
+            showLoading(); // Show loading spinner
+            setTimeout(() => {
+                window.close(); // Close the login tab
+                window.opener.location.reload(); // Refresh the main page to reflect the changes
+            }, 1500); // Delay for 1.5 seconds
+        });
+    }
+
+  // Function to display the loading spinner
+  function showLoading() {
+      document.getElementById('loading').style.display = 'flex'; // Show loading spinner
+  }
+
+  // Event listener for forgot password link
+  document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default behavior
+      window.open('https://accounts.google.com/signin/recovery', '_blank'); // Redirect to Gmail recovery
+  });
+</script>
+
 
 
 

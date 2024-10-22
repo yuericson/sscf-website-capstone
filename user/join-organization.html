@@ -85,141 +85,137 @@
   </nav>
   
 
-
   <div class="org-content-container mt-5">
-    <h1 class="text-center">Join an Organization</h1>
-    <p class="text-center">
-        Be part of something bigger! Joining an organization within the Supreme Student Council Federation opens the door to new friendships, skill development, and leadership opportunities. Discover how you can contribute to the student body and grow as an individual.
+    <h1 class="org-title text-center">Join an Organization</h1>
+    <p class="org-description text-center">
+        Get involved and make a difference! Joining an organization within the Supreme Student Council Federation offers a chance to meet new people, develop skills, and contribute to campus life. Here’s how you can reach out to various student clubs and organizations.
     </p>
 
-    <!-- Section for Benefits of Joining -->
-    <section class="mt-5">
-        <h2>Benefits of Joining</h2>
-        <ul class="list-group">
-            <li class="list-group-item">Gain leadership and professional skills that will benefit your career.</li>
-            <li class="list-group-item">Expand your network within the university and meet like-minded peers.</li>
-            <li class="list-group-item">Contribute to positive change on campus through various initiatives.</li>
-            <li class="list-group-item">Participate in exclusive events, workshops, and activities tailored for members.</li>
-            <li class="list-group-item">Build lasting friendships and make a difference in your community.</li>
-        </ul>
-    </section>
-
-    <!-- Section for Available Organizations -->
-    <section class="mt-5">
-        <h2>Available Organizations</h2>
-        <div class="row">
-            <!-- Sample Organization 1 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="../images/message.jpg" class="card-img-top" alt="Student Government">
-                    <div class="card-body">
-                        <h5 class="card-title">Student Government</h5>
-                        <p class="card-text">
-                            Represent the voice of students and collaborate with university officials to create a better campus experience. Engage in policy discussions, organize events, and advocate for student needs.
-                        </p>
-                        <a href="organization1-details.html" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Sample Organization 2 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="../images/message.jpg" class="card-img-top" alt="Cultural Arts Club">
-                    <div class="card-body">
-                        <h5 class="card-title">Cultural Arts Club</h5>
-                        <p class="card-text">
-                            Showcase your talent and promote the rich culture of Southern Luzon through music, dance, and theater. Participate in cultural festivals and events to celebrate diversity and creativity.
-                        </p>
-                        <a href="organization2-details.html" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Sample Organization 3 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="../images/message.jpg" class="card-img-top" alt="Environmental Society">
-                    <div class="card-body">
-                        <h5 class="card-title">Environmental Society</h5>
-                        <p class="card-text">
-                            Join us in our mission to promote sustainability and environmental awareness on campus. Participate in tree planting activities, workshops, and community clean-up drives.
-                        </p>
-                        <a href="organization3-details.html" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Sample Organization 4 -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="../images/message.jpg" class="card-img-top" alt="Tech Innovators Club">
-                    <div class="card-body">
-                        <h5 class="card-title">Tech Innovators Club</h5>
-                        <p class="card-text">
-                            Dive into the world of technology and innovation. Work on exciting projects, attend tech talks, and collaborate with industry professionals to enhance your skills.
-                        </p>
-                        <a href="organization4-details.html" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Section for Selecting Campuses -->
+    <section class="org-campus-selection mt-5 text-center">
+        <h2 class="org-campus-title">Select a Campus</h2>
+        <div class="org-campus-buttons">
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Tayabas')">SLSU-Tayabas</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Lucena')">SLSU-Lucena</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Catanauan')">SLSU-Catanauan</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Gumaca')">SLSU-Gumaca</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Infanta')">SLSU-Infanta</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Tiaong')">SLSU-Tiaong</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Polillo')">SLSU-Polillo</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Tagkawayan')">SLSU-Tagkawayan</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Alabat')">SLSU-Alabat</button>
+            <button class="org-campus-btn" onclick="showOrganizationsAndDepartments('SLSU-Lucban')">SLSU-Lucban</button>
         </div>
     </section>
 
-    <!-- Call-to-Action Section -->
-    <section class="text-center mt-5">
-        <h2>Ready to Join?</h2>
-        <p>Becoming a member is easy! Just fill out the form below, and we’ll guide you through the next steps to get involved. Don’t miss out on the chance to make a positive impact!</p>
-        <a href="organization-signup.html" class="btn btn-success">Join Now</a>
+    <!-- Dropdown for Selecting Departments -->
+    <section class="org-department-selection mt-5 text-center" id="departmentSelection" style="display: none;">
+        <h2 class="org-department-title">Select a Department</h2>
+        <select id="departmentDropdown" class="org-department-dropdown" onchange="updateOrganizations()">
+            <option value="">Select a Department</option>
+            <option value="CIT">CIT</option>
+            <option value="CEN">CEN</option>
+            <option value="CTE">CTE</option>
+            <option value="CAM">CAM</option>
+            <option value="CAS">CAS</option>
+            <option value="CABHA">CABHA</option>
+            <option value="CAG">CAG</option>
+        </select>
+    </section>
+
+    <!-- How to Contact Organizations -->
+    <section class="org-contact-info mt-5 text-center">
+        <h2 class="org-contact-title">How to Contact Organizations</h2>
+        <p class="org-contact-description">
+            To express your interest in joining any of the organizations listed below or to ask any questions, please contact them directly using the provided information.
+        </p>
+    </section>
+
+    <!-- Section for Available Organizations -->
+    <section class="org-available-organizations mt-5" id="availableOrganizations" style="display: none;">
+        <h2 class="org-available-title">Available Organizations</h2>
+        <div class="org-row row" id="orgList"></div>
     </section>
 </div>
 
-
-<!-- Example Learn More Modal -->
-<div class="custom-modal" id="modal-org1">
-  <div class="custom-modal-content">
-    <span class="close-btn" onclick="closeModal('modal-org1')">&times;</span>
-    <h3>Student Government</h3>
-    <p>Detailed description for Student Government goes here.</p>
-  </div>
-</div>
-
-<!-- Repeat for each organization -->
-<div class="custom-modal" id="modal-org2">
-  <div class="custom-modal-content">
-    <span class="close-btn" onclick="closeModal('modal-org2')">&times;</span>
-    <h3>Cultural Arts Club</h3>
-    <p>Detailed description for Cultural Arts Club goes here.</p>
-  </div>
-</div>
-
-<!-- Button with modified "Learn More" function -->
-<a href="#" class="btn btn-primary" onclick="openModal('modal-org1')">Learn More</a>
-<a href="#" class="btn btn-primary" onclick="openModal('modal-org2')">Learn More</a>
-
-<!-- Add more buttons and modals as needed -->
-</div>
-  
-  
-
+<!-- JavaScript to Handle Campus Selection -->
 <script>
-  function openModal(modalId) {
-    document.getElementById(modalId).style.display = "block";
-  }
-  
-  function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-  }
-  
-  window.onclick = function(event) {
-    const modals = document.getElementsByClassName("custom-modal");
-    Array.from(modals).forEach(modal => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  }
-  </script>
-    
+    function showOrganizationsAndDepartments(campus) {
+        const organizationsSection = document.getElementById('availableOrganizations');
+        const departmentSelection = document.getElementById('departmentSelection');
+        const orgList = document.getElementById('orgList');
+        const departmentDropdown = document.getElementById('departmentDropdown');
 
-  
+        // Show organizations section
+        organizationsSection.style.display = 'block';
+        departmentSelection.style.display = campus === 'SLSU-Lucban' ? 'block' : 'none';
+
+        // Clear previous organizations
+        orgList.innerHTML = '';
+        departmentDropdown.selectedIndex = 0; // Reset dropdown
+
+        // Organizations data
+        const organizations = [
+            { title: 'Student Government', description: 'Representing the voice of students and working collaboratively with university officials.', president: 'Jane Doe', contact: 'studentgovernment@example.com', campus: 'SLSU-Lucban', departments: ['CIT', 'CEN'] },
+            { title: 'Cultural Arts Club', description: 'Showcasing talents and promoting cultural diversity through various artistic expressions.', president: 'John Smith', contact: 'culturalarts@example.com', campus: 'SLSU-Lucban', departments: ['CAG'] },
+            { title: 'Environmental Society', description: 'Promoting sustainability and environmental awareness on campus through various initiatives.', president: 'Emily Clark', contact: 'environmentalsociety@example.com', campus: 'SLSU-Tayabas', departments: [] },
+            { title: 'Tech Innovators Club', description: 'Exploring technology and innovation through exciting projects and collaborations.', president: 'Alex Johnson', contact: 'techinnovators@example.com', campus: 'SLSU-Lucban', departments: ['CIT', 'CAM'] }
+        ];
+
+        // Function to add organizations to the list
+        function addToOrgList(org) {
+            orgList.innerHTML += `
+                <div class="org-card-col col-md-6 mb-4" data-campus="${org.campus}">
+                    <div class="org-card card h-100">
+                        <img src="../images/isit.jpg" class="org-card-img card-img-top" alt="${org.title}">
+                        <div class="org-card-body card-body">
+                            <h5 class="org-card-title card-title">${org.title}</h5>
+                            <p class="org-card-text card-text">${org.description}</p>
+                            <p class="org-president-name"><strong>President:</strong> ${org.president}</p>
+                            <p class="org-contact-details"><strong>Contact:</strong> <a href="mailto:${org.contact}">${org.contact}</a></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Filter and display organizations based on the selected campus
+        organizations.forEach(org => {
+            if (org.campus === campus) {
+                addToOrgList(org);
+            }
+        });
+    }
+
+    function updateOrganizations() {
+        const selectedDepartment = document.getElementById('departmentDropdown').value;
+        const orgList = document.getElementById('orgList');
+        const campus = 'SLSU-Lucban'; // Assuming campus selected is SLSU-Lucban for department filtering
+
+        // Clear previous organizations
+        orgList.innerHTML = '';
+
+        // Organizations data
+        const organizations = [
+            { title: 'Student Government', description: 'Representing the voice of students and working collaboratively with university officials.', president: 'Jane Doe', contact: 'studentgovernment@example.com', campus: 'SLSU-Lucban', departments: ['CIT', 'CEN'] },
+            { title: 'Cultural Arts Club', description: 'Showcasing talents and promoting cultural diversity through various artistic expressions.', president: 'John Smith', contact: 'culturalarts@example.com', campus: 'SLSU-Lucban', departments: ['CAG'] },
+            { title: 'Tech Innovators Club', description: 'Exploring technology and innovation through exciting projects and collaborations.', president: 'Alex Johnson', contact: 'techinnovators@example.com', campus: 'SLSU-Lucban', departments: ['CIT', 'CAM'] }
+        ];
+
+        // Add organizations based on selected department
+        organizations.forEach(org => {
+            if (org.campus === campus && org.departments.includes(selectedDepartment)) {
+                addToOrgList(org);
+            }
+        });
+    }
+</script>
+
+
+
+
+
+    
     <!-- Footer -->
 <footer class="footer">
     <div class="container">

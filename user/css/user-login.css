@@ -616,158 +616,362 @@ background-color: #45a049;
 }
 
 
-
-
-
-  
 body {
-  background: linear-gradient(135deg, #d4edda 0%, #185f43 100%);
+  background-color: #ececec;
 }
 
-  .login-container {
+/* Form Wrapper */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Center vertically */
+  padding: 20px; /* Padding for small screens */
+}
+
+/* Login and Register Styles */
+.login-form-container, .register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-form-box, .register-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 100px rgba(0, 255, 128, 0.5);
+
+
+  max-width: 400px; /* Set max width */
+  width: 100%; /* Set width to 100% */
+  transition: all 0.3s ease;
+  border: 1px solid #ccc;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #185F43;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.form-control {
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border 0.3s ease;
+  color: #000000;
+}
+
+.form-control:focus {
+  border-color: #185F43;
+  box-shadow: 0 0 8px rgba(24, 95, 67, 0.2);
+}
+
+.form-btn {
+  background-color: #185F43;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  border: none;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.form-btn:hover {
+  background-color: #148F5D;
+  color: #ffffff;
+}
+
+
+.forgot-password {
+  text-align: right;
+  margin-top: -10px;
+}
+
+.forgot-password a {
+  color: #185F43;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #148F5D;
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-footer a {
+  color: #185F43;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.separator span {
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.separator span:nth-child(1) {
+  margin-right: 10px;
+}
+
+.separator span:nth-child(2) {
+  margin-left: 10px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #a4a4a4;
+  background: #f0efef;
+  color: #333;
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.google-btn:hover {
+  background: #185F43; /* Change background color on hover */
+  color: #ffffff; /* Change text color on hover */
+}
+
+.google-btn svg {
+  width: 20px;
+  margin-right: 10px;
+}
+
+
+
+
+
+
+
+#modalOverlay {
+    position: fixed; /* Ensures it stays fixed on the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none; /* Initially hidden */
+    z-index: 999; /* Ensures it appears on top of other elements */
+}
+
+#messageBox {
+    position: fixed; /* Fixes it in place */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact center */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures it appears on top of modalOverlay */
+    display: none; /* Hidden initially */
+    width: 300px; /* Adjust size as needed */
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* From Uiverse.io by Yaya12085 */ 
+.card {
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  max-width: 290px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+}
+
+.dismiss {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: black;
+  border: 2px solid #D1D5DB;
+  font-size: 1rem;
+  font-weight: 300;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  transition: .3s ease;
+}
+
+.dismiss:hover {
+  background-color: #ee0d0d;
+  border: 2px solid #ee0d0d;
+  color: #fff;
+}
+
+/* Adjusted for reduced box height */
+.header {
+  padding: 0.75rem 0.5rem 0.5rem 0.5rem; /* Reduced padding */
+}
+
+.content {
+  margin-top: 0.5rem; /* Reduced top margin */
+  text-align: center;
+}
+
+.image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #0bfa72;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  animation: animate .6s linear alternate-reverse infinite;
+  transition: .6s ease;
+}
+
+.image svg {
+  color: #0afa2a;
+  width: 2rem;
+  height: 2rem;
+}
+.image svg path {
+  stroke: #ffffff; /* Set the stroke color to white */
+}
+
+.content {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.title {
+  color: #066e29;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.message {
+  margin-top: 1rem;
+  color: #595b5f;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.actions {
+  margin-top: 1.5rem; /* Increased the top margin to move the button down */
+  margin-bottom: 0.5rem; /* Adjust bottom margin if needed */
+  padding: 0 1rem;
+}
+
+.okay {
+  display: inline-flex;
+  padding: 0.5rem 1.25rem; /* Slightly increased padding for a better look */
+  background-color: #1aa06d;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transition for hover effect */
+}
+
+.okay:hover {
+  background-color: #138a57; /* Darker shade on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+
+
+
+@keyframes animate {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.09);
+  }
+}
+
+
+
+
+#registerModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
-    margin-top: 50px;
-  
-  }
-  
-  .login-box {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  .login-box h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #185F43;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  .form-control {
-    border-radius: 6px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    transition: border 0.3s ease;
-    color: #000000;
-  }
-
-
-  .form-control:focus {
-    border-color: #185F43;
-    box-shadow: 0 0 8px rgba(24, 95, 67, 0.2);
-  }
-
-  .email-label,
-  .password-label {
-      color: #000000; /* Change this color to your desired color */
-      font-size: 16px;
-      font-weight: 500;
-  }
-
-  .mb-2 {
-    margin-top: -10px; /* Adjust the margin as needed */
+    z-index: 1000; /* Ensure it appears above other content */
 }
 
-.mb-3 {
-  margin-top: -10px; /* Set the default for other elements */
+
+#registerMessageBox {
+  position: fixed; /* Fixes it in place */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for exact center */
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensures it appears on top of modalOverlay */
+  display: none; /* Hidden initially */
+  width: 300px; /* Adjust size as needed */
+  text-align: center;
+  border-radius: 8px;
 }
 
-  
-  .login-btn {
-    background-color: #185F43;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 6px;
-    width: 100%;
-    padding: 12px;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    border: none;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .login-btn:hover {
-    background-color: #148F5D;
-  }
-  
-  .forgot-password {
-    text-align: right;
-    margin-top: -10px;
-  }
-  
-  .forgot-password a {
-    color: #185F43;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .forgot-password a:hover {
-    text-decoration: underline;
-    color: #148F5D;
-  }
-  
-  .login-footer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .login-footer a {
-    color: #185F43;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .login-footer a:hover {
-    text-decoration: underline;
-    color: #148F5D;
-  }
-  
-  .error-msg {
-    color: red;
-    margin-bottom: 10px;
-    display: none;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .login-box {
-      padding: 30px;
-      max-width: 90%;
-    }
-  
-    .login-box h2 {
-      font-size: 24px;
-    }
-  
-    .login-btn {
-      padding: 10px;
-      font-size: 16px;
-    }
-  
-    /* Smaller text for Remember Me and Forgot Password on smaller screens */
-    .forgot-password a, 
-    label[for="rememberMe"] {
-      font-size: 14px;
-    }
-  }
-  
-  
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -785,8 +989,7 @@ body {
     padding-bottom: 20px; 
     overflow-x: hidden;
     bottom: 0; 
-    width: 100%; 
-    margin-top: 100px; 
+    width: 100%;  
   }
   
   /* Link styles within footer */

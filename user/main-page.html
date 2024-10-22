@@ -90,7 +90,24 @@
   
 
 
-
+<!-- Message Box For Register -->
+<div class="card" id="registerMessageBox" style="display: none;">
+  <button class="dismiss" type="button" onclick="closeMessage()">×</button>
+  <div class="header">
+      <div class="image">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+      </div>
+      <div class="content">
+          <span class="title">Registration successful!</span>
+          <p class="message">Your account has been created! Thank you for joining us!</p>
+      </div>
+      <div class="actions">
+          <button class="okay" type="button" onclick="closeMessage()">Okay</button>
+      </div>
+  </div>
+</div>
 
 
   <!-- JS FOR DROPDOWN ACTIVE LINK -->
@@ -533,166 +550,186 @@
 
 
 
-
-  <div class="recent-news-background">
-    <!-- Recent News -->
-    <div class="container text-center my-5">
+<div class="recent-news-background">
+  <!-- Recent News -->
+  <div class="container text-center my-5">
       <div class="recent-news-title">RECENT NEWS</div>
       <div class="row justify-content-center" id="news-container"></div>
 
       <!-- Pagination -->
       <div class="pagination mt-4">
-        <a href="#" class="prev">&lt; Previous</a>
-        <a href="#" class="page-number" data-page="1">1</a>
-        <a href="#" class="page-number" data-page="2">2</a>
-        <a href="#" class="page-number" data-page="3">3</a>
-        <a href="#" class="next">Next &gt;</a>
+          <a href="#" class="prev">&lt; Previous</a>
+          <a href="#" class="page-number" data-page="1">1</a>
+          <a href="#" class="page-number" data-page="2">2</a>
+          <a href="#" class="page-number" data-page="3">3</a>
+          <a href="#" class="next">Next &gt;</a>
       </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-<!-- Upcoming Events -->
-<div class="container text-center my-5">
-  <div class="upcoming-events-title">UPCOMING EVENTS</div>
-  <div class="events-title-underline mb-4"></div>
-
-  <!-- Image Gallery -->
-  <div class="upcoming-events-gallery">
-    <button class="upcoming-events-control upcoming-events-control-prev" aria-label="Previous">
-      <span class="upcoming-events-control-icon">&#10094;</span>
-    </button>
-
-    <div class="upcoming-events-container">
-      <div class="upcoming-events-inner">
-        <div class="upcoming-events-item">
-          <img src="../images/Volunteer.png" class="img-fluid" alt="Event Image 1">
-        </div>
-        <div class="upcoming-events-item">
-          <img src="../images/Volunteer.png" class="img-fluid" alt="Event Image 2">
-        </div>
-        <div class="upcoming-events-item">
-          <img src="../images/Volunteer.png" class="img-fluid" alt="Event Image 3">
-        </div>
-        <div class="upcoming-events-item">
-          <img src="../images/orgchart.png" class="img-fluid" alt="Event Image 4">
-        </div>
-        <div class="upcoming-events-item">
-          <img src="../images/orgchart.png" class="img-fluid" alt="Event Image 5">
-        </div>
-        <div class="upcoming-events-item">
-          <img src="../images/orgchart.png" class="img-fluid" alt="Event Image 6">
-        </div>
-        <!-- Add more images as needed -->
-      </div>
-    </div>
-
-    <button class="upcoming-events-control upcoming-events-control-next" aria-label="Next">
-      <span class="upcoming-events-control-icon">&#10095;</span>
-    </button>
   </div>
 </div>
 
-<!-- JS FOR UPCOMING EVENTS -->
+<!-- JS FOR RECENT NEWS -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const container = document.querySelector('.upcoming-events-container');
-    const inner = document.querySelector('.upcoming-events-inner');
-    const prevButton = document.querySelector('.upcoming-events-control-prev');
-    const nextButton = document.querySelector('.upcoming-events-control-next');
+      const newsData = [
+          { title: 'Community Service Initiative Launch', date: 'September 15, 2024', img: '../images/Volunteer.png' },
+          { title: 'New Health and Wellness Program', date: 'September 16, 2024', img: '../images/Volunteer.png' },
+          { title: 'Annual Fundraising Event Success', date: 'September 17, 2024', img: '../images/Volunteer.png' },
+          { title: 'Volunteer Opportunities Open', date: 'September 18, 2024', img: '../images/Volunteer.png' },
+          { title: 'New Scholarship Opportunities', date: 'September 19, 2024', img: '../images/Volunteer.png' },
+          { title: 'Sustainability Workshop Series', date: 'September 20, 2024', img: '../images/Volunteer.png' },
+          { title: 'News Title 7', date: 'July 7, 2024', img: '../images/Volunteer.png' },
+          { title: 'News Title 8', date: 'July 8, 2024', img: '../images/Volunteer.png' },
+          { title: 'News Title 9', date: 'July 9, 2024', img: '../images/Volunteer.png' }
+      ];
 
-    let index = 0; // Start from the first set of images
-    const itemWidth = document.querySelector('.upcoming-events-item').offsetWidth + 20; // Include margins
-    const items = document.querySelectorAll('.upcoming-events-item').length;
-    const visibleItems = 3; // Number of visible items
+      const itemsPerPage = 3;
+      const totalPages = Math.ceil(newsData.length / itemsPerPage);
+      let currentPage = 1;
 
-    // Clone first few items to append for seamless looping
-    const clonedItems = [];
-    for (let i = 0; i < visibleItems; i++) {
-      const clone = document.querySelectorAll('.upcoming-events-item')[i].cloneNode(true);
-      clonedItems.push(clone);
-      inner.appendChild(clone); // Append clone to the end
-    }
+      const newsContainer = document.getElementById('news-container');
+      const prevButton = document.querySelector('.prev');
+      const nextButton = document.querySelector('.next');
+      const pageNumbers = document.querySelectorAll('.page-number');
 
-    const totalItems = items + visibleItems; // Total items after cloning
-    const maxIndex = totalItems - visibleItems; // The max index for the visible items
+      function displayNews(page) {
+          // Add fade-out effect
+          newsContainer.classList.add('fade-out');
 
-    function updateGallery() {
-      const offset = -index * itemWidth;
-      inner.style.transition = 'transform 0.5s ease';
-      inner.style.transform = `translateX(${offset}px)`;
-    }
+          // Remove the news items after the fade-out animation completes
+          setTimeout(() => {
+              newsContainer.innerHTML = ''; // Clear the news container
+              const start = (page - 1) * itemsPerPage;
+              const end = start + itemsPerPage;
+              const paginatedNews = newsData.slice(start, end);
 
-    function nextSlide() {
-      index += visibleItems; // Move forward by the number of visible items
-      if (index >= maxIndex) {
-        index = visibleItems; // Reset to show the first clone set
-        inner.style.transition = 'none'; // Disable transition for instant change
-        const offset = -index * itemWidth;
-        inner.style.transform = `translateX(${offset}px)`;
+              paginatedNews.forEach(news => {
+                  const newsBox = document.createElement('div');
+                  newsBox.classList.add('col-md-3', 'news-box');
+                  newsBox.innerHTML = `
+                      <img src="${news.img}" alt="${news.title}">
+                      <div class="news-title">${news.title}</div>
+                      <div class="news-date">Date: ${news.date}</div>
+                      <div class="news-read-more-box">
+                          <a href="latest-news.html?news=${encodeURIComponent(news.title)}#${encodeURIComponent(news.title)}" class="news-read-more">Read more</a>
+                      </div>
+                  `;
+                  newsContainer.appendChild(newsBox);
+              });
 
-        // Wait for a brief moment before applying transition again
-        setTimeout(() => {
-          inner.style.transition = 'transform 0.5s ease'; // Re-enable transition
-          updateGallery(); // Update the gallery to show the correct images
-        }, 50); // Brief pause before next transition
-      } else {
-        updateGallery();
+              // Add fade-in effect after adding new items
+              newsContainer.classList.remove('fade-out'); // Remove fade-out effect
+              newsContainer.classList.add('fade-in'); // Add fade-in effect
+          }, 500); // Match this duration with the CSS animation duration
       }
-    }
 
-    function prevSlide() {
-      index -= visibleItems; // Move back by the number of visible items
-      if (index < visibleItems) {
-        index = maxIndex - visibleItems; // Wrap around to the last set
-        inner.style.transition = 'none'; // Disable transition for instant change
-        const offset = -index * itemWidth;
-        inner.style.transform = `translateX(${offset}px)`;
+      function updatePaginationButtons() {
+          prevButton.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+          nextButton.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
 
-        // Wait for a brief moment before applying transition again
-        setTimeout(() => {
-          inner.style.transition = 'transform 0.5s ease'; // Re-enable transition
-          updateGallery(); // Update the gallery to show the correct images
-        }, 50);
-      } else {
-        updateGallery();
+          pageNumbers.forEach(pageNumber => {
+              pageNumber.classList.toggle('active', parseInt(pageNumber.dataset.page) === currentPage);
+          });
       }
-    }
 
-    nextButton.addEventListener('click', function () {
-      nextSlide();
-    });
+      pageNumbers.forEach(pageNumber => {
+          pageNumber.addEventListener('click', function (e) {
+              e.preventDefault();
+              currentPage = parseInt(this.dataset.page);
+              displayNews(currentPage);
+              updatePaginationButtons();
+          });
+      });
 
-    prevButton.addEventListener('click', function () {
-      prevSlide();
-    });
+      prevButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (currentPage > 1) {
+              currentPage--;
+              displayNews(currentPage);
+              updatePaginationButtons();
+          }
+      });
 
-    // Auto-slide functionality
-    let autoSlideInterval = setInterval(nextSlide, 3000); // Change slides every 3 seconds
+      nextButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (currentPage < totalPages) {
+              currentPage++;
+              displayNews(currentPage);
+              updatePaginationButtons();
+          }
+      });
 
-    // Stop auto-slide on hover
-    container.addEventListener('mouseenter', function () {
-      clearInterval(autoSlideInterval);
-    });
-
-    // Resume auto-slide on mouse leave
-    container.addEventListener('mouseleave', function () {
-      autoSlideInterval = setInterval(nextSlide, 3000);
-    });
-
-    // Initialize to show the first three images correctly
-    updateGallery();
+      // Initial render
+      displayNews(currentPage);
+      updatePaginationButtons();
   });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="upcoming-events">
+  <h2>Upcoming Events</h2>
+  <div class="slider-container">
+      <div class="slider">
+          <div class="slide">
+              <img src="../images/message.jpg" alt="Event 1">
+              <img src="../images/message.jpg" alt="Event 2">
+              <img src="../images/message.jpg" alt="Event 3">
+          </div>
+          <div class="slide">
+              <img src="../images/message.jpg" alt="Event 4">
+              <img src="../images/message.jpg" alt="Event 5">
+              <img src="../images/message.jpg" alt="Event 6">
+          </div>
+          <div class="slide">
+              <img src="../images/message.jpg" alt="Event 7">
+              <img src="../images/message.jpg" alt="Event 8">
+              <img src="../images/message.jpg" alt="Event 9">
+          </div>
+          <!-- Add more slides as needed -->
+      </div>
+      <button class="slider-button prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="slider-button next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+</section>
+
+
+
+
+
+<script>
+let currentSlide = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+    const slider = document.querySelector('.slider');
+    slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+}
+
+function moveSlide(direction) {
+    showSlide(currentSlide + direction);
+}
+
+// Initialize slider to show the first slide
+showSlide(currentSlide);
+</script>
+
+
 
 
 
@@ -753,93 +790,7 @@
 
 
 
-  <!-- JS FOR RECENT NEWS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const newsData = [
-        { title: 'Community Service Initiative Launch', date: 'September 15, 2024', img: '../images/Volunteer.png' },
-        { title: 'New Health and Wellness Program', date: 'September 16, 2024', img: '../images/Volunteer.png' },
-        { title: 'Annual Fundraising Event Success', date: 'September 17, 2024', img: '../images/Volunteer.png' },
-        { title: 'Volunteer Opportunities Open', date: 'September 18, 2024', img: '../images/Volunteer.png' },
-        { title: 'New Scholarship Opportunities', date: 'September 19, 2024', img: '../images/Volunteer.png' },
-        { title: 'Sustainability Workshop Series', date: 'September 20, 2024', img: '../images/Volunteer.png' },
-        { title: 'News Title 7', date: 'July 7, 2024', img: '../images/Volunteer.png' },
-        { title: 'News Title 8', date: 'July 8, 2024', img: '../images/Volunteer.png' },
-        { title: 'News Title 9', date: 'July 9, 2024', img: '../images/Volunteer.png' }
-      ];
-
-      const itemsPerPage = 3;
-      const totalPages = Math.ceil(newsData.length / itemsPerPage);
-      let currentPage = 1;
-
-      const newsContainer = document.getElementById('news-container');
-      const prevButton = document.querySelector('.prev');
-      const nextButton = document.querySelector('.next');
-      const pageNumbers = document.querySelectorAll('.page-number');
-
-      function displayNews(page) {
-        newsContainer.innerHTML = '';
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedNews = newsData.slice(start, end);
-
-        paginatedNews.forEach(news => {
-          const newsBox = document.createElement('div');
-          newsBox.classList.add('col-md-3', 'news-box');
-          newsBox.innerHTML = `
-        <img src="${news.img}" alt="${news.title}">
-        <div class="news-title">${news.title}</div>
-        <div class="news-date">Date: ${news.date}</div>
-        <div class="news-read-more-box">
-          <a href="latest-news.html?news=${encodeURIComponent(news.title)}#${encodeURIComponent(news.title)}" class="news-read-more">Read more</a>
-        </div>
-      `;
-          newsContainer.appendChild(newsBox);
-        });
-      }
-
-      function updatePaginationButtons() {
-        prevButton.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
-        nextButton.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
-
-        pageNumbers.forEach(pageNumber => {
-          pageNumber.classList.toggle('active', parseInt(pageNumber.dataset.page) === currentPage);
-        });
-      }
-
-      pageNumbers.forEach(pageNumber => {
-        pageNumber.addEventListener('click', function (e) {
-          e.preventDefault();
-          currentPage = parseInt(this.dataset.page);
-          displayNews(currentPage);
-          updatePaginationButtons();
-        });
-      });
-
-      prevButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (currentPage > 1) {
-          currentPage--;
-          displayNews(currentPage);
-          updatePaginationButtons();
-        }
-      });
-
-      nextButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-          currentPage++;
-          displayNews(currentPage);
-          updatePaginationButtons();
-        }
-      });
-
-      // Initial render
-      displayNews(currentPage);
-      updatePaginationButtons();
-    });
-  </script>
- <!-- JS FOR UPCOMING EVENTS -->
+  
 
 
 

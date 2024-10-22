@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSCF</title>
-  <link rel="icon" type="image/x-icon" href="images/Logo.png">
-   <!-- Bootstrap JS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link rel="stylesheet" href="css/voting-form.css">
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <!-- Bootstrap JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/user-login.css">
+
 </head>
 
 <body>
@@ -392,111 +393,165 @@
   </script>
 
 
+<div class="form-wrapper">
+  <!-- Login Form -->
+  <div class="login-form-container" id="loginContainer">
+    <div class="login-form-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="error-msg" id="error-msg" style="display:none;">Invalid username or password.</div>
+        <div class="mb-3">
+          <label for="username" class="form-label email-label">Email</label>
+          <input type="email" class="form-control" id="username" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label password-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-2 d-flex justify-content-between align-items-center">
+          <div>
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe" class="form-label">Remember Me</label>
+          </div>
+          <div class="forgot-password">
+            <a href="https://accounts.google.com/signin/recovery" id="forgotPasswordLink" target="_blank">Forgot password?</a>
+          </div>
+        </div>
+        <button type="submit" class="form-btn login-btn">Login</button>
 
-<!-- Election Voting Form Section -->
-<section class="election-voting-form">
-  <div class="container">
-    <div class="form-box">
-      <h1>Election Voting Form</h1>
-      <p>Please fill out the details below to cast your vote.</p>
-
-      <form id="votingForm">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-
-        <!-- Aspiring President/Student Regent Section -->
-        <h2>Aspiring President/Student Regent</h2>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="president" value="candidate1" required>
-            <span>Candidate 1</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="president" value="candidate2">
-            <span>Candidate 2</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="president" value="candidate3">
-            <span>Candidate 3</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="president" value="candidate4">
-            <span>Candidate 4</span>
-          </label>
+        <!-- Separator -->
+        <div class="separator">
+          <span></span> Or <span></span>
         </div>
 
-        <!-- Aspiring Vice President - Internal Section -->
-        <h2>Aspiring Vice President - Internal</h2>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="vp_internal" value="candidate1" required>
-            <span>Candidate 1</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_internal" value="candidate2">
-            <span>Candidate 2</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_internal" value="candidate3">
-            <span>Candidate 3</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_internal" value="candidate4">
-            <span>Candidate 4</span>
-          </label>
-        </div>
-
-        <!-- Aspiring Vice President - External Section -->
-        <h2>Aspiring Vice President - External</h2>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="vp_external" value="candidate1" required>
-            <span>Candidate 1</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_external" value="candidate2">
-            <span>Candidate 2</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_external" value="candidate3">
-            <span>Candidate 3</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="vp_external" value="candidate4">
-            <span>Candidate 4</span>
-          </label>
-        </div>
-
-        <button type="submit">Submit Your Vote</button>
+        <button type="button" class="button google-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
+            <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path>
+            <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path>
+            <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"></path>
+            <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
+          </svg>
+          Continue with Google
+        </button>
       </form>
 
-      <p class="info">Your vote is confidential and will remain anonymous.</p>
+      <!-- Add Sign Up option here -->
+      <div class="signup-footer mt-3">
+        <p>Don't have an account? <a href="#" id="signUpLink">Sign up here</a></p>
+      </div>
     </div>
   </div>
 
-  <!-- Modal Overlay -->
-  <div id="modalOverlay" style="display: none;"></div>
+  <!-- Register Form -->
+  <div class="register-container" id="registerContainer" style="display: none;">
+    <div class="register-box">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirm-password" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="form-btn register-btn">Register</button>
 
-<!-- Message Box -->
+        <div class="signup-footer">
+          <p>Already have an account? <a href="#" id="loginLink">Login here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// Function to switch between login and registration forms
+document.getElementById('signUpLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('loginContainer').style.display = 'none';
+  document.getElementById('registerContainer').style.display = 'flex'; // Changed to flex
+  centerForms();
+});
+
+document.getElementById('loginLink').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('registerContainer').style.display = 'none';
+  document.getElementById('loginContainer').style.display = 'flex'; // Changed to flex
+  centerForms();
+});
+
+// Center forms function
+function centerForms() {
+  const loginContainer = document.getElementById('loginContainer');
+  const registerContainer = document.getElementById('registerContainer');
+
+  // Ensure wrapper is centered
+  if (loginContainer.style.display === 'flex' || registerContainer.style.display === 'flex') {
+    document.querySelector('.form-wrapper').style.justifyContent = 'center';
+    document.querySelector('.form-wrapper').style.alignItems = 'center';
+  }
+}
+
+// Initial call to center forms
+centerForms();
+
+</script>
+
+<!-- Modal Overlay -->
+<div id="modalOverlay" style="display: none;"></div>
+
+<!-- Message Box For Login -->
 <div class="card" id="messageBox" style="display: none;">
   <button class="dismiss" type="button" onclick="closeMessage()">×</button>
   <div class="header">
     <div class="image">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
       </svg>
     </div>
-
     <div class="content">
-      <span class="title">Vote Submitted!</span>
-      <p class="message">Thank you for casting your vote. Your voice matters, and it will contribute to making a difference!</p>
+      <span class="title">Login successful!</span>
+      <p class="message">You have successfully logged in! Welcome back!</p>
     </div>
     <div class="actions">
-      <button class="history" id="historyButton" type="button" onclick="showVotingHistory()">Voting History</button>
-      <button class="confirm" type="button" onclick="closeMessage()">Confirm</button> <!-- Redirects to voting.html -->
+      <button class="okay history" type="button" onclick="closeMessage()">Okay</button> <!-- Adjusted class -->
+    </div>
+  </div>
+</div>
+
+
+<!-- Message Box For Register -->
+<div class="card" id="registerMessageBox" style="display: none;">
+  <button class="dismiss" type="button" onclick="closeMessage()">×</button>
+  <div class="header">
+    <div class="image">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="content">
+      <span class="title">Registration successful!</span>
+      <p class="message">Your account has been created! Thank you for joining us!</p>
+    </div>
+    <div class="actions">
+      <button class="okay track" type="button" onclick="closeMessage()">Okay</button> <!-- Adjusted class -->
     </div>
   </div>
 </div>
@@ -507,129 +562,175 @@
 
 
 
-
-
-
-  
 <script>
-  // Variables to store vote counts
-  let presidentVotes = { 'Candidate 1': 0, 'Candidate 2': 0, 'Candidate 3': 0, 'Candidate 4': 0 };
-  let vpInternalVotes = { 'Candidate 1': 0, 'Candidate 2': 0, 'Candidate 3': 0, 'Candidate 4': 0 };
-  let vpExternalVotes = { 'Candidate 1': 0, 'Candidate 2': 0, 'Candidate 3': 0, 'Candidate 4': 0 };
-
-  // Array to store user's voting history
-  let votingHistory = [];
-
-  // Submit Vote and Store Voting Data
-  document.getElementById('votingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // Capture vote choices
-      const president = document.querySelector('input[name="president"]:checked').nextElementSibling.textContent;
-      const vpInternal = document.querySelector('input[name="vp_internal"]:checked').nextElementSibling.textContent;
-      const vpExternal = document.querySelector('input[name="vp_external"]:checked').nextElementSibling.textContent;
-
-      // Increment the vote counts
-      presidentVotes[president]++;
-      vpInternalVotes[vpInternal]++;
-      vpExternalVotes[vpExternal]++;
-
-      // Store the voting choices in the history
-      votingHistory.push({ president, vpInternal, vpExternal });
-
-      // Show the message box and hide the voting form
-      showMessage();
-  });
-
-  // Function to close the message box and redirect
-  function closeMessage() {
-      const messageBox = document.getElementById('messageBox');
-      const modalOverlay = document.getElementById('modalOverlay');
-
-      messageBox.style.opacity = 0; // Fade out effect
-      setTimeout(() => {
-          messageBox.classList.remove('show'); // Remove class after fade out
-          messageBox.style.display = 'none'; // Hide message box
-          modalOverlay.style.display = 'none'; // Hide overlay
-
-          // Redirect to voting.html
-          window.location.href = 'voting.html';
-      }, 500); // Match with CSS transition duration
+  // Predefined credentials
+  const adminUsername = "eric@gmail.com"; // Changed to include Gmail requirement
+  const adminPassword = "eric";
+  
+  // Check local storage for saved email
+  const savedEmail = localStorage.getItem('savedEmail');
+  if (savedEmail) {
+      document.getElementById('username').value = savedEmail; // Populate username field with saved email
+      document.getElementById('rememberMe').checked = true; // Check the Remember Me checkbox
   }
-
-  // Function to show the message box
-  function showMessage() {
-      const messageBox = document.getElementById('messageBox');
-      const modalOverlay = document.getElementById('modalOverlay');
-      const formContainer = document.querySelector('.election-voting-form .container');
-
-      // Hide the voting form
-      formContainer.style.display = 'none'; // Hide the entire container
-
-      modalOverlay.style.display = 'block'; // Show overlay
-
-      setTimeout(() => {
-          messageBox.classList.add('show'); // Add class for fade-in
-          messageBox.style.display = 'block'; // Show message box
+  
+  document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+  
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-msg');
+      let usernameError = false;
+      let passwordError = false;
+  
+      // Reset error message and styles
+      errorMsg.style.display = 'none';
+      document.getElementById('username').classList.remove('is-invalid');
+      document.getElementById('password').classList.remove('is-invalid');
+  
+      // Check credentials
+      if (username !== adminUsername) {
+          usernameError = true;
+          document.getElementById('username').classList.add('is-invalid');
+      }
+  
+      if (password !== adminPassword) {
+          passwordError = true;
+          document.getElementById('password').classList.add('is-invalid');
+      }
+  
+      if (usernameError || passwordError) {
+          errorMsg.style.display = 'block';
+          if (usernameError && !passwordError) {
+              document.getElementById('username').focus(); // Focus on username if only username is incorrect
+          } else if (!usernameError && passwordError) {
+              document.getElementById('password').focus(); // Focus on password if only password is incorrect
+          }
+          return; // Stop the function here if either username or password is incorrect
+      }
+  
+      // Show modal with success message
+      document.getElementById('messageBox').style.display = 'block'; // Show the success message box
+      document.getElementById('modalOverlay').style.display = 'block'; // Show the overlay
+      document.getElementById('messageTitle').innerText = 'Login successful!';
+      document.getElementById('messageText').innerText = 'You have successfully logged in! Welcome back!';
+  
+      // Store profile data
+      const profileImage = "path/to/profile/image.jpg"; // Set the profile image path
+      localStorage.setItem('username', username); // Store the username
+      localStorage.setItem('profileImage', profileImage); // Store the profile image path
+  
+      // Remember Me functionality
+      if (document.getElementById('rememberMe').checked) {
+          localStorage.setItem('savedEmail', username); // Save the email in localStorage
+      } else {
+          localStorage.removeItem('savedEmail'); // Remove saved email if checkbox is unchecked
+      }
+  
+      // Directly update the profile in the main page
+      if (window.opener) {
+          window.opener.updateProfile(); // Call updateProfile to refresh the profile display
+      }
+  
+      // Wait for the user to click okay before proceeding with further actions
+      document.getElementById('messageOkayButton').onclick = function() {
+          showLoading(); // Show loading screen
           setTimeout(() => {
-              messageBox.style.opacity = 1; // Fade in effect
-          }, 10); // Slight delay to allow transition
-      }, 100); // Delay to show overlay before message box
+              window.close(); // Close the current login tab
+          }, 1500); // Delay of 1500 milliseconds (1.5 seconds)
+      };
+  });
+  
+  // Function to display the loading spinner
+  function showLoading() {
+      document.getElementById('loading').style.display = 'flex'; // Show loading screen
   }
-
-  // Function to show voting history
-  function showVotingHistory() {
-      const messageBox = document.getElementById('messageBox');
-      const content = messageBox.querySelector('.content');
-
-      // Clear existing content and append the history
-      content.innerHTML = ''; // Clear previous content
-
-      // Create a heading for the voting history
-      const historyTitle = document.createElement('h3');
-      historyTitle.textContent = 'History of Your Votes';
-      content.appendChild(historyTitle); // Add title to content
-
-      // Create a container for the voting history
-      const votingHistoryContainer = document.createElement('div');
-      votingHistoryContainer.className = 'voting-history'; // Add container class
-
-      // Display the user's vote choices
-      votingHistory.forEach((vote, index) => {
-          const voteDetails = document.createElement('div');
-          voteDetails.className = 'vote-details'; // Add class for individual vote
-          voteDetails.innerHTML = `
-              <strong>Vote ${index + 1}:</strong>
-              <p>President: <span class="candidate">${vote.president}</span></p>
-              <p>Vice Internal: <span class="candidate">${vote.vpInternal}</span></p>
-              <p>Vice External: <span class="candidate">${vote.vpExternal}</span></p>
-          `;
-          votingHistoryContainer.appendChild(voteDetails); // Add vote details to container
-      });
-
-      content.appendChild(votingHistoryContainer); // Append the container to the content
-
-      // Hide the initial success message and voting history button
-      const initialMessage = messageBox.querySelector('h3');
-      initialMessage.style.display = 'none'; // Hide "Voting Successful" message
-      document.getElementById('historyButton').style.display = 'none'; // Hide voting history button
+  
+  // Function to close the modal message
+  function closeMessage() {
+      document.getElementById('messageBox').style.display = 'none'; // Hide the success message box
+      document.getElementById('modalOverlay').style.display = 'none'; // Hide the overlay
   }
-</script>
+  
+  // Add event listener for returning to the main site
+  document.getElementById('returnToMainSite').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      window.location.href = 'main-page.html'; // Redirect to main-page.html
+  });
+  
+  // Add event listener for forgot password
+  document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      // Redirect to Gmail's password recovery page
+      window.open('https://accounts.google.com/signin/recovery', '_blank'); 
+  });
+  </script>
   
 
 
 
-</section>
-
-      
 
 
 
 
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-md-4 text-center">
+          <img src="../images/SSCF-Footer-Logo.png" alt="Logo" class="img-fluid mb-3">
+          <div class="logo-description-section">
+            <p class="mb-0">This is the highest governing and policy-making body of Southern Luzon State University (SLSU)
+              student body.</p>
+          </div>
+        </div>
+        <!-- Contact Us -->
+        <div class="col-md-4">
+          <div class="contact-us-section">
+            <h5>Contact Us</h5>
+            <p>Email: <a href="mailto:slsusscf@slsu.edu.ph" class="text-white">slsusscf@slsu.edu.ph</a></p>
+            <p>Phone: 09123456789</p>
+          </div>
+          <div class="visit-us-section">
+            <h5>Visit Us</h5>
+            <p>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+        <!-- About Us -->
+        <div class="col-md-4">
+          <div class="about-us-section">
+            <h5>About Us</h5>
+            <p>Supreme Student Council Federation of Southern Luzon State University, dedicated to empowering students by
+              promoting academic and social well-being, fostering community, and providing a platform for student voices
+              to be heard.</p>
+          </div>
+          <div class="get-in-touch-section">
+            <h5>Get in Touch</h5>
+            <p>
+              <a href="mailto:slsusscf@slsu.edu.ph" class="text-white"><i class="fas fa-envelope"></i> Gmail</a> |
+              <a href="https://facebook.com" class="text-white"><i class="fab fa-facebook-f"></i> Facebook</a> |
+              <a href="https://twitter.com" class="text-white"><i class="fab fa-twitter"></i> Twitter</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr class="hr-divider">
+      <div class="row mt-3">
+        <div class="col-md-12 text-center">
+          <p class="footer-center-text">© 2024 SLSU Supreme Student Council Federation. All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
