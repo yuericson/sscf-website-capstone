@@ -807,7 +807,11 @@ background-color: #45a049;
 /* ORGANIZATIONAL CHART */
 /* ORGANIZATIONAL CHART BACKGROUND */
 .org-chart-background {
-  background-color: #ffffff; /* Choose your desired background color */
+  background-image: url('../images/orgbg.png'); /* Set your background image here */
+  background-attachment: fixed; /* Keeps the background fixed for parallax effect */
+  background-position: center; /* Centers the background */
+  background-repeat: no-repeat; /* Prevents background repetition */
+  background-size: cover; /* Covers the entire background area */
   padding: 0.1em 2em; /* Adjusted padding: less on top, more on sides */
   border-radius: 10px; /* Optional: rounded corners for aesthetics */
 }
@@ -816,9 +820,9 @@ background-color: #45a049;
 .org-chart-container {
   max-width: 1200px; /* Or any width you prefer */
   margin: auto; /* Center the container */
+  position: relative; /* For stacking context */
+  z-index: 2; /* Bring content above the background */
 }
-
-
 
 .organization-title {
   font-size: 2em;
@@ -881,13 +885,13 @@ display: block; /* Ensure the image is treated as a block element */
 
 
 
-/* RECENT TITLE */
+/* Recent News Background */
 .recent-news-background {
-  background-color: #4ff9a4; /* Change this to your desired background color */
-  padding: 1px 0; /* Reduced top padding and added bottom padding */
+  background-color: #07ff7b;
+  padding: 50px 0;
 }
 
-/* RECENT TITLE */
+/* Recent News Title */
 .recent-news-title {
   margin-bottom: 30px;
   font-weight: bold;
@@ -904,12 +908,15 @@ display: block; /* Ensure the image is treated as a block element */
   display: inline-block;
 }
 
+/* News Box Styles */
 .news-box {
   border: 2px solid #185F43;
   padding: 20px;
-  margin: 10px;
+  margin: 25px;
   text-align: center;
   background-color: #f9f9f9;
+  flex: 1 1 200px;
+  max-width: 400px;
 }
 
 .news-box img {
@@ -943,11 +950,13 @@ display: block; /* Ensure the image is treated as a block element */
   border-radius: 5px;
 }
 
+/* Pagination Styles */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .pagination a {
@@ -960,13 +969,13 @@ display: block; /* Ensure the image is treated as a block element */
   padding: 5px 10px;
   border: 1px solid #185F43;
   border-radius: 5px;
+  margin: 0 5px;
 }
 
-/* Active Page Number Background */
 .pagination .page-number.active {
-  background-color: #185F43; /* Change this to your desired active color */
-  color: #ffffff; /* Change text color to white for better contrast */
-  border: 1px solid #185F43; /* Match border with background */
+  background-color: #185F43;
+  color: #ffffff;
+  border: 1px solid #185F43;
 }
 
 .pagination .prev,
@@ -974,37 +983,120 @@ display: block; /* Ensure the image is treated as a block element */
   font-weight: bold;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Fade-In Effect */
+/* Fade Effects */
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
-/* Fade-Out Effect */
 .fade-out {
-  animation: fadeOut 0.5s ease-in-out forwards; /* Use forwards to keep the opacity */
+  opacity: 1;
+  animation: fadeOut 0.5s ease-in-out forwards;
 }
 
 @keyframes fadeOut {
   from {
-      opacity: 1;
+    opacity: 1;
   }
   to {
-      opacity: 0;
+    opacity: 0;
   }
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .recent-news-title {
+    font-size: 1.5rem;
+  }
+  
+  .news-box {
+    margin: 10px;
+    flex: 1 1 150px;
+  }
+
+  .news-box .news-title {
+    font-size: 1.3em;
+  }
+
+  .pagination .page-number {
+    padding: 4px 8px;
+  }
+
+  .pagination a {
+    font-size: 0.9em;
+  }
+}
+
+/* Extra Small Screens - 425px and below */
+@media (max-width: 425px) {
+  .recent-news-background {
+    padding: 30px 0;
+  }
+
+  .recent-news-title {
+    font-size: 1.3rem;
+    padding: 10px 15px;
+  }
+
+  #news-container {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the single news box */
+    flex-direction: column; /* Arrange boxes in a column */
+    align-items: center; /* Center items */
+    overflow: hidden; /* Hide overflow for neatness */
+  }
+
+  .news-box {
+    display: none; /* Hide all news boxes by default */
+  }
+
+  .news-box:first-child {
+    display: block; /* Only show the first news box */
+    margin: 8px 0; /* Vertical spacing */
+    padding: 15px;
+    flex: 0 0 auto; /* Prevent the box from shrinking */
+    max-width: 100%; /* Ensure full width */
+    width: 100%; /* Take full width */
+  }
+
+  .news-box img {
+    width: 100%;
+    height: auto;
+  }
+
+  .news-box .news-title {
+    font-size: 1.2em;
+  }
+
+  .news-box .news-date {
+    font-size: 0.85em;
+  }
+
+  .news-read-more {
+    padding: 4px 8px;
+    font-size: 0.85em;
+  }
+
+  .pagination {
+    display: none; /* Hide pagination on small screens */
+  }
+}
+
+
+
+
+
+
+
 
 
 
@@ -1012,50 +1104,35 @@ display: block; /* Ensure the image is treated as a block element */
 
 
 .upcoming-events {
-  background-color: red; /* Red background for the entire section */
-  padding: 50px; /* Reduced padding */
+  background: linear-gradient(to bottom right, rgba(24, 95, 67, 0.8), rgba(20, 77, 52, 0.8)); /* Gradient with transparency */
+  padding: 50px;
   text-align: center;
-  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 600px; /* Increased height for the section */
 }
 
 h2 {
   color: #fff; /* White text color for contrast */
-  margin-bottom: 35px; /* Reduced margin */
+  margin-bottom: 35px;
 }
 
 .slider-container {
   position: relative;
-  max-width: 90%; /* Responsive width */
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
-  background-color: transparent; /* Keeping this transparent if you want the section background visible */
+  max-width: 700px; /* Maximum width for the slider */
+  margin: auto; /* Center the container */
+  overflow: hidden; /* Hide overflow */
 }
 
 .slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+  display: flex; /* Use flexbox for layout */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for slides */
 }
 
-.slide {
-  display: flex; /* Allow images to be displayed in a row */
-  min-width: 100%;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.slide img {
-  width: calc(33.33% - 10px); /* Adjusted for spacing */
-  height: auto;
-  border-radius: 10px;
-  display: block; /* Ensures no space below images */
-  margin-right: 10px; /* Right margin for spacing */
-}
-
-.slide img:last-child {
-  margin-right: 0; /* Remove right margin for the last image */
+.slider img {
+  min-width: 100%; /* Ensure each image takes full width of the slider */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 80vh; /* Set max-height to avoid overflow */
+  border-radius: 10px; /* Rounded corners for images */
+  object-fit: contain; /* Make sure entire image is visible */
 }
 
 .slider-button {
@@ -1065,21 +1142,67 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5); /* Button background */
   color: white;
   border: none;
-  padding: 5px; /* Reduced padding */
+  padding: 10px;
   cursor: pointer;
   border-radius: 5px;
   z-index: 1;
-  font-size: 16px; /* Reduced font size */
+  font-size: 16px;
 }
 
-/* Add specific styles for prev and next buttons if needed */
 .slider-button.prev {
-  left: 10px; /* Adjust position as needed */
+  left: 10px; /* Position for the previous button */
 }
 
 .slider-button.next {
-  right: 10px; /* Adjust position as needed */
+  right: 10px; /* Position for the next button */
 }
+
+/* Media Queries for Tablet and Mobile Devices */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .slider-button.prev {
+    left: 20px; /* Move left button closer to the image */
+  }
+
+  .slider-button.next {
+    right: 20px; /* Move right button closer to the image */
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .slider-button.prev {
+    left: 1px; /* Move left button further outside the image */
+  }
+
+  .slider-button.next {
+    right: 1px; /* Move right button further outside the image */
+  }
+}
+
+/* Mobile Styles for 425px and Below */
+@media (max-width: 425px) {
+  .slider-button {
+    padding: 5px 10px; /* Reduced padding for smaller buttons */
+    font-size: 14px; /* Smaller font size */
+    width: 25px; /* Set a specific width for the buttons */
+    margin: 0 auto; /* Center buttons */
+  }
+
+  .slider-button.prev {
+    left: -5px; /* Adjust left button position closer to the image */
+  }
+
+  .slider-button.next {
+    right: -5px; /* Adjust right button position closer to the image */
+  }
+}
+
+
+
+
+
 
 
 

@@ -486,6 +486,7 @@
   </div>
 </div>
 
+
 <!-- President Corner -->
 <div class="container text-center my-5">
   <div class="president-title">PRESIDENT'S MESSAGE</div>
@@ -551,121 +552,143 @@
 
 
 <div class="recent-news-background">
-  <!-- Recent News -->
-  <div class="container text-center my-5">
-      <div class="recent-news-title">RECENT NEWS</div>
-      <div class="row justify-content-center" id="news-container"></div>
+  <div class="container text-center">
+    <h2 class="recent-news-title">Recent News</h2>
+    <div id="news-container" class="row justify-content-center"></div>
 
-      <!-- Pagination -->
-      <div class="pagination mt-4">
-          <a href="#" class="prev">&lt; Previous</a>
-          <a href="#" class="page-number" data-page="1">1</a>
-          <a href="#" class="page-number" data-page="2">2</a>
-          <a href="#" class="page-number" data-page="3">3</a>
-          <a href="#" class="next">Next &gt;</a>
-      </div>
+    <!-- Pagination -->
+    <div class="pagination mt-4">
+      <a href="#" class="prev">&lt; Previous</a>
+      <div class="page-numbers"></div>
+      <a href="#" class="next">Next &gt;</a>
+    </div>
   </div>
 </div>
 
+
+
 <!-- JS FOR RECENT NEWS -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-      const newsData = [
-          { title: 'Community Service Initiative Launch', date: 'September 15, 2024', img: '../images/Volunteer.png' },
-          { title: 'New Health and Wellness Program', date: 'September 16, 2024', img: '../images/Volunteer.png' },
-          { title: 'Annual Fundraising Event Success', date: 'September 17, 2024', img: '../images/Volunteer.png' },
-          { title: 'Volunteer Opportunities Open', date: 'September 18, 2024', img: '../images/Volunteer.png' },
-          { title: 'New Scholarship Opportunities', date: 'September 19, 2024', img: '../images/Volunteer.png' },
-          { title: 'Sustainability Workshop Series', date: 'September 20, 2024', img: '../images/Volunteer.png' },
-          { title: 'News Title 7', date: 'July 7, 2024', img: '../images/Volunteer.png' },
-          { title: 'News Title 8', date: 'July 8, 2024', img: '../images/Volunteer.png' },
-          { title: 'News Title 9', date: 'July 9, 2024', img: '../images/Volunteer.png' }
-      ];
+document.addEventListener('DOMContentLoaded', function () {
+    const newsData = [
+        { title: 'Community Service Initiative Launch', date: 'September 15, 2024', img: '../images/Volunteer.png' },
+        { title: 'New Health and Wellness Program', date: 'September 16, 2024', img: '../images/Volunteer.png' },
+        { title: 'Annual Fundraising Event Success', date: 'September 17, 2024', img: '../images/Volunteer.png' },
+        { title: 'Volunteer Opportunities Open', date: 'September 18, 2024', img: '../images/Volunteer.png' },
+        { title: 'New Scholarship Opportunities', date: 'September 19, 2024', img: '../images/Volunteer.png' },
+        { title: 'Sustainability Workshop Series', date: 'September 20, 2024', img: '../images/Volunteer.png' },
+        { title: 'News Title 7', date: 'July 7, 2024', img: '../images/Volunteer.png' },
+        { title: 'News Title 8', date: 'July 8, 2024', img: '../images/Volunteer.png' },
+        { title: 'News Title 9', date: 'July 9, 2024', img: '../images/Volunteer.png' }
+        
+    ];
 
-      const itemsPerPage = 3;
-      const totalPages = Math.ceil(newsData.length / itemsPerPage);
-      let currentPage = 1;
+    const itemsPerPage = 2;
+    const totalPages = Math.ceil(newsData.length / itemsPerPage);
+    let currentPage = 1;
 
-      const newsContainer = document.getElementById('news-container');
-      const prevButton = document.querySelector('.prev');
-      const nextButton = document.querySelector('.next');
-      const pageNumbers = document.querySelectorAll('.page-number');
+    const newsContainer = document.getElementById('news-container');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const pageNumbersContainer = document.querySelector('.page-numbers');
 
-      function displayNews(page) {
-          // Add fade-out effect
-          newsContainer.classList.add('fade-out');
+    function displayNews(page) {
+        newsContainer.classList.add('fade-out');
 
-          // Remove the news items after the fade-out animation completes
-          setTimeout(() => {
-              newsContainer.innerHTML = ''; // Clear the news container
-              const start = (page - 1) * itemsPerPage;
-              const end = start + itemsPerPage;
-              const paginatedNews = newsData.slice(start, end);
+        setTimeout(() => {
+            newsContainer.innerHTML = '';
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedNews = newsData.slice(start, end);
 
-              paginatedNews.forEach(news => {
-                  const newsBox = document.createElement('div');
-                  newsBox.classList.add('col-md-3', 'news-box');
-                  newsBox.innerHTML = `
-                      <img src="${news.img}" alt="${news.title}">
-                      <div class="news-title">${news.title}</div>
-                      <div class="news-date">Date: ${news.date}</div>
-                      <div class="news-read-more-box">
-                          <a href="latest-news.html?news=${encodeURIComponent(news.title)}#${encodeURIComponent(news.title)}" class="news-read-more">Read more</a>
-                      </div>
-                  `;
-                  newsContainer.appendChild(newsBox);
-              });
+            paginatedNews.forEach(news => {
+                const newsBox = document.createElement('div');
+                newsBox.classList.add('col-md-3', 'news-box');
+                newsBox.innerHTML = `
+                    <img src="${news.img}" alt="${news.title}">
+                    <div class="news-title">${news.title}</div>
+                    <div class="news-date">Date: ${news.date}</div>
+                    <div class="news-read-more-box">
+                        <a href="latest-news.html?news=${encodeURIComponent(news.title)}#${encodeURIComponent(news.title)}" class="news-read-more">Read more</a>
+                    </div>
+                `;
+                newsContainer.appendChild(newsBox);
+            });
 
-              // Add fade-in effect after adding new items
-              newsContainer.classList.remove('fade-out'); // Remove fade-out effect
-              newsContainer.classList.add('fade-in'); // Add fade-in effect
-          }, 500); // Match this duration with the CSS animation duration
-      }
+            newsContainer.classList.remove('fade-out');
+            newsContainer.classList.add('fade-in');
 
-      function updatePaginationButtons() {
-          prevButton.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
-          nextButton.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+            setTimeout(() => {
+                newsContainer.classList.remove('fade-in');
+            }, 500);
+        }, 500);
+    }
 
-          pageNumbers.forEach(pageNumber => {
-              pageNumber.classList.toggle('active', parseInt(pageNumber.dataset.page) === currentPage);
-          });
-      }
+    function updatePaginationButtons() {
+        prevButton.style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+        nextButton.style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
 
-      pageNumbers.forEach(pageNumber => {
-          pageNumber.addEventListener('click', function (e) {
-              e.preventDefault();
-              currentPage = parseInt(this.dataset.page);
-              displayNews(currentPage);
-              updatePaginationButtons();
-          });
-      });
+        pageNumbersContainer.innerHTML = '';
+        const maxVisiblePages = 5; // Maximum number of page numbers to display
+        let startPage, endPage;
 
-      prevButton.addEventListener('click', function (e) {
-          e.preventDefault();
-          if (currentPage > 1) {
-              currentPage--;
-              displayNews(currentPage);
-              updatePaginationButtons();
-          }
-      });
+        if (totalPages <= maxVisiblePages) {
+            // If total pages are less than or equal to maxVisiblePages
+            startPage = 1;
+            endPage = totalPages;
+        } else {
+            // Calculate start and end page
+            if (currentPage <= Math.ceil(maxVisiblePages / 2)) {
+                startPage = 1;
+                endPage = maxVisiblePages;
+            } else if (currentPage + Math.floor(maxVisiblePages / 2) >= totalPages) {
+                startPage = totalPages - maxVisiblePages + 1;
+                endPage = totalPages;
+            } else {
+                startPage = currentPage - Math.floor(maxVisiblePages / 2);
+                endPage = currentPage + Math.floor(maxVisiblePages / 2);
+            }
+        }
 
-      nextButton.addEventListener('click', function (e) {
-          e.preventDefault();
-          if (currentPage < totalPages) {
-              currentPage++;
-              displayNews(currentPage);
-              updatePaginationButtons();
-          }
-      });
+        for (let i = startPage; i <= endPage; i++) {
+            const pageNumber = document.createElement('span');
+            pageNumber.classList.add('page-number');
+            pageNumber.textContent = i;
+            pageNumber.dataset.page = i;
+            if (i === currentPage) pageNumber.classList.add('active');
+            pageNumber.addEventListener('click', function () {
+                currentPage = i;
+                displayNews(currentPage);
+                updatePaginationButtons();
+            });
+            pageNumbersContainer.appendChild(pageNumber);
+        }
+    }
 
-      // Initial render
-      displayNews(currentPage);
-      updatePaginationButtons();
-  });
+    prevButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            displayNews(currentPage);
+            updatePaginationButtons();
+        }
+    });
+
+    nextButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayNews(currentPage);
+            updatePaginationButtons();
+        }
+    });
+
+    displayNews(currentPage);
+    updatePaginationButtons();
+});
+
+
 </script>
-
-
-
 
 
 
@@ -679,22 +702,15 @@
   <h2>Upcoming Events</h2>
   <div class="slider-container">
       <div class="slider">
-          <div class="slide">
-              <img src="../images/message.jpg" alt="Event 1">
-              <img src="../images/message.jpg" alt="Event 2">
-              <img src="../images/message.jpg" alt="Event 3">
-          </div>
-          <div class="slide">
-              <img src="../images/message.jpg" alt="Event 4">
-              <img src="../images/message.jpg" alt="Event 5">
-              <img src="../images/message.jpg" alt="Event 6">
-          </div>
-          <div class="slide">
-              <img src="../images/message.jpg" alt="Event 7">
-              <img src="../images/message.jpg" alt="Event 8">
-              <img src="../images/message.jpg" alt="Event 9">
-          </div>
-          <!-- Add more slides as needed -->
+          <img src="../images/message.jpg" alt="Event 1">
+          <img src="../images/message.jpg" alt="Event 2">
+          <img src="../images/message.jpg" alt="Event 3">
+          <img src="../images/message.jpg" alt="Event 4">
+          <img src="../images/message.jpg" alt="Event 5">
+          <img src="../images/message.jpg" alt="Event 6">
+          <img src="../images/message.jpg" alt="Event 7">
+          <img src="../images/message.jpg" alt="Event 8">
+          <img src="../images/message.jpg" alt="Event 9">
       </div>
       <button class="slider-button prev" onclick="moveSlide(-1)">&#10094;</button>
       <button class="slider-button next" onclick="moveSlide(1)">&#10095;</button>
@@ -705,29 +721,40 @@
 
 
 
+
 <script>
-let currentSlide = 0;
+  let currentSlide = 0;
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    if (index >= slides.length) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = slides.length - 1;
-    } else {
-        currentSlide = index;
-    }
-    const slider = document.querySelector('.slider');
-    slider.style.transform = `translateX(${-currentSlide * 100}%)`;
-}
+  function showSlide(index) {
+      const slides = document.querySelectorAll('.slider img');
+      if (index >= slides.length) {
+          currentSlide = 0;
+      } else if (index < 0) {
+          currentSlide = slides.length - 1;
+      } else {
+          currentSlide = index;
+      }
+      const slider = document.querySelector('.slider');
+      slider.style.transform = `translateX(${-currentSlide * 100}%)`; // Move slider
+  }
 
-function moveSlide(direction) {
-    showSlide(currentSlide + direction);
-}
+  function moveSlide(direction) {
+      showSlide(currentSlide + direction); // Move to next/previous slide
+  }
 
-// Initialize slider to show the first slide
-showSlide(currentSlide);
+  // Initialize slider to show the first slide
+  showSlide(currentSlide);
+
+  // Set interval for automatic slide movement
+  setInterval(() => {
+      moveSlide(1); // Move to the next slide every 3 seconds
+  }, 3000); // Change 3000 to adjust the timing (in milliseconds)
 </script>
+
+
+
+
+
 
 
 

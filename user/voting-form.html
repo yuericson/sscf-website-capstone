@@ -407,6 +407,27 @@
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email" placeholder="Enter your email address" required>
 
+        <label for="college-campus" class="form-label">College/Campus</label>
+        <select class="form-select college-campus-field" id="college-campus" required>
+          <option value="">Select College/Campus</option>
+          <option value="College of Allied and Medicine">College of Allied and Medicine</option>
+          <option value="College of Administration, Business, and Accountancy">College of Administration, Business, and Accountancy</option>
+          <option value="College of Teacher Education">College of Teacher Education</option>
+          <option value="College of Arts and Sciences">College of Arts and Sciences</option>
+          <option value="College of Engineering (CEn)">College of Engineering (CEn)</option>
+          <option value="College of Industrial Technology">College of Industrial Technology</option>
+          <option value="College of Agriculture (CAg)">College of Agriculture (CAg)</option>
+          <option value="SLSU Lucena Campus">SLSU Lucena Campus</option>
+          <option value="SLSU Alabat Campus">SLSU Alabat Campus</option>
+          <option value="SLSU Tayabas Campus">SLSU Tayabas Campus</option>
+          <option value="SLSU Gumaca Campus">SLSU Gumaca Campus</option>
+          <option value="SLSU Catanauan Campus">SLSU Catanauan Campus</option>
+          <option value="SLSU Tagkawayan Campus">SLSU Tagkawayan Campus</option>
+          <option value="SLSU Polillo Campus">SLSU Polillo Campus</option>
+          <option value="SLSU Infanta Campus">SLSU Infanta Campus</option>
+          <option value="SLSU Tiaong Campus">SLSU Tiaong Campus</option>
+        </select>
+
         <!-- Aspiring President/Student Regent Section -->
         <h2>Aspiring President/Student Regent</h2>
         <div class="radio-group">
@@ -480,26 +501,26 @@
   <!-- Modal Overlay -->
   <div id="modalOverlay" style="display: none;"></div>
 
-<!-- Message Box -->
-<div class="card" id="messageBox" style="display: none;">
-  <button class="dismiss" type="button" onclick="closeMessage()">×</button>
-  <div class="header">
-    <div class="image">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-    </div>
+  <!-- Message Box -->
+  <div class="card" id="messageBox" style="display: none;">
+    <button class="dismiss" type="button" onclick="closeMessage()">×</button>
+    <div class="header">
+      <div class="image">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
 
-    <div class="content">
-      <span class="title">Vote Submitted!</span>
-      <p class="message">Thank you for casting your vote. Your voice matters, and it will contribute to making a difference!</p>
-    </div>
-    <div class="actions">
-      <button class="history" id="historyButton" type="button" onclick="showVotingHistory()">Voting History</button>
-      <button class="confirm" type="button" onclick="closeMessage()">Confirm</button> <!-- Redirects to voting.html -->
+      <div class="content">
+        <span class="title">Vote Submitted!</span>
+        <p class="message">Thank you for casting your vote. Your voice matters, and it will contribute to making a difference!</p>
+      </div>
+      <div class="actions">
+        <button class="confirm" type="button" onclick="closeMessage()">Confirm</button>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 
 
@@ -517,9 +538,6 @@
   let vpInternalVotes = { 'Candidate 1': 0, 'Candidate 2': 0, 'Candidate 3': 0, 'Candidate 4': 0 };
   let vpExternalVotes = { 'Candidate 1': 0, 'Candidate 2': 0, 'Candidate 3': 0, 'Candidate 4': 0 };
 
-  // Array to store user's voting history
-  let votingHistory = [];
-
   // Submit Vote and Store Voting Data
   document.getElementById('votingForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -533,9 +551,6 @@
       presidentVotes[president]++;
       vpInternalVotes[vpInternal]++;
       vpExternalVotes[vpExternal]++;
-
-      // Store the voting choices in the history
-      votingHistory.push({ president, vpInternal, vpExternal });
 
       // Show the message box and hide the voting form
       showMessage();
@@ -576,46 +591,8 @@
           }, 10); // Slight delay to allow transition
       }, 100); // Delay to show overlay before message box
   }
-
-  // Function to show voting history
-  function showVotingHistory() {
-      const messageBox = document.getElementById('messageBox');
-      const content = messageBox.querySelector('.content');
-
-      // Clear existing content and append the history
-      content.innerHTML = ''; // Clear previous content
-
-      // Create a heading for the voting history
-      const historyTitle = document.createElement('h3');
-      historyTitle.textContent = 'History of Your Votes';
-      content.appendChild(historyTitle); // Add title to content
-
-      // Create a container for the voting history
-      const votingHistoryContainer = document.createElement('div');
-      votingHistoryContainer.className = 'voting-history'; // Add container class
-
-      // Display the user's vote choices
-      votingHistory.forEach((vote, index) => {
-          const voteDetails = document.createElement('div');
-          voteDetails.className = 'vote-details'; // Add class for individual vote
-          voteDetails.innerHTML = `
-              <strong>Vote ${index + 1}:</strong>
-              <p>President: <span class="candidate">${vote.president}</span></p>
-              <p>Vice Internal: <span class="candidate">${vote.vpInternal}</span></p>
-              <p>Vice External: <span class="candidate">${vote.vpExternal}</span></p>
-          `;
-          votingHistoryContainer.appendChild(voteDetails); // Add vote details to container
-      });
-
-      content.appendChild(votingHistoryContainer); // Append the container to the content
-
-      // Hide the initial success message and voting history button
-      const initialMessage = messageBox.querySelector('h3');
-      initialMessage.style.display = 'none'; // Hide "Voting Successful" message
-      document.getElementById('historyButton').style.display = 'none'; // Hide voting history button
-  }
 </script>
-  
+
 
 
 

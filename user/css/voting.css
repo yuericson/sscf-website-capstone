@@ -1,3 +1,74 @@
+.voting-section-hidden {
+  padding: 20px;
+  background-color: #f0f0f0; /* Light gray background for the section */
+  border-radius: 10px; /* Rounded corners for the section */
+}
+
+.candidate-box {
+  border: 1px solid #185F43; /* Border color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px; /* Padding inside the box */
+  margin-bottom: 30px; /* Space between boxes */
+  background-color: #ffffff; /* White background color for boxes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+
+
+.candidate-vote-progress {
+  margin-top: 20px;
+}
+
+.candidate-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.candidate-info {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.candidate-img-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #185F43; /* Border around candidate image */
+  margin-right: 10px;
+}
+
+.candidate-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #185F43; /* Candidate name color */
+}
+
+.progress {
+  flex: 1;
+  background-color: #e0e0e0; /* Light gray background for progress track */
+  border-radius: 10px; /* Rounded corners for the progress track */
+  height: 30px; /* Height of the progress track */
+}
+
+.progress-bar {
+  background-color: #185F43; /* Main color for progress */
+  text-align: center;
+  font-weight: bold;
+  height: 100%; /* Full height of the progress track */
+  line-height: 30px; /* Vertically center the text */
+  border-radius: 10px; /* Rounded corners for the progress bar */
+  transition: width 0.4s ease; /* Smooth transition on width change */
+  color: white; /* Text color */
+}
+
+
+
+
+
 /* Style for the loading screen */
 #loading {
   display: none;

@@ -870,35 +870,12 @@ background-color: #45a049;
   margin: 1rem 1.5rem; /* Adjusted margin */
 }
 
-/* Voting History Button */
-.history {
-  display: inline-flex;
-  padding: 0.75rem 1.5rem; /* Increased padding */
-  background-color: #185F43;
-  color: #ffffff;
-  font-size: 1.2rem; /* Slightly larger font size */
-  line-height: 1.75rem;
-  font-weight: 600; /* Increased font weight */
-  justify-content: center;
-  width: 100%;
-  border-radius: 0.5rem; /* Increased border radius */
-  border: none;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  cursor: pointer; /* Set cursor to pointer to indicate it's a button */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
-}
-
-.history:hover {
-  background-color: #0cba57; /* Lighter green on hover */
-  color: #fff;
-}
 
 /* Track Results Button */
 .confirm{
   display: inline-flex;
-  margin-top: 1rem;
   padding: 0.75rem 1.5rem; /* Increased padding */
-  color: #242525;
+  color: #ffffff;
   font-size: 1.2rem; /* Increased font size */
   line-height: 1.75rem;
   font-weight: 600; /* Increased weight */
@@ -906,7 +883,7 @@ background-color: #45a049;
   width: 100%;
   border-radius: 0.5rem;
   border: 1px solid #D1D5DB;
-  background-color: #fff;
+  background-color: #185F43;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer; /* Set cursor to pointer to indicate it's a button */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth hover transition */
@@ -915,6 +892,7 @@ background-color: #45a049;
 .confirm:hover {
   background-color: #f0f0f0; /* Slight background change on hover */
   border-color: #144d34; /* Green border on hover */
+  color: #185F43;
 }
 
 
@@ -949,40 +927,6 @@ background-color: #45a049;
 
 
 
-/* Style for the voting history container */
-.voting-history {
-  margin: 20px 0; /* Add some margin */
-  padding: 10px; /* Add padding */
-  border: 1px solid #185F43; /* Border color matching your theme */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light background color */
-}
-
-/* Style for individual vote details */
-.vote-details {
-  margin-bottom: 15px; /* Space between votes */
-  padding: 10px; /* Padding inside each vote box */
-  border: 1px solid #ccc; /* Light border for individual votes */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #ffffff; /* White background for votes */
-}
-
-/* Remove margin from paragraphs */
-.vote-details p {
-  margin: 0; /* Remove default margin */
-}
-
-/* Style for the titles */
-.vote-details strong {
-  color: #185F43; /* Title color matching your theme */
-  font-weight: bold; /* Bold font */
-}
-
-/* Style for the candidate text */
-.candidate {
-  font-weight: normal; /* Normal font weight for candidates */
-  color: #333; /* Dark text color */
-}
 
 
 
