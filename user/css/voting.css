@@ -1,5 +1,6 @@
 .voting-section-hidden {
   padding: 20px;
+  display: none;
   background-color: #f0f0f0; /* Light gray background for the section */
   border-radius: 10px; /* Rounded corners for the section */
 }

@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  left: 100px; 
+  max-width: 1200px; /* Set maximum width for the overall container */
+  display: flex; /* Enable flexbox layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if there is not enough space */
+  align-items: center; /* Center items vertically */
+}
 /* General Styles */
 body {
   margin: 0;
@@ -16,7 +24,8 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 1000; 
+  z-index: 1000;
+  
 }
 
 .logo {
@@ -158,7 +167,6 @@ h5, p {
   padding: 8px 12px;
 }
 
-
 /* Logout Popup */
 .popup {
   position: fixed;
@@ -293,41 +301,105 @@ h5, p {
     margin-bottom: 10px;
   }
 }
-.container {
-  max-width: 1200px; /* Set maximum width for the overall container */
-  margin: 0 auto;
-  display: flex; /* Enable flexbox layout */
-  flex-wrap: wrap; /* Allow items to wrap to the next line if there is not enough space */
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
+
+
+.counter {
+  border-radius: 8px;
+  max-width: 300px;  /* Maximum width for each counter */
+  width: 100%;  /* Responsive width */
+  border: 1px solid #5CB080;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* Allow counters to stack horizontally in a row */
 }
+
+.count-text {
+  font-size: 23px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+.counter-inflows {
+  background-color: #FF9800; /* Green for Cash Inflows */
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 15px 15px ;
+  margin-left: 40px;
+}
+
+.counter-outflows {
+  background-color: #007BFF; /* Red for Cash Outflows */
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 15px 15px;
+  margin-left: 40px;
+}
+
+.counter-funds {
+  background-color: #E83E8C; /* Blue for Current Funds */
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 15px 15px;
+  margin-left: 40px;
+}
+
+.count-title {
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+
 
 /* ================================================
    Table and Form for Financial Statements
    ================================================ */
+
 /* Form Container */
 /* General Form and Table Styling */
 .form-container, 
 .table-container {
-  padding: 20px;
+  padding: 20px; 
+  margin-top: 10px;
+  margin-right: 450px;  
+  margin-left: 1500px;
+  margin-bottom: 100px;
   border: 1px solid #dcdcdc;
-  border-radius: 8px;
+  border-radius: 0px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  margin-bottom: 20px;
+  display: flex;  /* Enables flexbox layout */
+  flex-direction: column; /* Ensures vertical alignment */
+
 }
 
 /* Specific Styling for Form and Table Positions */
 .form-container {
-  position: absolute; 
-  left: 100px; 
+  position: absolute;
+  margin-left: 150px; 
+  display: flex;  /* Enables flexbox layout */ 
 }
 
 .table-container {
   position: absolute; 
   left: 150px;
+  display: flex;  /* Enables flexbox layout */
+  flex-wrap: wrap;  /* Allows items to wrap to the next line if there is not enough space */
+  justify-content: center;  /* Centers items horizontally */
+  align-items: center;  /* Centers items vertically */
+  table-layout: auto;
 }
-
 /* Input Fields */
 input[type="date"], 
 input[type="text"], 
@@ -355,20 +427,16 @@ button[type="submit"]:hover {
   background-color: #218838;
 }
 
-/* Table */
-.table-container {
-  width: 100%;
-}
-
 .table {
-  width: 100%;
+  margin-bottom: 10px;
   border-collapse: collapse;
   background-color: white;
+  table-layout: auto;  /* Allows column width to adjust based on content */
 }
 
 .table th, .table td {
-  padding: 12px 15px;
   text-align: left;
+  padding: 20px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -377,11 +445,10 @@ button[type="submit"]:hover {
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  text-transform: uppercase;
 }
-
 .table tbody tr:nth-child(even) {
   background-color: #f2f2f2;
+
 }
 
 .table tbody tr:hover {
@@ -389,16 +456,20 @@ button[type="submit"]:hover {
 }
 
 /* Action Buttons */
+.table .actions {
+  display: flex;  /* Enables flexbox layout */
+  gap: 5px;  /* Adds spacing between the buttons */
+}
+
 .table .actions button {
-  padding: 6px 12px;
-  margin-right: 5px;
+  padding: 10px 8px 10px 8px; /* Adjusts padding */
+  margin: 0 5px;  /* Margin on the left and right */
   font-size: 0.875rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   color: white;
 }
-
 .edit-btn {
   background-color: #007bff;
 }
@@ -414,6 +485,7 @@ button[type="submit"]:hover {
 .delete-btn:hover {
   background-color: #c82333;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -474,3 +546,184 @@ button[type="submit"]:hover {
     flex-direction: column;
   }
 }
+/* ================================================
+   outflow
+   ================================================ */
+
+  /* Container for both form and table */
+
+  /* General Form and Table Styling */
+  .custom-form-container, 
+  .custom-table-container {
+    margin-top: 550px;
+    margin-right: 450px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    padding: 20px;
+    border: 1px solid #dcdcdc;
+    border-radius: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column; /* Ensures vertical alignment */
+  }
+  
+  /* Specific Styling for Form and Table Positions */
+  .custom-form-container {
+    position: relative;
+    width: 50%;
+    max-width: 100%;
+    /*margin: 550px 450px 10px 15px; /* Combined margin shorthand */
+    display: flex;  
+  }
+  
+  .custom-table-container {
+    position: relative;
+    padding: 20px;
+    margin-left: 700px;
+    margin-right: 50px;
+    margin-top: 130px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dcdcdc;
+    display: flex;  /* Enables flexbox layout */ 
+    flex-wrap: wrap; /* Allows wrapping if space is tight */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    table-layout: auto;
+    position: absolute; 
+  
+  }
+
+    
+  /* Input and Button Styles */
+  input[type="date"], 
+  input[type="text"], 
+  input[type="number"], 
+  .custom-form-input {
+    width: 100%;
+    padding: 10 px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  button[type="submit"], .custom-submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover, .custom-submit-button:hover {
+    background-color: #218838;
+  }
+  
+  .custom-form-container h2 {
+    font-size: 2rem;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Table Styles */
+  .custom-table {
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    background-color: white;
+    table-layout: auto;  /* Allows column width to adjust based on content */
+  
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    text-align: left;
+    width: 100px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .custom-table th {
+    background-color: #185F43;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .custom-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #e6f7e9;
+  }
+  
+  .custom-table .actions {
+    display: flex;  /* Enables flexbox layout */
+    gap: 5px;  /* Adds spacing between the buttons */
+
+  }
+  
+  .custom-table .actions button {
+    padding: 10px 8px 10px 8px; /* Adjusts padding */
+    margin: 0 5px;  /* Margin on the left and right */
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    
+  }
+  .custom-table.actions .edit-btn {
+    background-color: #007bff;
+  }
+  
+  .custom-table .actions .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .custom-table .actions .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .custom-table .actions .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+  .custom-form-container, 
+  .custom-table-container {
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+  @media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the form and table vertically */
+    }
+  
+    .custom-form-container, .custom-table-container {
+        max-width: 100%; /* Ensure they take up full width */
+        padding: 15px;
+    }
+  
+    .custom-submit-button {
+        font-size: 14px;
+    }
+  
+    .custom-table th, .custom-table td {
+        padding: 10px;
+    }
+  }
+  

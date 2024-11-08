@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="auditor.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
 </head>
 
@@ -48,7 +49,7 @@
   </div>
 
   <div class="superadmin-main-content p-4">
-    <h1>Financial Statement</h1>
+    <h1>Auditor Dashboard</h1>
   </div>
   <div class="container">
     <div class="row text-center">
@@ -81,6 +82,31 @@
     <button class="btn cancel-btn">Cancel</button>
     <button class="btn login-btn">Login</button>
   </div>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>Auditor Dashboard</h1>
+    </header>
+    
+    <div class="summary-cards">
+      <div class="card" id="cashInflowCard">
+        <h2>Beggining Balance</h2>
+        <p id="totalInflow">Total: $500,000</p>
+        <p id="lastMonthInflow">Last Month: $45,000</p>
+        <p id="ytdInflow">Year-to-Date: $475,000</p>
+      </div>
+      <div class="card" id="cashOutflowCard">
+        <h2>Ending Cash On Hand</h2>
+        <p id="totalOutflow">Total: $300,000</p>
+        <p id="lastMonthOutflow">Last Month: $35,000</p>
+        <p id="ytdOutflow">Year-to-Date: $265,000</p>
+      </div>
+    </div>
+    <div class="chart-section">
+      <h2>Monthly Cash Flow</h2>
+      <canvas id="cashFlowChart"></canvas>
+    </div>
+  </div>
+  <script src="script.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>

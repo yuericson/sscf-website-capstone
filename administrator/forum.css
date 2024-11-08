@@ -127,10 +127,10 @@
       padding: 20px;
       overflow: auto;
     }
+
+
   
-  
-  
-  
+
   
   /* Post Counts Styles */
   #postCounts {
@@ -198,73 +198,103 @@
   
   
   
+/* Custom close button color */
+.modal-header .btn-close {
+  color: #ffffff; /* Set the color to white */
+  background-color: transparent; /* Ensure background is transparent */
+  border: none; /* Remove any border */
+  filter: brightness(0) invert(1); /* Brighten to pure white */
+}
   
   
+ /* Adjust the position of the search bar */
+.input-group {
+  max-width: 400px;
+  margin-left: auto;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.input-group .form-control {
+  width: 70%;
+  border: 1px solid #185F43;
   
-  
-    
-  /* Adjust the position of the search bar */
-  .input-group {
-    max-width: 400px; /* Limit the width of the search bar */
-    margin-left: auto; /* Align the search bar to the right */
-    margin-bottom: 20px; /* Add margin for spacing below */
-    margin-top: 50px;
-    margin-right: 10px;
-  }
-  
-  .input-group .form-control {
-    width: 70%; /* Set the width of the input field */
-    border: 1px solid #185F43; 
-  }
-  
-  .input-group .btn-primary {
-    width: 30%; /* Set the width of the button */
-  }
-  
-  
-  
-  .table {
-    width: 100%; /* Ensures the table can grow to full width */
-    max-width: 1000px; /* Set a fixed maximum width for the table */
-    min-width: 1100px; /* Set a minimum width to keep it wide enough */
-    margin: 20px auto; /* Center the table */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-  }
-  
-  
-  
-  
-  .table th, .table td {
-    border: 1px solid #ddd;
-    text-align: center; /* Center align text */
-    padding: 15px;
-  }
-  
-  .table th {
-    background-color: #185F43; /* Header background color */
-    color: white; /* Header text color */
-  }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #abacad; /* Light gray for odd rows */
-  }
-  
-  .table tbody {
-    height: 100px; /* Minimum height for the table body */
-  }
-  .table th:nth-child(5), .table td:nth-child(5) {
-    width: 220px; /* Set width for Actions column */
-  }
-  
-  .highlight {
-    background-color: yellow; /* Highlight background */
-    color: inherit; /* Use the same text color as the surrounding text */
-    font-size: inherit; /* Use the same font size as the surrounding text */
-  }
-  
+}
+
+.input-group .btn-primary {
+  width: 30%;
+}
+
+/* Style for "Sort By" label */
+.sort-label {
+  font-weight: bold;
+  color: #185F43;
+}
+
+/* Style for the sort dropdown */
+.form-select {
+  width: auto;
+  border: 1px solid #185F43;
+  border-radius: 0.25rem;
+}
+
+
+
+.table {
+  width: 100%; /* Ensures the table can grow to full width */
+  max-width: 1000px; /* Set a fixed maximum width for the table */
+  min-width: 1100px; /* Set a minimum width to keep it wide enough */
+  margin: 20px auto; /* Center the table */
+  margin-top: -20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  text-align: center; /* Center align text */
+  padding: 15px;
+}
+
+.table th {
+  background-color: #185F43; /* Header background color */
+  color: white; /* Header text color */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #abacad; /* Light gray for odd rows */
+}
+
+.table tbody {
+  height: 50px; /* Minimum height for the table body */
+}
+
+.table th:nth-child(5), .table td:nth-child(5) {
+  width: 220px; /* Set width for Actions column */
+}
+
+.highlight {
+  background-color: yellow; /* Highlight background */
+  color: inherit; /* Use the same text color as the surrounding text */
+  font-size: inherit; /* Use the same font size as the surrounding text */
+}
+
+
+
+table .no-posts-message {
+  color: #185F43; /* Text color */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Centered text */
+  padding: 15px; /* Padding around the message */
+  border: 1px solid #f5c6cb; /* Light red border */
+  border-radius: 5px; /* Slightly rounded corners */
+  margin-top: 15px; /* Space above the message */
+
+}
+
   
   
   
@@ -333,4 +363,40 @@
   
   
   
-  
+ /* Pagination section */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Spacing above pagination */
+  margin-left: 0; /* Align left with table */
+}
+
+.entries-info {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination .page-item .page-link {
+  color: #185F43;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #185F43;
+  color: white;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #185F43;
+  color: white;
+  border: 1px solid #185F43;
+}

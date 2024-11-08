@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Public Forum</title>
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="forum.css">
+</head>
+
+<body>
+  <header class="superadmin-header">
+    <div class="superadmin-logo d-flex align-items-center">
+      <img src="../images/Logo.png" alt="Logo" class="logo">
+      <div class="text-container">
+        <h5 class="mb-0">Southern Luzon State University</h5>
+        <p class="mb-0">Supreme Student Council Federation</p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center ms-auto">
+      <i class="bi bi-bell text-light me-3"></i>
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" aria-expanded="false" onclick="toggleDropdown()">
+          <i class="bi bi-person-circle"></i> Ericson Yu
+        </button>
+        <ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="userDropdown">
+          <li><button class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="d-flex">
+    <nav class="superadmin-sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="admin-dashboard.html" class="nav-link"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+        <li class="nav-item"><a href="academic-resources.html" class="nav-link"><i class="bi bi-book me-2"></i> Academic Resources</a></li>
+        <li class="nav-item"><a href="latest-news.html" class="nav-link"><i class="bi bi-newspaper me-2"></i> Latest News</a></li>
+        <li class="nav-item"><a href="media-gallery.html" class="nav-link"><i class="bi bi-images me-2"></i> Media Gallery</a></li>
+        <li class="nav-item"><a href="press-releases.html" class="nav-link"><i class="bi bi-megaphone me-2"></i> Press Releases</a></li>
+        <li class="nav-item"><a href="presidents-corner.html" class="nav-link"><i class="bi bi-person-circle me-2"></i> SSCF Presidents Corner</a></li>
+        <li class="nav-item"><a href="join-an-organization.html" class="nav-link"><i class="bi bi-people me-2"></i> Join an Organization</a></li>
+        <li class="nav-item"><a href="volunteer-opportunities.html" class="nav-link"><i class="bi bi-hand-thumbs-up me-2"></i> Volunteer Opportunities</a></li>
+        <li class="nav-item"><a href="forum.html" class="nav-link"><i class="bi bi-chat-left-dots me-2"></i> Forum</a></li>
+        <li class="nav-item"><a href="feedback.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-2"></i> Feedback</a></li>
+        <li class="nav-item"><a href="sports-registration.html" class="nav-link"><i class="bi bi-trophy me-2"></i> Sports Registration</a></li>
+        <li class="nav-item"><a href="local-election.html" class="nav-link"><i class="bi bi-person-check me-2"></i> Local Election</a></li>
+        <li class="nav-item"><a href="tabulation.html" class="nav-link"><i class="bi bi-table me-2"></i> Tabulation</a></li>
+      </ul>
+    </nav>
+
+    <div class="forum-main-content">
+        <div class="container mt-5">
+            <h2 class="mb-4">Forum Posts Approval Dashboard</h2>
+            
+            <div id="postCounts">
+                <div class="post-count-box">
+                    <i class="bi bi-file-earmark-text icon"></i>
+                    <strong>Total Posts:</strong> <span id="totalPostsCount">0</span>
+                </div>
+                <div class="post-count-box">
+                    <i class="bi bi-check-circle icon"></i>
+                    <strong>Approved Posts:</strong> <span id="approvedPostsCount">0</span>
+                </div>
+                <div class="post-count-box">
+                    <i class="bi bi-clock icon"></i>
+                    <strong>Pending Posts:</strong> <span id="pendingPostsCount">0</span>
+                </div>
+            </div>
+    
+            <div class="container mt-4">
+                <div class="d-flex justify-content-between mb-4 align-items-center spacing-top">
+                    <div class="d-flex align-items-center">
+                        <label class="sort-label me-2">Sort By:</label>
+                        <select id="sortOptions" class="form-select me-3" onchange="sortPosts()">
+                            <option value="name">Name</option>
+                            <option value="title">Title</option>
+                            <option value="post">Post</option>
+                            <option value="date">Date Submitted</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search posts..." oninput="searchPosts()">
+                        <button class="btn btn-primary" type="button" onclick="searchPosts()">Search</button>
+                    </div>
+                </div>
+            
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Title</th>
+                            <th>Post</th>
+                            <th>Date Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postsTable"></tbody>
+                </table>
+            
+                <!-- Pagination and Entries Information -->
+                <div class="pagination-container">
+                    <p class="entries-info" id="entriesInfo">Showing 0 to 0 of 0 entries</p>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#" onclick="changePage(currentPage - 1, event)">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#" onclick="changePage(currentPage + 1, event)">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Modal for Viewing Post -->
+            <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="postModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="info-row">
+                                <strong>User:</strong> <span id="modalUser"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Title:</strong> <span id="modalTitle"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Post:</strong>
+                                <span class="post-content" id="modalContent"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Date Submitted:</strong> <span id="modalDate"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+          <!-- Modal for Alerts -->
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertModalLabel">Notification!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="alertMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+                // Sample posts data
+                const posts = [
+                    { id: 1, user: "Anne Nicole Diaz", title: "Help with Event Preparations", post: "Can I help with the preparations for the event? I am available during the weekdays and can dedicate my time to set up the venue and coordinate with other volunteers. I am committed to making this event a success and ensuring that all tasks are completed efficiently.", dateSubmitted: "September 22, 2024", approved: false },
+                    { id: 2, user: "Cristal Tipo", title: "Joining Volunteer Team", post: "I am interested in joining the volunteer team.", dateSubmitted: "September 21, 2024", approved: false },
+                    { id: 3, user: "Ericson Yu", title: "Event Preparations Help", post: "Can I help with the preparations for the event?", dateSubmitted: "September 20, 2024", approved: false },
+                    { id: 4, user: "John Doe", title: "Need Assistance with Cleanup", post: "I can help with the cleanup after the event.", dateSubmitted: "September 19, 2024", approved: false },
+                    { id: 5, user: "Jane Smith", title: "Available for Setup", post: "I am available to help with setup on the day of the event.", dateSubmitted: "September 18, 2024", approved: false },
+                    { id: 6, user: "Alice Johnson", title: "Looking for Volunteers", post: "Looking for more volunteers for the upcoming event.", dateSubmitted: "September 17, 2024", approved: false },
+                    { id: 7, user: "Bob Brown", title: "Volunteer Team Inquiry", post: "How can I join the volunteer team?", dateSubmitted: "September 16, 2024", approved: false },
+                    { id: 8, user: "Cathy Green", title: "Food Donations Needed", post: "I can donate food for the event.", dateSubmitted: "September 15, 2024", approved: false },
+                    { id: 9, user: "David White", title: "Interested in Event", post: "I am interested in the event and want to help.", dateSubmitted: "September 14, 2024", approved: false },
+                    { id: 10, user: "Evelyn Black", title: "Sign me up!", post: "I would like to volunteer for the event.", dateSubmitted: "September 13, 2024", approved: false },
+                    { id: 11, user: "Frank Gold", title: "Availability for Events", post: "I am available for upcoming events.", dateSubmitted: "September 12, 2024", approved: false },
+                    { id: 12, user: "Grace Blue", title: "Event Planning Help", post: "Can I help with the event planning?", dateSubmitted: "September 11, 2024", approved: false }
+                ];
+            
+                // Pagination variables
+                let currentPage = 1;
+                const postsPerPage = 10;
+            
+                // Function to display posts
+                function displayPosts(filteredPosts) {
+                    const postsTable = document.getElementById('postsTable');
+                    postsTable.innerHTML = '';
+            
+                    // Get the posts for the current page
+                    const startIndex = (currentPage - 1) * postsPerPage;
+                    const endIndex = startIndex + postsPerPage;
+                    const currentPosts = filteredPosts.slice(startIndex, endIndex);
+            
+                    currentPosts.forEach(post => {
+                        postsTable.innerHTML += `
+                            <tr>
+                                <td>${post.user}</td>
+                                <td>${post.title}</td>
+                                <td>${post.post}</td>
+                                <td>${post.dateSubmitted}</td>
+                                <td>
+                                    ${post.approved ? `
+                                        <button class="btn btn-primary btn-sm" onclick="viewPost(${post.id})">View</button>
+                                        <button class="btn btn-danger btn-sm" onclick="deletePost(${post.id})">Delete</button>
+                                    ` : `
+                                        <button class="btn btn-primary btn-sm" onclick="viewPost(${post.id})">View</button>
+                                        <button class="btn btn-success btn-sm" onclick="approvePost(${post.id})">Approve</button>
+                                        <button class="btn btn-danger btn-sm" onclick="deletePost(${post.id})">Delete</button>
+                                    `}
+                                </td>
+                            </tr>
+                        `;
+                    });
+            
+                    updateCounts(filteredPosts);
+                    updateEntriesInfo(filteredPosts.length);
+                    updatePagination(filteredPosts.length);
+                }
+            
+                // Function to update total, approved, and pending post counts
+                function updateCounts(filteredPosts) {
+                    const totalPostsCount = document.getElementById('totalPostsCount');
+                    const approvedPostsCount = document.getElementById('approvedPostsCount');
+                    const pendingPostsCount = document.getElementById('pendingPostsCount');
+    
+                    const totalPosts = filteredPosts.length;
+                    const approvedPosts = filteredPosts.filter(post => post.approved).length;
+                    const pendingPosts = totalPosts - approvedPosts;
+    
+                    totalPostsCount.textContent = totalPosts;
+                    approvedPostsCount.textContent = approvedPosts;
+                    pendingPostsCount.textContent = pendingPosts;
+                }
+    
+                // Function to update entries info
+                function updateEntriesInfo(totalPosts) {
+                    const entriesInfo = document.getElementById('entriesInfo');
+                    const startIndex = (currentPage - 1) * postsPerPage + 1;
+                    const endIndex = Math.min(startIndex + postsPerPage - 1, totalPosts);
+                    entriesInfo.textContent = `Showing ${startIndex} to ${endIndex} of ${totalPosts} entries`;
+                }
+    
+                // Function to update pagination
+                function updatePagination(totalPosts) {
+                    const totalPages = Math.ceil(totalPosts / postsPerPage);
+                    const paginationItems = document.querySelectorAll('.pagination .page-item');
+                    paginationItems.forEach((item, index) => {
+                        item.style.display = index < totalPages ? 'block' : 'none';
+                    });
+                }
+    
+                // Function to view post details in a modal
+                function viewPost(postId) {
+                    const post = posts.find(p => p.id === postId);
+                    document.getElementById('modalUser').textContent = post.user;
+                    document.getElementById('modalTitle').textContent = post.title;
+                    document.getElementById('modalContent').textContent = post.post;
+                    document.getElementById('modalDate').textContent = post.dateSubmitted;
+                    const postModal = new bootstrap.Modal(document.getElementById('postModal'));
+                    postModal.show();
+                }
+            
+                // Function to approve a post
+                function approvePost(postId) {
+                    const post = posts.find(p => p.id === postId);
+                    post.approved = true;
+                    displayPosts(posts);
+                    showAlert(`Post "${post.title}" approved successfully!`);
+                }
+            
+                // Function to delete a post
+                function deletePost(postId) {
+                    const postIndex = posts.findIndex(p => p.id === postId);
+                    if (postIndex > -1) {
+                        posts.splice(postIndex, 1);
+                        displayPosts(posts);
+                        showAlert(`Post deleted successfully!`);
+                    }
+                }
+            
+                // Function to show alert modal
+                function showAlert(message) {
+                    document.getElementById('alertMessage').textContent = message;
+                    const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+                    alertModal.show();
+                }
+    
+                // Function to sort posts
+                function sortPosts() {
+                    const sortValue = document.getElementById('sortOptions').value;
+                    let sortedPosts;
+            
+                    if (sortValue === 'name') {
+                        sortedPosts = [...posts].sort((a, b) => a.user.localeCompare(b.user));
+                    } else if (sortValue === 'title') {
+                        sortedPosts = [...posts].sort((a, b) => a.title.localeCompare(b.title));
+                    } else if (sortValue === 'post') {
+                        sortedPosts = [...posts].sort((a, b) => a.post.localeCompare(b.post));
+                    } else if (sortValue === 'date') {
+                        sortedPosts = [...posts].sort((a, b) => new Date(b.dateSubmitted) - new Date(a.dateSubmitted));
+                    }
+            
+                    displayPosts(sortedPosts);
+                }
+            
+                // Function to search posts
+                function searchPosts() {
+                    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                    const filteredPosts = posts.filter(post => post.user.toLowerCase().includes(searchInput) || post.title.toLowerCase().includes(searchInput) || post.post.toLowerCase().includes(searchInput));
+                    displayPosts(filteredPosts);
+                }
+            
+                // Function to change page
+                function changePage(pageNumber, event) {
+                    event.preventDefault();
+                    if (pageNumber < 1) return;
+                    currentPage = pageNumber;
+                    displayPosts(posts);
+                }
+            
+                // Initial display
+                displayPosts(posts);
+            </script>
+        </div>
+    </div>
+    
+        
+        
+    
+
+  
+
+</body>
+
+</html>

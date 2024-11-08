@@ -213,16 +213,19 @@ h5, p {
 
 .modal-title {
     font-weight: bold; /* Bold title */
+    
 }
 
 .modal-body {
     display: flex;
     flex-direction: column; /* Stack content vertically */
+   
 }
 
 .modal-body .info-row {
     display: flex; /* Use flexbox for alignment */
     margin: 0; /* Remove margin to eliminate spacing */
+    
     
 }
 
@@ -239,6 +242,7 @@ h5, p {
 
 .modal-footer {
     border-top: 1px solid #dee2e6; /* Subtle border above footer */
+    
 }
 
 .btn-secondary {
@@ -407,10 +411,51 @@ h4 {
 }
 
 
-.no-results {
-    display: none;
-    color: red;
-    text-align: center;
-    margin-right: -250px; /* Adjust this value as needed */
-    margin-bottom: 100px;
-}
+
+
+
+
+
+
+
+
+
+
+
+/* Pagination section */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Spacing above pagination */
+    margin-left: 0; /* Align left with table */
+  }
+  
+  .entries-info {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .pagination {
+    margin: 0;
+  }
+  
+  .pagination .page-item .page-link {
+    color: #185F43;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  
+  .pagination .page-item .page-link:hover {
+    background-color: #185F43;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #185F43;
+    color: white;
+    border: 1px solid #185F43;
+  }

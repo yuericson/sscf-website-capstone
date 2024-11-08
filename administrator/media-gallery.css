@@ -1,0 +1,363 @@
+   /* General Styles */
+   body {
+    margin: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+  }
+  
+  /* Superadmin Header */
+  .superadmin-header {
+    background-color: #185F43; /* Header background color */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .superadmin-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .superadmin-logo .text-container {
+    margin-left: 10px;
+  }
+  
+  h5, p {
+    margin: 0;
+  }
+  
+  /* Adjust notification and user account positioning */
+  .d-flex.align-items-center.ms-auto {
+    margin-left: auto; /* Move elements towards left */
+    margin-right: 20px; /* Add margin to the right for spacing */
+  }
+  
+  /* Superadmin Sidebar */
+  .superadmin-sidebar {
+    width: 280px;
+    background-color: #185F43;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+/* Sidebar Navigation */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.nav-item {
+  margin-bottom: -1px;
+}
+
+.nav-link {
+  color: #fff; /* Original text color */
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #05ec71; /* Change this color to your desired hover color */
+  color: #fff; /* Keep text color white on hover */
+}
+
+/* Active link styling */
+.nav-link.active {
+  background-color: #05ec71; /* Change this color to your desired active color */
+  color: #fff; /* Keep text color white for active link */
+}
+
+/* Prevent blue color on click */
+.nav-link:focus, .nav-link:active {
+  color: #fff; /* Ensure text color remains white */
+  background-color: #000000; /* Ensure background color remains the same */
+}
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    min-width: 150px;
+    padding: 0; /* Remove padding to eliminate spacing */
+    margin: 0; /* Remove margin */
+  }
+  
+  /* Full background color on hover for all dropdown items */
+  .dropdown-item {
+    transition: background-color 0.3s;
+    padding: 6px 15px; /* Adjust padding as needed */
+    display: block; /* Ensure the item takes full width */
+    margin: 0; /* Remove margin to avoid white space */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #05ec71; /* Full background color on hover */
+    color: #fff; /* Keep text color white on hover */
+  }
+  
+  /* Adjust dropdown button height */
+  .dropdown-toggle {
+    padding: 8px 12px; /* Adjust as needed */
+  }
+  
+    
+  /* Superadmin Main Content */
+  .media-gallery-content {
+    margin-left: 320px;
+    padding: 20px;
+    overflow: auto;
+  }
+
+
+
+/* Post Counts Styles */
+#postCounts {
+  display: flex;
+  justify-content: left; /* Center align boxes */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 50px; /* Space below */
+
+  background: linear-gradient(135deg, #e9f7ef, #f1f1f1); /* Subtle gradient background */
+  border-radius: 8px; /* Rounded corners for the section */
+}
+
+/* Post Count Box */
+.post-count-box {
+  background-color: #185F43; /* Green background */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 20px; /* Reduced padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  text-align: center; /* Center text */
+  flex: 1; /* Allow boxes to grow equally */
+  margin: 0 15px; /* Smaller space between boxes */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+  max-width: 300px; /* Reduced width for narrower boxes */
+  margin-top: 20px;
+}
+
+/* Icons */
+.icon {
+  font-size: 36px; /* Larger size for icons */
+  color: #ffffff; /* White icon color */
+  margin-bottom: 10px; /* Space below the icon */
+}
+
+/* Count and Label Styles */
+strong {
+  font-size: 20px; /* Increase font size for labels */
+  font-weight: bold; /* Make the text bold */
+  color: #ffffff; /* White text color */
+  display: block; /* Ensure strong is on a new line */
+  margin-top: 5px; /* Space between icon and label */
+}
+
+/* Span styles for counts */
+span {
+  font-size: 22px; /* Larger size for counts */
+  font-weight: bold; /* Bold for emphasis */
+  color: #ffffff; /* White count color */
+  display: block; /* Ensure span is on a new line */
+  margin-top: 5px; /* Space between label and count */
+}
+
+
+
+/* Adjust responsive behavior */
+@media (max-width: 768px) {
+  #postCounts {
+    flex-direction: column; /* Stack boxes vertically on small screens */
+  }
+  .post-count-box {
+    margin-bottom: 15px; /* Space below each box */
+    margin-right: 0; /* Reset margin on small screens */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Styles for the Gallery Management Section */
+.gallery-management {
+  background-color: #fff; /* White background for management sections */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px; /* Space between management sections */
+  width: 900px;
+}
+
+.gallery-management h3 {
+  margin-bottom: 15px; /* Space below section titles */
+}
+
+/* Input fields styling for Photo Albums */
+.input-button-group {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center vertically */
+}
+
+input[type="file"],
+input[type="url"],
+input[type="text"] {
+  flex: 1; /* Take full available space */
+  padding: 10px;
+  margin-right: 10px; /* Space between input and button */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+}
+
+/* Button styling for management sections */
+button {
+  background-color: #185F43; /* Button color */
+  color: #fff; /* White text color */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+button:hover {
+  background-color: #0e4b31; /* Darker shade on hover */
+}
+
+/* Media gallery styling */
+.media-gallery {
+  margin-top: 40px; /* Space above media gallery section */
+  padding: 20px; /* Padding around the section */
+}
+
+/* Styles for each gallery box (Image, Video, Albums) */
+.gallery-box {
+  background-color: #fff; /* White background for gallery box */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+  padding: 20px;
+}
+
+/* Margin between different gallery sections */
+.image-gallery,
+.video-gallery,
+.photo-albums {
+  margin-bottom: 20px; /* Space between gallery sections */
+}
+
+/* Slider styling for image or video slides */
+.slider {
+  position: relative; /* Needed for prev/next buttons */
+  overflow: hidden; /* Hide overflowing images */
+}
+
+.slides {
+  display: flex; /* Use flex for horizontal sliding */
+  transition: transform 0.5s ease; /* Smooth slide transition */
+}
+
+.slide {
+  min-width: 100%; /* Each slide takes full width */
+}
+
+/* Video embed styling */
+.video-embed {
+  display: flex;
+  flex-wrap: wrap; /* Allow videos to wrap */
+  gap: 10px; /* Space between videos */
+}
+
+.video-box {
+  flex: 1 1 45%; /* Responsive video boxes */
+  min-width: 250px; /* Minimum width */
+}
+
+.video-box iframe {
+  width: 100%; /* Full width for videos */
+  height: 200px; /* Fixed height for videos */
+  border: none; /* Remove border */
+}
+
+/* Album container styling */
+.album-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow albums to wrap */
+  gap: 10px; /* Space between albums */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+/* Styles for the Album Management Section */
+.album-box {
+  flex: 1 1 calc(33.33% - 10px); /* Responsive three albums per row */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside each album box */
+  margin: 5px; /* Space between album boxes */
+  text-align: center; /* Center text in album box */
+  background-color: #f9f9f9; /* Light background for album boxes */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+}
+
+.album-box:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Icon styling within album boxes */
+.album-box .icon {
+  font-size: 40px; /* Icon size */
+  margin-bottom: 10px; /* Space below the icon */
+  color: #185F43; /* Match icon color with theme */
+}
+
+/* Text styling for album names */
+.album-box .text {
+  font-size: 18px; /* Size for album name */
+  color: #333; /* Darker text color */
+}
+
+/* General media display styling */
+.media-display {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  margin-top: 10px; /* Space above media display */
+}
+
+/* Additional styling for better responsiveness */
+@media (max-width: 768px) {
+  .album-box {
+      flex: 1 1 calc(50% - 10px); /* Two albums per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .album-box {
+      flex: 1 1 100%; /* One album per row on very small screens */
+  }
+}
+
+

@@ -204,14 +204,29 @@ text-overflow: ellipsis; /* Add ellipsis for overflow text */
 
 
 
+/* Adjust the position of the search bar */
+.input-group {
+  max-width: 400px; /* Limit the width of the search bar */
+  margin-left: auto; /* Align the search bar to the right */
+  margin-right: 0; /* Remove right margin */
+  margin-top: 0; /* Remove the top margin to align with the title */
+}
+
+.input-group .form-control {
+  width: 70%; /* Set the width of the input field */
+  border: 1px solid #185F43; 
+}
+
+.input-group .btn-primary {
+  width: 30%; /* Set the width of the button */
+}
 
 
 /* Table Styles */
 .table {
   margin-top: 5px;
-  table-layout: fixed; /* Keep fixed layout */
   width: 100%; /* Set the width to 100% or a specific value */
-  max-width: 1000px; /* Set a maximum width if needed */
+  max-width: 1200px; /* Increased maximum width */
   border-collapse: collapse; /* Collapse borders for a cleaner look */
 }
 
@@ -222,12 +237,29 @@ text-overflow: ellipsis; /* Add ellipsis for overflow text */
   padding: 10px; /* Add padding for better spacing */
   min-height: 50px; /* Set a minimum height for table cells */
   border: 1px solid #ced4da; /* Light gray border for cells */
+  text-align: center; /* Center content horizontally */
 }
 
 /* Header Styles */
 .table th {
   background-color: #185F43; /* Green header */
   color: white; /* White text */
+}
+
+/* Specific column widths */
+.table th:nth-child(2), /* Name column */
+.table td:nth-child(2) {
+  width: 200px; /* Adjust as needed */
+}
+
+.table th:nth-child(3), /* Message column */
+.table td:nth-child(3) {
+  width: 300px; /* Adjust as needed */
+}
+
+.table th:nth-child(6), /* Action column */
+.table td:nth-child(6) {
+  width: 150px; /* Adjust as needed */
 }
 
 /* Cell Styles */
@@ -313,3 +345,50 @@ text-overflow: ellipsis; /* Add ellipsis for overflow text */
   .btn-secondary:hover {
     background-color: #5a6268; /* Darker on hover */
   }
+
+
+
+
+
+
+
+
+
+
+   /* Pagination section */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Spacing above pagination */
+  margin-left: 0; /* Align left with table */
+}
+
+.entries-info {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination .page-item .page-link {
+  color: #185F43;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #185F43;
+  color: white;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #185F43;
+  color: white;
+  border: 1px solid #185F43;
+}

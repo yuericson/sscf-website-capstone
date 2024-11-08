@@ -530,3 +530,80 @@ button[type="submit"]:hover {
     flex-direction: column;
   }
 }
+/* ================================================
+  cashflow graphs
+  ================================================ */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+  }
+  
+  .dashboard-container {
+    max-width: 1200px;
+    margin: 20px 50px 10px 250px;
+  
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2d3e50;
+    color: #ffffff;
+  }
+  
+  .summary-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 45%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h2 {
+    color: #2d3e50;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    color: #6c757d;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .chart-section {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .chart-section h2 {
+    color: #2d3e50;
+  }
+  .chart-section canvas {
+      width: 600px; /* Adjust width */
+      height: 300px; /* Adjust height */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+  .chart-placeholder {
+    margin-top: 20px;
+    padding: 40px;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-radius: 8px;
+  }
+  

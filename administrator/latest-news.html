@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Public Forum</title>
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="latest-news.css">
+</head>
+
+<body>
+    <header class="superadmin-header">
+        <div class="superadmin-logo d-flex align-items-center">
+            <img src="../images/Logo.png" alt="Logo" class="logo">
+            <div class="text-container">
+                <h5 class="mb-0">Southern Luzon State University</h5>
+                <p class="mb-0">Supreme Student Council Federation</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center ms-auto">
+            <i class="bi bi-bell text-light me-3"></i>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" aria-expanded="false" onclick="toggleDropdown()">
+                    <i class="bi bi-person-circle"></i> Ericson Yu
+                </button>
+                <ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="userDropdown">
+                    <li><button class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex">
+        <nav class="superadmin-sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="admin-dashboard.html" class="nav-link"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="academic-resources.html" class="nav-link"><i class="bi bi-book me-2"></i> Academic Resources</a></li>
+                <li class="nav-item"><a href="latest-news.html" class="nav-link"><i class="bi bi-newspaper me-2"></i> Latest News</a></li>
+                <li class="nav-item"><a href="media-gallery.html" class="nav-link"><i class="bi bi-images me-2"></i> Media Gallery</a></li>
+                <li class="nav-item"><a href="press-releases.html" class="nav-link"><i class="bi bi-megaphone me-2"></i> Press Releases</a></li>
+                <li class="nav-item"><a href="presidents-corner.html" class="nav-link"><i class="bi bi-person-circle me-2"></i> SSCF Presidents Corner</a></li>
+                <li class="nav-item"><a href="join-an-organization.html" class="nav-link"><i class="bi bi-people me-2"></i> Join an Organization</a></li>
+                <li class="nav-item"><a href="volunteer-opportunities.html" class="nav-link"><i class="bi bi-hand-thumbs-up me-2"></i> Volunteer Opportunities</a></li>
+                <li class="nav-item"><a href="forum.html" class="nav-link"><i class="bi bi-chat-left-dots me-2"></i> Forum</a></li>
+                <li class="nav-item"><a href="feedback.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-2"></i> Feedback</a></li>
+                <li class="nav-item"><a href="sports-registration.html" class="nav-link"><i class="bi bi-trophy me-2"></i> Sports Registration</a></li>
+                <li class="nav-item"><a href="local-election.html" class="nav-link"><i class="bi bi-person-check me-2"></i> Local Election</a></li>
+                <li class="nav-item"><a href="tabulation.html" class="nav-link"><i class="bi bi-table me-2"></i> Tabulation</a></li>
+            </ul>
+        </nav>
+
+        <div class="forum-main-content">
+            <div class="container mt-5">
+                <h2 class="mb-4">Latest News</h2>
+                
+                <div id="postCounts">
+                    <div class="post-count-box">
+                        <i class="bi bi-file-earmark-text icon"></i>
+                        <strong>Total News:</strong> <span id="totalPostsCount">0</span>
+                    </div>
+                    <div class="post-count-box">
+                        <i class="bi bi-check-circle icon"></i>
+                        <strong>New Post:</strong> <span id="approvedPostsCount">0</span>
+                    </div>
+                    <div class="post-count-box">
+                        <i class="bi bi-clock icon"></i>
+                        <strong>Old Posts:</strong> <span id="pendingPostsCount">0</span>
+                    </div>
+                </div>
+        
+                <!-- Add Post Form Box -->
+                <div class="add-post-box mb-4 p-4 border rounded bg-light">
+                    <h3 class="mb-4">Add New Post</h3>
+                    <form id="newPostForm" onsubmit="addPost(event)">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="imageInput" class="form-label">Image</label>
+                                <input type="file" id="imageInput" class="form-control" accept="image/*" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="titleInput" class="form-label">News Title</label>
+                                <input type="text" id="titleInput" class="form-control" placeholder="Enter news title" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="dateInput" class="form-label">Post Submitted</label>
+                                <input type="date" id="dateInput" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contentInput" class="form-label">Content</label>
+                            <textarea id="contentInput" class="form-control" rows="3" placeholder="Enter content" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Post</button>
+                    </form>
+                </div>
+        
+                <div class="d-flex justify-content-between mb-4 align-items-center spacing-top">
+                    <div class="d-flex align-items-center">
+                        <label class="sort-label me-2">Sort By:</label>
+                        <select id="sortOptions" class="form-select me-3" onchange="sortPosts()">
+                            <option value="title">News Title</option>
+                            <option value="date">Post Submitted</option>
+                            <option value="content">Content</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search posts..." oninput="searchPosts()">
+                        <button class="btn btn-primary" type="button" onclick="searchPosts()">Search</button>
+                    </div>
+                </div>
+                
+                
+            
+                <!-- Posts Table -->
+                <div class="posts-table mt-4">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>News Title</th>
+                                <th>Post Submitted</th>
+                                <th>Content</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postsList">
+                            <!-- Example Row: This will be dynamically generated -->
+                            <tr>
+                                <td><img src="images/sample-image.png" alt="Sample Post" class="img-fluid"></td>
+                                <td>Sample Post Title</td>
+                                <td>10/26/2024</td>
+                                <td>This is a sample content text for the post.</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm" onclick="viewPost(0)">View</button>
+                                    <button class="btn btn-warning btn-sm" onclick="editPost(0)">Edit</button>
+                                    <button class="btn btn-danger btn-sm" onclick="confirmDeletePost(0)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+         <!-- Pagination Text -->
+         <div class="pagination-container">
+    <p class="entries-info">Showing 0 to 0 of 0 entries</p>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" onclick="changePage(currentPage - 1)">Previous</a></li>
+            <li class="page-item"><a class="page-link next-page" href="#" onclick="changePage(currentPage + 1)">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+        
+<!-- Modal for Viewing Post -->
+<div class="modal fade" id="viewPostModal" tabindex="-1" role="dialog" aria-labelledby="viewPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewPostModalLabel">Post Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: auto;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <strong>Image:</strong><br>
+                    <img id="modalPostImage" src="" alt="Post Image" class="img-fluid mb-3">
+                </div>
+                <div>
+                    <strong>News Title:</strong>
+                    <h6 id="modalPostTitle"></h6>
+                </div>
+                <div>
+                    <strong>Date:</strong>
+                    <p id="modalPostDate"></p>
+                </div>
+                <div>
+                    <strong>Content:</strong>
+                    <p id="modalPostContent"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Confirmation Modal for Deleting Post -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left: auto;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this post?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script>
+// Sample posts data
+let posts = [];
+let currentPage = 1;
+const entriesPerPage = 10;
+let deletePostIndex = null;
+
+// Function to add a new post
+function addPost(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('titleInput').value;
+    const content = document.getElementById('contentInput').value;
+    const image = document.getElementById('imageInput').files[0];
+    const date = document.getElementById('dateInput').value;
+
+    // Create a new post object
+    const newPost = {
+        title: title,
+        content: content,
+        image: URL.createObjectURL(image),
+        date: new Date(date), // Store date as a Date object for comparison
+        status: 'approved' // Default status for new posts
+    };
+
+    // Add post to the posts array
+    posts.push(newPost);
+
+    // Reset form
+    document.getElementById('newPostForm').reset();
+
+    // Update the posts table and pagination text
+    updatePostsTable();
+    updatePaginationText();
+}
+
+// Function to update the posts table
+function updatePostsTable() {
+    const postsList = document.getElementById('postsList');
+    postsList.innerHTML = ''; // Clear existing posts
+
+    // Check if there are no posts
+    if (posts.length === 0) {
+        const noPostsRow = document.createElement('tr');
+        noPostsRow.innerHTML = `
+            <td colspan="5" class="text-center">No posts found</td>
+        `;
+        postsList.appendChild(noPostsRow);
+        // Reset counts to 0 if no posts are available
+        updatePostCounts(0, 0, 0);
+        return; // Exit the function if no posts
+    }
+
+    // Loop through posts and create table rows
+    posts.forEach((post, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><img src="${post.image}" alt="${post.title}" class="img-fluid"></td>
+            <td>${post.title}</td>
+            <td>${post.date.toLocaleDateString()}</td> <!-- Format date for display -->
+            <td>${post.content}</td>
+            <td>
+                <button class="btn btn-info btn-sm" onclick="viewPost(${index})">View</button>
+                <button class="btn btn-warning btn-sm" onclick="editPost(${index})">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="confirmDeletePost(${index})">Delete</button>
+            </td>
+        `;
+        postsList.appendChild(row);
+    });
+
+    // Update post counts
+    updatePostCounts(posts.length, posts.filter(p => p.status === 'approved').length, countOldPosts());
+}
+
+// Function to count old posts (older than 1 week)
+function countOldPosts() {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7); // Set to one week ago
+    return posts.filter(post => post.date < oneWeekAgo).length; // Count posts older than one week
+}
+
+// Function to update post counts
+function updatePostCounts(total, approved, pending) {
+    document.getElementById('totalPostsCount').innerText = total;
+    document.getElementById('approvedPostsCount').innerText = approved;
+    document.getElementById('pendingPostsCount').innerText = pending;
+}
+
+// Function to view post details
+function viewPost(index) {
+    const post = posts[index];
+    document.getElementById('modalPostImage').src = post.image;
+    document.getElementById('modalPostTitle').innerText = post.title;
+    document.getElementById('modalPostDate').innerText = post.date.toLocaleDateString();
+    document.getElementById('modalPostContent').innerText = post.content;
+
+    // Show the modal
+    $('#viewPostModal').modal('show');
+}
+
+// Function to confirm delete
+function confirmDeletePost(index) {
+    deletePostIndex = index;
+    $('#confirmDeleteModal').modal('show');
+}
+
+// Function to delete the post
+document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+    if (deletePostIndex !== null) {
+        posts.splice(deletePostIndex, 1); // Remove post from array
+        updatePostsTable(); // Update table
+        updatePaginationText(); // Update pagination text
+        $('#confirmDeleteModal').modal('hide'); // Hide modal
+        deletePostIndex = null; // Reset index
+    }
+});
+
+// Function to search posts
+function searchPosts() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const filteredPosts = posts.filter(post => 
+        post.title.toLowerCase().includes(searchValue) ||
+        post.content.toLowerCase().includes(searchValue) ||
+        post.date.toLocaleDateString().includes(searchValue) // Searches for date as a string
+    );
+
+    // Update posts table with filtered posts
+    const postsList = document.getElementById('postsList');
+    postsList.innerHTML = '';
+    filteredPosts.forEach((post, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><img src="${post.image}" alt="${post.title}" class="img-fluid"></td>
+            <td>${post.title}</td>
+            <td>${post.date.toLocaleDateString()}</td>
+            <td>${post.content}</td>
+            <td>
+                <button class="btn btn-info btn-sm" onclick="viewPost(${index})">View</button>
+                <button class="btn btn-warning btn-sm" onclick="editPost(${index})">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="confirmDeletePost(${index})">Delete</button>
+            </td>
+        `;
+        postsList.appendChild(row);
+    });
+
+    // Check if there are no filtered posts
+    if (filteredPosts.length === 0) {
+        const noPostsRow = document.createElement('tr');
+        noPostsRow.innerHTML = `
+            <td colspan="5" class="text-center">No posts found</td>
+        `;
+        postsList.appendChild(noPostsRow);
+    }
+
+    updatePaginationText(filteredPosts.length);
+}
+
+// Function to update pagination text
+function updatePaginationText(totalEntries = posts.length) {
+    const entriesInfo = document.querySelector('.entries-info');
+
+    if (totalEntries === 0) {
+        entriesInfo.innerText = `Showing 0 to 0 of 0 entries`;
+    } else {
+        const startEntry = (currentPage - 1) * entriesPerPage + 1;
+        const endEntry = Math.min(startEntry + entriesPerPage - 1, totalEntries);
+        entriesInfo.innerText = `Showing ${startEntry} to ${endEntry} of ${totalEntries} entries`;
+    }
+}
+
+// Function to change page
+function changePage(page) {
+    currentPage = page;
+    updatePostsTable();
+}
+
+
+
+        </script>
+        
+    
+    
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Public Forum</title>
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="local-election.css">
+</head>
+
+<body>
+    <header class="superadmin-header">
+        <div class="superadmin-logo d-flex align-items-center">
+            <img src="../images/Logo.png" alt="Logo" class="logo">
+            <div class="text-container">
+                <h5 class="mb-0">Southern Luzon State University</h5>
+                <p class="mb-0">Supreme Student Council Federation</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center ms-auto">
+            <i class="bi bi-bell text-light me-3"></i>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" aria-expanded="false" onclick="toggleDropdown()">
+                    <i class="bi bi-person-circle"></i> Ericson Yu
+                </button>
+                <ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="userDropdown">
+                    <li><button class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex">
+        <nav class="superadmin-sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="admin-dashboard.html" class="nav-link"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="academic-resources.html" class="nav-link"><i class="bi bi-book me-2"></i> Academic Resources</a></li>
+                <li class="nav-item"><a href="latest-news.html" class="nav-link"><i class="bi bi-newspaper me-2"></i> Latest News</a></li>
+                <li class="nav-item"><a href="media-gallery.html" class="nav-link"><i class="bi bi-images me-2"></i> Media Gallery</a></li>
+                <li class="nav-item"><a href="press-releases.html" class="nav-link"><i class="bi bi-megaphone me-2"></i> Press Releases</a></li>
+                <li class="nav-item"><a href="presidents-corner.html" class="nav-link"><i class="bi bi-person-circle me-2"></i> SSCF Presidents Corner</a></li>
+                <li class="nav-item"><a href="join-an-organization.html" class="nav-link"><i class="bi bi-people me-2"></i> Join an Organization</a></li>
+                <li class="nav-item"><a href="volunteer-opportunities.html" class="nav-link"><i class="bi bi-hand-thumbs-up me-2"></i> Volunteer Opportunities</a></li>
+                <li class="nav-item"><a href="forum.html" class="nav-link"><i class="bi bi-chat-left-dots me-2"></i> Forum</a></li>
+                <li class="nav-item"><a href="feedback.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-2"></i> Feedback</a></li>
+                <li class="nav-item"><a href="sports-registration.html" class="nav-link"><i class="bi bi-trophy me-2"></i> Sports Registration</a></li>
+                <li class="nav-item"><a href="local-election.html" class="nav-link"><i class="bi bi-person-check me-2"></i> Local Election</a></li>
+                <li class="nav-item"><a href="tabulation.html" class="nav-link"><i class="bi bi-table me-2"></i> Tabulation</a></li>
+            </ul>
+        </nav>
+
+
+  <div class="local-election-content">
+    <div class="container mt-5">
+      <h2 class="mb-4">Local Election Dashboard</h2>
+
+      <div id="postCounts">
+        <div class="post-count-box">
+            <i class="bi bi-file-earmark-text icon" style="color: #185F43;"></i>
+            <strong>No. of Positions:</strong> <span id="totalPostsCount">0</span>
+        </div>
+        <div class="post-count-box">
+            <i class="bi bi-person-check icon" style="color: #FF5733;"></i>
+            <strong>No. of Candidates:</strong> <span id="approvedPostsCount">0</span>
+        </div>
+        <div class="post-count-box">
+            <i class="bi bi-person icon" style="color: #33C3FF;"></i>
+            <strong>Total Voters:</strong> <span id="pendingPostsCount">0</span>
+        </div>
+        <div class="post-count-box">
+            <i class="bi bi-check-circle icon" style="color: #FFC300;"></i>
+            <strong>Voters Voted:</strong> <span id="votersVotedCount">0</span>
+        </div>
+    </div>
+    
+    
+
+
+
+    <div class="container mt-4">
+      <!-- Add Position Section -->
+      <div class="add-position">
+          <h2>Add New Position</h2>
+          <div class="input-group mb-3">
+              <select id="newPosition" class="form-control">
+                  <option value="" disabled selected>Select a position</option>
+                  <option value="President">President</option>
+                  <option value="Vice President Internal">Vice President Internal</option>
+                  <option value="Vice President External">Vice President External</option>
+              </select>
+              <button id="addPositionBtn" class="btn btn-primary">Add Position</button>
+          </div>
+      </div>
+
+      <!-- Position Management -->
+      <div class="position-management" id="positionManagement">
+          <div class="position-item mb-4 d-none" id="positionTemplate">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="position-title" style="margin-right: 10px;"></div>
+                  <div class="right-buttons">
+                      <button class="edit-btn btn btn-warning btn-sm" style="margin-right: 5px;">
+                          <i class="bi bi-pencil-square" style="margin-right: 5px;"></i> Edit
+                      </button>
+                      <button class="remove-btn btn btn-danger btn-sm">
+                          <i class="bi bi-trash" style="margin-right: 5px;"></i> Delete
+                      </button>
+                  </div>
+              </div>
+              <div class="candidate-list"></div>
+              <div class="input-group mb-3">
+                  <input type="text" placeholder="Add Candidate" class="form-control candidate-input" />
+                  <button class="add-candidate-btn btn btn-success">Add Candidate</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Voter Information Table -->
+      <h2 class="mt-4">Voter Information</h2>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Voted For</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody id="voterTableBody">
+              <!-- Voter rows will be added here -->
+          </tbody>
+      </table>
+
+      <!-- Voter Details Modal -->
+      <div class="modal fade" id="voterDetailsModal" tabindex="-1" aria-labelledby="voterDetailsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="voterDetailsModalLabel">Voter Details</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="info-row">
+                          <strong>Name:</strong> <span id="modalVoterName"></span>
+                      </div>
+                      <div class="info-row">
+                          <strong>Email:</strong> <span id="modalVoterEmail"></span>
+                      </div>
+                      <div class="info-row">
+                          <strong>President:</strong> <span id="modalVotedPresident"></span>
+                      </div>
+                      <div class="info-row">
+                          <strong>Vice President:</strong> <span id="modalVotedVicePresident"></span>
+                      </div>
+                      <div class="info-row">
+                          <strong>Secretary:</strong> <span id="modalVotedSecretary"></span>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  <!-- JavaScript for Admin Dashboard Functionality -->
+  <script>
+      const addPositionBtn = document.getElementById('addPositionBtn');
+      const newPositionSelect = document.getElementById('newPosition');
+      const positionManagement = document.getElementById('positionManagement');
+      const positionTemplate = document.getElementById('positionTemplate');
+
+      addPositionBtn.addEventListener('click', function () {
+          const positionName = newPositionSelect.value;
+
+          if (positionName) {
+              // Clone the template and create a new position item
+              const positionDiv = positionTemplate.cloneNode(true);
+              positionDiv.classList.remove('d-none'); // Remove hidden class
+              positionDiv.querySelector('.position-title').innerText = positionName;
+
+              positionManagement.appendChild(positionDiv);
+
+              // Add event listener to the add candidate button
+              positionDiv.querySelector('.add-candidate-btn').addEventListener('click', function () {
+                  const candidateName = positionDiv.querySelector('.candidate-input').value.trim();
+
+                  console.log("Adding candidate:", candidateName); // Check candidate name
+
+                  if (candidateName) {
+                      // Create a new candidate item
+                      const candidateDiv = document.createElement('div');
+                      candidateDiv.className = 'candidate-item d-flex justify-content-between align-items-center mb-2';
+                      candidateDiv.innerHTML = `
+                          <span class="candidate-name">${candidateName}</span>
+                          <button class="remove-candidate btn btn-danger btn-sm"><i class="bi bi-trash"></i> Remove</button>
+                      `;
+
+                      // Append to candidate list
+                      positionDiv.querySelector('.candidate-list').appendChild(candidateDiv);
+
+                      // Add event listener to the remove candidate button
+                      candidateDiv.querySelector('.remove-candidate').addEventListener('click', function () {
+                          candidateDiv.remove();
+                      });
+
+                      // Clear the input after adding
+                      positionDiv.querySelector('.candidate-input').value = '';
+                  } else {
+                      alert('Please enter a candidate name.');
+                  }
+              });
+
+              // Add event listener to the edit button
+              positionDiv.querySelector('.edit-btn').addEventListener('click', function () {
+                  const titleElement = positionDiv.querySelector('.position-title');
+                  const newPositionName = prompt("Edit position name:", titleElement.innerText);
+                  if (newPositionName) {
+                      titleElement.innerText = newPositionName;
+                  }
+              });
+
+              // Add event listener to the delete button
+              positionDiv.querySelector('.remove-btn').addEventListener('click', function () {
+                  positionDiv.remove();
+              });
+
+              // Reset the dropdown after adding
+              newPositionSelect.selectedIndex = 0;
+          } else {
+              alert('Please select a position.');
+          }
+      });
+
+      // Example function to add a voter to the table
+      function addVoter(fullName, email, votedFor) {
+          const tableBody = document.getElementById('voterTableBody');
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+              <td>${fullName}</td>
+              <td>${email}</td>
+              <td>${votedFor}</td>
+              <td><button class="btn btn-info btn-sm view-details-btn">View Ballot</button></td>
+          `;
+          tableBody.appendChild(newRow);
+
+          // Add event listener for the view details button
+          newRow.querySelector('.view-details-btn').addEventListener('click', function () {
+              showVoterDetails(fullName, email, votedFor);
+          });
+      }
+
+      // Function to show voter details in the modal
+      function showVoterDetails(fullName, email, votedFor) {
+          const voterDetailsModal = new bootstrap.Modal(document.getElementById('voterDetailsModal'));
+          document.getElementById('modalVoterName').innerText = fullName;
+          document.getElementById('modalVoterEmail').innerText = email;
+          document.getElementById('modalVotedPresident').innerText = votedFor['President'] || 'N/A';
+          document.getElementById('modalVotedVicePresident').innerText = votedFor['Vice President Internal'] || 'N/A';
+          document.getElementById('modalVotedSecretary').innerText = votedFor['Vice President External'] || 'N/A';
+
+          voterDetailsModal.show();
+      }
+
+      // Example usage of adding voters (replace with actual logic)
+      addVoter('John Doe', 'john.doe@example.com', { President: 'Jane Smith', 'Vice President': 'Tom Brown' });
+      addVoter('Alice Johnson', 'alice.johnson@example.com', { President: 'David Wilson', 'Vice President': 'Linda Green' });
+  </script>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

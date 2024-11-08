@@ -1,0 +1,447 @@
+  /* General Styles */
+  body {
+    margin: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+  }
+  
+  /* Superadmin Header */
+  .superadmin-header {
+    background-color: #185F43; /* Header background color */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .superadmin-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .superadmin-logo .text-container {
+    margin-left: 10px;
+  }
+  
+  h5, p {
+    margin: 0;
+  }
+  
+  /* Adjust notification and user account positioning */
+  .d-flex.align-items-center.ms-auto {
+    margin-left: auto; /* Move elements towards left */
+    margin-right: 20px; /* Add margin to the right for spacing */
+  }
+  
+  /* Superadmin Sidebar */
+  .superadmin-sidebar {
+    width: 280px;
+    background-color: #185F43;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+/* Sidebar Navigation */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-grow: 1;
+}
+
+.nav-item {
+  margin-bottom: -1px;
+}
+
+.nav-link {
+  color: #fff; /* Original text color */
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #05ec71; /* Change this color to your desired hover color */
+  color: #fff; /* Keep text color white on hover */
+}
+
+/* Active link styling */
+.nav-link.active {
+  background-color: #05ec71; /* Change this color to your desired active color */
+  color: #fff; /* Keep text color white for active link */
+}
+
+/* Prevent blue color on click */
+.nav-link:focus, .nav-link:active {
+  color: #fff; /* Ensure text color remains white */
+  background-color: #000000; /* Ensure background color remains the same */
+}
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    min-width: 150px;
+    padding: 0; /* Remove padding to eliminate spacing */
+    margin: 0; /* Remove margin */
+  }
+  
+  /* Full background color on hover for all dropdown items */
+  .dropdown-item {
+    transition: background-color 0.3s;
+    padding: 6px 15px; /* Adjust padding as needed */
+    display: block; /* Ensure the item takes full width */
+    margin: 0; /* Remove margin to avoid white space */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #05ec71; /* Full background color on hover */
+    color: #fff; /* Keep text color white on hover */
+  }
+  
+  /* Adjust dropdown button height */
+  .dropdown-toggle {
+    padding: 8px 12px; /* Adjust as needed */
+  }
+  
+    
+  /* Superadmin Main Content */
+  .forum-main-content {
+    margin-left: 320px;
+    padding: 20px;
+    overflow: auto;
+  }
+
+
+
+
+
+/* Post Counts Styles */
+#postCounts {
+  display: flex;
+  justify-content: left; /* Center align boxes */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 20px; /* Space below */
+  background: linear-gradient(135deg, #e9f7ef, #f1f1f1); /* Subtle gradient background */
+  padding: 20px; /* Add padding around the section */
+  border-radius: 8px; /* Rounded corners for the section */
+}
+
+/* Post Count Box */
+.post-count-box {
+  background-color: #185F43; /* Green background */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 15px; /* Reduced padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  text-align: center; /* Center text */
+  flex: 1; /* Allow boxes to grow equally */
+  margin: 0 15px; /* Smaller space between boxes */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+  max-width: 300px; /* Reduced width for narrower boxes */
+}
+
+/* Icons */
+.icon {
+  font-size: 36px; /* Larger size for icons */
+  color: #ffffff; /* White icon color */
+  margin-bottom: 10px; /* Space below the icon */
+}
+
+/* Count and Label Styles */
+strong {
+  font-size: 20px; /* Increase font size for labels */
+  font-weight: bold; /* Make the text bold */
+  color: #ffffff; /* White text color */
+  display: block; /* Ensure strong is on a new line */
+  margin-top: 5px; /* Space between icon and label */
+}
+
+/* Span styles for counts */
+span {
+  font-size: 22px; /* Larger size for counts */
+  font-weight: bold; /* Bold for emphasis */
+  color: #ffffff; /* White count color */
+  display: block; /* Ensure span is on a new line */
+  margin-top: 5px; /* Space between label and count */
+}
+
+
+
+/* Adjust responsive behavior */
+@media (max-width: 768px) {
+  #postCounts {
+    flex-direction: column; /* Stack boxes vertically on small screens */
+  }
+  .post-count-box {
+    margin-bottom: 15px; /* Space below each box */
+    margin-right: 0; /* Reset margin on small screens */
+  }
+}
+
+
+
+  
+.add-post-box {
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 0.25rem; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow */
+}
+
+.add-post-box h3 {
+    font-size: 1.5rem; /* Font size for heading */
+    margin-bottom: 1rem; /* Spacing below the heading */
+}
+
+.add-post-box .form-label {
+    font-weight: bold; /* Bold label text */
+}
+
+/* Container spacing for the entire row */
+.spacing-top {
+  margin-top: 50px; /* Adds consistent top margin for the whole section */
+}
+
+/* Style for "Sort By" label */
+.sort-label {
+  font-weight: bold;
+  color: #185F43;
+}
+
+/* Style for the sort dropdown */
+.form-select {
+  width: auto;
+  border: 1px solid #185F43;
+  border-radius: 0.25rem;
+}
+
+/* Adjust the position of the search bar */
+.input-group {
+  max-width: 400px; /* Limit the width of the search bar */
+  margin-left: auto; /* Align the search bar to the right */
+  display: flex; /* Use flexbox to align items */
+}
+
+.input-group .form-control {
+  flex: 1; /* Allow the input to take up the remaining space */
+  border: 1px solid #185F43; /* Customize the border color */
+  border-radius: 0 0.25rem 0.25rem 0; /* Rounded corners on the right */
+}
+
+.input-group .btn-primary {
+  border-radius: 0.25rem 0 0 0.25rem; /* Rounded corners on the left */
+}
+
+
+
+.posts-table {
+    margin-top: 2rem;
+    border-radius: 8px; /* Rounded corners for the whole table */
+    overflow: hidden; /* Prevents border-radius from affecting child elements */
+}
+
+.posts-table h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #185F43; /* Header color matching your theme */
+}
+
+.table {
+    width: 1100px; /* Set a fixed width for the table */
+    max-width: 100%; /* Ensure it doesn't exceed the viewport */
+    border-collapse: collapse; /* Ensure borders are collapsed */
+    table-layout: fixed; /* Fixed layout to maintain widths */
+}
+
+.table tbody {
+  height: 50px; /* Minimum height for the table body */
+}
+
+.table th, .table td {
+    padding: 15px; /* Padding for cells */
+    text-align: center; /* Center align the text */
+    border: 1px solid white; /* White borders for cells */
+}
+
+.table th {
+    background-color: #185F43; /* Header background color */
+    color: white; /* Header text color */
+}
+
+.table th:first-child {
+    border-top-left-radius: 8px; /* Round top-left corner of the first header */
+}
+
+.table th:last-child {
+    border-top-right-radius: 8px; /* Round top-right corner of the last header */
+}
+
+.table td {
+    background-color: #ffffff; /* Cell background color */
+    overflow-wrap: break-word; /* Break long words */
+    word-wrap: break-word; /* Break long words */
+    word-break: break-word; /* Break long words */
+    max-width: 200px; /* Set a max width for the content */
+}
+
+.table img {
+    width: 50px; /* Fixed width for images */
+    height: 50px; /* Fixed height for images */
+    object-fit: cover; /* Ensures the image covers the area, cropping if necessary */
+    border-radius: 5px; /* Slightly rounded corners for images */
+}
+
+
+
+.btn {
+    margin: 0 5px; /* Space between buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.btn-info {
+    background-color: #17a2b8; /* Info button color */
+    border: none; /* Remove border */
+}
+
+.btn-info:hover {
+    background-color: #138496; /* Darker on hover */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Warning button color */
+    border: none; /* Remove border */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker on hover */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Danger button color */
+    border: none; /* Remove border */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker on hover */
+}
+
+
+
+table .text-center {
+  color: #185F43; /* Text color */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Centered text */
+
+
+}
+
+
+
+   /* Pagination section */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Spacing above pagination */
+  margin-left: 0; /* Align left with table */
+}
+
+.entries-info {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination .page-item .page-link {
+  color: #185F43;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #185F43;
+  color: white;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #185F43;
+  color: white;
+  border: 1px solid #185F43;
+}
+
+
+
+
+
+        /* Modal Header */
+.modal-header {
+    background-color: #185F43; /* Your preferred background color */
+    color: white; /* Text color for header */
+    border-bottom: 2px solid #ddd; /* Optional: Add a bottom border */
+}
+
+/* Modal Title */
+.modal-header .modal-title {
+    font-weight: bold; /* Make title bold */
+    font-size: 1.5rem; /* Adjust font size */
+}
+
+/* Close Button */
+.modal-header .close {
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+    color: white; /* Change close button color */
+    font-size: 1.5rem; /* Adjust close button font size */
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px; /* Increase padding for body */
+    background-color: #f9f9f9; /* Light background for body */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Post Image */
+.modal-body img {
+    max-width: 100%; /* Ensure image is responsive */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+/* Modal Footer */
+.modal-footer {
+    background-color: #f1f1f1; /* Light background for footer */
+    border-top: 1px solid #ddd; /* Optional: Add a top border */
+}
+
+/* Buttons */
+.modal-footer .btn {
+    border-radius: 5px; /* Rounded corners for buttons */
+}
+
+/* Hover Effect for Buttons */
+.modal-footer .btn:hover {
+    opacity: 0.8; /* Slight fade effect on hover */
+}

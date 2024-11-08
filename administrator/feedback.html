@@ -57,7 +57,7 @@
     <div class="feedback-content">
       <div class="container mt-5">
         <h2 class="mb-4">Post Approval Dashboard</h2>
-
+    
         <div id="postCounts">
           <div class="post-count-box">
             <i class="bi bi-file-earmark-text icon"></i>
@@ -72,9 +72,19 @@
             <strong>Negative Feedback:</strong> <span id="negativeFeedbackCount">0</span>
           </div>
         </div>
-
+    
+        <!-- Add a flex container for title and search bar -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4>Recent Feedback Entries</h4>
+          
+          <!-- Search Input Group -->
+          <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search posts..." oninput="searchPosts()">
+            <button class="btn btn-primary" type="button" onclick="searchPosts()">Search</button>
+          </div>
+        </div>
+    
         <!-- Feedback Table -->
-        <h4 class="mb-3">Recent Feedback Entries</h4>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -121,53 +131,71 @@
             </tr>
           </tbody>
         </table>
-
       </div>
     </div>
-  </div>
-
-  <!-- Feedback Modal -->
-  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="feedbackModalLabel">Feedback Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="info-row">
-            <strong>Name:</strong> <span id="feedbackName"></span>
+    
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="feedbackModalLabel">Feedback Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="info-row">
-            <strong>Message:</strong> <span class="post-content" id="feedbackMessage"></span>
+          <div class="modal-body">
+            <div class="info-row">
+              <strong>Name:</strong> <span id="feedbackName"></span>
+            </div>
+            <div class="info-row">
+              <strong>Message:</strong> <span class="post-content" id="feedbackMessage"></span>
+            </div>
+            <div class="info-row">
+              <strong>Date:</strong> <span id="feedbackDate"></span>
+            </div>
           </div>
-          <div class="info-row">
-            <strong>Date:</strong> <span id="feedbackDate"></span>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function viewFeedback(id, name, message, date) {
-      document.getElementById('feedbackName').textContent = name;
-      document.getElementById('feedbackMessage').textContent = message;
-      document.getElementById('feedbackDate').textContent = date;
-
-      const feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
-      feedbackModal.show();
-    }
-
-    // Mock data for feedback counts
-    document.getElementById('totalFeedbackCount').textContent = '4';
-    document.getElementById('positiveFeedbackCount').textContent = '2';
-    document.getElementById('negativeFeedbackCount').textContent = '2';
-  </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function viewFeedback(id, name, message, date) {
+        document.getElementById('feedbackName').textContent = name;
+        document.getElementById('feedbackMessage').textContent = message;
+        document.getElementById('feedbackDate').textContent = date;
+    
+        const feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+        feedbackModal.show();
+      }
+    
+      // Mock data for feedback counts
+      document.getElementById('totalFeedbackCount').textContent = '4';
+      document.getElementById('positiveFeedbackCount').textContent = '2';
+      document.getElementById('negativeFeedbackCount').textContent = '2';
+    
+      function searchPosts() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const feedbackRows = document.querySelectorAll('#feedbackTable tr');
+    
+        feedbackRows.forEach(row => {
+          const name = row.cells[1].textContent.toLowerCase();
+          const message = row.cells[2].textContent.toLowerCase();
+    
+          // Show or hide rows based on search input
+          if (name.includes(input) || message.includes(input)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+    </script>
+    
+    
+    
 </body>
 
 </html>

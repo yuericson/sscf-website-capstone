@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Public Forum</title>
+  <link rel="icon" type="image/x-icon" href="../images/Logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Add Font Awesome for icons (optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="media-gallery.css">
+</head>
+
+<body>
+    <header class="superadmin-header">
+        <div class="superadmin-logo d-flex align-items-center">
+            <img src="../images/Logo.png" alt="Logo" class="logo">
+            <div class="text-container">
+                <h5 class="mb-0">Southern Luzon State University</h5>
+                <p class="mb-0">Supreme Student Council Federation</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center ms-auto">
+            <i class="bi bi-bell text-light me-3"></i>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" aria-expanded="false" onclick="toggleDropdown()">
+                    <i class="bi bi-person-circle"></i> Ericson Yu
+                </button>
+                <ul class="dropdown-menu" id="dropdownMenu" aria-labelledby="userDropdown">
+                    <li><button class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex">
+        <nav class="superadmin-sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="admin-dashboard.html" class="nav-link"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="academic-resources.html" class="nav-link"><i class="bi bi-book me-2"></i> Academic Resources</a></li>
+                <li class="nav-item"><a href="latest-news.html" class="nav-link"><i class="bi bi-newspaper me-2"></i> Latest News</a></li>
+                <li class="nav-item"><a href="media-gallery.html" class="nav-link"><i class="bi bi-images me-2"></i> Media Gallery</a></li>
+                <li class="nav-item"><a href="press-releases.html" class="nav-link"><i class="bi bi-megaphone me-2"></i> Press Releases</a></li>
+                <li class="nav-item"><a href="presidents-corner.html" class="nav-link"><i class="bi bi-person-circle me-2"></i> SSCF Presidents Corner</a></li>
+                <li class="nav-item"><a href="join-an-organization.html" class="nav-link"><i class="bi bi-people me-2"></i> Join an Organization</a></li>
+                <li class="nav-item"><a href="volunteer-opportunities.html" class="nav-link"><i class="bi bi-hand-thumbs-up me-2"></i> Volunteer Opportunities</a></li>
+                <li class="nav-item"><a href="forum.html" class="nav-link"><i class="bi bi-chat-left-dots me-2"></i> Forum</a></li>
+                <li class="nav-item"><a href="feedback.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-2"></i> Feedback</a></li>
+                <li class="nav-item"><a href="sports-registration.html" class="nav-link"><i class="bi bi-trophy me-2"></i> Sports Registration</a></li>
+                <li class="nav-item"><a href="local-election.html" class="nav-link"><i class="bi bi-person-check me-2"></i> Local Election</a></li>
+                <li class="nav-item"><a href="tabulation.html" class="nav-link"><i class="bi bi-table me-2"></i> Tabulation</a></li>
+            </ul>
+        </nav>
+
+<!-- Media Gallery Dashboard -->
+<div class="media-gallery-content">
+    <div class="container mt-5">
+        <h2 class="mb-4">Media Gallery Dashboard</h2>
+        <div id="postCounts">
+            <div class="post-count-box">
+                <i class="fas fa-images icon"></i>
+                <strong>Total Media:</strong>
+                <span id="totalImageCount">0</span> <!-- Dynamic count -->
+            </div>
+            <div class="post-count-box">
+                <i class="fas fa-video icon"></i> <!-- Font Awesome icon for videos -->
+                <strong>Total Videos:</strong>
+                <span id="totalVideoCount">0</span> <!-- Dynamic count -->
+            </div>
+            <div class="post-count-box">
+                <i class="fas fa-folder-open icon"></i> <!-- Font Awesome icon for albums -->
+                <strong>Total Albums:</strong>
+                <span id="totalAlbumCount">0</span> <!-- Dynamic count -->
+            </div>
+        </div>
+        
+        
+        <div class="gallery-management">
+            <!-- Image Gallery Management -->
+            <h3>Manage Image Gallery</h3>
+            <form id="imageUploadForm" class="input-button-group">
+                <input type="file" accept="image/*" required>
+                <button type="submit">Add Image</button>
+            </form>
+            <div id="imageGalleryDisplay" class="media-display"></div> <!-- Display added images -->
+        </div>
+        
+        <div class="gallery-management">
+            <!-- Video Gallery Management -->
+            <h3>Manage Video Gallery</h3>
+            <form id="videoUploadForm" class="input-button-group">
+                <input type="url" placeholder="Video URL" required>
+                <button type="submit">Add Video</button>
+            </form>
+            <div id="videoGalleryDisplay" class="media-display"></div> <!-- Display added videos -->
+        </div>
+        
+        <div class="gallery-management">
+            <!-- Photo Album Management -->
+            <h3>Manage Photo Albums</h3>
+            <form id="albumUploadForm" class="input-button-group">
+                <input type="text" placeholder="Album Name" required>
+                <button type="submit">Create Album</button>
+            </form>
+            <div id="albumDisplay" class="media-display"></div> <!-- Display added albums -->
+        </div>
+        
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const totalImageCount = document.getElementById('totalImageCount');
+    const totalVideoCount = document.getElementById('totalVideoCount');
+    const totalAlbumCount = document.getElementById('totalAlbumCount');
+    let imageCount = 0;
+    let videoCount = 0;
+    let albumCount = 0;
+
+    // Handle Image Upload Form Submission
+    document.getElementById('imageUploadForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        const inputFile = this.querySelector('input[type="file"]');
+        const file = inputFile.files[0];
+        if (file) {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.alt = 'Uploaded Image';
+            img.style.width = '150px'; // Set the display size of the image
+            img.style.height = '150px'; // Ensure uniform height
+            img.style.objectFit = 'cover'; // Crop to fit the square
+            img.style.margin = '5px';
+            document.getElementById('imageGalleryDisplay').appendChild(img);
+            imageCount++;
+            totalImageCount.textContent = imageCount; // Update total images count
+        }
+        this.reset(); // Reset the form
+    });
+
+    // Handle Video Upload Form Submission
+    document.getElementById('videoUploadForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        const inputUrl = this.querySelector('input[type="url"]');
+        const url = inputUrl.value;
+        if (url) {
+            const videoBox = document.createElement('div');
+            videoBox.className = 'video-box';
+            videoBox.innerHTML = `<iframe src="${url}" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('videoGalleryDisplay').appendChild(videoBox);
+            videoCount++;
+            totalVideoCount.textContent = videoCount; // Update total videos count
+        }
+        this.reset(); // Reset the form
+    });
+
+    // Handle Album Upload Form Submission
+    document.getElementById('albumUploadForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        const albumName = this.querySelector('input[type="text"]').value;
+
+        if (albumName) {
+            const albumDiv = document.createElement('div');
+            albumDiv.className = 'album-box';
+            albumDiv.innerHTML = `
+                <a href="#" class="album-link" data-album="${albumName.toLowerCase().replace(/\s+/g, '-')}" title="${albumName}">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <div class="text">${albumName}</div>
+                </a>
+            `;
+            document.getElementById('albumDisplay').appendChild(albumDiv);
+            albumCount++;
+            totalAlbumCount.textContent = albumCount; // Update total albums count
+        }
+        this.reset(); // Reset the form
+    });
+});
+
+
+</script>
+
+        
+
+       
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
