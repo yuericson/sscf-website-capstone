@@ -1,0 +1,204 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;  /* Ensures the layout fills the whole screen */
+
+
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 240px;
+    background-color: #2c3e50;
+    color: white;
+    transition: width 0.3s ease;
+    height: 100vh;  /* Set sidebar height to cover the full viewport height */
+    position: fixed;  /* Fix sidebar in place */
+    top: 0;
+    left: 0;  /* Fix to the left side */
+    z-index: 100;  /* Ensure the sidebar stays above other content */
+    
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    
+    
+}
+
+.sidebar .logo img {
+    max-width: 100%;
+    height: 50px;
+}
+
+.sidebar .sscftxt {
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    letter-spacing: 3px;  /* Spacing between each letter */
+    margin-left: -50px;  /* Adjusted to bring text closer to the logo */
+}
+
+/* Sidebar toggle button */
+.sidebar .toggle-btn {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Hide logo when sidebar is collapsed */
+.sidebar.collapsed .logo img {
+    display: none;  /* Hide the logo */
+}
+
+.sidebar.collapsed .sscftxt {
+    display: none;  /* Hide the SSCF text when collapsed */
+}
+
+/* Menu Items */
+.menu-items {
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+    background-color: #5296d9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item i {
+    margin-right: 10px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.menu-text {
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    flex-grow: 1;
+}
+
+/* Hover effect */
+.menu-item:hover {
+    background-color: #16a085;
+}
+
+/* Collapsed Sidebar Styles */
+.sidebar.collapsed .menu-text {
+    display: none;  /* Hide text when sidebar is collapsed */
+}
+
+.sidebar.collapsed .menu-item {
+    padding: 10px 0;
+    justify-content: center;
+}
+
+.sidebar.collapsed .menu-item:hover {
+    background-color: #16a085;
+}
+
+/* Tooltips for hidden items */
+.menu-item[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 60px;
+    padding: 5px 10px;
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Main content area */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ecf0f1;
+    padding: 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.messages,
+.account {
+    margin-right: 20px;
+}
+
+.header-right {
+    /* You can add additional header content here */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar.collapsed {
+        width: 50px;
+    }
+
+    .menu-item {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .menu-item i {
+        margin-right: 8px;
+    }
+
+    .header-left {
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+
+
+

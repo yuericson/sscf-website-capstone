@@ -13,9 +13,12 @@ body {
   align-items: center;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
+  height: 60px; /* Set fixed header height */
 }
 
 .logo {
@@ -35,25 +38,30 @@ h5, p {
   margin: 0;
 }
 
-/* Adjust notification and user account positioning */
-.d-flex.align-items-center.ms-auto {
-  margin-left: auto; /* Move elements towards left */
-  margin-right: 20px; /* Add margin to the right for spacing */
+/* Header Navigation */
+.header-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 /* Superadmin Sidebar */
 .superadmin-sidebar {
+  position: fixed;
+  top: 60px; /* Adjust for header height */
+  left: 0;
+  bottom: 0;
   width: 280px;
-  background-color: #185F43;
+  background-color: #185F43; /* Same background color as header */
   color: #fff;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 20px;
+  height: calc(100vh - 60px); /* Adjust to take full height minus header */
+  padding: 0; /* Remove any padding */
+  margin-top: 0; /* Ensure it starts directly below the header */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  position: fixed;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 999;
 }
 
 /* Sidebar Navigation */
@@ -74,72 +82,29 @@ h5, p {
   display: flex;
   align-items: center;
   text-decoration: none;
-  border-radius: 8px;
+
   transition: background 0.3s, color 0.3s;
+  width: 100%; /* Ensure the nav items take up the full width */
+  height: 45px; /* Match the height of the header */
 }
 
 .nav-link:hover {
-  background-color: #05ec71; /* Change this color to your desired hover color */
-  color: #fff; /* Keep text color white on hover */
-}
-
-/* Active link styling */
-.nav-link.active {
-  background-color: #05ec71; /* Change this color to your desired active color */
-  color: #fff; /* Keep text color white for active link */
-}
-
-/* Prevent blue color on click */
-.nav-link:focus, .nav-link:active {
-  color: #fff; /* Ensure text color remains white */
-  background-color: #000000; /* Ensure background color remains the same */
-}
-#sidebar {
-  min-width: 280px;
-  max-width: 280px;
-  background-color: #15283c;
+  background-color: #3c8c6b;
   color: #fff;
-  transition: all 0.3s;
-  position: relative;
-  z-index: 11;
-  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.4);
-  float: left;
-  width: 100%;
-  background-image: url('images/layout_img/pattern_h.png');
-  position: fixed;
-  height: 100%;
-  overflow: auto;
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  min-width: 150px;
-  padding: 0; /* Remove padding to eliminate spacing */
-  margin: 0; /* Remove margin */
+.nav-link i {
+  margin-right: 10px;
 }
 
-/* Full background color on hover for all dropdown items */
-.dropdown-item {
-  transition: background-color 0.3s;
-  padding: 6px 15px; /* Adjust padding as needed */
-  display: block; /* Ensure the item takes full width */
-  margin: 0; /* Remove margin to avoid white space */
+.nav-item .active {
+  background-color: #3c8c6b;
 }
 
-.dropdown-item:hover {
-  background-color: #05ec71; /* Full background color on hover */
-  color: #fff; /* Keep text color white on hover */
-}
-
-/* Adjust dropdown button height */
-.dropdown-toggle {
-  padding: 8px 12px; /* Adjust as needed */
-}
-
-  
-/* Superadmin Main Content */
+/* Main content area */
 .superadmin-main-content {
-  margin-left: 320px;
+  margin-left: 280px;
+  margin-top: 80px; /* Ensure content doesn't go under the fixed header */
   padding: 20px;
   overflow: auto;
 }

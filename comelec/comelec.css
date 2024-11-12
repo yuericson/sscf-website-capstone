@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+  }
+  
+  /* Superadmin Header */
+  .superadmin-header {
+    background-color: #185F43;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fixed position to keep header at top */
+    top: 0;
+    width: 100%; /* Ensure header spans full width */
+    z-index: 1000;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .superadmin-logo .text-container {
+    margin-left: 10px;
+  }
+  
+  h5, p {
+    margin: 0;
+  }
+  
+  /* Align notification and user account to the right */
+  .d-flex.align-items-center.ms-auto {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  /* Sidebar Navigation */
+  .superadmin-sidebar {
+    width: 280px;
+    background-color: #185F43;
+    color: #fff;
+    height: 100vh;
+    padding-top: 70px; /* Ensure it doesn’t overlap with fixed header */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 900;
+  }
+  
+  /* Sidebar Navigation */
+  .nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .nav-item {
+    margin-bottom: 8px;
+  }
+  
+  .nav-link {
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #05ec71;
+    color: #fff;
+  }
+  
+  .nav-link.active {
+    background-color: #05ec71;
+    color: #fff;
+  }
+  
+  .nav-link:focus,
+  .nav-link:active {
+    color: #fff;
+    background-color: #000000;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    min-width: 150px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-item {
+    transition: background-color 0.3s;
+    padding: 6px 15px;
+    display: block;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #05ec71;
+    color: #fff;
+  }
+  
+  .dropdown-toggle {
+    padding: 8px 12px;
+  }
+  
+  /* Main Content Area */
+  .comelec-main-content {
+    margin-left: 280px;
+    padding: 90px 20px 20px; /* Added top padding to prevent overlap with header */
+    overflow-y: auto;
+  }
+  
