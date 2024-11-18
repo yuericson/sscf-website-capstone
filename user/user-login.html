@@ -400,7 +400,9 @@
     <div class="login-form-box">
       <h2>Login</h2>
       <form id="loginForm">
-        <div class="error-msg" id="error-msg" style="display:none;">Invalid username or password.</div>
+        <!-- Centered error message -->
+        <div class="error-msg" id="error-msg" style="display:none; color: red; text-align: center; margin-bottom: 15px;">Invalid username or password.</div>
+        
         <div class="mb-3">
           <label for="username" class="form-label email-label">Email</label>
           <input type="email" class="form-control" id="username" placeholder="Enter your email" required>
@@ -473,6 +475,7 @@
     </div>
   </div>
 </div>
+
 
 <script>
 // Function to switch between login and registration forms

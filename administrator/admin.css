@@ -13,55 +13,61 @@ body {
   align-items: center;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Lower z-index so sidebar is on top */
+}
+
+/* Sidebar Logo Container */
+.sidebar-logo {
+  display: flex;
+  align-items: center; /* Align logo and text vertically */
+  justify-content: flex-start;
+  margin-bottom: 20px; /* Adjust spacing */
+  position: fixed; /* Fix the logo and text container at the top */
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 60px; /* Set fixed header height */
+  padding: 10px;
+  z-index: 100; /* Ensure logo stays above nav items */
+  background-color: #185F43; /* Match the sidebar's background */
+  width: 280px; /* Ensure the sidebar width matches */
+  box-sizing: border-box;
 }
 
+/* Logo styling */
 .logo {
-  height: 50px;
+  height: 50px; /* Adjust size of logo */
+  margin-right: 10px; /* Space between logo and text */
 }
 
-.superadmin-logo {
+/* Text Container (h5 and p) */
+.text-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
-.superadmin-logo .text-container {
-  margin-left: 10px;
-}
-
+/* Heading and paragraph styling */
 h5, p {
-  margin: 0;
-}
-
-/* Header Navigation */
-.header-nav {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
+  margin: 0; /* Remove default margins */
+  color: white; /* White text for header */
 }
 
 /* Superadmin Sidebar */
 .superadmin-sidebar {
-  position: fixed;
-  top: 60px; /* Adjust for header height */
-  left: 0;
-  bottom: 0;
   width: 280px;
-  background-color: #185F43; /* Same background color as header */
+  background-color: #185F43;
   color: #fff;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 60px); /* Adjust to take full height minus header */
-  padding: 0; /* Remove any padding */
-  margin-top: 0; /* Ensure it starts directly below the header */
+  height: 100vh;
+  padding-top: 120px; /* Add padding to avoid overlap with fixed header */
+  padding-bottom: 20px; /* Keep bottom padding if necessary */
+  position: fixed;
+  top: 0; /* Ensure the sidebar starts from the top of the viewport */
+  left: 0; /* Align to the left */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  z-index: 999;
+  z-index: 1000; /* Higher z-index to ensure sidebar is above the header */
 }
 
 /* Sidebar Navigation */
@@ -82,29 +88,23 @@ h5, p {
   display: flex;
   align-items: center;
   text-decoration: none;
-
+  border-radius: 8px;
   transition: background 0.3s, color 0.3s;
-  width: 100%; /* Ensure the nav items take up the full width */
-  height: 45px; /* Match the height of the header */
 }
 
 .nav-link:hover {
-  background-color: #3c8c6b;
-  color: #fff;
+  background-color: #05ec71; /* Change this color to your desired hover color */
+  color: #fff; /* Keep text color white on hover */
 }
 
-.nav-link i {
-  margin-right: 10px;
+/* Active link styling */
+.nav-link.active {
+  background-color: #05ec71; /* Change this color to your desired active color */
+  color: #fff; /* Keep text color white for active link */
 }
 
-.nav-item .active {
-  background-color: #3c8c6b;
-}
-
-/* Main content area */
-.superadmin-main-content {
-  margin-left: 280px;
-  margin-top: 80px; /* Ensure content doesn't go under the fixed header */
-  padding: 20px;
-  overflow: auto;
+/* Prevent blue color on click */
+.nav-link:focus, .nav-link:active {
+  color: #fff; /* Ensure text color remains white */
+  background-color: #000000; /* Ensure background color remains the same */
 }

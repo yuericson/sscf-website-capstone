@@ -13,8 +13,6 @@ body {
 .dashboard-container {
     display: flex;
     min-height: 100vh;  /* Ensures the layout fills the whole screen */
-
-
 }
 
 /* Sidebar Styles */
@@ -28,7 +26,6 @@ body {
     top: 0;
     left: 0;  /* Fix to the left side */
     z-index: 100;  /* Ensure the sidebar stays above other content */
-    
 }
 
 .sidebar.collapsed {
@@ -40,8 +37,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    
-    
 }
 
 .sidebar .logo img {
@@ -64,6 +59,7 @@ body {
     border: none;
     font-size: 30px;
     cursor: pointer;
+    margin-left: 7px;
 }
 
 /* Hide logo when sidebar is collapsed */
@@ -128,7 +124,7 @@ body {
 }
 
 /* Tooltips for hidden items */
-.menu-item[title]:hover::after {
+.sidebar.collapsed .menu-item[title]:hover::after {
     content: attr(title);
     position: absolute;
     left: 60px;
@@ -190,15 +186,7 @@ body {
         margin-right: 8px;
     }
 
-    .header-left {
-        flex-direction: column;
-    }
-
     .main-content {
-        margin-left: 0;
+        margin-left: 60px;
     }
 }
-
-
-
-

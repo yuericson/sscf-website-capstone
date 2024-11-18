@@ -30,7 +30,8 @@
   <!-- CSS Files -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/plugins.min.css" />
-  <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+  <link rel="stylesheet" href="assets/css/sscfadmin.min.css" />
+  <link rel="stylesheet" href="assets/css/local-election.css" />
 
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link rel="stylesheet" href="assets/css/demo.css" />
@@ -102,18 +103,8 @@
               </a>
             </li>
 
-            
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuElection">
-                <i class="
-              fas fa-calendar-check"></i>
-                <p>Calendar Activites</p>
-                <span class="caret"></span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuForum">
+              <a data-bs-toggle="collapse" href="forum.html">
                 <i class="fas fa-comments"></i>
                 <p>Forum</p>
                 <span class="caret"></span>
@@ -121,7 +112,7 @@
             </li>
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuFeedback">
+              <a data-bs-toggle="collapse" href="feedback.html">
                 <i class="fas fa-comment-dots"></i>
                 <p>Feedback</p>
                 <span class="caret"></span>
@@ -130,7 +121,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenu">
+              <a data-bs-toggle="collapse" href="join-organization.html">
                 <i class="fas fa-users"></i>
                 <p>Join Organization</p>
                 <span class="caret"></span>
@@ -138,7 +129,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuTabulation">
+              <a data-bs-toggle="collapse" href="local-election.html">
                 <i class="fas fa-check-square"></i>
                 <p>Local Election</p>
                 <span class="caret"></span>
@@ -147,7 +138,7 @@
 
             
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#sidebarLayouts">
+              <a data-bs-toggle="collapse" href="latest-news.html">
                 <i class="fas fa-paper-plane"></i>
                 <p>Latest News</p>
                 <span class="caret"></span>
@@ -156,7 +147,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#tables">
+              <a data-bs-toggle="collapse" href="media-gallery.html">
                 <i class="fas fa-images"></i>
                 <p>Media Gallery</p>
                 <span class="caret"></span>
@@ -166,7 +157,7 @@
             
         
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#maps">
+              <a data-bs-toggle="collapse" href="press-releases.html">
                 <i class="fas fa-newspaper"></i>
                 <p>Press Releases</p>
                 <span class="caret"></span>
@@ -177,7 +168,7 @@
 
 
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#charts">
+                <a data-bs-toggle="collapse" href="presidents-corner.html">
                   <i class="far fa-comments"></i>
                   <p>President's Corner</p>
                   <span class="caret"></span>
@@ -195,7 +186,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuTabulation">
+              <a data-bs-toggle="collapse" href="#tabulation.html">
                 <i class="fas fa-chart-bar"></i>
                 <p>Tabulation</p>
                 <span class="caret"></span>
@@ -204,7 +195,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#forms">
+              <a data-bs-toggle="collapse" href="upcoming-events.html">
                 <i class="fas fa-calendar-alt"></i>
                 <p>Upcoming Events</p>
                 <span class="caret"></span>
@@ -216,7 +207,7 @@
 
 
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#submenuVolunteer">
+              <a data-bs-toggle="collapse" href="volunteer-opportunities.html">
                 <i class="fas fa-hands-helping"></i>
                 <p>Volunteer Opportunities</p>
                 <span class="caret"></span>
@@ -617,428 +608,552 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card card-round">
-                <div class="card-header">
-                  <div class="card-head-row">
-                    <div class="card-title">User Statistics</div>
-                    <div class="card-tools">
-                      <a href="#" class="btn btn-label-success btn-round btn-sm me-2">
-                        <span class="btn-label">
-                          <i class="fa fa-pencil"></i>
-                        </span>
-                        Export
-                      </a>
-                      <a href="#" class="btn btn-label-info btn-round btn-sm">
-                        <span class="btn-label">
-                          <i class="fa fa-print"></i>
-                        </span>
-                        Print
-                      </a>
+
+
+          <div class="local-election-content container mt-5">
+            <h2 class="mb-4">Local Election Dashboard</h2>
+        
+            <!-- Post Counts Section -->
+            <div id="postCounts" class="row text-center mb-4">
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="post-count-box">
+                        <i class="bi bi-file-earmark-text icon" style="color: #185F43; font-size: 2rem;"></i>
+                        <p><strong>No. of Positions:</strong></p>
+                        <span id="totalPostsCount">0</span>
                     </div>
-                  </div>
                 </div>
-                <div class="card-body">
-                  <div class="chart-container" style="min-height: 375px">
-                    <canvas id="statisticsChart"></canvas>
-                  </div>
-                  <div id="myChartLegend"></div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="post-count-box">
+                        <i class="bi bi-person-check icon" style="color: #FF5733; font-size: 2rem;"></i>
+                        <p><strong>No. of Candidates:</strong></p>
+                        <span id="approvedPostsCount">0</span>
+                    </div>
                 </div>
-              </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="post-count-box">
+                        <i class="bi bi-person icon" style="color: #33C3FF; font-size: 2rem;"></i>
+                        <p><strong>Total Voters:</strong></p>
+                        <span id="pendingPostsCount">0</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="post-count-box">
+                        <i class="bi bi-check-circle icon" style="color: #FFC300; font-size: 2rem;"></i>
+                        <p><strong>Voters Voted:</strong></p>
+                        <span id="votersVotedCount">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card-primary card-round">
-                <div class="card-header">
-                  <div class="card-head-row">
-                    <div class="card-title">Daily Sales</div>
-                    <div class="card-tools">
-                      <div class="dropdown">
-                        <button class="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Export
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+        
+            <!-- Add Position Section -->
+            <div class="add-position mb-4">
+                <h2>Add New Position</h2>
+                <div class="input-group">
+                    <select id="newPosition" class="form-control">
+                        <option value="" disabled selected>Select a position</option>
+                        <option value="President">President</option>
+                        <option value="Vice President Internal">Vice President Internal</option>
+                        <option value="Vice President External">Vice President External</option>
+                    </select>
+                    <button id="addPositionBtn" class="btn btn-primary">Add Position</button>
+                </div>
+            </div>
+        
+            <!-- Position Management Section -->
+            <div class="position-management mb-4" id="positionManagement">
+                <div class="position-item mb-4 d-none" id="positionTemplate">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="position-title"></div>
+                        <div class="right-buttons">
+                            <button class="edit-btn btn btn-warning btn-sm me-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
+                            <button class="remove-btn btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                  <div class="card-category">March 25 - April 02</div>
+                    <div class="candidate-list"></div>
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="Add Candidate" class="form-control candidate-input" />
+                        <button class="add-candidate-btn btn btn-success">Add Candidate</button>
+                    </div>
                 </div>
-                <div class="card-body pb-0">
-                  <div class="mb-4 mt-2">
-                    <h1>$4,578.58</h1>
-                  </div>
-                  <div class="pull-in">
-                    <canvas id="dailySalesChart"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="card card-round">
-                <div class="card-body pb-0">
-                  <div class="h1 fw-bold float-end text-primary">+5%</div>
-                  <h2 class="mb-2">17</h2>
-                  <p class="text-muted">Users online</p>
-                  <div class="pull-in sparkline-fix">
-                    <div id="lineChart"></div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-round">
-                <div class="card-header">
-                  <div class="card-head-row card-tools-still-right">
-                    <h4 class="card-title">Users Geolocation</h4>
-                    <div class="card-tools">
-                      <button class="btn btn-icon btn-link btn-primary btn-xs">
-                        <span class="fa fa-angle-down"></span>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card">
-                        <span class="fa fa-sync-alt"></span>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-primary btn-xs">
-                        <span class="fa fa-times"></span>
-                      </button>
-                    </div>
-                  </div>
-                  <p class="card-category">
-                    Map of the distribution of users around the world
-                  </p>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="table-responsive table-hover table-sales">
-                        <table class="table">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/id.png" alt="indonesia" />
-                                </div>
-                              </td>
-                              <td>Indonesia</td>
-                              <td class="text-end">2.320</td>
-                              <td class="text-end">42.18%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/us.png" alt="united states" />
-                                </div>
-                              </td>
-                              <td>USA</td>
-                              <td class="text-end">240</td>
-                              <td class="text-end">4.36%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/au.png" alt="australia" />
-                                </div>
-                              </td>
-                              <td>Australia</td>
-                              <td class="text-end">119</td>
-                              <td class="text-end">2.16%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/ru.png" alt="russia" />
-                                </div>
-                              </td>
-                              <td>Russia</td>
-                              <td class="text-end">1.081</td>
-                              <td class="text-end">19.65%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/cn.png" alt="china" />
-                                </div>
-                              </td>
-                              <td>China</td>
-                              <td class="text-end">1.100</td>
-                              <td class="text-end">20%</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="flag">
-                                  <img src="assets/img/flags/br.png" alt="brazil" />
-                                </div>
-                              </td>
-                              <td>Brasil</td>
-                              <td class="text-end">640</td>
-                              <td class="text-end">11.63%</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="mapcontainer">
-                        <div id="world-map" class="w-100" style="height: 300px"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        
+            <!-- Voter Information Table -->
+            <h2>Voter Information</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Voted For</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="voterTableBody">
+                        <!-- Voter rows will be added here -->
+                    </tbody>
+                </table>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card card-round">
-                <div class="card-body">
-                  <div class="card-head-row card-tools-still-right">
-                    <div class="card-title">New Customers</div>
-                    <div class="card-tools">
-                      <div class="dropdown">
-                        <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton"
-                          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+        
+            <!-- Voter Details Modal -->
+            <div class="modal fade" id="voterDetailsModal" tabindex="-1" aria-labelledby="voterDetailsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="voterDetailsModalLabel">Voter Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-list py-4">
-                    <div class="item-list">
-                      <div class="avatar">
-                        <img src="assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle" />
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Jimmy Denis</div>
-                        <div class="status">Graphic Designer</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                    <div class="item-list">
-                      <div class="avatar">
-                        <span class="avatar-title rounded-circle border border-white">CF</span>
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Chandra Felix</div>
-                        <div class="status">Sales Promotion</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                    <div class="item-list">
-                      <div class="avatar">
-                        <img src="assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle" />
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Talha</div>
-                        <div class="status">Front End Designer</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                    <div class="item-list">
-                      <div class="avatar">
-                        <img src="assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle" />
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Chad</div>
-                        <div class="status">CEO Zeleaf</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                    <div class="item-list">
-                      <div class="avatar">
-                        <span class="avatar-title rounded-circle border border-white bg-primary">H</span>
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Hizrian</div>
-                        <div class="status">Web Designer</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                    <div class="item-list">
-                      <div class="avatar">
-                        <span class="avatar-title rounded-circle border border-white bg-secondary">F</span>
-                      </div>
-                      <div class="info-user ms-3">
-                        <div class="username">Farrah</div>
-                        <div class="status">Marketing</div>
-                      </div>
-                      <button class="btn btn-icon btn-link op-8 me-1">
-                        <i class="far fa-envelope"></i>
-                      </button>
-                      <button class="btn btn-icon btn-link btn-danger op-8">
-                        <i class="fas fa-ban"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="card card-round">
-                <div class="card-header">
-                  <div class="card-head-row card-tools-still-right">
-                    <div class="card-title">Transaction History</div>
-                    <div class="card-tools">
-                      <div class="dropdown">
-                        <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton"
-                          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="modal-body">
+                            <div class="info-row">
+                                <strong>Name:</strong> <span id="modalVoterName"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Email:</strong> <span id="modalVoterEmail"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>President:</strong> <span id="modalVotedPresident"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Vice President:</strong> <span id="modalVotedVicePresident"></span>
+                            </div>
+                            <div class="info-row">
+                                <strong>Secretary:</strong> <span id="modalVotedSecretary"></span>
+                            </div>
                         </div>
-                      </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <!-- Projects table -->
-                    <table class="table align-items-center mb-0">
-                      <thead class="thead-light">
-                        <tr>
-                          <th scope="col">Payment Number</th>
-                          <th scope="col" class="text-end">Date & Time</th>
-                          <th scope="col" class="text-end">Amount</th>
-                          <th scope="col" class="text-end">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <button class="btn btn-icon btn-round btn-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                            </button>
-                            Payment from #10231
-                          </th>
-                          <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                          <td class="text-end">$250.00</td>
-                          <td class="text-end">
-                            <span class="badge badge-success">Completed</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+        
+      
+
+
+          <script>
+            const addPositionBtn = document.getElementById('addPositionBtn');
+            const newPositionSelect = document.getElementById('newPosition');
+            const positionManagement = document.getElementById('positionManagement');
+            const positionTemplate = document.getElementById('positionTemplate');
+      
+            addPositionBtn.addEventListener('click', function () {
+                const positionName = newPositionSelect.value;
+      
+                if (positionName) {
+                    // Clone the template and create a new position item
+                    const positionDiv = positionTemplate.cloneNode(true);
+                    positionDiv.classList.remove('d-none'); // Remove hidden class
+                    positionDiv.querySelector('.position-title').innerText = positionName;
+      
+                    positionManagement.appendChild(positionDiv);
+      
+                    // Add event listener to the add candidate button
+                    positionDiv.querySelector('.add-candidate-btn').addEventListener('click', function () {
+                        const candidateName = positionDiv.querySelector('.candidate-input').value.trim();
+      
+                        console.log("Adding candidate:", candidateName); // Check candidate name
+      
+                        if (candidateName) {
+                            // Create a new candidate item
+                            const candidateDiv = document.createElement('div');
+                            candidateDiv.className = 'candidate-item d-flex justify-content-between align-items-center mb-2';
+                            candidateDiv.innerHTML = `
+                                <span class="candidate-name">${candidateName}</span>
+                                <button class="remove-candidate btn btn-danger btn-sm"><i class="bi bi-trash"></i> Remove</button>
+                            `;
+      
+                            // Append to candidate list
+                            positionDiv.querySelector('.candidate-list').appendChild(candidateDiv);
+      
+                            // Add event listener to the remove candidate button
+                            candidateDiv.querySelector('.remove-candidate').addEventListener('click', function () {
+                                candidateDiv.remove();
+                            });
+      
+                            // Clear the input after adding
+                            positionDiv.querySelector('.candidate-input').value = '';
+                        } else {
+                            alert('Please enter a candidate name.');
+                        }
+                    });
+      
+                    // Add event listener to the edit button
+                    positionDiv.querySelector('.edit-btn').addEventListener('click', function () {
+                        const titleElement = positionDiv.querySelector('.position-title');
+                        const newPositionName = prompt("Edit position name:", titleElement.innerText);
+                        if (newPositionName) {
+                            titleElement.innerText = newPositionName;
+                        }
+                    });
+      
+                    // Add event listener to the delete button
+                    positionDiv.querySelector('.remove-btn').addEventListener('click', function () {
+                        positionDiv.remove();
+                    });
+      
+                    // Reset the dropdown after adding
+                    newPositionSelect.selectedIndex = 0;
+                } else {
+                    alert('Please select a position.');
+                }
+            });
+      
+            // Example function to add a voter to the table
+            function addVoter(fullName, email, votedFor) {
+                const tableBody = document.getElementById('voterTableBody');
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${fullName}</td>
+                    <td>${email}</td>
+                    <td>${votedFor}</td>
+                    <td><button class="btn btn-info btn-sm view-details-btn">View Ballot</button></td>
+                `;
+                tableBody.appendChild(newRow);
+      
+                // Add event listener for the view details button
+                newRow.querySelector('.view-details-btn').addEventListener('click', function () {
+                    showVoterDetails(fullName, email, votedFor);
+                });
+            }
+      
+            // Function to show voter details in the modal
+            function showVoterDetails(fullName, email, votedFor) {
+                const voterDetailsModal = new bootstrap.Modal(document.getElementById('voterDetailsModal'));
+                document.getElementById('modalVoterName').innerText = fullName;
+                document.getElementById('modalVoterEmail').innerText = email;
+                document.getElementById('modalVotedPresident').innerText = votedFor['President'] || 'N/A';
+                document.getElementById('modalVotedVicePresident').innerText = votedFor['Vice President Internal'] || 'N/A';
+                document.getElementById('modalVotedSecretary').innerText = votedFor['Vice President External'] || 'N/A';
+      
+                voterDetailsModal.show();
+            }
+      
+            // Example usage of adding voters (replace with actual logic)
+            addVoter('John Doe', 'john.doe@example.com', { President: 'Jane Smith', 'Vice President': 'Tom Brown' });
+            addVoter('Alice Johnson', 'alice.johnson@example.com', { President: 'David Wilson', 'Vice President': 'Linda Green' });
+        </script>
+      
+      
+      
+      
+      
+        
+        
+      
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+          <script>
+             const registrationData = [
+              { name: 'Diaz, Anne Nicole', email: 'diazanne@slsu.edu.ph', age: 22, gender: 'Female', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Engineering', sportsEvent: 'Volleyball', id: '20L-001234', image: '../images/user1.jpg' },
+              { name: 'Tipo, Cristal', email: 'tipocristal@slsu.edu.ph', age: 21, gender: 'Female', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Industrial Technology', sportsEvent: 'Volleyball', id: '20L-001235', image: '../images/user2.jpg' },
+              { name: 'Yu, Ericson', email: 'yuericson@slsu.edu.ph', age: 21, gender: 'Male', yearLevel: '4th Year', course: 'BS Information Technology', college: 'College of Allied Medicine', sportsEvent: 'Billiards', id: '20L-001236', image: '../images/user3.jpg' },
+              
+              // Add more data as needed
+          ];
+      
+          let currentPage = 1;
+          const entriesPerPage = 20; // Number of entries to display per page
+      
+          function populateTable() {
+              const tableBody = document.getElementById('registrationTableBody');
+              tableBody.innerHTML = '';
+      
+              const startIndex = (currentPage - 1) * entriesPerPage;
+              const endIndex = Math.min(startIndex + entriesPerPage, registrationData.length);
+              const currentEntries = registrationData.slice(startIndex, endIndex);
+              
+              currentEntries.forEach(data => {
+                  const row = document.createElement('tr');
+                  row.innerHTML = `
+                      <td>${data.name}</td>
+                      <td>${data.email}</td>
+                      <td>${data.age}</td>
+                      <td>${data.gender}</td>
+                      <td>${data.yearLevel}</td>
+                      <td>${data.course}</td>
+                      <td>${data.college}</td>
+                      <td>${data.sportsEvent}</td>
+                      <td>${data.id}</td>
+                      <td><img src="${data.image}" alt="User Image" class="registration-image"></td>
+                      <td><button class="btn btn-primary" onclick="viewDetails('${data.name}', '${data.email}', '${data.age}', '${data.gender}', '${data.yearLevel}', '${data.course}', '${data.college}', '${data.sportsEvent}', '${data.id}', '${data.image}')">View</button></td>
+                  `;
+                  tableBody.appendChild(row);
+              });
+      
+              // Update entries info text
+              const totalEntries = registrationData.length;
+              document.getElementById('entriesInfo').innerText = `Showing ${startIndex + 1} to ${endIndex} of ${totalEntries} entries`;
+          }
+      
+          function changePage(newPage, event) {
+              event.preventDefault(); // Prevent default anchor click behavior
+              const totalPages = Math.ceil(registrationData.length / entriesPerPage);
+              
+              if (newPage >= 1 && newPage <= totalPages) {
+                  currentPage = newPage;
+                  populateTable();
+              }
+          }
+      
+          function viewDetails(name, email, age, gender, yearLevel, course, college, sportsEvent, id, image) {
+              alert(`Details:\nName: ${name}\nEmail: ${email}\nAge: ${age}\nGender: ${gender}\nYear Level: ${yearLevel}\nCourse: ${course}\nCollege/Campus: ${college}\nSports Event: ${sportsEvent}\nID: ${id}`);
+          }
+      
+          // Initial call to populate the table on page load
+          populateTable();
+      
+            const ageCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.age] = (acc[entry.age] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const ageLabels = Object.keys(ageCounts);
+            const ageData = Object.values(ageCounts);
+      
+            const genderCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.gender] = (acc[entry.gender] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const genderLabels = Object.keys(genderCounts);
+            const genderData = Object.values(genderCounts);
+      
+            const yearLevelCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.yearLevel] = (acc[entry.yearLevel] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const yearLevelLabels = Object.keys(yearLevelCounts);
+            const yearLevelData = Object.values(yearLevelCounts);
+      
+            const sportsEventCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.sportsEvent] = (acc[entry.sportsEvent] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const sportsEventLabels = Object.keys(sportsEventCounts);
+            const sportsEventData = Object.values(sportsEventCounts);
+      
+            const courseCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.course] = (acc[entry.course] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const courseLabels = Object.keys(courseCounts);
+            const courseData = Object.values(courseCounts);
+      
+            const collegeCounts = registrationData.reduce((acc, entry) => {
+                acc[entry.college] = (acc[entry.college] || 0) + 1;
+                return acc;
+            }, {});
+      
+            const collegeLabels = Object.keys(collegeCounts);
+            const collegeData = Object.values(collegeCounts);
+      
+            const ageChartCtx = document.getElementById('ageChart').getContext('2d');
+            new Chart(ageChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ageLabels,
+                    datasets: [{ label: 'Number of Participants', data: ageData, backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 1 }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+      
+            const genderChartCtx = document.getElementById('genderChart').getContext('2d');
+            new Chart(genderChartCtx, {
+                type: 'pie',
+                data: {
+                    labels: genderLabels,
+                    datasets: [{ label: 'Gender Distribution', data: genderData, backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'], borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'], borderWidth: 1 }]
+                }
+            });
+      
+            const yearLevelChartCtx = document.getElementById('yearLevelChart').getContext('2d');
+            new Chart(yearLevelChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: yearLevelLabels,
+                    datasets: [{ label: 'Number of Participants', data: yearLevelData, backgroundColor: 'rgba(255, 206, 86, 0.2)', borderColor: 'rgba(255, 206, 86, 1)', borderWidth: 1 }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+      
+            const sportsEventChartCtx = document.getElementById('sportsEventChart').getContext('2d');
+            new Chart(sportsEventChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: sportsEventLabels,
+                    datasets: [{ label: 'Number of Participants', data: sportsEventData, backgroundColor: 'rgba(153, 102, 255, 0.2)', borderColor: 'rgba(153, 102, 255, 1)', borderWidth: 1 }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+      
+            const courseChartCtx = document.getElementById('courseChart').getContext('2d');
+            new Chart(courseChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: courseLabels,
+                    datasets: [{ label: 'Number of Participants', data: courseData, backgroundColor: 'rgba(255, 159, 64, 0.2)', borderColor: 'rgba(255, 159, 64, 1)', borderWidth: 1 }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+      
+            const collegeCampusChartCtx = document.getElementById('collegeCampusChart').getContext('2d');
+            new Chart(collegeCampusChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: collegeLabels,
+                    datasets: [{ label: 'Number of Participants', data: collegeData, backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 1 }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+        </script>
+      
+      
+        
+        <script>
+      
+          // Function to update the total response count
+      function updateTotalResponseCount() {
+          const tableBody = document.getElementById('registrationTableBody');
+          const rowCount = tableBody.getElementsByTagName('tr').length; // Count the number of <tr> elements in the table body
+          document.getElementById('totalResponseCount').textContent = rowCount; // Update the span with the row count
+      }
+      
+      // Call the function on page load
+      window.onload = updateTotalResponseCount;
+      
+      
+      // Example JavaScript to set the filename dynamically
+      const imageUrl = "../images/formi.png"; // Your image URL
+      const fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+      document.getElementById('modalImageFileName').innerText = fileName;
+      
+      
+      
+      
+           function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show');
+          }
+      
+          function logout() {
+            // Show logout message
+            alert('You have successfully logged out. Redirecting to the login page...');
+            // Redirect to login page after 3 seconds
+            setTimeout(function() {
+              window.location.href = '../login.html'; // Assuming login.html is in the parent folder
+            }, 2000); // 3000ms = 3 seconds delay
+          }
+        
+          function viewDetails(name, email, age, gender, year, course, college, sport, id, imgSrc) {
+        document.getElementById('modalFullName').textContent = name;
+        document.getElementById('modalEmail').textContent = email;
+        document.getElementById('modalAge').textContent = age;
+        document.getElementById('modalGender').textContent = gender;
+        document.getElementById('modalYearLevel').textContent = year;
+        document.getElementById('modalCourse').textContent = course;
+        document.getElementById('modalCollege').textContent = college;
+        document.getElementById('modalSportsEvent').textContent = sport;
+        document.getElementById('modalIDNumber').textContent = id;
+        document.getElementById('modalImage').src = imgSrc; // Set the user image source
+        // Show the modal
+        const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        detailsModal.show();
+      }
+      
+        
+          function sortTable() {
+            const table = document.getElementById('registrationTableBody');
+            const rows = Array.from(table.getElementsByTagName('tr'));
+            const sortBy = document.getElementById('sortBySelect').value;
+        
+            rows.sort((a, b) => {
+              const aText = a.children[sortByIndex(sortBy)].textContent.trim();
+              const bText = b.children[sortByIndex(sortBy)].textContent.trim();
+        
+              return aText.localeCompare(bText);
+            });
+        
+            rows.forEach(row => table.appendChild(row));
+          }
+        
+          function sortByIndex(sortBy) {
+            switch (sortBy) {
+              case 'name':
+                return 0;
+              case 'age':
+                return 2;
+              case 'gender':
+                return 3;
+              case 'year':
+                return 4;
+              case 'course':
+                return 5;
+              default:
+                return 0;
+            }
+          }
+        
+        
+          function searchTable() {
+          var input, filter, table, tr, td, i, j, txtValue;
+          input = document.getElementById("searchInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("registrationTableBody");
+          tr = table.getElementsByTagName("tr");
+      
+          let hasResults = false; // Variable to track if any results are found
+      
+          for (i = 0; i < tr.length; i++) {
+              tr[i].style.display = "none"; // Initially hide each row
+              td = tr[i].getElementsByTagName("td");
+              for (j = 0; j < td.length; j++) {
+                  if (td[j]) {
+                      txtValue = td[j].textContent || td[j].innerText;
+                      // Check if the search term matches any cell in the row
+                      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                          tr[i].style.display = ""; // Show the row if there is a match
+                          hasResults = true; // Set hasResults to true if a match is found
+                          break; // Exit inner loop when a match is found
+                      }
+                  }
+              }
+          }
+      
+          // Show or hide the no results message based on the results
+          const noResultsMessage = document.getElementById("noResultsMessage");
+          if (hasResults) {
+              noResultsMessage.style.display = "none"; // Hide message if results found
+          } else {
+              noResultsMessage.style.display = "block"; // Show message if no results found
+          }
+      }
+      
+      
+      
+              // Get all navigation links
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      // Get current URL
+      const currentUrl = window.location.pathname;
+      
+      // Loop through links and set active class
+      navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+      });
+        </script>
+       
 
       <footer class="footer">
         <div class="container-fluid d-flex justify-content-between">
@@ -1049,23 +1164,7 @@
                   Terms & Condition
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> Help </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> Data Privacy Notice </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright">
-            <a href="#">© 2024 SLSU Supreme Student Council Federation. All Rights Reserved</a>
-          </div>
-          <div>
-            Project by
-            <a target="_blank" href="#"> BS-Info Tech Students</a>.
-          </div>
-        </div>
-      </footer>
+    
     </div>
 
     <!-- Custom template | don't include it in your project! -->

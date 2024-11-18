@@ -22,6 +22,9 @@
                 <button class="menu-item" title="Dashboard">
                     <i class="fas fa-tachometer-alt"></i> <span class="menu-text">Dashboard</span>
                 </button>
+
+
+                
                 <button class="menu-item" title="Academic Resources">
                     <i class="fas fa-book"></i> <span class="menu-text">Academic Resources</span>
                 </button>
@@ -80,7 +83,17 @@
     <script>
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn i');
             sidebar.classList.toggle('collapsed');
+
+            // Change the toggle button icon based on the sidebar state
+            if (sidebar.classList.contains('collapsed')) {
+                toggleBtn.classList.remove('fas', 'fa-bars');  // Remove old icon
+                toggleBtn.classList.add('fas', 'fa-ellipsis-v');  // Add new icon
+            } else {
+                toggleBtn.classList.remove('fas', 'fa-ellipsis-v');  // Remove ellipsis icon
+                toggleBtn.classList.add('fas', 'fa-bars');  // Revert to hamburger icon
+            }
         }
     </script>
 </body>

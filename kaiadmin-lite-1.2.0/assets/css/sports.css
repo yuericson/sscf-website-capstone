@@ -1,0 +1,339 @@
+/* Modify the sports-registration-content to use flexbox */
+.sports-registration-content {
+
+    padding: 20px;
+    overflow: auto;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+}
+
+.sports-registration-content .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .sports-registration-content label {
+    margin-right: 10px;
+  }
+
+  .sports-registration-content .form-select {
+    width: auto;
+    margin-right: 10px;
+  }
+
+
+
+
+  /* Adjust the position of the search bar */
+.input-group {
+    max-width: 400px; /* Adjust this value as needed */
+    margin-left: auto; /* Align to the right */
+    margin-bottom: 10px; /* Add margin for spacing below */
+
+    
+}
+
+.input-group .form-control {
+    width: 70%; /* Adjust the width of the input field */
+    border: 1px solid #185F43; /* Match your theme color */
+}
+
+
+
+
+
+
+
+/* Table Styles */
+.table {
+    margin-top: 20px;
+    border-radius: 8px; 
+    overflow: hidden; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure the table takes full width */
+    border: 1px solid #ddd; /* Border around the table */
+}
+
+.table th, .table td {
+    border: 1px solid #ddd; /* Add border to table cells */
+    text-align: center;
+    padding: 15px; /* More padding for a spacious feel */
+}
+
+.table th {
+    background-color: #185F43;
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e9ecef; /* Light gray for odd rows */
+}
+
+/* Image Styles */
+.registration-image {
+    max-width: 40px; /* Adjust width as needed */
+    border-radius: 50%; /* Circular images */
+}
+
+.modal-content {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    max-width: 600px; /* Set a maximum width */
+    width: 100%; /* Allow the modal to take full width up to max-width */
+    margin: auto; /* Center the modal */
+}
+
+.modal-header {
+    background-color: #185F43; /* Header background color */
+    color: white; /* Header text color */
+}
+
+.modal-title {
+    font-weight: bold; /* Bold title */
+    
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+   
+}
+
+.modal-body .info-row {
+    display: flex; /* Use flexbox for alignment */
+    margin: 0; /* Remove margin to eliminate spacing */
+    
+    
+}
+
+.modal-body .info-row strong {
+    margin-right: 5px; /* Add space between label and value */
+    flex-shrink: 0; /* Prevent the label from shrinking */
+    color: #000000; /* Label color */
+}
+
+.modal-body img {
+    max-width: 15%; /* Responsive image */
+    border-radius: 10px; /* Rounded corners for image */
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6; /* Subtle border above footer */
+    
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Custom secondary button color */
+    border: none; /* No border */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Darker on hover */
+}
+
+
+.highlight-image {
+    width: 100%; /* Make the image responsive */
+    border: 2px solid #185F43; /* Border color matching your theme */
+    border-radius: 5px; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.highlight-image:hover {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add a shadow effect on hover */
+}
+
+/* Link styling */
+.image-link {
+    display: block; /* Make the link take up the full width */
+    text-align: left; /* Center align if needed */
+}
+
+
+
+  
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sports-registration-content {
+        margin-left: 20px; /* Adjust margin for smaller screens */
+    }
+    .input-group {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
+
+
+
+/* Post Counts Styles */
+#postCounts {
+    display: flex;
+    justify-content: flex-start; /* Align boxes to the left */
+    align-items: center; /* Center items vertically */
+    margin: 0 0 20px; /* Remove center alignment, space below */
+    background: linear-gradient(135deg, #e9f7ef, #f1f1f1); /* Subtle gradient background */
+    padding: 10px; /* Add padding around the section */
+    border-radius: 8px; /* Rounded corners for the section */
+    max-width: 300px; /* Set a maximum width for the section */
+}
+
+.post-count-box {
+    background-color: #185F43; /* Change background color to green */
+    border: 1px solid #ced4da; /* Light border (optional, can be removed) */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 15px; /* Reduced padding for a smaller height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly larger shadow effect */
+    text-align: center; /* Center text */
+    flex: 1; /* Allow boxes to grow equally */
+    margin: 0 10px; /* Space between boxes */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+}
+
+/* Icons */
+.icon {
+    font-size: 36px; /* Larger size for icons */
+    color: #ffffff; /* Change icon color to white */
+    margin-bottom: 10px; /* Space below the icon */
+}
+
+/* Count and Label Styles */
+strong {
+    font-size: 20px; /* Increase font size for labels */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* Change text color to white */
+    display: block; /* Ensure strong is on a new line */
+    margin-top: 5px; /* Space between icon and label */
+}
+
+/* Span styles for counts */
+span {
+    font-size: 22px; /* Larger size for counts */
+    font-weight: bold; /* Bold for emphasis */
+    color: #ffffff; /* Change count color to white */
+    display: block; /* Ensure span is on a new line */
+    margin-top: 5px; /* Space between label and count */
+}
+
+
+/* Adjust responsive behavior */
+@media (max-width: 768px) {
+    #postCounts {
+        flex-direction: column; /* Stack boxes vertically on small screens */
+    }
+    .post-count-box {
+        margin-bottom: 15px; /* Space below each box */
+        margin-right: 0; /* Reset margin on small screens */
+    }
+}
+
+
+
+
+
+label {
+    font-weight: bold; /* Make the label text bold */
+    color: #185F43; /* Green color for the label */
+    margin-right: 0.5rem; /* Space between label and dropdown */
+  }
+  
+  .form-select {
+    border-radius: 0.25rem; /* Rounded corners */
+    border: 1px solid black; /* Black border for the dropdown */
+    background-color: #f8f9fa; /* Light background */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+  }
+  
+  .form-select:focus {
+    border-color: #185F43; /* Green border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(24, 95, 67, 0.25); /* Subtle shadow on focus */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+  .data-visualization {
+    margin: 20px;
+    text-align: center; /* Center align the title */
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: space-between; /* Space out items */
+}
+
+.chart-item {
+    flex: 0 1 calc(33.333% - 10px); /* Ensure each item takes one-third of the row */
+    text-align: center; /* Center align text */
+    margin: 5px; /* Add a small margin */
+    padding: 15px; /* Increased padding for better spacing */
+    background-color: #f8f9fa; /* Light background color for visibility */
+    border: 1px solid #ddd; /* Light border around each chart */
+    border-radius: 8px; /* Rounded corners for the boxes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h4 {
+    font-size: 20px; /* Smaller font size for chart titles */
+    margin-bottom: 10px; /* Space below the title */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pagination section */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Spacing above pagination */
+    margin-left: 0; /* Align left with table */
+  }
+  
+  .entries-info {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .pagination {
+    margin: 0;
+  }
+  
+  .pagination .page-item .page-link {
+    color: #185F43;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  
+  .pagination .page-item .page-link:hover {
+    background-color: #185F43;
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #185F43;
+    color: white;
+    border: 1px solid #185F43;
+  }

@@ -1,0 +1,234 @@
+/* Post Counts Styles */
+#postCounts {
+    display: flex;
+    justify-content: space-between; /* Space boxes evenly */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Space below */
+    background: linear-gradient(135deg, #e9f7ef, #f1f1f1); /* Subtle gradient background */
+    padding: 20px; /* Add padding around the section */
+    border-radius: 8px; /* Rounded corners for the section */
+    }
+    
+    /* Post Count Box */
+    .post-count-box {
+    background-color: #185F43; /* White background */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 15px; /* Reduced padding for a smaller height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly larger shadow effect */
+    text-align: center; /* Center text */
+    flex: 1; /* Allow boxes to grow equally */
+    margin: 0 10px; /* Space between boxes */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+    }
+    
+    
+    /* Icons */
+    .icon {
+    font-size: 36px; /* Larger size for icons */
+    color: #ffffff; /* Green color for icons */
+    margin-bottom: 10px; /* Space below the icon */
+    }
+    
+    /* Count and Label Styles */
+    strong {
+    font-size: 20px; /* Increase font size for labels */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* Darker color for better readability */
+    display: block; /* Ensure strong is on a new line */
+    margin-top: 5px; /* Space between icon and label */
+    }
+    
+    /* Span styles for counts */
+    span {
+    font-size: 22px; /* Larger size for counts */
+    font-weight: bold; /* Bold for emphasis */
+    color: #ffffff; /* Match count color with icons */
+    display: block; /* Ensure span is on a new line */
+    margin-top: 5px; /* Space between label and count */
+    }
+    
+    /* Adjust responsive behavior */
+    @media (max-width: 768px) {
+    #postCounts {
+      flex-direction: column; /* Stack boxes vertically on small screens */
+    }
+    .post-count-box {
+      margin-bottom: 15px; /* Space below each box */
+      margin-right: 0; /* Reset margin on small screens */
+    }
+    }
+    
+    
+    .add-position {
+      margin-bottom: 30px;
+    }
+    
+    .input-group {
+      display: flex;
+      justify-content: space-between; /* Align items to both ends */
+      align-items: center;
+      width: 750px; /* Set the width as needed */
+    }
+    
+    .input-group input {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 80%; /* Reduced width for input fields */
+      font-size: 1em;
+    }
+    
+    .input-group input::placeholder {
+      font-style: italic;
+    }
+    
+    .position-management {
+      margin-top: 20px;
+    }
+    
+    /* Position Item Styles */
+    .position-item {
+      color: #2c3e50; /* Darker text color for better readability */
+      background-color: #f8f9fa; /* Light background for position items */
+      border: 1px solid #ced4da; /* Border for position items */
+      border-radius: 8px; /* Rounded corners for items */
+      padding: 15px; /* Padding inside position items */
+      max-width: 800px; /* Reduced maximum width for position items */
+      margin-bottom: 20px; /* Space below position items */
+    }
+    
+    /* Candidate Item Styles */
+    .candidate-item {
+      display: flex;
+      justify-content: space-between; /* Align name and remove button */
+      align-items: center; /* Center items vertically */
+      padding: 10px; /* Padding for candidate items */
+      border: 1px solid #185F43; /* Border for candidate items */
+      border-radius: 5px; /* Rounded corners for candidate items */
+      margin-top: 5px; /* Space above candidate items */
+      background-color: #ffffff; /* Light background for candidate items */
+    }
+    
+    .candidate-name {
+      color: #000000;
+    }
+    
+    
+    
+    
+    
+    
+    /* Right Buttons Styles */
+    .right-buttons {
+      display: flex;
+      gap: 5px; /* Space between buttons */
+    }
+    
+    .edit-btn, .remove-btn, .add-candidate-btn {
+      padding: 5px 10px; /* Smaller padding for a more compact button */
+      font-size: 0.9em; /* Slightly smaller font */
+      display: flex; /* Flex display for icon and text alignment */
+      align-items: center; /* Center items vertically */
+    }
+    
+    
+    
+    /* Add your custom styles here */
+    .table {
+      width: 100%; /* Adjust table width to your needs */
+      table-layout: fixed; /* Ensures that the table takes up the defined width */
+    }
+    
+    .table th,
+    .table td {
+      overflow: hidden; /* Hide overflow */
+      text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+      white-space: nowrap; /* Prevent text from wrapping */
+      border: 1px solid #ddd; /* Border color for table cells */
+      padding: 8px; /* Padding inside cells for better spacing */
+      text-align: left; /* Aligns text to the left */
+    }
+    
+    .table th {
+      background-color: #185F43; /* Desired header background color */
+      color: white; /* Text color for better contrast */
+    }
+    
+    /* Set specific widths for each column */
+    .table th:nth-child(1), /* First column (Full Name) */
+    .table td:nth-child(1) {
+      width: 20%; /* Adjust width percentage */
+    }
+    
+    .table th:nth-child(2), /* Second column (Email) */
+    .table td:nth-child(2) {
+      width: 30%; /* Adjust width percentage */
+    }
+    
+    .table th:nth-child(3), /* Third column (Voted For) */
+    .table td:nth-child(3) {
+      width: 20%; /* Adjust width percentage */
+    }
+    
+    .table-striped tbody tr:nth-child(odd) {
+      background-color: #f9f9f9; /* Light background for odd rows */
+    }
+    
+    
+    
+    
+    .modal-content {
+      background-color: #f8f9fa; /* Light background */
+      border-radius: 10px; /* Rounded corners */
+      max-width: 600px; /* Set a maximum width */
+      width: 100%; /* Allow the modal to take full width up to max-width */
+      margin: auto; /* Center the modal */
+    }
+    
+    .modal-header {
+      background-color: #185F43; /* Header background color */
+      color: white; /* Header text color */
+    }
+    
+    .modal-title {
+      font-weight: bold; /* Bold title */
+    }
+    
+    .modal-body {
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+    }
+    
+    .modal-body .info-row {
+      display: flex; /* Use flexbox for alignment */
+      margin: 0; /* Remove margin to eliminate spacing */
+    }
+    
+    .modal-body .info-row strong {
+      margin-right: 5px; /* Add space between label and value */
+      flex-shrink: 0; /* Prevent the label from shrinking */
+      color: #000000; /* Label color */
+    }
+    
+    .modal-body img {
+      max-width: 15%; /* Responsive image */
+      border-radius: 10px; /* Rounded corners for image */
+    }
+    
+    .modal-footer {
+      border-top: 1px solid #dee2e6; /* Subtle border above footer */
+    }
+    
+    .btn-secondary {
+      background-color: #6c757d; /* Custom secondary button color */
+      border: none; /* No border */
+    }
+    
+    .btn-secondary:hover {
+      background-color: #5a6268; /* Darker on hover */
+    }
+    
+    
+    
