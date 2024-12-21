@@ -1,5 +1,4 @@
 <?php
-
 // app/Http/Controllers/UserController.php
 
 namespace App\Http\Controllers;
@@ -20,6 +19,7 @@ class UserController extends Controller
             'user' => $user ? [
                 'name' => $user->name,
                 'avatar' => $user->avatar,
+                'email' => $user->email, // Added email
             ] : null,
         ]);
     }

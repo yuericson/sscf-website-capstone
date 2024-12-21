@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class GalleryImage extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['path', 'alt_text', 'gallery_album_id'];
+
+    public function galleryAlbum()
+    {
+        return $this->belongsTo(GalleryAlbum::class, 'gallery_album_id');
+    }
+}

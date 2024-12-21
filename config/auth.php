@@ -45,6 +45,18 @@ return [
             'driver' => 'session',
             'provider' => 'administrators', // Must match a provider in the 'providers' array
         ],
+        'comelec' => [
+            'driver' => 'session',
+            'provider' => 'comelec',
+        ],
+        'tabulator' => [
+            'driver' => 'session',
+            'provider' => 'tabulators',
+        ],
+        'tabulation' => [
+        'driver' => 'session',
+        'provider' => 'tabulations', // Ensure correct provider
+    ],
 
             'api' => [
                 'driver' => 'token',
@@ -79,8 +91,23 @@ return [
         'administrators' => [ // Correctly inside 'providers' array
             'driver' => 'eloquent',
             'model' => App\Models\Administrator::class,
+            
         ],
+        'comelec' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Comelec::class,
+        ],
+
+        'tabulators' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tabulator::class,
+        ],
+        'tabulations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tabulation::class,
+
     ],
+],
 
     /*
     |--------------------------------------------------------------------------

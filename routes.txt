@@ -1,0 +1,276 @@
+
+  GET|HEAD        / ................................................................................................................................................................... index
+  GET|HEAD        about-us/committees ............................................................................................................................................ committees
+  GET|HEAD        about-us/history .................................................................................................................................................. history
+  GET|HEAD        about-us/leadership ............................................................................................................................................ leadership
+  GET|HEAD        about-us/mission-vision .................................................................................................................................... mission.vision
+  GET|HEAD        academic-resources ........................................................................................... academic-resources.index › AcademicResourcesController@index
+  POST            academic-resources ...................................................................................................................... AcademicResourcesController@store
+  GET|HEAD        academic-resources-db ............................................................................................................................... academic-resources-db
+  PUT             academic-resources/{academicResource} .................................................................................................. AcademicResourcesController@update
+  DELETE          academic-resources/{academicResource} ................................................................................................. AcademicResourcesController@destroy
+  POST            add-registration .......................................................................................... add.registration › SportsRegistrationController@addRegistration
+  GET|HEAD        admin/academic-resources-db ......................................................................... admin.academic-resources-db.index › AcademicResourcesController@index
+  POST            admin/academic-resources-db ......................................................................... admin.academic-resources-db.store › AcademicResourcesController@store
+  GET|HEAD        admin/academic-resources-db/create ................................................................ admin.academic-resources-db.create › AcademicResourcesController@create
+  PUT|PATCH       admin/academic-resources-db/{academic_resources_db} ............................................... admin.academic-resources-db.update › AcademicResourcesController@update
+  DELETE          admin/academic-resources-db/{academic_resources_db} ............................................. admin.academic-resources-db.destroy › AcademicResourcesController@destroy
+  GET|HEAD        admin/academic-resources-db/{academic_resources_db}/edit .............................................. admin.academic-resources-db.edit › AcademicResourcesController@edit
+  GET|HEAD        admin/auditor-db ............................................................................................... admin.auditor-db.index › AcademicResourcesController@index
+  POST            admin/auditor-db ............................................................................................... admin.auditor-db.store › AcademicResourcesController@store
+  GET|HEAD        admin/auditor-db/create ...................................................................................... admin.auditor-db.create › AcademicResourcesController@create
+  PUT|PATCH       admin/auditor-db/{auditor_db} ................................................................................ admin.auditor-db.update › AcademicResourcesController@update
+  DELETE          admin/auditor-db/{auditor_db} .............................................................................. admin.auditor-db.destroy › AcademicResourcesController@destroy
+  GET|HEAD        admin/auditor-db/{auditor_db}/edit ............................................................................... admin.auditor-db.edit › AcademicResourcesController@edit
+  GET|HEAD        admin/dashboard ........................................................................................................................................... admin.dashboard
+  GET|HEAD        admin/feedback-db ...................................................................................................... admin.feedback-db.index › FeedbackController@index
+  POST            admin/feedback-db ...................................................................................................... admin.feedback-db.store › FeedbackController@store
+  GET|HEAD        admin/feedback-db/create ............................................................................................. admin.feedback-db.create › FeedbackController@create
+  PUT|PATCH       admin/feedback-db/{feedback_db} ...................................................................................... admin.feedback-db.update › FeedbackController@update
+  DELETE          admin/feedback-db/{feedback_db} .................................................................................... admin.feedback-db.destroy › FeedbackController@destroy
+  GET|HEAD        admin/feedback-db/{feedback_db}/edit ..................................................................................... admin.feedback-db.edit › FeedbackController@edit
+  GET|HEAD        admin/forum-db ............................................................................................................... admin.forum-db.index › ForumController@index
+  POST            admin/forum-db ............................................................................................................... admin.forum-db.store › ForumController@store
+  GET|HEAD        admin/forum-db/create ...................................................................................................... admin.forum-db.create › ForumController@create
+  PUT|PATCH       admin/forum-db/{forum_db} .................................................................................................. admin.forum-db.update › ForumController@update
+  DELETE          admin/forum-db/{forum_db} ................................................................................................ admin.forum-db.destroy › ForumController@destroy
+  GET|HEAD        admin/forum-db/{forum_db}/edit ................................................................................................. admin.forum-db.edit › ForumController@edit
+  GET|HEAD        admin/latest-news-db .............................................................................................. admin.latest-news-db.index › LatestNewsController@index
+  POST            admin/latest-news-db .............................................................................................. admin.latest-news-db.store › LatestNewsController@store
+  GET|HEAD        admin/latest-news-db/create ..................................................................................... admin.latest-news-db.create › LatestNewsController@create
+  PUT|PATCH       admin/latest-news-db/{latest_news_db} ........................................................................... admin.latest-news-db.update › LatestNewsController@update
+  DELETE          admin/latest-news-db/{latest_news_db} ......................................................................... admin.latest-news-db.destroy › LatestNewsController@destroy
+  GET|HEAD        admin/latest-news-db/{latest_news_db}/edit .......................................................................... admin.latest-news-db.edit › LatestNewsController@edit
+  GET|HEAD        admin/login ................................................................................................. admin.login › Auth\AdministratorLoginController@showLoginForm
+  POST            admin/login .................................................................................................. admin.login.submit › Auth\AdministratorLoginController@login
+  POST            admin/logout ...................................................................................................... admin.logout › Auth\AdministratorLoginController@logout
+  GET|HEAD        admin/media-gallery-db ........................................................................................ admin.media-gallery-db.index › MediaGalleryController@index
+  POST            admin/media-gallery-db ........................................................................................ admin.media-gallery-db.store › MediaGalleryController@store
+  GET|HEAD        admin/media-gallery-db/create ............................................................................... admin.media-gallery-db.create › MediaGalleryController@create
+  PUT|PATCH       admin/media-gallery-db/{media_gallery_db} ................................................................... admin.media-gallery-db.update › MediaGalleryController@update
+  DELETE          admin/media-gallery-db/{media_gallery_db} ................................................................. admin.media-gallery-db.destroy › MediaGalleryController@destroy
+  GET|HEAD        admin/media-gallery-db/{media_gallery_db}/edit .................................................................. admin.media-gallery-db.edit › MediaGalleryController@edit
+  GET|HEAD        admin/president-corner-db ................................................................................. admin.president-corner-db.index › PressReleasesController@index
+  POST            admin/president-corner-db ................................................................................. admin.president-corner-db.store › PressReleasesController@store
+  GET|HEAD        admin/president-corner-db/create ........................................................................ admin.president-corner-db.create › PressReleasesController@create
+  PUT|PATCH       admin/president-corner-db/{president_corner_db} ......................................................... admin.president-corner-db.update › PressReleasesController@update
+  DELETE          admin/president-corner-db/{president_corner_db} ....................................................... admin.president-corner-db.destroy › PressReleasesController@destroy
+  GET|HEAD        admin/president-corner-db/{president_corner_db}/edit ........................................................ admin.president-corner-db.edit › PressReleasesController@edit
+  GET|HEAD        admin/press-releases-db ..................................................................................... admin.press-releases-db.index › PressReleasesController@index
+  POST            admin/press-releases-db ..................................................................................... admin.press-releases-db.store › PressReleasesController@store
+  GET|HEAD        admin/press-releases-db/create ............................................................................ admin.press-releases-db.create › PressReleasesController@create
+  PUT|PATCH       admin/press-releases-db/{press_releases_db} ............................................................... admin.press-releases-db.update › PressReleasesController@update
+  DELETE          admin/press-releases-db/{press_releases_db} ............................................................. admin.press-releases-db.destroy › PressReleasesController@destroy
+  GET|HEAD        admin/press-releases-db/{press_releases_db}/edit .............................................................. admin.press-releases-db.edit › PressReleasesController@edit
+  GET|HEAD        admin/sports-registration-db ...................................................................... admin.sports-registration-db.index › SportsRegistrationController@index
+  POST            admin/sports-registration-db ...................................................................... admin.sports-registration-db.store › SportsRegistrationController@store
+  GET|HEAD        admin/sports-registration-db/create ............................................................. admin.sports-registration-db.create › SportsRegistrationController@create
+  PUT|PATCH       admin/sports-registration-db/{sports_registration_db} ........................................... admin.sports-registration-db.update › SportsRegistrationController@update
+  DELETE          admin/sports-registration-db/{sports_registration_db} ......................................... admin.sports-registration-db.destroy › SportsRegistrationController@destroy
+  GET|HEAD        admin/sports-registration-db/{sports_registration_db}/edit .......................................... admin.sports-registration-db.edit › SportsRegistrationController@edit
+  GET|HEAD        admin/tabulation-db ................................................................................................ admin.tabulation-db.index › TabulationController@index
+  POST            admin/tabulation-db ................................................................................................ admin.tabulation-db.store › TabulationController@store
+  GET|HEAD        admin/tabulation-db/create ....................................................................................... admin.tabulation-db.create › TabulationController@create
+  PUT|PATCH       admin/tabulation-db/{tabulation_db} .............................................................................. admin.tabulation-db.update › TabulationController@update
+  DELETE          admin/tabulation-db/{tabulation_db} ............................................................................ admin.tabulation-db.destroy › TabulationController@destroy
+  GET|HEAD        admin/tabulation-db/{tabulation_db}/edit ............................................................................. admin.tabulation-db.edit › TabulationController@edit
+  GET|HEAD        admin/upcoming-events-db .................................................................................. admin.upcoming-events-db.index › UpcomingEventsController@index
+  POST            admin/upcoming-events-db .................................................................................. admin.upcoming-events-db.store › UpcomingEventsController@store
+  GET|HEAD        admin/upcoming-events-db/create ......................................................................... admin.upcoming-events-db.create › UpcomingEventsController@create
+  PUT|PATCH       admin/upcoming-events-db/{upcoming_events_db} ........................................................... admin.upcoming-events-db.update › UpcomingEventsController@update
+  DELETE          admin/upcoming-events-db/{upcoming_events_db} ......................................................... admin.upcoming-events-db.destroy › UpcomingEventsController@destroy
+  GET|HEAD        admin/upcoming-events-db/{upcoming_events_db}/edit .......................................................... admin.upcoming-events-db.edit › UpcomingEventsController@edit
+  GET|HEAD        admin/volunteer-opportunities-db .......................................................... admin.volunteer-opportunities-db.index › VolunteerOpportunitiesController@index
+  POST            admin/volunteer-opportunities-db .......................................................... admin.volunteer-opportunities-db.store › VolunteerOpportunitiesController@store
+  GET|HEAD        admin/volunteer-opportunities-db/create ................................................. admin.volunteer-opportunities-db.create › VolunteerOpportunitiesController@create
+  PUT|PATCH       admin/volunteer-opportunities-db/{volunteer_opportunities_db} ........................... admin.volunteer-opportunities-db.update › VolunteerOpportunitiesController@update
+  DELETE          admin/volunteer-opportunities-db/{volunteer_opportunities_db} ......................... admin.volunteer-opportunities-db.destroy › VolunteerOpportunitiesController@destroy
+  GET|HEAD        admin/volunteer-opportunities-db/{volunteer_opportunities_db}/edit .......................... admin.volunteer-opportunities-db.edit › VolunteerOpportunitiesController@edit
+  GET|HEAD        api/user ....................................................................................................................................... UserController@getUserInfo
+  GET|HEAD        auditor-db ..................................................................................................................................................... auditor-db
+  GET|HEAD        beginning-balances .................................................................................... beginning-balances.index › AuditorController@indexBeginningBalances
+  DELETE          beginning-balances/destroy/{id} .................................................................... beginning-balances.destroy › AuditorController@destroyBeginningBalance
+  POST            beginning-balances/store ............................................................................... beginning-balances.store › AuditorController@storeBeginningBalance
+  PUT             beginning-balances/update/{id} ....................................................................... beginning-balances.update › AuditorController@updateBeginningBalance
+  POST            bulk-upload ......................................................................................................... bulk.upload › SportsRegistrationController@bulkUpload
+  POST            candidates ........................................................................................................ candidates.store › VotersLoginController@storeCandidate
+  PUT             candidates/{id} ................................................................................................. candidates.update › VotersLoginController@updateCandidate
+  DELETE          candidates/{id} ............................................................................................... candidates.destroy › VotersLoginController@destroyCandidate
+  GET|HEAD        check-registration .................................................................................... check.registration › SportsRegistrationController@checkRegistration
+  GET|HEAD        comelec/dashboard ....................................................................................................................................... comelec.dashboard
+  GET|HEAD        comelec/election-candidates ................................................................................................................... comelec.election-candidates
+  GET|HEAD        comelec/election-positions ..................................................................................................................... comelec.election-positions
+  GET|HEAD        comelec/election-profile ......................................................................................................................... comelec.election-profile
+  GET|HEAD        comelec/election-time ............................................................................................................................... comelec.election-time
+  GET|HEAD        comelec/election-voters ........................................................................................................................... comelec.election-voters
+  GET|HEAD        comelec/election-votes ............................................................................................................................. comelec.election-votes
+  GET|HEAD        comelec/login ............................................................................................. comelec.login › Auth\AdministratorLoginController@showLoginForm
+  POST            comelec/login .............................................................................................. comelec.login.submit › Auth\AdministratorLoginController@login
+  POST            comelec/logout .................................................................................................. comelec.logout › Auth\AdministratorLoginController@logout
+  DELETE          comment/delete/{commentId} .................................................................................................. deleteComment › ForumController@deleteComment
+  POST            comment/{postId} .................................................................................................................. addComment › ForumController@addComment
+  GET|HEAD        contact-us ..................................................................................................................................................... contact.us
+  GET|HEAD        dashboard ....................................................................................................................................................... dashboard
+  POST            dashboard/graph-selections .................................................................. dashboard.updateGraphSelections › VotersLoginController@updateGraphSelections
+  GET|HEAD        dashboard/latest-news .................................................................................................. latest-news.dashboard › LatestNewsController@index
+  GET|HEAD        dashboard/media-gallery/albums ............................................................................ media.gallery.albums.index › MediaGalleryController@albumsIndex
+  POST            dashboard/media-gallery/albums/store ...................................................................... media.gallery.albums.store › MediaGalleryController@albumsStore
+  PUT             dashboard/media-gallery/albums/{album} .................................................................. media.gallery.albums.update › MediaGalleryController@albumsUpdate
+  DELETE          dashboard/media-gallery/albums/{album} ................................................................ media.gallery.albums.destroy › MediaGalleryController@albumsDestroy
+  POST            dashboard/media-gallery/images/store ....................................................................... media.gallery.images.store › MediaGalleryController@storeImage
+  PUT             dashboard/media-gallery/images/{image} ................................................................... media.gallery.images.update › MediaGalleryController@updateImage
+  DELETE          dashboard/media-gallery/images/{image} ................................................................. media.gallery.images.destroy › MediaGalleryController@destroyImage
+  POST            dashboard/media-gallery/videos/store ...................................................................... media.gallery.videos.store › MediaGalleryController@videosStore
+  PUT             dashboard/media-gallery/videos/{video} .................................................................. media.gallery.videos.update › MediaGalleryController@videosUpdate
+  DELETE          dashboard/media-gallery/videos/{video} ................................................................ media.gallery.videos.destroy › MediaGalleryController@videosDestroy
+  GET|HEAD        dashboard/president-corner ............................................................................. dashboard.president-corner.index › PresidentCornerController@index
+  POST            dashboard/president-corner/add ........................................................................... dashboard.president-corner.add › PresidentCornerController@store
+  DELETE          dashboard/president-corner/delete/{id} .............................................................. dashboard.president-corner.delete › PresidentCornerController@destroy
+  GET|HEAD        dashboard/president-corner/edit/{id} ..................................................................... dashboard.president-corner.edit › PresidentCornerController@edit
+  PUT             dashboard/president-corner/update/{id} ............................................................... dashboard.president-corner.update › PresidentCornerController@update
+  GET|HEAD        dashboard/upcoming-events ................................................................................ dashboard.upcoming-events.index › UpcomingEventsController@index
+  POST            dashboard/upcoming-events/add .............................................................................. dashboard.upcoming-events.add › UpcomingEventsController@store
+  DELETE          dashboard/upcoming-events/delete/{id} ................................................................. dashboard.upcoming-events.delete › UpcomingEventsController@destroy
+  GET|HEAD        dashboard/upcoming-events/edit/{id} ........................................................................ dashboard.upcoming-events.edit › UpcomingEventsController@edit
+  PUT             dashboard/upcoming-events/update/{id} .................................................................. dashboard.upcoming-events.update › UpcomingEventsController@update
+  DELETE          delete-registration/{id} ........................................................................................ delete.registration › SportsRegistrationController@delete
+  POST            edit-registration/{id} .............................................................................................. edit.registration › SportsRegistrationController@edit
+  GET|HEAD        election ............................................................................................................... election.show › VotersLoginController@showElection
+  GET|HEAD        election-form ............................................................................................................................................... election.form
+  POST            election/resetTimes ................................................................................................ election.resetTimes › VotersLoginController@resetTimes
+  POST            election/updateTimes ..................................................................................... election.updateTimes › VotersLoginController@updateElectionTimes
+  GET|HEAD        election/voting-form .................................................................................................. election.form › VotersLoginController@getVotingForm
+  PUT             electionimages/{id} ..................................................................................... electionimages.update › VotersLoginController@updateElectionImage
+  DELETE          electionimages/{id} .................................................................................... electionimages.destroy › VotersLoginController@deleteElectionImage
+  GET|HEAD        feedback-db ................................................................................................................................................... feedback-db
+  DELETE          feedback/{id} ............................................................................................................... feedback.destroy › FeedbackController@destroy
+  GET|HEAD        forum-db ......................................................................................................................................................... forum-db
+  GET|HEAD        get-involved/explore-organization .................................................................................................................... explore.organization
+  GET|HEAD        get-involved/feedback ............................................................................................................................................ feedback
+  GET|HEAD        get-involved/forum .................................................................................................................................................. forum
+  GET|HEAD        get-involved/local-election ................................................................................................................................ local.election
+  GET|HEAD        get-involved/local-election-form ...................................................................................................................... local.election.form
+  GET|HEAD        get-involved/sports-form ...................................................................................................................................... sports-form
+  GET|HEAD        get-involved/sports-registration ...................................................................................................................... sports.registration
+  GET|HEAD        get-involved/tabulation ........................................................................................................................................ tabulation
+  GET|HEAD        get-involved/volunteer-opportunities .............................................................................................................. volunteer.opportunities
+  GET|HEAD        get-involved/voters-login .................................................................................................................................... voters-login
+  GET|HEAD        get-registration-data/{id} ....................................................................... get.registration.data › SportsRegistrationController@getRegistrationData
+  GET|HEAD        join-an-organization-db ........................................................................................................................... join-an-organization-db
+  POST            latest-news ................................................................................................................ latest-news.store › LatestNewsController@store
+  GET|HEAD        latest-news-db ............................................................................................................................................. latest-news-db
+  GET|HEAD        latest-news-page ................................................................................................... latest-news.page › LatestNewsController@latestNewsPage
+  GET|HEAD        latest-news/{latestNews} .......................................................................................................... news.detail › LatestNewsController@show
+  PUT             latest-news/{latestNews} ................................................................................................. latest-news.update › LatestNewsController@update
+  DELETE          latest-news/{latestNews} ............................................................................................... latest-news.destroy › LatestNewsController@destroy
+  GET|HEAD        local-election ............................................................................................................................................................ 
+  GET|HEAD        local-election-db ................................................................................................. local.election.db › VotersLoginController@showDashboard
+  GET|HEAD        login ................................................................................................................... login › Auth\UnifiedLoginController@showLoginForm
+  POST            login .......................................................................................................................... voters.login › VotersLoginController@login
+  GET|HEAD        login/google ................................................................................................................................................. login.google
+  GET|HEAD        login/google/callback ..................................................................................................................................................... 
+  POST            logout ............................................................................................................................................................. logout
+  GET|HEAD        media-gallery-db ......................................................................................................................................... media-gallery-db
+  GET|HEAD        news-media/latest-news ........................................................................................................................................ latest.news
+  GET|HEAD        news-media/media-gallery .................................................................................................................................... media.gallery
+  GET|HEAD        news-media/newsletter .......................................................................................................................................... newsletter
+  GET|HEAD        news-media/presidents-corner ............................................................................................................................ presidents.corner
+  GET|HEAD        news-media/press-releases .................................................................................................................................. press.releases
+  POST            positions ........................................................................................................... positions.store › VotersLoginController@storePosition
+  PUT             positions/{id} .................................................................................................... positions.update › VotersLoginController@updatePosition
+  DELETE          positions/{id} .................................................................................................. positions.destroy › VotersLoginController@destroyPosition
+  PUT             post/approve/{postId} ........................................................................................................... approvePost › ForumController@approvePost
+  DELETE          post/delete/{postId} .............................................................................................................. deletePost › ForumController@deletePost
+  PUT             post/deny/{postId} .................................................................................................................... denyPost › ForumController@denyPost
+  GET|HEAD        posts ................................................................................................................................... posts › ForumController@showPosts
+  GET|HEAD        president-corner-db ................................................................................................................................... president-corner-db
+  GET|HEAD        presidents-message/latest-images ............................................................. presidents-message.latest-images › PresidentCornerController@getLatestImages
+  GET|HEAD        press-releases ....................................................................................................... press-releases.index › PressReleasesController@index
+  POST            press-releases ....................................................................................................... press-releases.store › PressReleasesController@store
+  GET|HEAD        press-releases-db ....................................................................................................................................... press-releases-db
+  PUT             press-releases/{pressRelease} ...................................................................................... press-releases.update › PressReleasesController@update
+  DELETE          press-releases/{pressRelease} .................................................................................... press-releases.destroy › PressReleasesController@destroy
+  GET|HEAD        print/{campus} ............................................................................................... print.by.campus › SportsRegistrationController@printByCampus
+  GET|HEAD        profile .................................................................................................................................. profile › UserController@profile
+  POST            react/{postId} .............................................................................................................................. react › ForumController@react
+  GET|HEAD        registrations/download-template ............................................................ registrations.downloadTemplate › SportsRegistrationController@downloadTemplate
+  GET|HEAD        resources/academic-resources ........................................................................................................................... academic.resources
+  GET|HEAD        resources/career-support ................................................................................................................................... career.support
+  GET|HEAD        resources/student-guide ..................................................................................................................................... student.guide
+  GET|HEAD        resources/wellbeing-support ............................................................................................................................. wellbeing.support
+  POST            sections .................................................................................................................. sections.add › VotersLoginController@addSection
+  PUT             sections/{id} ........................................................................................................... sections.edit › VotersLoginController@editSection
+  DELETE          sections/{id} ...................................................................................................... sections.destroy › VotersLoginController@deleteSection
+  POST            sections/{section_id}/subtitles ......................................................................................... subtitles.add › VotersLoginController@addSubtitle
+  GET|HEAD        sports .......................................................................................................... sports.list › SportsRegistrationController@showSportsList
+  GET|HEAD        sports-form ........................................................................................................... sports.form › SportsRegistrationController@showForm
+  GET|HEAD        sports-registration-db ............................................................................................................................. sports-registration-db
+  GET|HEAD        sports/{sport} ............................................................................. registrations.by.sport › SportsRegistrationController@showRegistrationsBySport
+  GET|HEAD        storage/{path} .............................................................................................................................................. storage.local
+  POST            submit-feedback ................................................................................................................. feedback.store › FeedbackController@store
+  POST            submit-post ....................................................................................................................... submitPost › ForumController@submitPost
+  POST            submit-sports-registration ................................................................... submit.sports.registration › SportsRegistrationController@submitRegistration
+  PUT             subtitles/{id} ........................................................................................................ subtitles.edit › VotersLoginController@editSubtitle
+  DELETE          subtitles/{id} ................................................................................................... subtitles.destroy › VotersLoginController@deleteSubtitle
+  POST            subtitles/{subtitle_id}/electionimages .................................................................. electionimages.upload › VotersLoginController@uploadElectionImage
+  GET|HEAD        tabulation-db ............................................................................................................................................... tabulation-db
+  POST            tabulation/category/add ........................................................................................ tabulation-category-add › TabulationController@addCategory
+  DELETE          tabulation/category/delete/{id} .......................................................................... tabulation-category-delete › TabulationController@deleteCategory
+  PUT             tabulation/category/edit/{id} ................................................................................ tabulation-category-edit › TabulationController@editCategory
+  POST            tabulation/criteria/add/{pageant_id} ...................................................................................... criteria-add › TabulationController@addCriteria
+  DELETE          tabulation/criteria/delete/{id} ..................................................................................... criteria-delete › TabulationController@deleteCriteria
+  PUT             tabulation/criteria/edit/{id} ........................................................................................... criteria-edit › TabulationController@editCriteria
+  GET|HEAD        tabulation/dashboard ................................................................................................. tabulationdashboard › TabulationController@dashboard
+  GET|HEAD        tabulation/final-results/{pageant_id} ................................................................................... final-results › TabulationController@finalResults
+  GET|HEAD        tabulation/form ................................................................................................................ tabulationform › TabulationController@form
+  POST            tabulation/judge/add ................................................................................................. tabulation-judge-add › TabulationController@addJudge
+  DELETE          tabulation/judge/delete/{id} ................................................................................... tabulation-judge-delete › TabulationController@deleteJudge
+  PUT             tabulation/judge/edit/{id} ......................................................................................... tabulation-judge-edit › TabulationController@editJudge
+  POST            tabulation/judge/{judge}/assign .................................................................................. judge.assign › TabulationController@assignJudgeToPageant
+  DELETE          tabulation/judge/{judge}/pageant/{pageant} .............................................................. judge.removePageant › TabulationController@removeJudgeFromPageant
+  GET|HEAD        tabulation/login .................................................................................................... tabulation-login › TabulationController@showLoginForm
+  POST            tabulation/login ..................................................................................................... tabulation-login.submit › TabulationController@login
+  POST            tabulation/logout ............................................................................................................... judgelogout › TabulationController@logout
+  POST            tabulation/pageant/add ...................................................................................................... pageant-add › TabulationController@addPageant
+  DELETE          tabulation/pageant/delete/{id} ........................................................................................ pageant-delete › TabulationController@deletePageant
+  PUT             tabulation/pageant/edit/{id} .............................................................................................. pageant-edit › TabulationController@editPageant
+  GET|HEAD        tabulation/pageant/{id}/details .................................................................................................... TabulationController@getPageantDetails
+  POST            tabulation/pageants/{pageant}/approve ...................................................................................... pageant.approve › TabulationController@approve
+  POST            tabulation/pageants/{pageant}/deny ............................................................................................... pageant.deny › TabulationController@deny
+  POST            tabulation/participants/add/{pageant_id} ............................................................................ participant-add › TabulationController@addParticipant
+  DELETE          tabulation/participants/delete/{id} ........................................................................... participant-delete › TabulationController@deleteParticipant
+  PUT             tabulation/participants/edit/{id} ................................................................................. participant-edit › TabulationController@editParticipant
+  POST            tabulation/scores/submit ................................................................................................. submitScores › TabulationController@submitScores
+  POST            tabulation/submit-scores ................................................................................................ submit-scores › TabulationController@submitScores
+  GET|HEAD        tabulation/user-final-results/{pageant_id} ..................................................................... user-final-results › TabulationController@userFinalResults
+  GET|HEAD        tabulator/login .............................................................................................. tabulator.login › Auth\TabulatorAuthController@showLoginForm
+  POST            tabulator/login ............................................................................................... tabulator.login.submit › Auth\TabulatorAuthController@login
+  POST            tabulator/logout ................................................................................................... tabulator.logout › Auth\TabulatorAuthController@logout
+  GET|HEAD        totals ....................................................................................................................... totals.index › AuditorController@indexTotals
+  DELETE          totals/destroy/{id} ....................................................................................................... totals.destroy › AuditorController@destroyTotal
+  POST            totals/store .................................................................................................................. totals.store › AuditorController@storeTotal
+  PUT             totals/update/{id} .......................................................................................................... totals.update › AuditorController@updateTotal
+  DELETE          transactions/destroy/{id} ..................................................................................... transactions.destroy › AuditorController@destroyTransaction
+  POST            transactions/store ................................................................................................ transactions.store › AuditorController@storeTransaction
+  PUT             transactions/update/{id} ........................................................................................ transactions.update › AuditorController@updateTransaction
+  GET|HEAD        up ........................................................................................................................................................................ 
+  GET|HEAD        upcoming-events-db ..................................................................................................................................... upcoming-events-db
+  GET|HEAD        upcoming-events/latest-images .................................................................... upcoming-events.latest-images › UpcomingEventsController@getLatestImages
+  GET|HEAD        volunteer-opportunities ............................................................................ volunteer-opportunities.index › VolunteerOpportunitiesController@index
+  POST            volunteer-opportunities ............................................................................................................ VolunteerOpportunitiesController@store
+  GET|HEAD        volunteer-opportunities-db ..................................................................................................................... volunteer-opportunities-db
+  GET|HEAD        volunteer-opportunities-page ............................................................ volunteer-opportunities.page › VolunteerOpportunitiesController@showOpportunities
+  PUT             volunteer-opportunities/{opportunity} ............................................................................................. VolunteerOpportunitiesController@update
+  DELETE          volunteer-opportunities/{opportunity} ............................................................................................ VolunteerOpportunitiesController@destroy
+  POST            voters ......................................................................................................................... voters.store › VotersLoginController@store
+  POST            voters/bulk-upload ................................................................................................... voters.bulkUpload › VotersLoginController@bulkUpload
+  GET|HEAD        voters/download-template ................................................................................. voters.downloadTemplate › VotersLoginController@downloadTemplate
+  GET|HEAD        voters/print ............................................................................................................. voters.printAll › VotersLoginController@printAll
+  DELETE          voters/{id} ................................................................................................................ voters.destroy › VotersLoginController@destroy
+  PUT             voters/{id} .................................................................................................................. voters.update › VotersLoginController@update
+  GET|HEAD        votes ....................................................................................................................... votes.index › VotersLoginController@viewVotes
+  POST            votes ....................................................................................................................... votes.store › VotersLoginController@storeVote
+  DELETE          votes/{id} ................................................................................................................ votes.delete › VotersLoginController@deleteVote
+
+                                                                                                                                                                         Showing [272] routes
+

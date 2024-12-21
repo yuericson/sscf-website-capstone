@@ -4,575 +4,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="../images/Logo.png">
-    <title>Super Admin Dashboard</title>
+    <title>Academic Resources Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <!-- Add Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+
+<style>
+/* Dropdown Toggle Styling */
+.user-profile .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.user-profile .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Admin Icon Styling */
+.admin-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* Avatar Styling */
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+/* User Info Styling */
+.user-info {
+    margin-left: 10px;
+    color: #fff;
+}
+.user-info .name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.user-info .status {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #ddd;
+    margin-top: 2px;
+}
+.user-info .status i {
+    color: #28a745; /* Green for online status */
+    margin-right: 5px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.dropdown-item i {
+    width: 20px;
+    margin-right: 10px;
+    color: #555;
+}
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Light gray hover color */
+    color: #000; /* Text turns black on hover */
+}
+</style>
+
     
-    <style>
-      /* General Styles */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-      }
+<style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
 
-      /* Sidebar Styles */
-      .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #185F43;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        transition: width 0.3s ease;
-      }
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      height: 100%; /* Dynamic height to fit content */
+      min-height: 100vh; /* Ensures full viewport height */
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #185F43;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.3s ease;
+      overflow-y: auto; /* Enables scrolling for overflow */
+    }
 
-      .sidebar.collapsed {
-        width: 70px;
-      }
+    .sidebar.collapsed {
+      width: 70px;
+    }
 
-      .sidebar .logo {
-        padding: 20px;
-        font-size: 1.3rem;
-        font-weight: bold;
-        text-align: center;
-        color: #fff;
-        transition: font-size 0.3s ease;
-      }
+    .sidebar .logo {
+      padding: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 35px;
+    }
 
-      .sidebar.collapsed .logo {
-        font-size: 0.9rem;
-        text-align: center;
-      }
+    .sidebar.collapsed .logo span {
+      display: none;
+    }
 
-      .sidebar .nav {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
+    .sidebar .nav {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-      .sidebar .nav-link {
-        color: #cbd5e0;
-        padding: 10px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s, justify-content 0.3s;
-        border: none; /* Remove any underline or border */
-      }
+    .sidebar .nav-link {
+      color: #cbd5e0;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s, justify-content 0.3s;
+    }
 
-      .sidebar .nav-link i {
-        font-size: 1rem;
-        transition: font-size 0.3s ease, margin-right 0.3s ease;
-      }
+    .sidebar .nav-link i {
+      font-size: 1rem;
+      transition: font-size 0.3s ease, margin-right 0.3s ease;
+    }
 
-      .sidebar.collapsed .nav-link {
-        justify-content: center;
-      }
+    .sidebar.collapsed .nav-link {
+      justify-content: center;
+    }
 
-      .sidebar.collapsed .nav-link i {
-        margin-right: 0;
-      }
+    .sidebar.collapsed .nav-link i {
+      margin-right: 0;
+    }
 
-      .sidebar .nav-link span {
-        margin-left: 10px;
-        font-size: 1rem;
-        transition: opacity 0.3s ease;
-      }
+    .sidebar .nav-link span {
+      margin-left: 10px;
+      font-size: 1rem;
+      transition: opacity 0.3s ease;
+    }
 
-      .sidebar.collapsed .nav-link span {
-        display: none;
-      }
+    .sidebar.collapsed .nav-link span {
+      display: none;
+    }
 
-      .sidebar .nav-link:hover,
-      .sidebar .nav-link:focus {
-        background-color: #144d34;
-        color: #fff;
-      }
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link:focus {
+      background-color: #144d34;
+      color: #fff;
+    }
 
-      .sidebar .nav-link.active {
-        background-color: #144d34;
-        color: #fff;
-      }
+    .sidebar .nav-link.active {
+      background-color: #144d34;
+      color: #fff;
+    }
 
-      .management-title {
-        font-size: 0.8rem;
-        font-weight: bold;
-        color: #cbd5e0;
-        padding: 10px 15px;
-        text-transform: uppercase;
-      }
+    .management-title {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #cbd5e0;
+      padding: 10px 15px;
+      text-transform: uppercase;
+    }
 
-      .sidebar.collapsed .management-title {
-        display: none;
-      }
+    .sidebar.collapsed .management-title {
+      display: none;
+    }
 
-      /* Header Styles */
+    /* Header Styles */
+    .header {
+      background-color: #185F43;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 250px;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 0 20px;
+      color: #fff;
+      transition: left 0.3s ease;
+    }
+
+    .header.collapsed {
+      left: 70px;
+    }
+
+    .header .left-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .header .search-bar input {
+      width: 100%;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      margin-top: 70px;
+      margin-left: 250px;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main-content.collapsed {
+      margin-left: 70px;
+    }
+
+    /* Card Styles */
+    .card {
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .card-header {
+      border-radius: 10px 10px 0 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
       .header {
-        background-color: #185F43;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: fixed;
-        top: 0;
-        left: 250px;
-        right: 0;
-        z-index: 1000;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        padding: 0 20px;
-        color: #fff;
-        transition: left 0.3s ease;
+        left: 0;
+      }
+
+      .sidebar {
+        position: absolute;
+        z-index: 1001;
+        height: 100%; /* Allow dynamic height */
+      }
+
+      .main-content {
+        margin-left: 0;
       }
 
       .header.collapsed {
-        left: 70px;
+        left: 0;
       }
-
-      .header .left-section {
-        display: flex;
-        align-items: center;
-      }
-
-      .header .search-bar {
-        flex: 1;
-        margin: 0 20px;
-      }
-
-      .header .search-bar input {
-        width: 100%;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-        padding: 5px 10px;
-      }
-
-    /* Main Content Styles */
-.main-content {
-  margin-top: 70px;
-  margin-left: 250px;
-  padding: 20px;
-  transition: margin-left 0.3s ease;
-}
-
-.main-content.collapsed {
-  margin-left: 70px;
-}
-
-/* Card Styles */
-.card {
-  border: none;
-  border-radius: 10px;
-  padding: 20px;
-  
-}
-
-.card-header {
-  border-radius: 10px 10px 0 0;
-}
-
-.stat-card {
-  background-color: #f4f4f9;
-  color: #3c3c54;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.stat-card h5 {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.stat-card h3 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.stat-card:hover {
-  transform: scale(1.05);
-}
-
-/* Table Styles */
-.table {
-  border-collapse: collapse;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
-}
-
-.table-bordered th, .table-bordered td {
-  border: 1px solid #dee2e6;
-}
-
-.table-dark {
-  background-color: #3c3c54;
-  color: #ffffff;
-}
-
-
-      /* Toggle Button */
-      .toggle-btn {
-        cursor: pointer;
-        font-size: 1.5rem;
-        color: #fff;
-      }
-
-      /* User Profile Styles */
-      .user-profile {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-
-      .user-profile img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-
-      .user-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .user-info .name {
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-      }
-
-      .user-info .title {
-        font-size: 0.85rem;
-        color: #cbd5e0;
-      }
-
-      .status-indicator {
-        width: 10px;
-        height: 10px;
-        background-color: #28a745; /* Green color */
-        border-radius: 50%;
-        margin-right: 5px; /* Positioned to the left of the name */
-      }
-
-      /* Custom CSS to Adjust Dropdown Icon Spacing */
-      .user-profile.dropdown .dropdown-toggle::after {
-        margin-left: 10px; /* Adjust this value as needed for spacing */
-      }
-
-      /* Responsive Adjustments */
-      @media (max-width: 768px) {
-        .header {
-          left: 0;
-        }
-
-        .sidebar {
-          position: absolute;
-          z-index: 1001;
-          height: 100%;
-        }
-
-        .main-content {
-          margin-left: 0;
-        }
-
-        .header.collapsed {
-          left: 0;
-        }
-      }
-
-
-      .dropdown-menu-notifications {
-        width: 300px;
-        max-height: 400px;
-        overflow-y: auto;
-        padding: 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .dropdown-menu-notifications .notification-header {
-        padding: 10px 15px;
-        font-weight: bold;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .dropdown-menu-notifications .notification-item {
-        display: flex;
-        align-items: center;
-        padding: 10px 15px;
-        cursor: pointer;
-      }
-
-      .dropdown-menu-notifications .notification-item:hover {
-        background-color: #f1f1f1;
-      }
-
-      .dropdown-menu-notifications .notification-item i {
-        font-size: 1.5rem;
-        margin-right: 10px;
-      }
-
-      .dropdown-menu-notifications .notification-footer {
-        text-align: center;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border-top: 1px solid #ddd;
-      }
-
-      .dropdown-menu-notifications .notification-footer a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      .dropdown-menu-notifications .notification-footer a:hover {
-        text-decoration: underline;
-      }
-
-      /* Dropdown Menu for Messages */
-      .dropdown-menu-messages {
-        width: 300px;
-        max-height: 400px;
-        overflow-y: auto;
-        padding: 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .dropdown-menu-messages .message-header {
-        padding: 10px 15px;
-        font-weight: bold;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .dropdown-menu-messages .message-item {
-        display: flex;
-        align-items: center;
-        padding: 10px 15px;
-        cursor: pointer;
-      }
-
-      .dropdown-menu-messages .message-item:hover {
-        background-color: #f1f1f1;
-      }
-
-      .dropdown-menu-messages .message-item img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-
-      .dropdown-menu-messages .message-item .message-content {
-        flex: 1;
-      }
-
-      .dropdown-menu-messages .message-item .message-content .sender {
-        font-weight: bold;
-      }
-
-      .dropdown-menu-messages .message-item .message-content .text {
-        font-size: 0.9rem;
-        color: #555;
-      }
-
-      .dropdown-menu-messages .message-footer {
-        text-align: center;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border-top: 1px solid #ddd;
-      }
-
-      .dropdown-menu-messages .message-footer a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      .dropdown-menu-messages .message-footer a:hover {
-        text-decoration: underline;
-      }
-
-      /* Green Stat Card Styles */
-.stat-card-green {
-  background-color: #28a745; /* Bootstrap Success Green */
-  color: #ffffff; /* White text for contrast */
-  text-align: center;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.stat-card-green h5 {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.stat-card-green h3 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-    </style>
+    }
+  </style>
   </head>
   <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <div class="logo">SSCF</div>
-     <ul class="nav flex-column mt-2">
+   <!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+<div class="logo d-flex justify-content-between align-items-center">
+  <span class="logo-text">S S C F</span>
+  <i class="bi bi-list toggle-btn" id="toggleBtn" style="cursor: pointer;"></i>
+</div>
+<style>
+  /* Style for the logo text */
+.logo-text {
+  font-family: 'Agatho', serif; /* Use Agatho font */
+  font-size: 2rem; /* Adjust the size to match */
+  font-weight: bold; /* Ensure bold appearance */
+  letter-spacing: 0.2rem; /* Add spacing between letters */
+  color:rgb(255, 255, 255); /* Set the desired color */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect for the logo text */
+.logo-text:hover {
+  color: #0c3925; /* Slightly darker hover color */
+}
+</style>
+
+  <ul class="nav flex-column mt-2">
     <li><a href="{{ route('dashboard') }}" class="nav-link active"><i class="bi bi-speedometer2"></i> <span>Dashboard</span></a></li>
     <div class="management-title">Management</div>
- 
     <li><a href="{{ route('academic-resources-db') }}" class="nav-link"><i class="bi bi-book"></i> <span>Academic Resources</span></a></li>
+    <li><a href="{{ route('auditor-db') }}" class="nav-link"><i class="bi bi-calculator"></i> <span>Auditor</span></a></li>
     <li><a href="{{ route('latest-news-db') }}" class="nav-link"><i class="bi bi-newspaper"></i> <span>Latest News</span></a></li>
     <li><a href="{{ route('media-gallery-db') }}" class="nav-link"><i class="bi bi-images"></i> <span>Media Gallery</span></a></li>
     <li><a href="{{ route('press-releases-db') }}" class="nav-link"><i class="bi bi-megaphone"></i> <span>Press Releases</span></a></li>
-    <li><a href="{{ route('presidents-corner-db') }}" class="nav-link"><i class="bi bi-person-circle"></i> <span>President's Corner</span></a></li>
+    <li><a href="{{ route('president-corner-db') }}" class="nav-link"><i class="bi bi-person-circle"></i> <span>President's Corner</span></a></li>
+    <li><a href="{{ route('upcoming-events-db') }}" class="nav-link"><i class="bi bi-calendar-event"></i> <span>Upcoming Events</span></a></li>
     <li><a href="{{ route('volunteer-opportunities-db') }}" class="nav-link"><i class="bi bi-hand-thumbs-up"></i> <span>Volunteer Opportunities</span></a></li>
     <li><a href="{{ route('forum-db') }}" class="nav-link"><i class="bi bi-chat-left-dots"></i> <span>Forum</span></a></li>
     <li><a href="{{ route('feedback-db') }}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> <span>Feedback</span></a></li>
     <li><a href="{{ route('sports-registration-db') }}" class="nav-link"><i class="bi bi-trophy"></i> <span>Sports Registration</span></a></li>
-    <li><a href="{{ route('local-election-db') }}" class="nav-link"><i class="bi bi-person-check"></i> <span>Local Election</span></a></li>
-    <li><a href="{{ route('tabulation-db') }}" class="nav-link"><i class="bi bi-table"></i> <span>Tabulation</span></a></li>
+  </ul>
+</div>
 
-</ul>
-    </div>
 
     <!-- Header -->
     <div class="header" id="header">
       <!-- Left Section: Toggle Button and Search Bar -->
       <div class="left-section">
-        <i class="bi bi-list toggle-btn" id="toggleBtn"></i>
-        <div class="search-bar ms-3">
-          <input type="text" placeholder="Search...">
-        </div>
+        
       </div>
 
-      <!-- Right Section: Message Icon, Bell Icon, and User Profile -->
-      <div class="d-flex align-items-center">
-        <!-- Message Icon with Dropdown -->
-        <div class="dropdown me-4"> <!-- Added message dropdown with margin -->
-          <a href="#" class="text-white position-relative" id="messageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-chat-left-text" style="font-size: 1.5rem;"></i>
-            <!-- Message Badge -->
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-              3
-              <span class="visually-hidden">unread messages</span>
-            </span>
-          </a>
-          <!-- Dropdown Menu -->
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-messages" aria-labelledby="messageDropdown">
-            <div class="message-header">You have 3 new messages</div>
-            <div class="message-item">
-              <img src="https://via.placeholder.com/40" alt="User Avatar">
-              <div class="message-content">
-                <div class="sender">Alice Smith</div>
-                <div class="text">Hi there! Welcome to the dashboard.</div>
-              </div>
-            </div>
-            <div class="message-item">
-              <img src="https://via.placeholder.com/40" alt="User Avatar">
-              <div class="message-content">
-                <div class="sender">Bob Johnson</div>
-                <div class="text">Don't forget the meeting at 3 PM.</div>
-              </div>
-            </div>
-            <div class="message-item">
-              <img src="https://via.placeholder.com/40" alt="User Avatar">
-              <div class="message-content">
-                <div class="sender">Charlie Lee</div>
-                <div class="text">Can you review my latest report?</div>
-              </div>
-            </div>
-            <div class="message-footer">
-              <a href="#">See all messages</a>
-            </div>
-          </div>
-        </div>
+      
 
-        <!-- Bell Icon with Dropdown -->
-        <div class="dropdown me-5"> <!-- Adjusted margin -->
-          <a href="#" class="text-white position-relative" id="bellDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
-            <!-- Notification Badge -->
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              4
-              <span class="visually-hidden">unread notifications</span>
-            </span>
-          </a>
-          <!-- Dropdown Menu -->
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-notifications" aria-labelledby="bellDropdown">
-            <div class="notification-header">You have 4 new notifications</div>
-            <div class="notification-item">
-              <i class="bi bi-person-circle text-primary"></i>
-              <div>
-                <div>New user registered</div>
-                <small class="text-muted">5 minutes ago</small>
-              </div>
-            </div>
-            <div class="notification-item">
-              <i class="bi bi-chat-dots text-success"></i>
-              <div>
-                <div>Rahmad commented on Admin</div>
-                <small class="text-muted">12 minutes ago</small>
-              </div>
-            </div>
-            <div class="notification-item">
-              <i class="bi bi-envelope text-warning"></i>
-              <div>
-                <div>Reza sent messages to you</div>
-                <small class="text-muted">12 minutes ago</small>
-              </div>
-            </div>
-            <div class="notification-item">
-              <i class="bi bi-heart text-danger"></i>
-              <div>
-                <div>Farrah liked Admin</div>
-                <small class="text-muted">17 minutes ago</small>
-              </div>
-            </div>
-            <div class="notification-footer">
-              <a href="#">See all notifications</a>
-            </div>
-          </div>
-        </div>
 
-   <!-- User Profile Dropdown for Dashboard --> 
-   <div class="user-profile dropdown me-5">
+<div class="user-profile dropdown me-5">
     @auth('administrator')
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ Auth::guard('administrator')->user()->avatar ?? 'https://via.placeholder.com/40' }}" alt="User Avatar" class="rounded-circle" style="width: 40px; height: 40px;">
-            <div class="user-info ms-2">
-                <div class="name d-flex align-items-center">
-                    <div class="status-indicator"></div>
-                    {{ Auth::guard('administrator')->user()->name }}
-                </div>
-                <div class="title">
-                    {{ ucfirst(Auth::guard('administrator')->user()->role) }}
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+           id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Admin Icon -->
+            <i class="fas fa-user-shield admin-icon"></i>
+            <!-- Avatar and Info -->
+            <img src="{{ Auth::guard('administrator')->user()->avatar ?? 'https://via.placeholder.com/40' }}" alt="User Avatar">
+            <div class="user-info">
+                <div class="name">{{ Auth::guard('administrator')->user()->name }}</div>
+                <div class="status">
+                    <i class="fas fa-circle"></i> Online
                 </div>
             </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-                    <button class="dropdown-item" type="submit">Logout</button>
+                    <button class="dropdown-item" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
                 </form>
             </li>
         </ul>
@@ -584,32 +363,223 @@
 </div>
 
 
-    <div class="main-content" id="mainContent">
-  <h2>Dashboard</h2>
-  
-  <!-- Statistics Section -->
-  <div class="row mt-4">
-  <div class="col-md-3">
-    <div class="card stat-card-green">
-      <h5>Voters</h5>
-      <h3>0</h3>
+@php
+    use App\Models\AcademicResource;
+
+    // Kumuha ng mga events na naka-paginate ayon sa petsa ng paggawa (ascending)
+    $events = AcademicResource::orderBy('created_at', 'asc')->paginate(10);
+
+    // Kalkulahin ang mga metrics para sa dashboard
+    $totalEvents = AcademicResource::count();
+    $upcomingEvents = AcademicResource::whereDate('event_date', '>=', now())->count();
+    $pastEvents = AcademicResource::whereDate('event_date', '<', now())->count();
+@endphp
+
+<div class="main-content" id="mainContent">
+    <h2 class="mb-4 border-bottom pb-2">Academic Resources Dashboard</h2>
+
+    <!-- Metrics Cards Section -->
+    <div class="row mt-4">
+        <!-- Total Events Card -->
+        <div class="col-md-3 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-primary text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-calendar-alt fa-lg"></i> <!-- Event icon -->
+                </div>
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Total Events</h6>
+                    <h4 class="mb-0">{{ $totalEvents }}</h4>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Upcoming Events Card -->
+        <div class="col-md-3 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-success text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-calendar-check fa-lg"></i> <!-- Upcoming event icon -->
+                </div>
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Upcoming Events</h6>
+                    <h4 class="mb-0">{{ $upcomingEvents }}</h4>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Past Events Card -->
+        <div class="col-md-3 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-danger text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-calendar-times fa-lg"></i> <!-- Past events icon -->
+                </div>
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Past Events</h6>
+                    <h4 class="mb-0">{{ $pastEvents }}</h4>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card stat-card-green">
-      <h5>Subscribers</h5>
-      <h3>1,303</h3>
+
+    <!-- Card Container para sa Pag-manage ng Academic Events -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <!-- Card Header -->
+                <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #137547; color: white; padding: 10px;">
+                    <h5 class="mb-0">Manage Academic Events</h5>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addEventModal">Add Event</button>
+                </div>
+                
+                <!-- Card Body -->
+                <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+
+                    @if($events->count() > 0)
+                        <!-- Events Table -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: #D3D3D3; color: black; vertical-align: middle;">No.</th>
+                                    <th style="background-color: #D3D3D3; color: black; vertical-align: middle;">Title</th>
+                                    <th style="background-color: #D3D3D3; color: black; vertical-align: middle;">Event Date</th>
+                                    <th style="background-color: #D3D3D3; color: black; vertical-align: middle;">Description</th>
+                                    <th style="background-color: #D3D3D3; color: black; vertical-align: middle;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($events as $event)
+                                    <tr>
+                                        <td>{{ $loop->iteration + ($events->currentPage() - 1) * $events->perPage() }}</td>
+                                        <td>{{ $event->title }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($event->event_date)->format('F d, Y') }}</td>
+                                        <td>{{ Str::limit($event->description, 100, '...') }}</td>
+                                        <td>
+                                            <!-- Edit Button -->
+                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editEventModal{{ $event->id }}">
+                                                Edit
+                                            </button>
+                                            
+                                            <!-- Delete Button (Triggers Modal) -->
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteEventModal{{ $event->id }}">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Edit Event Modal -->
+                                    <div class="modal fade" id="editEventModal{{ $event->id }}" tabindex="-1" aria-labelledby="editEventModalLabel{{ $event->id }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <form action="{{ url('/academic-resources/' . $event->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editEventModalLabel{{ $event->id }}">Edit Event</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Title</label>
+                                                            <input type="text" name="title" class="form-control" value="{{ $event->title }}" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Event Date</label>
+                                                            <input type="date" name="event_date" class="form-control" value="{{ $event->event_date }}" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Description</label>
+                                                            <textarea name="description" class="form-control" rows="4">{{ $event->description }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- Delete Event Modal -->
+                                    <div class="modal fade" id="deleteEventModal{{ $event->id }}" tabindex="-1" aria-labelledby="deleteEventModalLabel{{ $event->id }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteEventModalLabel{{ $event->id }}">Delete Event</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the event <strong>{{ $event->title }}</strong>?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    <form action="{{ url('/academic-resources/' . $event->id) }}" method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <!-- Pagination -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <p>Showing {{ $events->firstItem() }} to {{ $events->lastItem() }} of {{ $events->total() }} events</p>
+                            {{ $events->links('pagination::bootstrap-4') }}
+                        </div>
+                    @else
+                        <p class="text-center">No academic events found.</p>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card stat-card-green">
-      <h5>Sales</h5>
-      <h3>$1,345</h3>
+</div>
+
+<!-- Add Event Modal -->
+<div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{{ url('/academic-resources') }}" method="POST">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEventModalLabel">Add Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Event Date</label>
+                        <input type="date" name="event_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Event</button>
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
 </div>
 
 
+
+<!-- Isama ang JS tulad ng jQuery at Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
   

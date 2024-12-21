@@ -10,6 +10,7 @@ class IndexController extends Controller
     {
         return view('index');  // Return the login view, adjust as needed.
     }
+    
 
     // Other methods for handling login can be here
 }

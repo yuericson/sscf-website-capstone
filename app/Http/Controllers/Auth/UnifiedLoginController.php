@@ -1,10 +1,9 @@
 <?php
 
-// app/Http/Controllers/Auth/UnifiedLoginController.php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UnifiedLoginController extends Controller
@@ -22,5 +21,16 @@ class UnifiedLoginController extends Controller
 
         return view('auth.login');
     }
-}
 
+    /**
+     * Update last_login_at after successful login.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $user
+     * @return void
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        $user->update(['last_login_at' => now()]);
+    }
+}

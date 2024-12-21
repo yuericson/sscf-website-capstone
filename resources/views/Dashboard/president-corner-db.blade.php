@@ -5,12 +5,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="../images/Logo.png">
-  <title>Super Admin Dashboard</title>
+  <title>President-Corner Management</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
-    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
 
-  <style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Add Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+
+<style>
+/* Dropdown Toggle Styling */
+.user-profile .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.user-profile .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Admin Icon Styling */
+.admin-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* Avatar Styling */
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+/* User Info Styling */
+.user-info {
+    margin-left: 10px;
+    color: #fff;
+}
+.user-info .name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.user-info .status {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #ddd;
+    margin-top: 2px;
+}
+.user-info .status i {
+    color: #28a745; /* Green for online status */
+    margin-right: 5px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.dropdown-item i {
+    width: 20px;
+    margin-right: 10px;
+    color: #555;
+}
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Light gray hover color */
+    color: #000; /* Text turns black on hover */
+}
+</style>
+
+    
+<style>
     /* General Styles */
     body {
       font-family: Arial, sans-serif;
@@ -22,7 +99,8 @@
     /* Sidebar Styles */
     .sidebar {
       width: 250px;
-      height: 100vh;
+      height: 100%; /* Dynamic height to fit content */
+      min-height: 100vh; /* Ensures full viewport height */
       position: fixed;
       top: 0;
       left: 0;
@@ -31,6 +109,7 @@
       display: flex;
       flex-direction: column;
       transition: width 0.3s ease;
+      overflow-y: auto; /* Enables scrolling for overflow */
     }
 
     .sidebar.collapsed {
@@ -38,17 +117,19 @@
     }
 
     .sidebar .logo {
-      padding: 20px;
-      font-size: 1.3rem;
+      padding: 10px;
+      font-size: 1.5rem;
       font-weight: bold;
-      text-align: center;
       color: #fff;
-      transition: font-size 0.3s ease;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 35px;
     }
 
-    .sidebar.collapsed .logo {
-      font-size: 0.9rem;
-      text-align: center;
+    .sidebar.collapsed .logo span {
+      display: none;
     }
 
     .sidebar .nav {
@@ -62,12 +143,9 @@
       padding: 10px 15px;
       display: flex;
       align-items: center;
-      justify-content: left;
       border-radius: 8px;
       text-decoration: none;
       transition: background-color 0.3s, color 0.3s, justify-content 0.3s;
-      border: none;
-      /* Remove any underline or border */
     }
 
     .sidebar .nav-link i {
@@ -172,110 +250,10 @@
       border: none;
       border-radius: 10px;
       padding: 20px;
-
     }
 
     .card-header {
       border-radius: 10px 10px 0 0;
-    }
-
-    .stat-card {
-      background-color: #f4f4f9;
-      color: #3c3c54;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-
-    .stat-card h5 {
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    .stat-card h3 {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .stat-card:hover {
-      transform: scale(1.05);
-    }
-
-    /* Table Styles */
-    .table {
-      border-collapse: collapse;
-    }
-
-    .table-striped tbody tr:nth-of-type(odd) {
-      background-color: #f9f9f9;
-    }
-
-    .table-bordered th,
-    .table-bordered td {
-      border: 1px solid #dee2e6;
-    }
-
-    .table-dark {
-      background-color: #3c3c54;
-      color: #ffffff;
-    }
-
-
-    /* Toggle Button */
-    .toggle-btn {
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #fff;
-    }
-
-    /* User Profile Styles */
-    .user-profile {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .user-profile img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .user-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .user-info .name {
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
-
-    .user-info .title {
-      font-size: 0.85rem;
-      color: #cbd5e0;
-    }
-
-    .status-indicator {
-      width: 10px;
-      height: 10px;
-      background-color: #28a745;
-      /* Green color */
-      border-radius: 50%;
-      margin-right: 5px;
-      /* Positioned to the left of the name */
-    }
-
-    /* Custom CSS to Adjust Dropdown Icon Spacing */
-    .user-profile.dropdown .dropdown-toggle::after {
-      margin-left: 10px;
-      /* Adjust this value as needed for spacing */
     }
 
     /* Responsive Adjustments */
@@ -287,7 +265,7 @@
       .sidebar {
         position: absolute;
         z-index: 1001;
-        height: 100%;
+        height: 100%; /* Allow dynamic height */
       }
 
       .main-content {
@@ -298,467 +276,331 @@
         left: 0;
       }
     }
-
-
-    .dropdown-menu-notifications {
-      width: 300px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding: 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown-menu-notifications .notification-header {
-      padding: 10px 15px;
-      font-weight: bold;
-      background-color: #f8f9fa;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .dropdown-menu-notifications .notification-item {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-
-    .dropdown-menu-notifications .notification-item:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown-menu-notifications .notification-item i {
-      font-size: 1.5rem;
-      margin-right: 10px;
-    }
-
-    .dropdown-menu-notifications .notification-footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #f8f9fa;
-      border-top: 1px solid #ddd;
-    }
-
-    .dropdown-menu-notifications .notification-footer a {
-      text-decoration: none;
-      color: #007bff;
-    }
-
-    .dropdown-menu-notifications .notification-footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Dropdown Menu for Messages */
-    .dropdown-menu-messages {
-      width: 300px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding: 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown-menu-messages .message-header {
-      padding: 10px 15px;
-      font-weight: bold;
-      background-color: #f8f9fa;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .dropdown-menu-messages .message-item {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-
-    .dropdown-menu-messages .message-item:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown-menu-messages .message-item img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .dropdown-menu-messages .message-item .message-content {
-      flex: 1;
-    }
-
-    .dropdown-menu-messages .message-item .message-content .sender {
-      font-weight: bold;
-    }
-
-    .dropdown-menu-messages .message-item .message-content .text {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .dropdown-menu-messages .message-footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #f8f9fa;
-      border-top: 1px solid #ddd;
-    }
-
-    .dropdown-menu-messages .message-footer a {
-      text-decoration: none;
-      color: #007bff;
-    }
-
-    .dropdown-menu-messages .message-footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Green Stat Card Styles */
-    .stat-card-green {
-      background-color: #28a745;
-      /* Bootstrap Success Green */
-      color: #ffffff;
-      /* White text for contrast */
-      text-align: center;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-
-    .stat-card-green h5 {
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    .stat-card-green h3 {
-      font-size: 2rem;
-      font-weight: bold;
-    }
   </style>
-</head>
+  </head>
+  <body>
 
-<body>
+   <!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+<div class="logo d-flex justify-content-between align-items-center">
+  <span class="logo-text">S S C F</span>
+  <i class="bi bi-list toggle-btn" id="toggleBtn" style="cursor: pointer;"></i>
+</div>
+<style>
+  /* Style for the logo text */
+.logo-text {
+  font-family: 'Agatho', serif; /* Use Agatho font */
+  font-size: 2rem; /* Adjust the size to match */
+  font-weight: bold; /* Ensure bold appearance */
+  letter-spacing: 0.2rem; /* Add spacing between letters */
+  color:rgb(255, 255, 255); /* Set the desired color */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <div class="logo">SSCF</div>
-    <ul class="nav flex-column mt-2">
-      <li><a href="{{ route('dashboard') }}" class="nav-link active"><i class="bi bi-speedometer2"></i>
-          <span>Dashboard</span></a></li>
-      <div class="management-title">Management</div>
+/* Hover effect for the logo text */
+.logo-text:hover {
+  color: #0c3925; /* Slightly darker hover color */
+}
+</style>
+  <ul class="nav flex-column mt-2">
+    <li><a href="{{ route('dashboard') }}" class="nav-link active"><i class="bi bi-speedometer2"></i> <span>Dashboard</span></a></li>
+    <div class="management-title">Management</div>
+    <li><a href="{{ route('academic-resources-db') }}" class="nav-link"><i class="bi bi-book"></i> <span>Academic Resources</span></a></li>
+    <li><a href="{{ route('auditor-db') }}" class="nav-link"><i class="bi bi-calculator"></i> <span>Auditor</span></a></li>
+    <li><a href="{{ route('latest-news-db') }}" class="nav-link"><i class="bi bi-newspaper"></i> <span>Latest News</span></a></li>
+    <li><a href="{{ route('media-gallery-db') }}" class="nav-link"><i class="bi bi-images"></i> <span>Media Gallery</span></a></li>
+    <li><a href="{{ route('press-releases-db') }}" class="nav-link"><i class="bi bi-megaphone"></i> <span>Press Releases</span></a></li>
+    <li><a href="{{ route('president-corner-db') }}" class="nav-link"><i class="bi bi-person-circle"></i> <span>President's Corner</span></a></li>
+    <li><a href="{{ route('upcoming-events-db') }}" class="nav-link"><i class="bi bi-calendar-event"></i> <span>Upcoming Events</span></a></li>
+    <li><a href="{{ route('volunteer-opportunities-db') }}" class="nav-link"><i class="bi bi-hand-thumbs-up"></i> <span>Volunteer Opportunities</span></a></li>
+    <li><a href="{{ route('forum-db') }}" class="nav-link"><i class="bi bi-chat-left-dots"></i> <span>Forum</span></a></li>
+    <li><a href="{{ route('feedback-db') }}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> <span>Feedback</span></a></li>
+    <li><a href="{{ route('sports-registration-db') }}" class="nav-link"><i class="bi bi-trophy"></i> <span>Sports Registration</span></a></li>
 
-      <li><a href="{{ route('academic-resources-db') }}" class="nav-link"><i class="bi bi-book"></i> <span>Academic
-            Resources</span></a></li>
-      <li><a href="{{ route('latest-news-db') }}" class="nav-link"><i class="bi bi-newspaper"></i> <span>Latest
-            News</span></a></li>
-      <li><a href="{{ route('media-gallery-db') }}" class="nav-link"><i class="bi bi-images"></i> <span>Media
-            Gallery</span></a></li>
-      <li><a href="{{ route('press-releases-db') }}" class="nav-link"><i class="bi bi-megaphone"></i> <span>Press
-            Releases</span></a></li>
-      <li><a href="{{ route('president-corner-db') }}" class="nav-link"><i class="bi bi-person-circle"></i>
-          <span>President's Corner</span></a></li>
-      <li><a href="{{ route('volunteer-opportunities-db') }}" class="nav-link"><i class="bi bi-hand-thumbs-up"></i>
-          <span>Volunteer Opportunities</span></a></li>
-      <li><a href="{{ route('forum-db') }}" class="nav-link"><i class="bi bi-chat-left-dots"></i> <span>Forum</span></a>
-      </li>
-      <li><a href="{{ route('feedback-db') }}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i>
-          <span>Feedback</span></a></li>
-      <li><a href="{{ route('sports-registration-db') }}" class="nav-link"><i class="bi bi-trophy"></i> <span>Sports
-            Registration</span></a></li>
-      <li><a href="{{ route('local-election-db') }}" class="nav-link"><i class="bi bi-person-check"></i> <span>Local
-            Election</span></a></li>
-      <li><a href="{{ route('tabulation-db') }}" class="nav-link"><i class="bi bi-table"></i>
-          <span>Tabulation</span></a></li>
+  </ul>
+</div>
 
-    </ul>
-  </div>
 
-  <!-- Header -->
-  <div class="header" id="header">
-    <!-- Left Section: Toggle Button and Search Bar -->
-    <div class="left-section">
-      <i class="bi bi-list toggle-btn" id="toggleBtn"></i>
-      <div class="search-bar ms-3">
-        <input type="text" placeholder="Search...">
+    <!-- Header -->
+    <div class="header" id="header">
+      <!-- Left Section: Toggle Button and Search Bar -->
+      <div class="left-section">
+        
       </div>
-    </div>
 
-    <!-- Right Section: Message Icon, Bell Icon, and User Profile -->
-    <div class="d-flex align-items-center">
-      <!-- Message Icon with Dropdown -->
-      <div class="dropdown me-4"> <!-- Added message dropdown with margin -->
-        <a href="#" class="text-white position-relative" id="messageDropdown" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <i class="bi bi-chat-left-text" style="font-size: 1.5rem;"></i>
-          <!-- Message Badge -->
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-            3
-            <span class="visually-hidden">unread messages</span>
-          </span>
+      
+
+
+<div class="user-profile dropdown me-5">
+    @auth('administrator')
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+           id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Admin Icon -->
+            <i class="fas fa-user-shield admin-icon"></i>
+            <!-- Avatar and Info -->
+            <img src="{{ Auth::guard('administrator')->user()->avatar ?? 'https://via.placeholder.com/40' }}" alt="User Avatar">
+            <div class="user-info">
+                <div class="name">{{ Auth::guard('administrator')->user()->name }}</div>
+                <div class="status">
+                    <i class="fas fa-circle"></i> Online
+                </div>
+            </div>
         </a>
-        <!-- Dropdown Menu -->
-        <div class="dropdown-menu dropdown-menu-end dropdown-menu-messages" aria-labelledby="messageDropdown">
-          <div class="message-header">You have 3 new messages</div>
-          <div class="message-item">
-            <img src="https://via.placeholder.com/40" alt="User Avatar">
-            <div class="message-content">
-              <div class="sender">Alice Smith</div>
-              <div class="text">Hi there! Welcome to the dashboard.</div>
-            </div>
-          </div>
-          <div class="message-item">
-            <img src="https://via.placeholder.com/40" alt="User Avatar">
-            <div class="message-content">
-              <div class="sender">Bob Johnson</div>
-              <div class="text">Don't forget the meeting at 3 PM.</div>
-            </div>
-          </div>
-          <div class="message-item">
-            <img src="https://via.placeholder.com/40" alt="User Avatar">
-            <div class="message-content">
-              <div class="sender">Charlie Lee</div>
-              <div class="text">Can you review my latest report?</div>
-            </div>
-          </div>
-          <div class="message-footer">
-            <a href="#">See all messages</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bell Icon with Dropdown -->
-      <div class="dropdown me-5"> <!-- Adjusted margin -->
-        <a href="#" class="text-white position-relative" id="bellDropdown" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
-          <!-- Notification Badge -->
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            4
-            <span class="visually-hidden">unread notifications</span>
-          </span>
-        </a>
-        <!-- Dropdown Menu -->
-        <div class="dropdown-menu dropdown-menu-end dropdown-menu-notifications" aria-labelledby="bellDropdown">
-          <div class="notification-header">You have 4 new notifications</div>
-          <div class="notification-item">
-            <i class="bi bi-person-circle text-primary"></i>
-            <div>
-              <div>New user registered</div>
-              <small class="text-muted">5 minutes ago</small>
-            </div>
-          </div>
-          <div class="notification-item">
-            <i class="bi bi-chat-dots text-success"></i>
-            <div>
-              <div>Rahmad commented on Admin</div>
-              <small class="text-muted">12 minutes ago</small>
-            </div>
-          </div>
-          <div class="notification-item">
-            <i class="bi bi-envelope text-warning"></i>
-            <div>
-              <div>Reza sent messages to you</div>
-              <small class="text-muted">12 minutes ago</small>
-            </div>
-          </div>
-          <div class="notification-item">
-            <i class="bi bi-heart text-danger"></i>
-            <div>
-              <div>Farrah liked Admin</div>
-              <small class="text-muted">17 minutes ago</small>
-            </div>
-          </div>
-          <div class="notification-footer">
-            <a href="#">See all notifications</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- User Profile Dropdown for Dashboard -->
-      <div class="user-profile dropdown me-5">
-        @auth('administrator')
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="userDropdown"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="{{ Auth::guard('administrator')->user()->avatar ?? 'https://via.placeholder.com/40' }}"
-        alt="User Avatar" class="rounded-circle" style="width: 40px; height: 40px;">
-        <div class="user-info ms-2">
-        <div class="name d-flex align-items-center">
-          <div class="status-indicator"></div>
-          {{ Auth::guard('administrator')->user()->name }}
-        </div>
-        <div class="title">
-          {{ ucfirst(Auth::guard('administrator')->user()->role) }}
-        </div>
-        </div>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-        <li><a class="dropdown-item" href="">Profile</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li>
-        <hr class="dropdown-divider">
-        </li>
-        <li>
-        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
-          @csrf
-          <button class="dropdown-item" type="submit">Logout</button>
-        </form>
-        </li>
-      </ul>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                    @csrf
+                    <button class="dropdown-item" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </li>
+        </ul>
     @endauth
-      </div>
+</div>
 
     </div>
   </div>
   </div>
 
-  <div class="main-content" id="mainContent">
-    <h2>President Corner Dashboard</h2>
+@php
+    use App\Models\PresidentCorner;
 
+    $posts = PresidentCorner::orderBy('id')->paginate(10);
+    $totalPosts = PresidentCorner::count();
+    $latestPosts = PresidentCorner::latest()->take(5)->count();
+    $oldPosts = $totalPosts - $latestPosts;
+@endphp
+
+<div class="main-content" id="mainContent">
+    <h2 class="mb-4 border-bottom pb-2">President Corner Dashboard</h2>
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+        <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    @php
-        $totalPosts = \App\Models\PresidentCorner::count();
-        $latestPosts = \App\Models\PresidentCorner::latest()->take(5)->count();
-        $oldPosts = $totalPosts - $latestPosts;
-        $posts = \App\Models\PresidentCorner::orderBy('id')->paginate(10); // Paginated 10 posts per page
-    @endphp
-
-    <!-- Statistics Section -->
-    <div class="row mt-4">
-        <div class="col-md-3">
-            <div class="card stat-card-green">
-                <h5>Total Posts</h5>
-                <h3>{{ $totalPosts }}</h3>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card stat-card-green">
-                <h5>Latest Posts</h5>
-                <h3>{{ $latestPosts }}</h3>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card stat-card-green">
-                <h5>Old Posts</h5>
-                <h3>{{ $oldPosts }}</h3>
-            </div>
-        </div>
-    </div>
-
-<!-- Add New Post Form -->
-<div class="row mt-5">
-    <div class="col-md-9">
-        <div class="card" style="border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
-            <div class="card-header bg-primary text-white text-center" style="border-radius: 1px 1px 0 0;">
-                <h4 class="mb-0">Add New Post</h4>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('dashboard.president-corner.add') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="title" class="form-label fw-semibold">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter post title" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="content" class="form-label fw-semibold">Content</label>
-                        <textarea class="form-control" id="content" name="content" rows="5" placeholder="Write your content here" required></textarea>
-                    </div>
-                    <div class="mb-4">
-                        <label for="image" class="form-label fw-semibold">Image</label>
-                        <input type="file" name="image" class="form-control" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary px-5" style="background-color: #007bff; border-color: #007bff; border-radius: 25px;">Add Post</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Search and Filter Section -->
-<div class="row mt-5 mb-3" style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
-    <div class="col-md-6">
-        <!-- Filter -->
-        <div class="d-flex align-items-center">
-            <label for="filter" class="me-2 mb-0 fw-semibold">Filter by:</label>
-            <select class="form-select" id="filter" onchange="applyFilter()" style="width: auto;">
-                <option value="all">All</option>
-                <option value="latest">Latest Posts</option>
-                <option value="old">Old Posts</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <!-- Search -->
-        <div class="d-flex align-items-center justify-content-end">
-            <label for="search" class="me-2 mb-0 fw-semibold">Search:</label>
-            <input type="text" id="search" class="form-control" placeholder="Search posts..." onkeyup="searchPosts()" style="width: 60%;">
-        </div>
-    </div>
-</div>
-
-
-    <!-- Posts Table -->
-    <div class="row">
-        <div class="col-12">
-            <h4>All Posts</h4>
-            <table class="table table-bordered" id="postsTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="postsTableBody">
-                    @if ($posts->count() > 0)
-                        @foreach ($posts as $post)
-                            <tr data-category="{{ $loop->iteration <= $latestPosts ? 'latest' : 'old' }}">
-                                <td>{{ $post->id }}</td>
-                                <td>{{ $post->title }}</td>
-                                <td>{{ \Illuminate\Support\Str::limit($post->content, 50) }}</td>
-                                <td>
-                                    @if ($post->image)
-                                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" width="50">
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">Edit</button>
-                                    <form action="{{ route('dashboard.president-corner.delete', $post->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="5" class="text-center" style="color: red; font-weight: bold;">No posts found.</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
-
-            <!-- Pagination Details -->
-            @if ($posts->count() > 0)
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <p>Showing {{ $posts->firstItem() }} to {{ $posts->lastItem() }} of {{ $posts->total() }} results</p>
-                    {{ $posts->onEachSide(1)->links('pagination::bootstrap-4') }}
+    <!-- Summary Statistics -->
+    <div class="row mt-4 mb-4">
+        <!-- Total Posts -->
+        <div class="col-md-4 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-primary text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-newspaper fa-lg"></i>
                 </div>
-            @endif
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Total Posts</h6>
+                    <h4 class="mb-0">{{ $totalPosts }}</h4>
+                </div>
+            </div>
+        </div>
+        <!-- Latest Posts -->
+        <div class="col-md-4 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-success text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-clock fa-lg"></i>
+                </div>
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Latest Posts</h6>
+                    <h4 class="mb-0">{{ $latestPosts }}</h4>
+                </div>
+            </div>
+        </div>
+        <!-- Old Posts -->
+        <div class="col-md-4 mb-4">
+            <div class="d-flex align-items-center p-3 shadow rounded bg-white h-100">
+                <div class="bg-secondary text-white d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                    <i class="fas fa-archive fa-lg"></i>
+                </div>
+                <div class="ms-3">
+                    <h6 class="text-muted mb-1">Old Posts</h6>
+                    <h4 class="mb-0">{{ $oldPosts }}</h4>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Add New Post Form -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header" style="background-color: #137547; color: white; padding: 10px;">
+                    <h5 class="mb-0">Add New President Post</h5>
+                </div>
+                <div class="card-body" style="border: 1px solid #ccc; border-radius: 5px; padding: 20px; background-color: #f9f9f9;">
+                    <form action="{{ route('dashboard.president-corner.add') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title" class="form-label"><strong>Title</strong></label>
+                                <input type="text" name="title" id="title" class="form-control" placeholder="Enter post title" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="image" class="form-label"><strong>Image</strong></label>
+                                <input type="file" name="image" id="image" class="form-control">
+                                <small class="text-muted">Upload an image (optional).</small>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="content" class="form-label"><strong>Content</strong></label>
+                                <textarea name="content" id="content" rows="5" class="form-control" placeholder="Write the post content here..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success">Add Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="row mt-5 mb-3" style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+        <div class="col-md-6">
+            <!-- Filter -->
+            <div class="d-flex align-items-center">
+                <label for="filter" class="me-2 mb-0 fw-semibold">Filter by:</label>
+                <select class="form-select" id="filter" onchange="applyFilter()" style="width: auto;">
+                    <option value="all">All</option>
+                    <option value="latest">Latest Posts</option>
+                    <option value="old">Old Posts</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Search -->
+            <div class="d-flex align-items-center justify-content-end">
+                <label for="search" class="me-2 mb-0 fw-semibold">Search:</label>
+                <input type="text" id="search" class="form-control" placeholder="Search posts..." onkeyup="searchPosts()" style="width: 60%;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Posts Table Card -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #137547; color: white; padding: 10px;">
+                    <h5 class="mb-0">All Posts</h5>
+                </div>
+                <div class="card-body">
+                    @if ($posts->count() > 0)
+                        <table class="table table-bordered" id="postsTable">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: #D3D3D3; color: black; text-align: center;">ID</th>
+                                    <th style="background-color: #D3D3D3; color: black;">Title</th>
+                                    <th style="background-color: #D3D3D3; color: black;">Content</th>
+                                    <th style="background-color: #D3D3D3; color: black; text-align: center;">Image</th>
+                                    <th style="background-color: #D3D3D3; color: black; text-align: center;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="postsTableBody">
+                                @foreach ($posts as $post)
+                                    <tr data-category="{{ $loop->iteration <= $latestPosts ? 'latest' : 'old' }}">
+                                        <td style="text-align: center;">{{ $post->id }}</td>
+                                        <td>{{ $post->title }}</td>
+                                        <td>{{ \Illuminate\Support\Str::limit($post->content, 50) }}</td>
+                                        <td style="text-align: center;">
+                                            @if ($post->image)
+                                                <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" width="50">
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">Edit</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $post->id }}">Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <!-- Pagination Details -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <p>Showing {{ $posts->firstItem() }} to {{ $posts->lastItem() }} of {{ $posts->total() }} results</p>
+                            {{ $posts->onEachSide(1)->links('pagination::bootstrap-4') }}
+                        </div>
+                    @else
+                        <p class="text-center mt-4">No posts found.</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Editing and Deleting Posts -->
+    @if ($posts->count() > 0)
+        @foreach ($posts as $post)
+            <!-- Edit Modal -->
+            <div class="modal fade" id="editModal{{ $post->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $post->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form action="{{ route('dashboard.president-corner.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $post->id }}">Edit Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                 <div class="mb-3">
+                                    <label for="edit_title_{{ $post->id }}" class="form-label"><strong>Title</strong></label>
+                                    <input type="text" name="title" id="edit_title_{{ $post->id }}" class="form-control" value="{{ $post->title }}" required>
+                                 </div>
+                                 <div class="mb-3">
+                                    <label for="edit_content_{{ $post->id }}" class="form-label"><strong>Content</strong></label>
+                                    <textarea name="content" id="edit_content_{{ $post->id }}" rows="5" class="form-control" required>{{ $post->content }}</textarea>
+                                 </div>
+                                 <div class="mb-3">
+                                    <label for="edit_image_{{ $post->id }}" class="form-label"><strong>Image</strong></label>
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-3">
+                                            @if($post->image)
+                                                <small><strong>Current Image:</strong></small><br>
+                                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" width="120" class="rounded border">
+                                            @else
+                                                <small><strong>No image available.</strong></small>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <input type="file" name="image" id="edit_image_{{ $post->id }}" class="form-control">
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                 <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Delete Modal -->
+            <div class="modal fade" id="deleteModal{{ $post->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $post->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form action="{{ route('dashboard.president-corner.delete', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-content">
+                             <div class="modal-header">
+                                 <h5 class="modal-title" id="deleteModalLabel{{ $post->id }}">Delete Post</h5>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                                 Are you sure you want to delete <strong>{{ $post->title }}</strong>?
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                 <button type="submit" class="btn btn-danger">Delete</button>
+                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    @endif
 </div>
 
 <script>
@@ -803,11 +645,11 @@
                         .then(html => {
                             const parser = new DOMParser();
                             const doc = parser.parseFromString(html, 'text/html');
-                            const newTable = doc.querySelector('#postsTable');
-                            const newPagination = doc.querySelector('.pagination');
-                            
-                            document.querySelector('#postsTable').innerHTML = newTable.innerHTML;
-                            document.querySelector('.pagination').innerHTML = newPagination.innerHTML;
+                            const newTableBody = doc.querySelector('#postsTableBody').innerHTML;
+                            const newPagination = doc.querySelector('.pagination').innerHTML;
+
+                            document.querySelector('#postsTableBody').innerHTML = newTableBody;
+                            document.querySelector('.pagination').innerHTML = newPagination;
 
                             // Re-add listeners after content is replaced
                             addPaginationListeners();
@@ -826,6 +668,8 @@
         addPaginationListeners();
     });
 </script>
+
+
 
 
 

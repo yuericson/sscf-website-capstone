@@ -66,6 +66,12 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         // Custom Middleware
-        'check.admin' => \App\Http\Middleware\CheckAdministrator::class,
+        'auth:administrator' => \App\Http\Middleware\Authenticate::class,
+        'auth:comelec' => \App\Http\Middleware\Authenticate::class,
+        'comelec' => \App\Http\Middleware\CheckComelec::class,
+        'check.administrator' => \App\Http\Middleware\CheckAdministrator::class,
+        'tabulator' => \App\Http\Middleware\CheckTabulator::class,
+        'tabulation' => \App\Http\Middleware\CheckTabulation::class,
+        
     ];
 }

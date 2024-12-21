@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/Auth/AdministratorLoginController.php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -11,53 +9,136 @@ use Illuminate\Support\Facades\Auth;
 class AdministratorLoginController extends Controller
 {
     /**
-     * Show the unified login form.
+     * Show the login form based on the requested route.
      */
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
-        return view('auth.login'); // Pointing to the unified login view
+        if ($request->is('admin/*')) {
+            return view('auth.admin-login');
+        }
+
+        if ($request->is('comelec/*')) {
+            return view('auth.comelec-login');
+        }
+
+        if ($request->is('tabulator/*')) {
+            return view('auth.tabulator-login');
+        }
+
+        if ($request->is('tabulations/*')) { // ✅ Fixed Prefix
+            return view('auth.tabulation-login');
+        }
+
+        abort(404, 'Login page not found.');
     }
 
     /**
-     * Handle a login request to the application.
+     * Handle login logic for all user types.
      */
     public function login(Request $request)
     {
-        // Validate the form data
         $credentials = $request->validate([
-            'email' => ['required','email'],
-            'password' => ['required'],
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        // Attempt to log the administrator in using the 'administrator' guard
-        if (Auth::guard('administrator')->attempt($credentials, $request->filled('remember'))) {
-            // Authentication passed
-            $request->session()->regenerate();
-
-            return redirect()->intended(route('dashboard'));
+        // ✅ Administrator login
+        if ($request->is('admin/*')) {
+            if (Auth::guard('administrator')->attempt($credentials, $request->filled('remember'))) {
+                $request->session()->regenerate();
+                return redirect()->route('admin.dashboard');
+            }
+            return back()->withErrors(['email' => 'Invalid ADMINISTRATOR credentials.']);
         }
 
-        // Authentication failed
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        // ✅ COMELEC login
+        if ($request->is('comelec/*')) {
+            if (Auth::guard('comelec')->attempt($credentials, $request->filled('remember'))) {
+                $request->session()->regenerate();
+                return redirect()->route('comelec.dashboard');
+            }
+            return back()->withErrors(['email' => 'Invalid COMELEC credentials.']);
+        }
+
+        // ✅ Tabulator login
+        if ($request->is('tabulator/*')) {
+            if (Auth::guard('tabulator')->attempt($credentials, $request->filled('remember'))) {
+                $request->session()->regenerate();
+                return redirect()->route('tabulator.dashboard');
+            }
+            return back()->withErrors(['email' => 'Invalid TABULATOR credentials.']);
+        }
+
+        // ✅ Tabulation login (Fixed: Uses "tabulations/*")
+        if ($request->is('tabulations/*')) {
+            if (Auth::guard('tabulation')->attempt($credentials, $request->filled('remember'))) {
+                $request->session()->regenerate();
+                return redirect()->route('tabulations.dashboard'); // ✅ Fixed Route Name
+            }
+            return back()->withErrors(['email' => 'Invalid TABULATION credentials.']);
+        }
+
+        return abort(404, 'Invalid login route.');
     }
 
     /**
-     * Log the administrator out of the application.
+     * Handle logout logic for all user types.
      */
     public function logout(Request $request)
     {
-        Auth::guard('administrator')->logout();
+        if ($request->is('admin/*') && Auth::guard('administrator')->check()) {
+            Auth::guard('administrator')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('admin.login')->with('status', 'You have been logged out.');
+        }
 
-        $request->session()->invalidate();
+        if ($request->is('comelec/*') && Auth::guard('comelec')->check()) {
+            Auth::guard('comelec')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('comelec.login')->with('status', 'You have been logged out.');
+        }
 
-        $request->session()->regenerateToken();
+        if ($request->is('tabulator/*') && Auth::guard('tabulator')->check()) {
+            Auth::guard('tabulator')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('tabulator.login')->with('status', 'You have been logged out.');
+        }
 
-        // Redirect with cache-control headers
-        return redirect('login')->with('status', 'You have been logged out!')
-                                 ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
-                                 ->header('Pragma', 'no-cache')
-                                 ->header('Expires', '0');
+        // ✅ Tabulation logout (Fixed: Uses "tabulations/*")
+        if ($request->is('tabulations/*') && Auth::guard('tabulation')->check()) {
+            Auth::guard('tabulation')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('tabulations.login')->with('status', 'You have been logged out.');
+        }
+
+        return redirect('/')->withErrors(['error' => 'Invalid logout request.']);
+    }
+
+    /**
+     * Determine the active guard.
+     */
+    private function getActiveGuard()
+    {
+        if (Auth::guard('administrator')->check()) {
+            return 'administrator';
+        }
+
+        if (Auth::guard('comelec')->check()) {
+            return 'comelec';
+        }
+
+        if (Auth::guard('tabulator')->check()) {
+            return 'tabulator';
+        }
+
+        if (Auth::guard('tabulation')->check()) {
+            return 'tabulation';
+        }
+
+        return null;
     }
 }
