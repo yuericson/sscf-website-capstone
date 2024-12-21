@@ -1,0 +1,214 @@
+/* CONTACT US */
+
+/* Background Section Styling */
+.background-section {
+    background-color: #d7ffda; /* Change this to your preferred background color */
+    padding: 20px; /* Add padding if you want space around the content */
+    height: 100%;
+  }
+  
+  /* Entire Section Background */
+  .committee-contacts-section {
+    background-color: #185F43; /* Background color for the entire section */
+    color: #ffffff; /* Text color for better contrast */
+    padding: 40px 20px; /* Padding for spacing */
+  }
+  /* Title Styling */
+  .committee-contacts-title {
+    font-size: 2.3em;
+    font-weight: bold;
+    color: #185F43;
+    margin-top: 1em;
+    text-align: center; 
+  }
+  
+  .contacts-title-underline {
+    width: 16em;
+    height: 4px;
+    background-color: #185F43; 
+    margin: 0.1em auto; 
+    text-align: center; 
+  }
+  
+  /* Committee Box Styling */
+  .committee-box {
+    border: 2px solid #185F43;
+    padding: 20px;
+    width: 800px;
+    margin: -10px auto; /* Center box and reduce margin */
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-top: 3em;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .committee-box:hover {
+    background-image: linear-gradient(135deg, #4bfa74, #e5e5e5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Committee Details Flexbox Styling */
+  .committee-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Space between items */
+    flex-wrap: wrap; /* Wrap items if needed */
+  }
+  
+  /* Committee Logo Styling */
+  .committee-logo {
+    flex: 0 0 auto;
+  }
+  
+  .logo-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  /* Committee Info Styling */
+  .committee-info {
+    text-align: left;
+    margin-left: 30px;
+    flex: 1;
+  }
+  
+  /* Committee Name Styling */
+  .committee-name {
+    font-size: 1.5em;
+    color: #185F43;
+    font-weight: 500;
+  }
+  
+  /* Committee Email, Phone, and Facebook Styling */
+  .committee-email, .committee-phone, .committee-fb {
+    font-size: 1.1em;
+    margin-top: 10px;
+  }
+  
+  .committee-email a, .committee-fb a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .committee-email a:hover, .committee-fb a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Icon Color Styles */
+  .committee-email i {
+    color: #185F43; /* Change this to your desired color */
+  }
+  
+  .committee-phone i {
+    color: #185F43; /* Change this to your desired color */
+  }
+  
+  .committee-fb i {
+    color: #185F43; /* Change this to your desired color */
+  }
+  
+  /* Optional: Change color on hover */
+  .committee-email:hover i,
+  .committee-phone:hover i,
+  .committee-fb:hover i {
+    color: #0A3D2E; /* Darker shade or a different color on hover */
+    
+  }
+  
+  /* Add spacing between icons and text */
+  .committee-email i,
+  .committee-phone i,
+  .committee-fb i {
+    margin-right: 8px; /* Adjust the spacing as needed */
+  }
+  
+  /* Responsive Adjustments */
+  
+  /* Laptops and larger screens */
+  @media (max-width: 1200px) { 
+    .committee-contacts-title {
+      font-size: 2em; /* Slightly smaller font size */
+    }
+  
+    .contacts-title-underline {
+      width: 20em; /* Adjust width */
+    }
+  
+    .committee-box {
+      padding: 15px; /* Reduce padding */
+    }
+  
+    .logo-img {
+      width: 130px; /* Slightly smaller logo size */
+      height: 130px; /* Maintain aspect ratio */
+    }
+  }
+  
+  /* Tablets */
+  @media (max-width: 992px) { 
+    .committee-contacts-title {
+      font-size: 2.3em; /* Reduce font size further */
+    }
+  
+    .contacts-title-underline {
+      width: 21em; /* Adjust width for tablets */
+    }
+  
+    .committee-box {
+      padding: 10px; /* Further reduce padding */
+    }
+  
+    .committee-info {
+      margin-left: 15px; /* Reduce margin */
+    }
+  
+    .logo-img {
+      width: 120px; /* Further reduce logo size */
+      height: 120px; /* Maintain aspect ratio */
+    }
+  }
+  
+  /* Mobile Devices */
+  @media (max-width: 768px) { 
+    .committee-contacts-title {
+      font-size: 1.9em; /* Smaller font size for mobile */
+      line-height: 1.2em;
+    }
+  
+    .contacts-title-underline {
+      width: 18em; /* Adjust width for mobile */
+      margin-bottom: 30px;
+    }
+  
+    .committee-box {
+      padding: 15px; /* Increase padding inside the box */
+      margin: 10px 10px; /* Add horizontal margin */
+      max-width: calc(100% - 50px); /* Ensure the box doesn’t exceed the viewport width */
+      box-sizing: border-box; /* Ensure padding and border are included in the width */
+    }
+  
+    .committee-details {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items horizontally */
+    }
+  
+    .committee-info {
+      margin-left: 0; /* Remove left margin */
+      text-align: center; /* Center text */
+    }
+  
+    .logo-img {
+      width: 100px; /* Further reduce logo size */
+      height: 100px; /* Maintain aspect ratio */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  

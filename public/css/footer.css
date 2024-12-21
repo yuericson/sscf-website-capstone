@@ -1,0 +1,110 @@
+  
+  
+  /* FOOTER STYLES */
+  /* General footer styles */
+  .footer {
+    background: linear-gradient(to bottom, #64C48C, #185F43); 
+    color: #fff; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    overflow-x: hidden;
+    bottom: 0; 
+    width: 100%; 
+  }
+  
+  /* Link styles within footer */
+  .footer a {
+    color: #fff; 
+    text-decoration: none; 
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Heading styles within footer */
+  .footer h5 {
+    margin-top: 10px; 
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Paragraph styles within footer */
+  .footer p {
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Logo styles within footer */
+  .footer img {
+    max-width: 150px;
+    margin-right: 10px; 
+    margin-top: 13px; 
+  }
+  
+  /* Horizontal divider style */
+  .hr-divider {
+    border-top: 3px solid #fff; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    margin-left: calc(-50vw + 50%); 
+    margin-right: calc(-50vw + 50%); 
+  }
+  
+  /* Custom styles for footer center text */
+  .footer-center-text {
+    text-align: center; 
+    margin-top: -5px; 
+    margin-bottom: -5px;
+  }
+  
+  /* Individual section styles */
+  /* Logo description section styles */
+  .logo-description-section p {
+    margin-right: 28px; 
+    margin-left: 10px; 
+    text-align: center;
+  }
+  
+  /* Contact Us, Visit Us, About Us, and Get in Touch section margins */
+  .contact-us-section,
+  .visit-us-section,
+  .about-us-section,
+  .get-in-touch-section {
+    margin-bottom: 20px; 
+  }
+  
+  /* Specific heading margins for Contact Us and Visit Us sections */
+  .contact-us-section h5,
+  .visit-us-section h5 {
+    margin-top: 30px; 
+  }
+  
+  
+  .visit-us-section h5 {
+    margin-top: 15px; 
+  }
+  
+  /* Specific paragraph margins for Contact Us and Visit Us sections */
+  .contact-us-section p,
+  .visit-us-section p {
+    margin-top: 5px; 
+  }
+  
+  /* Specific heading margins for About Us and Get in Touch sections */
+  .about-us-section h5,
+  .get-in-touch-section h5 {
+    margin-top: 20px;
+  }
+  
+  /* Specific paragraph margins for About Us and Get in Touch sections */
+  .about-us-section p,
+  .get-in-touch-section p {
+    margin-top: 5px;
+  }
+  
+  
+  /* Font Awesome icon styles within footer */
+  .footer .fas, .footer .fab {
+    margin-right: 2px; 
+  }
+  
+  

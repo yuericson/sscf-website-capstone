@@ -1,0 +1,615 @@
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* MAIN PAGE */
+  .content-container {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 20px; 
+    background: linear-gradient(rgba(27, 114, 75, 0.75), rgba(182, 244, 186, 0.75)); /* Dark gradient */
+    margin-bottom: 70px;
+  }
+  
+  /* Logo container styling */
+  .logo-container {
+    display: flex; /* Use flexbox to align logos */
+    justify-content: center; /* Center the logos horizontally */
+    align-items: center; /* Center logos vertically within the container */
+    margin-top: 40px; /* Add margin for spacing */
+    margin-bottom: 10px;
+    margin-right: 50px;
+  }
+  
+  
+  /* Styling for the second logo */
+  .header-logo-1 {
+    width: 350px; /* Set fixed width */
+    height: 230px; /* Set fixed height */
+    object-fit: contain; /* Maintain aspect ratio */
+    
+      margin-left: 40px; /* Space between logos */
+  }
+  
+  /* Styling for the first logo */
+  .header-logo-2 {
+    width: 350px; /* Set fixed width */
+    height: 250px; /* Set fixed height */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin-left: -100px;
+  
+  }
+  
+  
+  /* Styles for small text */
+  .small-text {
+    font-size: 47px; 
+    margin-bottom: 1px; 
+    color: rgb(1, 70, 44);
+  }
+  
+  /* Styles for large text */
+  .large-text {
+    font-size: 45px; 
+    margin-bottom: 20px; 
+    font-weight: 600; 
+    color: #066b2d; 
+  }
+  
+  /* Styles for medium text */
+  .medium-text {
+    font-size: 25px; 
+    line-height: 1.2;
+    margin-top: 1px; 
+    text-align: center;
+    margin-bottom: 130px; /* Reduced margin-bottom to decrease overall height */
+    color: #5c5c5c;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+  
+    /* Adjusting the height of the content container */
+    .content-container {
+      padding: 10px; /* Reduce padding for mobile */
+      margin-bottom: 40px; /* Adjust margin as needed */
+      height: 500px;
+  }
+  
+    .logo-container {
+        flex-direction: row; /* Keep logos in a row on mobile */
+        justify-content: center; /* Center logos horizontally */
+        align-items: center; /* Center logos vertically */
+    }
+    
+    .header-logo-1 {
+      width: 100%; /* Adjust logos to take up less space on mobile */
+      max-width: 120px; /* Maintain max width */
+      margin-bottom: -90px;
+      margin-right: -10px;
+  
+    
+    }
+    
+    .header-logo-2 {
+        width: 100%; /* Adjust logos to take up less space on mobile */
+        max-width: 150px; /* Maintain max width */
+        margin-left: 5px; /* Space between logos */
+        margin-bottom: -90px;
+        margin-right: -20px;
+    }
+  
+    .small-text {
+      font-size: 25px;
+      margin-bottom: 10px;
+      margin-top: 25px;
+  
+    }
+    
+    .large-text {
+      font-size: 25px;
+    }
+    
+    .medium-text {
+      font-size: 20px;
+        margin: 0 10px; /* Add margin for mobile */
+        margin-bottom: 150px;
+    }
+  }
+  
+  
+  
+  /* MISSION VISION & GOALS */
+  /* Styles for the circular icon containers */
+  .mission-icon-circle, .vision-icon-circle, .goals-icon-circle {
+    width: 70px; 
+    height: 70px; 
+    background-color: #185F43; 
+    border-radius: 50%;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    margin: 0 auto; 
+  }
+  
+  /* Styles for the icons inside the circles */
+  .mission-icon-circle i, .vision-icon-circle i, .goals-icon-circle i {
+    color: white;
+    font-size: 36px; 
+  }
+  
+  /* Styles for the boxes */
+  .mission-box, .vision-box, .goals-box {
+    background-color: #f4f4f4; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    padding: 20px; 
+    text-align: center; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .mission-box:hover, .vision-box:hover, .goals-box:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Styles for custom headings */
+  .custom-heading {
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    margin-top: 20px; 
+    display: flex; 
+    justify-content: center; 
+  }
+  
+  /* Styles for custom paragraphs */
+  .custom-paragraph {
+    font-size: 16px; 
+    font-weight: 400; 
+    text-align: center; 
+    padding: 0 15px; 
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ORGANIZATIONAL CHART */
+  /* ORGANIZATIONAL CHART BACKGROUND */
+  .org-chart-background {
+    background-image: url('../images/orgbg.png'); /* Set your background image here */
+    background-attachment: fixed; /* Keeps the background fixed for parallax effect */
+    background-position: center; /* Centers the background */
+    background-repeat: no-repeat; /* Prevents background repetition */
+    background-size: cover; /* Covers the entire background area */
+    padding: 0.1em 2em; /* Adjusted padding: less on top, more on sides */
+    border-radius: 10px; /* Optional: rounded corners for aesthetics */
+  }
+  
+  /* ORGANIZATIONAL CHART CONTAINER */
+  .org-chart-container {
+    max-width: 1200px; /* Or any width you prefer */
+    margin: auto; /* Center the container */
+    position: relative; /* For stacking context */
+    z-index: 2; /* Bring content above the background */
+  }
+  
+  .organization-title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2em;
+    color: #185F43;
+  }
+  
+  .title-underline {
+    width: 10em;
+    height: 2px;
+    background-color: #185F43;
+    margin: 0.2em auto;
+  }
+  
+  .org-chart {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  
+  
+  
+  
+  /* PRESIDENT'S CORNER */
+  .president-title {
+  font-size: 1.9em;
+  font-weight: bold;
+  color: #185F43;
+  margin-top: 1em;
+  text-align: center;
+  }
+  
+  .president-title-underline {
+  width: 10em;
+    height: 2px;
+    background-color: #185F43;
+    margin: 0.5em auto;
+  }
+  
+  .custom-img {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto; /* Center the image with margin */
+  display: block; /* Ensure the image is treated as a block element */
+  }
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+  .custom-img {
+    max-width: 100%; /* Make the image fully responsive on smaller screens */
+  }
+  }
+  
+  
+  
+  
+  
+  
+  /* Recent News Background */
+  .recent-news-background {
+    background-color: #e7e7e7;
+    padding: 50px 0;
+  }
+  
+  /* Recent News Title */
+  .recent-news-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #004d00;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+  }
+  
+  /* News Box Styles */
+  .news-box {
+    border: 2px solid #185F43;
+    padding: 20px;
+    margin: 25px;
+    text-align: center;
+    background-color: #f9f9f9;
+    flex: 1 1 200px;
+    max-width: 400px;
+  }
+  
+  .news-box img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .news-box .news-title {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: #185F43;
+  }
+  
+  .news-box .news-date {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .news-read-more-box {
+    margin-top: 10px;
+  }
+  
+  .news-read-more {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #185F43;
+    border: 1px solid #185F43;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* Pagination Styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .pagination a {
+    color: #185F43;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .pagination .page-number {
+    padding: 5px 10px;
+    border: 1px solid #185F43;
+    border-radius: 5px;
+    margin: 0 5px;
+  }
+  
+  .pagination .page-number.active {
+    background-color: #185F43;
+    color: #ffffff;
+    border: 1px solid #185F43;
+  }
+  
+  .pagination .prev,
+  .pagination .next {
+    font-weight: bold;
+  }
+  
+  /* Fade Effects */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-out {
+    opacity: 1;
+    animation: fadeOut 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .recent-news-title {
+      font-size: 1.5rem;
+    }
+    
+    .news-box {
+      margin: 10px;
+      flex: 1 1 150px;
+    }
+  
+    .news-box .news-title {
+      font-size: 1.3em;
+    }
+  
+    .pagination .page-number {
+      padding: 4px 8px;
+    }
+  
+    .pagination a {
+      font-size: 0.9em;
+    }
+  }
+  
+  /* Extra Small Screens - 425px and below */
+  @media (max-width: 425px) {
+    .recent-news-background {
+      padding: 30px 0;
+    }
+  
+    .recent-news-title {
+      font-size: 1.3rem;
+      padding: 10px 15px;
+    }
+  
+    #news-container {
+      display: flex; /* Use flexbox for alignment */
+      justify-content: center; /* Center the single news box */
+      flex-direction: column; /* Arrange boxes in a column */
+      align-items: center; /* Center items */
+      overflow: hidden; /* Hide overflow for neatness */
+    }
+  
+    .news-box {
+      display: none; /* Hide all news boxes by default */
+    }
+  
+    .news-box:first-child {
+      display: block; /* Only show the first news box */
+      margin: 8px 0; /* Vertical spacing */
+      padding: 15px;
+      flex: 0 0 auto; /* Prevent the box from shrinking */
+      max-width: 100%; /* Ensure full width */
+      width: 100%; /* Take full width */
+    }
+  
+    .news-box img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .news-box .news-title {
+      font-size: 1.2em;
+    }
+  
+    .news-box .news-date {
+      font-size: 0.85em;
+    }
+  
+    .news-read-more {
+      padding: 4px 8px;
+      font-size: 0.85em;
+    }
+  
+    .pagination {
+      display: none; /* Hide pagination on small screens */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .upcoming-events {
+    background: linear-gradient(to bottom right, rgba(24, 95, 67, 0.8), rgba(20, 77, 52, 0.8)); /* Gradient with transparency */
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #fff; /* White text color for contrast */
+    margin-bottom: 35px;
+  }
+  
+  .slider-container {
+    position: relative;
+    max-width: 700px; /* Maximum width for the slider */
+    margin: auto; /* Center the container */
+    overflow: hidden; /* Hide overflow */
+  }
+  
+  .slider {
+    display: flex; /* Use flexbox for layout */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for slides */
+  }
+  
+  .slider img {
+    min-width: 100%; /* Ensure each image takes full width of the slider */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 80vh; /* Set max-height to avoid overflow */
+    border-radius: 10px; /* Rounded corners for images */
+    object-fit: contain; /* Make sure entire image is visible */
+  }
+  
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Button background */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+    font-size: 16px;
+  }
+  
+  .slider-button.prev {
+    left: 10px; /* Position for the previous button */
+  }
+  
+  .slider-button.next {
+    right: 10px; /* Position for the next button */
+  }
+  
+  /* Media Queries for Tablet and Mobile Devices */
+  
+  /* Tablet Styles */
+  @media (max-width: 1024px) {
+    .slider-button.prev {
+      left: 20px; /* Move left button closer to the image */
+    }
+  
+    .slider-button.next {
+      right: 20px; /* Move right button closer to the image */
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .slider-button.prev {
+      left: 1px; /* Move left button further outside the image */
+    }
+  
+    .slider-button.next {
+      right: 1px; /* Move right button further outside the image */
+    }
+  }
+  
+  /* Mobile Styles for 425px and Below */
+  @media (max-width: 425px) {
+    .slider-button {
+      padding: 5px 10px; /* Reduced padding for smaller buttons */
+      font-size: 14px; /* Smaller font size */
+      width: 25px; /* Set a specific width for the buttons */
+      margin: 0 auto; /* Center buttons */
+    }
+  
+    .slider-button.prev {
+      left: -5px; /* Adjust left button position closer to the image */
+    }
+  
+    .slider-button.next {
+      right: -5px; /* Adjust right button position closer to the image */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Responsive Adjustments */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  

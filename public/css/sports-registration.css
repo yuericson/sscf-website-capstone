@@ -1,0 +1,385 @@
+/* SPORTS */
+.pre-registration-form {
+    margin-bottom: 40px;
+    padding: 100px; /* Padding around the content */
+    border-radius: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative; /* Relative positioning for child elements */
+    overflow: hidden; /* Hide overflow of child elements */
+    color: white;
+  }
+  
+  /* Slideshow container */
+  .slideshow-container {
+    position: absolute; /* Position behind text */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send behind text */
+  }
+  
+  /* Slideshow */
+  .slideshow {
+    display: flex; /* Flexbox for horizontal arrangement */
+    transition: transform 1s ease; /* Transition for slide effect */
+    animation: slide 20s infinite; /* Animation for sliding */
+    width: 100%; /* Full width of parent */
+    height: 100%; /* Full height of parent */
+  }
+  
+  /* Individual slides */
+  .slide {
+    flex: 0 0 100%; /* Each slide takes the full width */
+    height: 100%; /* Maintain full height of container */
+    display: flex; /* Enable flex for centering */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    overflow: hidden; /* Hide overflow for images */
+    position: relative; /* For absolute positioning of images */
+    background-size: cover; /* Cover maintains aspect ratio */
+    background-position: center; /* Center the background */
+  }
+  
+/* Add a background image for each slide */
+.slide1 {
+  background-image: url('../iccac/ICCAC11.jpg'); /* Adjusted path */
+}
+
+.slide2 {
+  background-image: url('../iccac/ICCAC2.jpg'); /* Adjusted path */
+}
+
+.slide3 {
+  background-image: url('../iccac/ICCAC3.jpg'); /* Adjusted path */
+}
+
+  
+
+  
+  /* Keyframes for sliding effect */
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(0); }
+    20% { transform: translateX(-100%); }
+    30% { transform: translateX(-100%); }
+    40% { transform: translateX(-200%); }
+    50% { transform: translateX(-200%); }
+    60% { transform: translateX(-300%); }
+    70% { transform: translateX(-300%); }
+    80% { transform: translateX(-400%); }
+    90% { transform: translateX(-400%); }
+    100% { transform: translateX(-500%); }
+  }
+  
+  /* Gradient overlay */
+  .pre-registration-form::before {
+    content: ""; /* Pseudo-element for gradient overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(27, 114, 75, 0.75), rgba(0, 0, 0, 0.75)); /* Dark gradient */
+    z-index: 0; /* Behind content */
+    
+  }
+  
+  .sports-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 70px;
+    position: relative; /* Ensure title is above gradient */
+    z-index: 1; /* Above gradient */
+  }
+  
+  .form-description {
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    position: relative; /* Ensure description is above gradient */
+    z-index: 1; /* Above gradient */
+  }
+  
+  .btn-primary {
+    font-size: 20px;
+    padding: 5px 20px;
+    background-color: #185F43;
+    border-color: #185F43;
+    margin-bottom: 50px;
+    position: relative; /* Ensure button is above gradient */
+    z-index: 1; /* Above gradient */
+  }
+  
+  .btn-primary:hover {
+    background-color: #154b36;
+    border-color: #154b36;
+  }
+  
+  
+  
+  
+  
+  
+  /* Departments & Colleges Section - Scroll to the Right */
+  .departments-section .logos-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+  
+  .departments-section .logos-wrapper {
+    display: flex;
+    width: calc(100% * 2);
+    animation: scroll-right 50s linear infinite;
+  }
+  
+  .departments-section .logos-inner {
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  .departments-section .dc-logo {
+    width: 250px;
+    height: auto;
+    margin: 0 20px;
+    margin-top: 20px;
+  }
+  
+  /* Campuses Section - Scroll to the Left */
+  .campuses-section .logos-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+  
+  .campuses-section .logos-wrapper {
+    display: flex;
+    width: calc(100% * 2);
+    animation: scroll-left 50s linear infinite;
+  }
+  
+  .campuses-section .logos-inner {
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  .campuses-section .dc-logo {
+    width: 250px;
+    height: auto;
+    margin: 0 20px;
+    margin-top: 20px;
+  }
+  
+  /* Scroll Animations */
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  /* Title Styling */
+  .colleges-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #004d00;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #c2e0c6, #d9f8d0);
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-top: 25px;
+  }
+  
+  .campuses-section .colleges-title {
+    color: #003d00;
+    background: linear-gradient(135deg, #d1f3d1, #b5e0b0);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .pre-registration-form {
+      padding: 20px;
+      border-radius: 8px;
+    }
+  
+    .sports-title {
+      font-size: 30px;
+      margin-top: 50px;
+    }
+  
+    .form-description {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+  
+    .btn-primary {
+      font-size: 18px;
+      padding: 5px 15px;
+    }
+  
+    .departments-section .dc-logo,
+    .campuses-section .dc-logo {
+      width: 150px; /* Adjust logo size for smaller screens */
+    }
+  
+    .colleges-title {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pre-registration-form {
+      padding: 15px;
+    }
+  
+    .sports-title {
+      font-size: 25px;
+    }
+  
+    .form-description {
+      font-size: 16px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+  
+    .btn-primary {
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+  
+    .departments-section .dc-logo,
+    .campuses-section .dc-logo {
+      width: 120px; /* Further adjust logo size for very small screens */
+    }
+  
+    .colleges-title {
+      font-size: 1.3rem;
+      padding: 8px 15px;
+    }
+  }
+  
+
+  
+   /* FOOTER STYLES */
+  /* General footer styles */
+  .footer {
+    background: linear-gradient(to bottom, #64C48C, #185F43); 
+    color: #fff; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    overflow-x: hidden;
+    bottom: 0; 
+    width: 100%; 
+    margin-top: 100px; 
+  }
+  
+  /* Link styles within footer */
+  .footer a {
+    color: #fff; 
+    text-decoration: none; 
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Heading styles within footer */
+  .footer h5 {
+    margin-top: 10px; 
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Paragraph styles within footer */
+  .footer p {
+    margin-bottom: 0.5rem; 
+  }
+  
+  /* Logo styles within footer */
+  .footer img {
+    max-width: 150px;
+    margin-right: 10px; 
+    margin-top: 13px; 
+  }
+  
+  /* Horizontal divider style */
+  .hr-divider {
+    border-top: 3px solid #fff; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    margin-left: calc(-50vw + 50%); 
+    margin-right: calc(-50vw + 50%); 
+  }
+  
+  /* Custom styles for footer center text */
+  .footer-center-text {
+    text-align: center; 
+    margin-top: -5px; 
+    margin-bottom: -5px;
+  }
+  
+  /* Individual section styles */
+  /* Logo description section styles */
+  .logo-description-section p {
+    margin-right: 28px; 
+    margin-left: 10px; 
+    text-align: center;
+  }
+  
+  /* Contact Us, Visit Us, About Us, and Get in Touch section margins */
+  .contact-us-section,
+  .visit-us-section,
+  .about-us-section,
+  .get-in-touch-section {
+    margin-bottom: 20px; 
+  }
+  
+  /* Specific heading margins for Contact Us and Visit Us sections */
+  .contact-us-section h5,
+  .visit-us-section h5 {
+    margin-top: 30px; 
+  }
+  
+  
+  .visit-us-section h5 {
+    margin-top: 15px; 
+  }
+  
+  /* Specific paragraph margins for Contact Us and Visit Us sections */
+  .contact-us-section p,
+  .visit-us-section p {
+    margin-top: 5px; 
+  }
+  
+  /* Specific heading margins for About Us and Get in Touch sections */
+  .about-us-section h5,
+  .get-in-touch-section h5 {
+    margin-top: 20px;
+  }
+  
+  /* Specific paragraph margins for About Us and Get in Touch sections */
+  .about-us-section p,
+  .get-in-touch-section p {
+    margin-top: 5px;
+  }
+  
+  
+  /* Font Awesome icon styles within footer */
+  .footer .fas, .footer .fab {
+    margin-right: 2px; 
+  }
+  
+  

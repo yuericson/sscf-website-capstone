@@ -1,0 +1,96 @@
+/* Styles for the custom container */
+.content-container {
+  margin-top: 60px; 
+  padding: 0 100px; /* Adjust padding for left and right spacing */
+  text-align: center; /* Center-aligns text within the container */
+  border-radius: 10px; /* Optional: Rounded corners for the container */
+  margin-bottom: 50px;
+}
+
+/* Styles for the section title */
+.section-title {
+  margin-bottom: 30px; /* Spacing below the title */
+  font-weight: bold; /* Bold text */
+  font-size: 1.7rem; /* Font size */
+  color: #004d00; /* Text color */
+  text-transform: uppercase; /* Uppercase text */
+  background: linear-gradient(135deg, #c2e0c6, #d9f8d0); /* Gradient background */
+  padding: 15px 25px; /* Padding around the text */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Shadow effect */
+  font-family: 'Roboto', sans-serif; /* Font family */
+  text-align: center; /* Center text */
+  letter-spacing: 1px; /* Letter spacing */
+  display: inline-block; /* Makes the title inline with spacing */
+  margin-bottom: 50px;
+}
+
+/* Styles for the circular icon containers */
+.mission-icon-circle, .vision-icon-circle, .goals-icon-circle {
+  width: 70px; 
+  height: 70px; 
+  background-color: #185F43; 
+  border-radius: 50%;
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  margin: 0 auto; 
+}
+
+/* Styles for the icons inside the circles */
+.mission-icon-circle i, .vision-icon-circle i, .goals-icon-circle i {
+  color: white;
+  font-size: 36px; 
+}
+
+/* Styles for the boxes */
+.mission-box, .vision-box, .goals-box {
+  background-color: #f4f4f4; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  padding: 20px; 
+  text-align: center; 
+  
+  transition: background-color 0.3s ease; 
+}
+
+.mission-box:hover, .vision-box:hover, .goals-box:hover {
+  background-color: #abf8b2;
+}
+
+/* Styles for custom headings */
+.custom-heading {
+  font-weight: 700; 
+  margin-bottom: 10px; 
+  margin-top: 20px; 
+  display: flex; 
+  justify-content: center; 
+}
+
+/* Styles for custom paragraphs */
+.custom-paragraph {
+  font-size: 16px; 
+  font-weight: 400; 
+  text-align: center; 
+  padding: 0 15px; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Stacking the boxes vertically on smaller screens */
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-md-4 {
+    width: 100%; /* Ensures the boxes take full width on smaller screens */
+    margin-bottom: 20px; /* Adds spacing between boxes */
+  }
+
+  .content-container {
+    padding: 0 15px; /* Adjust left and right padding for smaller screens */
+  }
+}
+
